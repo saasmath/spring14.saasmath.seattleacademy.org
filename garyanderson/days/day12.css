@@ -1,0 +1,25 @@
+            .score-block{
+                border-style:solid;
+                border-width:1px;
+            }
+            .score-title{
+                font-size: 20px;
+                color:lightgray;
+                text-align:center;
+            }
+            .score-number{
+                font-size: 60px;
+                color:blue;
+                text-align:right;
+                background-color: blueviolet;
+            }
+           
+            .buttonchoice
+            {
+                padding: 1000px 1000px;
+            }
+            
+            #img1{
+                width: 80px;
+                length: 90px;
+            }

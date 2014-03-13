@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Day 11</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css"
+              rel="stylesheet">
+        <link href="day10.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script src="day11.js"></script>
+      
+   
+    </head>
+ 
+    <body>
+        <div class="container">
+            <button id="q1">q1</button>
+            <button id="q2">q2</button>
+            <button id="q3">q3</button>
+            <button id="q4">q4</button>
+            <button id="q5">q5</button>
+             <button id="q6">q6</button>
+             <button id="q7">q7</button>
+            
+            <div class="row">
+                <div class="col-xs-3 score-block col-xs-offset-1">
+                    <div class="score-title">Question</div>
+                    <div class="score-number" id="questnum">1</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Time</div>
+                    <div class="score-number" id="elapsedtime">15</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Score</div>
+                    <div id = "totalscore" class="score-number">0</div>
+                </div>
+            </div>
+ 
+            <div class="row" id="wordimage">
+                <img id ="img1" class="center-block" data-correct ="Buddy The Elf" src="elf.jpg" alt="foolah"/>
+            </div>
+ 
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block ans" id="b1">Will Ferrell</button>
+            </div>
+ 
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block ans" id="b2">Buddy The Elf</button>
+            </div>
+ 
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block ans" id="b3">Emme Bianco</button>
+            </div>
+ 
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block ans" id="b4">Santa?</button>
+            </div>
+ 
+        </div> <!-- end container -->
+ 
+    </body>
+</html>

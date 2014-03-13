@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 36</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:800px;
+                height: 450px;
+                background-image: url('super-mario-brothers.png');
+
+            }
+ 
+            #score{
+                position: absolute;
+                left: 300px;
+                top: 40px;
+                font-size: 30px;
+            }
+ 
+            #bird {
+                width: 110px;
+                height: 110px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("Head.png");
+            }
+ 
+            #topPipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-image: url("PipeTop.png");
+               
+ 
+            }
+ 
+            #bottomPipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-image: url("Pipe.png");
+            }
+             #top2Pipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 800px;
+                top: 8px;
+                background-image:url("PipeTop.png");
+ 
+            }
+ 
+            #bottom2Pipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 800px;
+                top: 358px;
+                background-image:url("Pipe.png");
+            }
+            #top3Pipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 1000px;
+                top: 8px;
+                background-image:url("PipeTop.png");
+ 
+            }
+ 
+            #bottom3Pipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 1000px;
+                top: 208px;
+                background-image:url("Pipe.png");
+            }
+            #top4Pipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 1600px;
+                top: 8px;
+                background-image:url("PipeTop.png");
+ 
+            }
+ 
+            #bottom4Pipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 1600px;
+                top: 283px;
+                background-image:url("Pipe.png");
+            }
+            #top5Pipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 1800px;
+                top: 8px;
+                background-image:url("PipeTop.png");
+ 
+            }
+ 
+            #bottom5Pipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 1800px;
+                top: 383px;
+                background-image:url("Pipe.png");
+            }
+
+ 
+        </style>
+        <script>
+ 
+             $(document).ready(function() {
+                function checkCollision() {
+ 
+                    birdPosition = $("#bird").position();
+                    //If we hit the ground, return true
+                    if (birdPosition.top >= 400)
+                        return 1;
+ 
+                    pipeClass = ".pipes" + $("#score").text();
+                    pipePosition = $(pipeClass).position();
+                    //If we are more than 50 from the pipe, return false
+                    if (pipePosition.left - birdPosition.left > 110)
+                        return 0;
+                    if (pipePosition.left - birdPosition.left < -110){
+                        
+                    $("#score").text($("#score").text()*1+1);    
+                        return 0;}
+ 
+                    pipesHeight = $(pipeClass).height();
+                    pipesCenter = pipePosition.top + pipesHeight + 50;
+                    birdFromCenter = Math.abs(birdPosition.top - pipesCenter);
+                    //if we are more than 50 from the center of the pipes, return true
+                    if (birdFromCenter > 50)
+                        return 1;
+                    //otherwise, return false
+                    return 0;
+ 
+                }
+ 
+                function gameOver() {
+                    console.log(timerID);
+                    clearInterval(timerID);
+                    alert("Game over, Try again.");
+                }
+ 
+                function takeStep() {
+                    if (checkCollision()) {
+                        gameOver();
+                    }
+ 
+                }
+ 
+                $("body").keydown(function(event) {
+                    console.log(event.which);
+ 
+                    if (event.which === 38) //up-arrow
+                    {
+                        $("#bird").stop(true).
+                                animate({top: '-=50px'}, 200).
+                                animate({top: '400px'}, 2000)
+                                ;
+                    }
+                });
+ 
+                $("#start").click(function() {
+ 
+                    timerID = setInterval(takeStep, 100);
+                    $("#topPipe, #bottomPipe").stop(true).
+                            animate({left: '-5000px'}, 36000)
+                            ;
+                });
+                $("#start").click(function() {
+ 
+                    timerID = setInterval(takeStep, 100);
+                    $("#top2Pipe, #bottom2Pipe").stop(true).
+                            animate({left: '-4800px'}, 36000)
+                            ;
+                });
+                $("#start").click(function() {
+ 
+                    timerID = setInterval(takeStep, 100);
+                    $("#top3Pipe, #bottom3Pipe").stop(true).
+                            animate({left: '-4600px'}, 36000)
+                            ;
+                });
+                $("#start").click(function() {
+ 
+                    timerID = setInterval(takeStep, 100);
+                    $("#top4Pipe, #bottom4Pipe").stop(true).
+                            animate({left: '-4000px'}, 33000)
+                            ;
+                });
+                $("#start").click(function() {
+ 
+                    timerID = setInterval(takeStep, 100);
+                    $("#top5Pipe, #bottom5Pipe").stop(true).
+                            animate({left: '-3800px'}, 33000)
+                            ;
+                });
+
+ 
+            }); //end document ready
+ 
+        </script>
+    </head>
+    <body>
+ 
+        <div id="background">
+            <div id="bird"></div>
+            <div id="topPipe" class="pipes0"></div>
+            <div id="bottomPipe"></div>
+            <div id="bottom2Pipe"></div>
+            <div id="top2Pipe" class="pipes1"></div>
+            <div id="bottom3Pipe"></div>
+            <div id="top3Pipe" class="pipes2"></div>
+            <div id="bottom4Pipe"></div>
+            <div id="top4Pipe" class="pipes3"></div>
+            <div id="bottom5Pipe"></div>
+            <div id="top5Pipe" class="pipes4"></div>
+            <button id="start">Start!</button>
+ 
+            <div id="score">0</div>
+        </div>
+        <div id="debug">Mario Head Bird!</div>
+    </body>
+</html>

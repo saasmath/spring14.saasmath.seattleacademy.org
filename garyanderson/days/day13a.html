@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>day13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+
+        <script>
+            $(document).ready(function() {
+
+            $('#reset').click(function() {
+                    $('#correct').text("0");
+            });
+                    $('input').change(function() {
+            correct = $(this).data('correct');
+                    response = $(this).val();
+                    if (correct == response) {
+            $(this).removeClass("incorrect").addClass("correct");
+                    numcorrect = $('#correct').text();
+                    //We multiply by 1 change from type text to number
+                    $('#correct').text(numcorrect * 1 + 1);
+                    $(this).nextAll('span:first').html("&#x2713;");
+            }
+            else
+            {
+            $(this).removeClass("correct").addClass("incorrect");
+                    numerrors = $('#errors').text();
+                    $('#errors').text(numerrors * 1 + 1);
+                    $(this).nextAll('span:first').html("&#x2718");
+            }
+            numcorrect = $('#correct').text();
+                    numerrors = $('#errors').text();
+                    percorrect = numcorrect * 1 / (numcorrect * 1 + numerrors * 1);
+                    //alert(percorrect.toFixed(2) * 100);
+                    $('#percorrect').text(percorrect.toFixed(2) * 100);
+            });
+            });
+        </script>
+
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+
+            .incorrect { 
+                background:orangered;
+            }
+
+            #score{
+                border:2px dashed navy;
+            }
+
+            .row {
+                padding-bottom: 4px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <!-- Add bootstrap structure here with divs of class container, row, col-xs-2 etc. -->
+        <div class="container" >
+            <div id="score">
+                Correct: <span id="correct">0</span>
+                %Correct: <span id="percorrect">100.00</span>
+                Errors:  <span id="errors">0</span>
+                <button id="reset">reset</button>
+
+            </div>
+            <h2>Evaluate each expression</h2>
+            <div class="row">
+                <div class="col-xs-2">2<sup>0</sup><input data-correct ="1" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>1</sup><input data-correct ="2" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>2</sup><input data-correct ="4" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>3</sup><input data-correct ="8" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>4</sup><input data-correct ="16" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>5</sup><input data-correct ="32" type="text" size="4"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">2<sup>6</sup><input data-correct ="64" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>7</sup><input data-correct ="128" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>8</sup><input data-correct ="256" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>9</sup><input data-correct ="512" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>10</sup><input data-correct ="1024" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>11</sup><input data-correct ="2048" type="text" size="4"/><span></span></div>
+            </div>
+        </div>   
+    </body>
+
+</html>

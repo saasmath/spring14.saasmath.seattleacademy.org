@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 42</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+           /* body {
+                background-image: url("images/background.jpg");
+                background-color:#888888;
+                text-color:#00EE00;
+                //background-repeat: no-repeat;
+                //background-size: contain;
+            }
+            #mypic {
+                position:absolute;
+                top:300px;
+                right:150px;
+       
+            } */
+           body {
+               background-color:#FFFFFF;
+           }
+            #court {
+                position:absolute;
+                top:75px;
+                left:150px;
+            }
+            #title {
+                position:absolute;
+                top:5px;
+                left:350px;
+            }
+            h1{
+                color:#4099dd;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+       <!-- <div id="mypic">This is day 42 <br>
+            <img src="http://saasmath.seattleacademy.org/pics/aidanwood.png"/> <br>
+
+        </div> -->
+       <div id="title">
+           <h1>Away Team vs. Home Team</h1>
+       </div>
+      <!-- <div id="court">
+            <img src="images/court.jpg" alt="court"/>
+       </div> -->
+   
+      <canvas id="canvas1" width="800" height="480" style="border:1px solid #000000;"></canvas>
+         <script>
+          var canvas = document.getElementById("canvas1"),
+          var ctx = canvas.getContext("2d");
+          var img=document.getElementById("court1");
+          ctx.drawImage(img);
+       </script>
+    </body>
+</html>

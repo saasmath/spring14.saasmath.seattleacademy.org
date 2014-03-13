@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Day 37</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:800px;
+                height: 450px;
+                background-image: url('super-mario-brothers.png');
+            }
+ 
+            #score{
+                position: absolute;
+                left: 300px;
+                top: 40px;
+                font-size: 30px;
+            }
+  #bird {
+                width: 110px;
+                height: 110px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("Head.png");
+            }
+ 
+            .topPipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-image: url("PipeTop.png");
+               
+ 
+            }
+ 
+            .bottomPipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-image: url("Pipe.png");
+            }
+ 
+        </style>
+        <script>
+ 
+            $(document).ready(function() {
+                numberOfPipes = 15;
+                pipewidth = 100;
+                function makePipes() {
+                    for (var i = 0; i < numberOfPipes; i++)
+                    {
+                        pipeLeft = 600 + i * 200;
+                        pipeNum = 'pipes' + i;
+                        topPipe = '<div class="topPipe ' + pipeNum + '"><div>';
+                        bottomPipe = '<div class="bottomPipe ' + pipeNum + '"><div>';
+                        console.log(topPipe);
+                        $("#background").append(topPipe);
+                        $("#background").append(bottomPipe);
+                        pipePosition = pipeLeft + 'px';
+                        shiftDown = Math.floor((Math.random()*100)+1);
+                        console.log(shiftDown);
+                        pipeTag = "." + pipeNum;
+                        $(pipeTag).
+                                animate({left: pipePosition, top: '+='+shiftDown+'px'}, 1).
+                                animate({left: '-1000px'}, 10000 + i * 2000);
+                        ;
+ 
+ 
+                    }
+                }
+                function checkCollision() {
+ 
+                    birdPosition = $("#bird").position();
+                    //If we hit the ground, return true
+                    if (birdPosition.top >= 400)
+                        return 1;
+ 
+                    pipeClass = ".pipes" + $("#score").text();
+                    pipePosition = $(pipeClass).position();
+                    //If we are more than 50 from the pipe, return false
+                    if (pipePosition.left - birdPosition.left > 110)
+                        return 0;
+                    if (pipePosition.left - birdPosition.left < -110){
+
+ 
+                    pipesHeight = $(pipeClass).height();
+                    pipesCenter = pipePosition.top + pipesHeight + 50;
+                    birdFromCenter = Math.abs(birdPosition.top - pipesCenter);
+                    $("#debug").text(birdFromCenter);
+ 
+                    if (birdFromCenter > 50)
+                        return 1;
+                    //Increase the score by one if we pass the pipe.
+                    if (pipePosition.left - birdPosition.left < -50) {
+                         $('#correctsound').get(0).play();
+
+                        $("#score").text($("#score").text() * 1 + 1);
+                        if ($("#score").text() * 1 + 1 > numberOfPipes)
+                            gameWon();
+                        return 0;
+                    }                    //otherwise, return false
+                    return 0;
+ 
+                }
+ 
+                function gameOver() {
+                    console.log(timerID);
+                    clearInterval(timerID);
+                    alert("Game over, Try again.");
+                }
+ 
+                function gameWon() {
+                    clearInterval(timerID);
+                    alert("You Won!");
+                }
+ 
+                function takeStep() {
+                    if (checkCollision()) {
+                        gameOver();
+                    }
+ 
+ 
+                }
+ 
+                $("body").keydown(function(event) {
+                   // console.log(event.which);
+ 
+                    if (event.which === 38) //up-arrow
+                    {
+                        $("#bird").stop(true).
+                                animate({top: '-=50px'}, 100).//sets duration of up animation
+                                animate({top: '400px'}, 2000)   //sets duration of down animation
+                                ;
+                    }
+                });
+ 
+                $("#start").click(function() {
+                    makePipes();
+                    timerID = setInterval(takeStep, 100);
+ 
+                });
+ 
+            }); //end document ready
+ 
+        </script>
+    </head>
+    <body>
+ 
+        <div id="background">
+            <div id="bird"></div>
+            <!-- <div class="topPipea pipes0a">top pipe</div> -->
+            <!-- <div class="bottomPipea">bottom pipe</div> -->
+            <button id="start">Start</button>
+ 
+            <div id="score">0</div>
+        </div>
+        <div id="debug">debug</div>
+        
+        
+                 <button id="wrong">wrong</button>
+            <audio controls="controls" id="wrongsound">
+                <source src="http://saasmath.seattleacademy.org/doh.mp3" type="audio/mpeg" />
+                <source src="http://saasmath.seattleacademy.org/doh.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+            <h3>Us the application Audacity to get a sound and save it both mp3 and ogg formats</h3>
+
+            <button id="correct">correct</button>
+            <audio controls="controls" id="correctsound">
+                <source src="CoinEffect.mp3" type="audio/mpeg" />
+                <source src="CoinEffect.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+        
+    </body>
+</html>

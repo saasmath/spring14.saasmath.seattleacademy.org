@@ -1,0 +1,46 @@
+.score-block{
+    border-style:solid;
+    border-width:6px;
+    color: hotpink;
+}
+.score-title{
+    font-size: 20px;
+    color:skyblue;
+    text-align:center;
+}
+.score-number{
+    font-size: 60px;
+    color:hotpink;
+    text-align:center;
+}
+.buttonchoice
+{
+    padding: 2px 2px;
+}
+ 
+#img1 {
+    width: 30%;
+    height: auto;
+}
+ 
+#keywords{
+    font-size:30px;
+    text-align: center;
+    color: skyblue}
+ 
+.ui-widget{
+    text-align: center;
+    
+}
+ 
+.buttonschoice{
+    width: auto;
+}
+
+body
+{
+background-image:url('ily.jpg');
+background-color:#cccccc;
+}
+
+

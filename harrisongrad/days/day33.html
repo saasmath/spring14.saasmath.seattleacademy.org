@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 33</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <link href="http://saasmath.seattleacademy.org/garyanderson/days/garybot.css" rel="stylesheet">
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/saasbot.js"></script>
+ 
+ 
+        <script>
+            function onSensor(){
+                sendCommand('');
+                sensors = $.parseJSON($('#result').text());
+                leftBumper = sensors.BUMPS_AND_WHEEL_DROPS.charAt(10);
+                rightBumper = sensors.BUMPS_AND_WHEEL_DROPS.charAt(13);
+                cliffFrontR = sensors.CLIFF_FRONT_RIGHT_SIGNAL;
+                //console.log(leftBumper);
+                //console.log(rightBumper);
+                if (sensors.CLIFF_FRONT_RIGHT_SIGNAL < 450 ){
+                    //sendCommand('140,0,1,60,20,141,0'); //Play note
+                    sendCommand('145,255,206,255,240'); //Reverse
+                } else
+                {
+                    sendCommand('145,0,50,0,50');
+                }
+                
+                if(leftBumper === 1){
+                   sendCommand('140,0,1,55,10,141,0');
+                   console.log('RUN FOR YOUR LIFE!!!!!');
+                   sendCommand('145,0,0,0,50');
+ 
+                }
+            }
+ 
+            $(document).ready(function() {
+ 
+                var getSensors = setInterval(function() {
+                    sendCommand('');
+                }, 1000);
+ 
+ 
+                $("#lockout").click(function(event) {
+                    username = $('#username').val();
+                    if (username === '')
+                        alert('enter username');
+                    else
+                        lockout();
+                });
+ 
+                if (event.which === 38) //forward key
+                    sendCommand('145,0,50,0,50');
+                if (event.which === 37) //left arrow
+                    sendCommand('145,0,50,255,216');
+                if (event.which === 39) //left arrow
+                    sendCommand('145,255,216,0,50');
+                if (event.which === 40) //down arrow
+                    sendCommand('145,255,216,255,16');
+ 
+                $('#checkSensors').change(function() {
+                    if (this.checked)
+                        checkHit = setInterval(onSensor, 1000);
+                    else
+                        clearInterval(checkHit);
+                });
+            });
+ 
+        </script>
+    </head>
+ 
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class="row">
+                Select Robot: 
+                <select id = "botname" name="botname">
+                    <option>Put your default robot here</option>
+                    <option>10.48.102.162</option>
+                    <option>10.48.102.116</option>
+                    <option>10.48.102.136</option>
+                    <option>10.48.102.172</option>
+                    <option>10.48.102.182</option>
+                </select>
+            </div>
+            <div class="row">
+                <button id="lockout" class="btn-info btn col-xs-3">Take Exclusive control</button>
+                Username: <input type="text" id="username">
+            </div>
+            <div class ="row">
+                <button data-command = "128" class="btn-success btn col-xs-2">Passive Mode</button>
+                <button data-command = "131" class="btn-warning btn col-xs-2">Safe Mode</button>
+                <button data-command = "132" class="btn-danger btn col-xs-3">Full Mode</button>
+ 
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button data-command = "145,0,0,0,0" class="btn btn-danger">Stop</button>
+                    <button data-command = "145,0,10,0,10" class="btn btn-primary">Go</button>
+                    <input type="checkbox" id="checkSensors"> Autonomous Mode
+                </div>
+            </div>
+            <div class="alert alert-info wordwrap" id="result">Sensors ...</div>
+        </div> <!-- end container -->
+ 
+    </body>
+</html>

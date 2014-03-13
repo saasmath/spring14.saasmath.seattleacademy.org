@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Day 35</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:800px;
+                height: 450px;
+                background-color: lightblue;
+            }
+
+            #score{
+                position: absolute;
+                left: 300px;
+                top: 40px;
+                font-size: 30px;
+            }
+
+            #bird {
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("http://saasmath.seattleacademy.org/garyanderson/days/bird.png");
+            }
+
+            .topPipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-color: blue;
+
+            }
+
+            .bottomPipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-color: blue;
+            }
+
+        </style>
+        <script>
+
+            $(document).ready(function() {
+                numberOfPipes = 20;
+                pipewidth = 100;
+                function makePipes() {
+                    for (var i = 0; i < 20; i++)
+                    {
+                        pipeLeft = 600 + i * 200;
+                        pipeID = 'pipes' + i;
+                        topPipe = '<div class="topPipe" id="' + pipeID + '"><div>';
+                        console.log(topPipe);
+                        $("#background").append(topPipe);
+                        pipePostion = pipeLeft + 'px';
+                        console.log(pipePostion);
+                        pipeIDTag = "#"+pipeID;
+                        $(pipeIDTag).stop(true).
+                                animate({left: pipePostion}, 1)
+                                ;
+
+                        //$(pipeID).css({top: 0, left: pipeLeft});
+                        console.log($(pipeIDTag).length);
+
+
+                    }
+                }
+                function checkCollision() {
+
+                    birdPosition = $("#bird").position();
+                    //If we hit the ground, return true
+                    if (birdPosition.top >= 400)
+                        return 1;
+
+                    pipeClass = ".pipes" + $("#score").text();
+                    pipePosition = $(pipeClass).position();
+                    //If we are more than 50 from the pipe, return false
+                    if (pipePosition.left - birdPosition.left > 35)
+                        return 0;
+
+                    pipesHeight = $(pipeClass).height();
+                    pipesCenter = pipePosition.top + pipesHeight + 50;
+                    birdFromCenter = Math.abs(birdPosition.top - pipesCenter);
+                    //if we are more than 50 from the center of the pipes, return true
+                    if (birdFromCenter > 50)
+                        return 1;
+                    //otherwise, return false
+                    return 0;
+
+                }
+
+                function gameOver() {
+                    console.log(timerID);
+                    clearInterval(timerID);
+                    alert("Game over, Try again.");
+                }
+
+                function takeStep() {
+                    if (checkCollision()) {
+                        gameOver();
+                    }
+
+                }
+
+                $("body").keydown(function(event) {
+                    console.log(event.which);
+
+                    if (event.which === 38) //up-arrow
+                    {
+                        $("#bird").stop(true).
+                                animate({top: '-=50px'}, 200).
+                                animate({top: '400px'}, 2000)
+                                ;
+                    }
+                });
+
+                $("#start").click(function() {
+                    makePipes();
+                    timerID = setInterval(takeStep, 100);
+                    $(".topPipe, .bottomPipe").stop(true).
+                            animate({left: '-50px'}, 10000)
+                            ;
+                });
+
+            }); //end document ready
+
+        </script>
+    </head>
+    <body>
+
+        <div id="background">
+            <div id="bird"></div>
+            <div class="topPipe pipes0">top pipe</div>
+            <div class="bottomPipe">bottom pipe</div>
+            <button id="start">Start</button>
+
+            <div id="score">0</div>
+        </div>
+        <div id="debug">debug</div>
+    </body>
+</html>

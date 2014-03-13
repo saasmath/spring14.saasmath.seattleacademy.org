@@ -1,0 +1,271 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>iPCamera for iOS</title>
+<style type="text/css">
+	html,body {
+		background-color: black;
+		text-align: center;
+		color: gray;
+	}
+	
+	td {
+		text-align: center;
+	}
+	
+	#fullscreenDiv {
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
+	
+	#battery {
+		color: white;
+		font-weight: bold;
+	}
+	</style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script><script type="text/javascript">
+	function displayParams(json) {
+		if (json.camera < 0) $("#camera").attr("disabled", "disabled");
+		else {
+			$("#camera").removeAttr("disabled");
+			$("#camera option").eq(json.camera).attr('selected', 'selected');
+		}
+		$("#camera").show();
+		
+		$("#resolution option").eq(json.resolution).attr('selected', 'selected');
+		$("#resolution").show();
+		
+		
+		function bestOptionIndex(opts, value) {
+			var bestIndex = 0;
+			var bestDist = 10000.0;
+			for (var i = 0; i < opts.length; i++) {
+				var dist = Math.abs(opts.eq(i).val()-value);
+				if (dist < bestDist) {
+					bestDist = dist;
+					bestIndex = i;
+				}
+			}
+			return bestIndex;
+		}
+		
+		var qOptions = $("#quality option");
+		qOptions.eq(bestOptionIndex(qOptions, json.quality)).attr('selected', 'selected');
+		$("#quality").show();
+		
+		var fpsOptions = $("#fps option");
+		fpsOptions.eq(bestOptionIndex(fpsOptions, json.fps)).attr('selected', 'selected');
+		$("#fps").show();
+		
+		var flipOptions = $("#flip option");
+		flipOptions.eq(bestOptionIndex(flipOptions, json.flip)).attr('selected', 'selected');
+		$("#flip").show();
+		
+		var rotationOptions = $("#rotation option");
+		rotationOptions.eq(bestOptionIndex(rotationOptions, json.rotation)).attr('selected', 'selected');
+		$("#rotation").show();
+		
+		
+		function processCheckbox(name) {
+			var box = $("#"+name);
+			box.removeAttr("checked");
+			box.removeAttr("disabled");
+			if (json[name] < 0) box.attr("disabled", "disabled");
+			else if (json[name] == 1) box.attr("checked", "checked");
+			box.show();
+		}
+		
+		processCheckbox("torch");
+		processCheckbox("focus");
+		processCheckbox("exposure");
+		processCheckbox("wb");
+		
+		processCheckbox("stats");
+		
+		$("#battery").text(json.battery);
+		$("#battery").show();
+	}
+	
+	function changeParam(name, value) {
+		$.getJSON("http://10.48.102.120/parameters?"+name+"="+value, function(json) {
+			displayParams(json);
+		});
+	}
+	
+	function updateParams() {
+		$.getJSON("http://10.48.102.120/parameters", function(json) {
+			displayParams(json);
+		});
+	}
+	
+	var isInFullscreen = false;
+	
+	function toggleFullscreen() {
+		var div = document.getElementById("fullscreenDiv");
+		
+		if (isInFullscreen) {
+			if (div.webkitCancelFullScreen) {
+				div.webkitCancelFullScreen();
+			} else if (div.mozCancelFullScreen) {
+				div.mozCancelFullScreen();
+			} else if (div.cancelFullScreen) {
+				div.cancelFullScreen();
+			} else {
+				return;
+			}
+		} else {
+			if (div.webkitRequestFullScreen) {
+				div.webkitRequestFullScreen();
+			} else if (div.mozRequestFullScreen) {
+				div.mozRequestFullScreen();
+			} else if (div.requestFullScreen) {
+				div.requestFullScreen();
+			} else {
+				return;
+			}
+		}
+	}
+	
+	function init() {
+		$("#camera").hide();
+		$("#resolution").hide();
+		$("#quality").hide();
+		$("#fps").hide();
+		
+		$("#focus").hide();
+		$("#exposure").hide();
+		$("#wb").hide();
+		$("#torch").hide();
+		
+		$("#stats").hide();
+		$("#flip").hide();
+		$("#battery").hide();
+		$("#rotation").hide();
+		
+		updateParams();
+		setInterval("updateParams()", 20000);
+		
+		$("#live").attr("src", "/live");
+		
+		
+		document.documentElement.onwebkitfullscreenchange = function() {
+			isInFullscreen = !isInFullscreen;
+			
+			var img = document.getElementById("live");
+			var sw = screen.width;
+			var sh = screen.height;
+			
+			if (isInFullscreen) {
+				if (sw/sh > img.width/img.height) {
+					img.width = sh*img.width/img.height;
+					img.height = sh;
+				} else {
+					img.width = sw;
+					img.height = sw*img.height/img.width;
+				}
+			} else {
+				$(img).removeAttr("width");
+				$(img).removeAttr("height");
+			}
+		}
+		document.documentElement.onfullscreenchange = document.documentElement.onwebkitfullscreenchange;
+		document.addEventListener("mozfullscreenchange", document.documentElement.onwebkitfullscreenchange, false);
+	}
+</script>
+</head>
+
+<body onload="init()">
+<div id="fullscreenDiv">
+	<img id="live" onclick="toggleFullscreen()" />
+</div>
+<hr noshade="noshade" />
+<table cellpadding="5" align="center"><tbody>
+<tr>
+	<td><label for="camera">Camera</label></td>
+	<td><label for="resolution">Resolution</label></td>
+	<td><label for="quality">Quality</label></td>
+	<td><label for="fps">Frames per Second</label></td>
+</tr>
+<tr>
+	<td><select name="camera" id="camera" onchange="changeParam('camera', this.value)">
+		<option value="0">Rear</option>
+		<option value="1">Front</option>
+	</select></td>
+	<td><select name="resolution" id="resolution" onchange="changeParam('resolution', this.value)">
+		<option value="0">192 x 144 (low)</option>
+		<option value="1">352 x 288</option>
+		<option value="2">480 x 360 (medium)</option>
+		<option value="3">640 x 480 (high)</option>
+		<option value="4">1280 x 720 (HD)</option>
+	</select></td>
+	<td><select name="quality" id="quality" onchange="changeParam('quality', this.value)">
+		<option value="0.0">0 (low)</option>
+		<option value="0.1">1</option>
+		<option value="0.2">2</option>
+		<option value="0.3">3</option>
+		<option value="0.4">4</option>
+		<option value="0.5">5 (medium)</option>
+		<option value="0.6">6</option>
+		<option value="0.7">7</option>
+		<option value="0.8">8</option>
+		<option value="0.9">9</option>
+		<option value="1.0">10 (high)</option>
+	</select></td>
+	<td><select name="fps" id="fps" onchange="changeParam('fps', this.value)">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+		<option value="0">max</option>
+	</select></td>
+</tr>
+<tr>
+	<td colspan="4">&nbsp;</td>
+</tr>
+<tr>
+	<td><label for="torch">Torch</label></td>
+	<td><label for="focus">Lock focus</label></td>
+	<td><label for="exposure">Lock exposure</label></td>
+	<td><label for="wb">Lock white-balance</label></td>
+</tr>
+<tr>
+	<td><input type="checkbox" name="torch" id="torch" onchange="changeParam('torch', this.checked?1:0)" /></td>
+	<td><input type="checkbox" name="focus" id="focus" onchange="changeParam('focus', this.checked?1:0)" /></td>
+	<td><input type="checkbox" name="exposure" id="exposure" onchange="changeParam('exposure', this.checked?1:0)" /></td>
+	<td><input type="checkbox" name="wb" id="wb" onchange="changeParam('wb', this.checked?1:0)" /></td>
+</tr>
+<tr>
+	<td colspan="4">&nbsp;</td>
+</tr>
+<tr>
+	<td><label for="stats">Show Statistics</label></td>
+	<td><label for="flip">Flip</label></td>
+	<td><label for="rotation">Orientation</label></td>
+	<td>Battery</td>
+</tr>
+<tr>
+	<td><input type="checkbox" name="stats" id="stats" onchange="changeParam('stats', this.checked?1:0)" /></td>
+	<td><select name="flip" id="flip" onchange="changeParam('flip', this.value)">
+		<option value="0">Off</option>
+		<option value="1">Horizonzal</option>
+		<option value="2">Vertical</option>
+	</select></td>
+	<td><select name="rotation" id="rotation" onchange="changeParam('rotation', this.value)">
+		<option value="0">Auto</option>
+		<option value="1">Landscape (left)</option>
+		<option value="3">Landscape (right)</option>
+		<option value="4">Portrait</option>
+		<option value="2">Portrait (upside-down)</option>
+	</select></td>
+	<td><span id="battery">n/a</span></td>
+</tr>
+</tbody></table>
+</body>
+</html>
+

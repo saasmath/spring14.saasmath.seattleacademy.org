@@ -1,0 +1,35 @@
+.score-block{
+    border-style:solid; 
+    color:darkblue;
+    border-width:5px;
+}
+.score-title{
+    font-size: 40px;
+    color:orangered;
+    text-align:center;
+}
+.score-number{
+    font-size: 40px;
+    color:darkred;
+    text-align:center;
+}
+.buttonchoice
+{
+    padding: 6px 6px;
+}
+ 
+#img1 {
+    width: 25%;
+    height: auto;
+}  
+
+input{
+    font-size:30px;
+    text-align: center;
+    color: black 
+}
+
+body{
+    background-image: url('kitty.jpeg')
+} 
+

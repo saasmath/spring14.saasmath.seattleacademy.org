@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <link href="day20.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/tabletop.js"></script>
+        <script src="day20.js"></script>
+        
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+
+            .incorrect { 
+                background:red;
+            }
+
+            #score{
+                border:solid;
+            }
+
+            .row {
+                padding-bottom: 4px;
+            }
+        </style>
+    </head>
+ 
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 score-block col-xs-offset-1">
+                    <div class="score-title">Question</div>
+                    <div class="score-number" id="questnum">1</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Time</div>
+                    <div class="score-number" id="elapsedtime">11</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Score</div>
+                    <div id = "totalscore" class="score-number">0</div>
+                </div>
+            </div>
+ 
+            <div class="row" id="wordtext">
+                <input id = "textAnswer" data-correct = "Banana">
+            </div>
+ </div>
+            <div id="keywords">keywords</div>
+
+            <div class="row buttonchoice">
+                 <img id ="img1" class="center-block" src="http://t1.gstatic.com/images?q=tbn:ANd9GcQB95TV51tQP2RHY9J9J_kjGf8OhXESSA6_4Mx2_gtFZuY-S6N9" alt="Banana"/>
+            
+            </div>
+ 
+            <div class='container'>
+ 
+            
+            <audio controls="controls" class="hide" id="wrongsound">
+                <source src="wrong.mp3" type="audio/mpeg" />
+                <source src="wrong.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio> 
+ 
+            
+            <audio controls="controls" class="hide" id="correctsound">
+                <source src="correct.mp3" type="audio/mpeg" />
+                <source src="correct.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+                
+ 
+        </div>
+ 
+    </body>
+</html>

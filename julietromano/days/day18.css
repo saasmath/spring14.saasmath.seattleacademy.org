@@ -1,0 +1,42 @@
+.score-block{
+    border-style:solid;
+    border-width:1px;
+    color: lightskyblue;
+}
+.score-title{
+    font-size: 20px;
+    color:palevioletred;
+    text-align:center;
+}
+.score-number{
+    font-size: 60px;
+    color:plum;
+    text-align:center;
+}
+
+
+.buttonchoice
+{
+    padding: 2px 2px;
+    color: aqua;
+    
+}
+ 
+#img1 {
+    width: 30%;
+    height: auto;
+}
+
+body
+{
+background-image:url('help.jpg');
+background-color:#cccccc;
+}
+
+#keywords
+{
+font-size:30px;
+text-align: center;
+color: pink;
+}
+    

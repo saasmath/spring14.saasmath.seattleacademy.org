@@ -1,0 +1,8 @@
+body {background-image:url("Drums.png"};
+      background-repeat:repeat-y;
+}
+h1 {left:50px;top:100px;}
+== day03.html ==
+  <head>
+  <link type="text/css" rel="stylesheet" href="day03.css"/>
+

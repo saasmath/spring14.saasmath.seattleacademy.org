@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>day14</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+
+        <script>
+             <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>       
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+
+
+            $(document).ready(function() {
+                var count = 0;
+                var counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+                function timer()
+                {
+                    count = count + 1;
+
+                    $("#elapsedtime").html(count);
+                }
+                $('#reset').click(function() {
+                    $('input').val("");
+                    $('#correct').text("0");
+                    $('#percorrect').text("100");
+                    $('#totalscore').text("0");
+                    $('#pererrors').text("0");
+                    $('#errors').text("0");
+                });
+
+
+                $('input').change(function() {
+                    correct = $(this).data('correct');
+                    response = $(this).val();
+
+                    if (correct == response) {
+                        $(this).removeClass("incorrect").addClass("correct");
+                        //We multiply by 1 change from type text to number
+                        numcorrect = $('#correct').text();
+                        $('#correct').text(numcorrect * 1 + 1);
+                        $(this).nextAll('span:first').html("&#8730;");
+                    }
+                    else
+                    {
+                        $(this).removeClass("correct").addClass("incorrect");
+                        numerrors = $('#errors').text();
+                        $('#errors').text(numerrors * 1 + 1);
+                        $(this).nextAll('span:first').html("&#x2718");
+                    }
+
+                    numcorrect = $('#correct').text();
+                    numerrors = $('#errors').text();
+                    percorrect = numcorrect * 1 / (numcorrect * 1 + numerrors * 1);
+                    //alert(percorrect);
+                    percorrect = percorrect.toFixed(2) * 100;
+                    $('#percorrect').text(percorrect);
+
+
+                });
+            });
+
+        </script>
+
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+
+            .incorrect { 
+                background:pink;
+            }
+
+            #score{
+                border:2px dashed navy;
+            }
+
+            .row {
+                padding-bottom: 4px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <!-- Add bootstrap structure here with divs of class container, row, col-xs-2 etc. -->
+        <div class="container" >
+            <div id="score" class="row">
+                <div class="col-xs-2">Correct: <span id="correct">0</span></div>
+                <div class="col-xs-2">%Correct: <span id="percorrect">100</span></div>
+                <div class="col-xs-2"> Errors:  <span id="errors">0</span></div>
+                <div class="col-xs-2">%Errors: <span id="pererrors">0</span></div>
+                <div class="col-xs-2">Score: <span id="totalscore">0</span></div>
+                <div class="col-xs-2">Time:
+                    <div id="elapsedtime">0</div>
+                    <button id="reset">reset</button>
+                </div></div><br>
+            <h2>Evaluate each expression</h2>
+            <div class="row">
+                <div class="col-xs-2"><li>$\left ( -\dfrac{125}{27} \right )^\tfrac{-4}{3}$</li> data-correct ="81/625" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>1</sup><input data-correct ="2" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>2</sup><input data-correct ="4" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>3</sup><input data-correct ="8" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>4</sup><input data-correct ="16" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>5</sup><input data-correct ="32" type="text" size="4"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">2<sup>6</sup><input data-correct ="64" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>7</sup><input data-correct ="128" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>8</sup><input data-correct ="256" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>9</sup><input data-correct ="512" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>10</sup><input data-correct ="1024" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>11</sup><input data-correct ="2048" type="text" size="4"/><span></span></div>
+            </div>
+        </div>   
+    </body>
+
+</html>

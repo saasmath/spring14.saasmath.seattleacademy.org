@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 28</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            function sendCommand(bytestring) {
+                command = 'http://saasmath.seattleacademy.org/saasbot/writebot.php?';
+                command = command + 'botname=' + $('#botname').val();
+                command = command + '&bytestring=' + bytestring;
+                $('#result').load(command);
+                console.log(command);
+
+            }
+
+            $(document).ready(function() {
+                $("#play9").click(function(event) {
+                    $("#go").click();
+                    $("body").keydown("57");
+                });
+
+
+
+                $("[data-command]").click(function(event) {
+                    command = $(this).data('command');
+                    sendCommand(command);
+                    event.preventDefault();
+
+                });
+
+
+
+                $('body').keydown(function(event) {
+
+                    if (event.which === 87) //w - move forward
+                    {
+                        sendCommand('145,0,50,0,50');
+                    }
+
+                    if (event.which === 65) //a -- turn left
+                    {
+                        sendCommand('145,0,50,255,206');
+                    }
+
+                    if (event.which === 49) //1 Play Song1
+                    {
+                        sendCommand('140,0,2,55,10,67,15,141,0');
+                    }
+
+
+                    if (event.which === 50) //2 Play Song 2
+                    {
+                        sendCommand('140,0,3,60,20,72,15,84,10,141,0');
+                    }
+
+                    if (event.which === 57) //9 Play Song 9
+                    {
+                        sendCommand('140,0,10,60,8,60,8,60,8,77,20,81,8,60,8,60,8,60,8,77,20,81,8,141,0');
+                    }
+
+                    if (event.which === 51) //3 Play song 3
+                    {
+                        sendCommand('140,0,3,60,20,72,15,84,10,141,0');
+                    }
+                    if (event.which === 32) //space bar STOP
+                    {
+                        sendCommand('145,0,0,0,0');
+                    }
+
+                    if (event.which === 80) //p Passive Mode
+                    {
+                        sendCommand('128');
+                    }
+
+                    if (event.which === 70) //f full Mode
+                    {
+                        sendCommand('132');
+                    }
+
+                    if (event.which === 83) //s Safe Mode
+                    {
+                        sendCommand('131');
+
+                    }
+
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class="alert alert-info">Record: <span id="result">Result</span></div>
+            <div class="row">
+                Select Robot: 
+                <select id = "botname" name="botname">
+                    <option>10.48.102.172</option>
+                    <option>192.168.1.121</option>
+                    <option>10.48.102.178</option>
+                    <option>10.48.102.115</option>
+                    <option>10.48.102.136</option>
+                    <option>10.48.102.113</option>
+                    <option>10.48.102.162</option>
+                    <option>10.48.102.172</option>
+                </select>
+            </div>
+            <div class ="row">
+                <button data-command = "128" class="btn-success btn col-xs-2">Passive Mode</button>
+                <button data-command = "131" class="btn-warning btn col-xs-2">Safe Mode</button>
+                <button data-command = "132" class="btn-danger btn col-xs-3">Full Mode</button>
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button id ="stop" data-command = "145,0,0,0,0" class="btn-danger btn-lg btn-block">Stop
+                     <span class="glyphicon glyphicon-stop"></span></button>
+                    <button id ="go" data-command = "145,0,10,0,10" class="btn-success btn-lg btn-block">Go
+                     <span class="glyphicon glyphicon-arrow-up"></span></button>
+                    <button id ="turn" data-command = "145,0,30,255,236" class="btn-primary btn-lg btn-block">Turn
+                     <span class="glyphicon glyphicon-refresh"></span></button>
+                    <button id ="curve" data-command = "145,0,30,0,60" class="btn-primary btn-lg btn-block">Curve
+                        <span class="glyphicon glyphicon-repeat"></span></button>
+                    <button id ="play9" data-command="140,0,10,60,8,60,8,60,8,77,20,81,8,60,8,60,8,60,8,77,20,81,8,141,0" class="btn-success btn-lg btn-block">Play Music
+                        <span class="glyphicon glyphicon-music"></span></button>
+                </div>
+                
+                 </div> 
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-5">
+                    <button data-command = "145,0,100,0,100" class="btn-primary btn-lg btn-block">Forward<span class="glyphicon glyphicon-arrow-up"></span></button> 
+                </div> 
+            </div>  
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-3">
+                    <button data-command = "145,0,130,255,236" class="btn-primary btn-lg btn-block">Left<span class="glyphicon glyphicon-arrow-left"></span></button> 
+                </div>  
+                <div class="col-md-2 col-md-offset-2">
+                    <button data-command = "145,0,0,0,130" class="btn-primary btn-lg btn-block">Right<span class="glyphicon glyphicon-arrow-right"></span></button> 
+                </div> 
+            </div>  
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-5">
+                    <button data-command = "145,255,226,0,40" class="btn-primary btn-lg btn-block">Backward<span class="glyphicon glyphicon-arrow-down"></span></button> 
+                </div> 
+            </div> 
+
+                   
+                
+            
+            <div>Press the buttons to control the robot! It can even play la cucaracha!</div>
+        </div> <!-- end container -->
+
+    </body>
+</html>

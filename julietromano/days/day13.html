@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>day13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+
+        <script>
+             $(document).ready(function() {
+                var count=0;
+                var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+                function timer()
+                {
+                  count=count+1;
+
+                $("#elapsedtime").html(count);
+                }
+                
+                $('#reset').click(function() {
+                     $('input').val("");
+                     $('input').removeClass("correct");
+                     $('input').removeClass("incorrect");
+                     $('.mark').html("");
+                     count = 0;
+                     
+                     $('#percorrect').text(100);
+                     $('#pererror').text(0.00);
+                     $('#errors').text(0);
+                     $('#correct').text(0);
+                });
+
+                $('input').change(function() {
+                    correct = $(this).data('correct');
+                    response = $(this).val();
+                    if (correct == response) {
+                        $(this).removeClass("incorrect").addClass("correct");
+                        numcorrect = $('#correct').text();
+                        //We multiply by 1 change from type text to number
+                        $('#correct').text(numcorrect * 1 + 1);
+                        $(this).nextAll('span:first').html("&#9829;");
+                    }
+                    else
+                    {
+                        $(this).removeClass("correct").addClass("incorrect");
+                        numerrors = $('#errors').text();
+                        $('#errors').text(numerrors * 1 + 1);
+                        $(this).nextAll('span:first').html("&#8855");
+                    }
+
+                    numcorrect = $('#correct').text();
+                    numerrors = $('#errors').text();
+                    percorrect = numcorrect * 1 / (numcorrect * 1 + numerrors * 1);
+                    //alert(percorrect.toFixed(2) * 100);
+                    $('#percorrect').text(percorrect.toFixed(2) * 100);
+                    pererrors = numerrors * 1 / (numerrors * 1 + numcorrect * 1);
+                    $('#pererrors').text(pererrors.toFixed(2) * 100);
+
+                });
+            });
+        </script>
+
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+                cursor: crosshair
+            }
+
+            .incorrect { 
+                background:orangered;
+                cursor: crosshair
+            }
+
+            .container {
+                font-size: 25px;
+                cursor: help;
+            }
+
+            #score{
+                border:2px solid navy;
+                cursor: not-allowed;
+            }
+            
+            .col-xs-2 {
+                border:2px solid navy;
+                
+            }
+                        .col-xs-3 {
+                border:2px solid navy;
+                
+            }
+            
+        </style>
+
+    </head>
+
+    <body>
+        <!-- Add bootstrap structure here with divs of class container, row, col-xs-2 etc. -->
+        <div class="container" >
+            <div id="score" class="row">
+                <div class="col-xs-2">Correct: <span id="correct">0</span></div>
+                <div class="col-xs-3">%Correct: <span id="percorrect">100.0</span></div>  
+                <div class="col-xs-2">Errors:  <span id="errors">0</span></div>
+                <div class="col-xs-3">%Errors:  <span id="pererrors">0</span></div>
+                <div class="col-xs-2">Time:
+                    <div id="elapsedtime">0</div>
+                </div></div><br>
+            <h2>Evaluate each expression</h2>
+            <button id="reset">reset</button>
+            <div class="row">
+                <div class="col-xs-4">2<sup>0</sup><input data-correct ="1" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>1</sup><input data-correct ="2" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>2</sup><input data-correct ="4" type="text"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">2<sup>3</sup><input data-correct ="8" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>4</sup><input data-correct ="16" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>5</sup><input data-correct ="32" type="text"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">2<sup>6</sup><input data-correct ="64" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>7</sup><input data-correct ="128" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>8</sup><input data-correct ="256" type="text"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">2<sup>9</sup><input data-correct ="512" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>10</sup><input data-correct ="1024" type="text"/><span></span></div>
+                <div class="col-xs-4">2<sup>11</sup><input data-correct ="2048" type="text"/><span></span></div>
+            </div>
+        </div>   
+    </body>
+
+</html>

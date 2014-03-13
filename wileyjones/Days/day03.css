@@ -1,0 +1,5 @@
+
+body {background-image:url("day02.jpg"); background-repeat: repeat-y;}
+li {background-color:lightcyan;}
+.listnames {background-color:skyblue}
+#main{left:200px; top:150px;}

@@ -1,0 +1,22 @@
+button
+{
+	/*sets button edge properties*/
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+
+	/*sets button colors*/
+	border-color: black;
+	background-color: rgb(235, 235, 256);
+
+}
+
+button:hover
+{
+	background-color: rgb(225, 225, 256);
+}
+
+button:active
+{
+	background-color: rgb(210, 210, 256);
+}

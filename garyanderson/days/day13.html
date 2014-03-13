@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>day13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('input').change(function() {
+                    correct = $(this).data('correct');
+                    response = $(this).val();
+                    if (correct == response) {
+                        $(this).removeClass("incorrect").addClass("correct");
+                        numcorrect = $('#correct').text();
+                        //We multiply by 1 change from type text to number
+                        $('#correct').text(numcorrect * 1 + 1);
+                        $(this).nextAll('span:first').html("&#x2713;");
+                    }
+                    else
+                    {
+                        $(this).removeClass("correct").addClass("incorrect");
+                        numerrors = $('#errors').text();
+                        $('#errors').text(numerrors * 1 + 1);
+                        $(this).nextAll('span:first').html("&#x2718");
+                    }
+
+                });
+            });
+        </script>
+
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+
+            .incorrect { 
+                background:orangered;
+            }
+
+            #score{
+                border:2px dashed navy;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+        <div id="score">
+            Correct: <span id="correct">0</span>
+            Errors:  <span id="errors">0</span>
+        </div>
+        <h2>Evaluate each expression</h2>
+        <p>2<sup>0</sup><input data-correct ="1" type="text"/><span></span></p>
+        <p>2<sup>1</sup><input data-correct ="2" type="text"/><span></span></p>
+        <p>2<sup>2</sup><input data-correct ="4" type="text"/><span></span></p>
+</div>
+    </body>
+
+</html>
+

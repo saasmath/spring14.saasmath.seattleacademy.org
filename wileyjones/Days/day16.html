@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 16</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $("#wrong").click(function(e) {
+                    $('#wrongsound').get(0).play();
+                });
+
+                $("#correct").click(function(e) {
+                    rand = Math.random();
+                    if (rand > .9) {
+                        $('#correctsound').get(0).play();
+                    }
+                });
+
+
+            });
+        </script>
+
+
+    </head>
+    <body>
+        <div class='container'>
+            <h3>Does 100 + 200 =</h3>
+            <h3></h3>
+
+            <button id="wrong">A Pineapple</button>
+            <audio controls="controls" id="wrongsound" class="hide">
+                <source src="wrong.mp3" type="audio/mpeg" />
+                <source src="wrong.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+            <h3>or</h3>
+
+            <button id="correct">300</button>
+            <audio controls="controls" id="correctsound" class="hide">
+                <source src="correct.mp3" type="audio/mpeg" />
+                <source src="correct.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 30 guage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+ 
+        <!--  For jqxguage see:   https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm -->
+        <link rel="stylesheet" href="http://saasmath.seattleacademy.org/jqwidgets/styles/jqx.base.css" type="text/css" />
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxchart.js"></script>
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxgauge.js"></script>
+ 
+        
+     <style>
+            .wordwrap { 
+                white-space: pre-wrap;      /* CSS3 */   
+                white-space: -moz-pre-wrap; /* Firefox */    
+                white-space: -pre-wrap;     /* Opera <7 */   
+                white-space: -o-pre-wrap;   /* Opera 7 */    
+                word-wrap: break-word;      /* IE */
+            }
+        </style>
+        <script>
+            function sendCommand(bytestring) {
+                if (bytestring == undefined) bytestring = '';
+                command = 'http://saasmath.seattleacademy.org/saasbot/writebot.php?';
+                command = command + 'botname=' + $('#botname').val();
+                command = command + '&bytestring=' + bytestring;
+                $.getJSON(command, function(json) {
+                    console.log(json);
+                    $('#result').text(JSON.stringify(json, null, 4));
+                    $('#voltagesensor').val(json.VOLTAGE);
+                    $('#gaugeContainer').jqxGauge('value', json.VOLTAGE/1000);
+                });
+ 
+            }
+ 
+            $(document).ready(function() {
+ 
+                var getSensors = setInterval(function(){sendCommand('')},1000);
+ 
+                $("[data-command]").click(function(event) {
+                    command = $(this).data('command');
+                    sendCommand(command);
+                    event.preventDefault();
+ 
+                });
+ 
+ 
+                $('body').keydown(function(event) {
+ 
+                    if (event.which === 87) //w - move forward
+                    {
+                        sendCommand('145,0,50,0,50');
+                    }
+ 
+                    if (event.which === 65) //a -- turn left
+                    {
+                        sendCommand('145,0,50,255,206');
+                    }
+ 
+                    if (event.which === 49) //1 Play Song1
+                    {
+                        sendCommand('140,0,2,55,10,67,15,141,0');
+                    }
+ 
+                    if (event.which === 50) //2 Play Song 2
+                    {
+                        sendCommand('140,0,3,60,20,72,15,84,10,141,0');
+                    }
+ 
+                    if (event.which === 51) //3 Play song 3
+                    {
+                        sendCommand('140,0,3,60,20,72,15,84,10,141,0');
+                    }
+                    if (event.which === 32) //space bar STOP
+                    {
+                        sendCommand('145,0,0,0,0');
+                    }
+ 
+                    if (event.which === 80) //p Passive Mode
+                    {
+                        sendCommand('128');
+                    }
+ 
+                    if (event.which === 70) //f full Mode
+                    {
+                        sendCommand('132');
+                    }
+ 
+                    if (event.which === 83) //s Safe Mode
+                    {
+                        sendCommand('131');
+ 
+                    }
+ 
+                });
+ 
+            });
+ 
+        </script>    
+ 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#gaugeContainer').jqxGauge({
+                    ranges: [{startValue: 0, endValue: 55, style: {fill: '#C9C9C9', stroke: '#C9C9C9'}, endWidth: 5, startWidth: 1},
+                        {startValue: 14, endValue: 15.25, style: {fill: '#FCF06A', stroke: '#FCF06A'}, endWidth: 10, startWidth: 5},
+                        {startValue: 15.25, endValue: 16.75, style: {fill: '#FCA76A', stroke: '#FCA76A'}, endWidth: 15, startWidth: 10},
+                        {startValue: 16.75, endValue: 18, style: {fill: '#FC6A6A', stroke: '#FC6A6A'}, endWidth: 20, startWidth: 15}],
+                    ticksMinor: {interval: .5, size: '5%'},
+                    ticksMajor: {interval: 1, size: '9%'},
+                    width: 150,
+                    height: 150,
+                    labels: { interval: 1 },
+                    value: 0,
+                    min: 14,
+                    max: 18,
+                    colorScheme: 'scheme03',
+                    animationDuration: 1200
+                });
+                $('#gaugeContainer').jqxGauge('value', 140);
+ 
+                $('#setValueButton').click(function() {
+                    $('#gaugeContainer').jqxGauge('value', 220);
+                });
+            });
+        </script>
+    </head>
+    <body >
+        <div class="container">
+        <div id="gaugeContainer"></div>
+ 
+        <button id="setValueButton" >Set value</button>
+        <div>
+            See <a href="https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm" target="_blank">https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm</a>
+        </div>
+        
+                    <h3>Robot Control</h3>
+            <div class="row">
+                Select Robot: 
+                <select id = "botname" name="botname">
+                    <option>10.48.102.162</option>
+                    <option>192.168.1.113</option>
+                    <option>10.48.102.162</option>
+                    <option>10.48.102.116</option>
+                    <option>10.48.102.136</option>
+                    <option>10.48.102.172</option>
+                    <option>10.48.102.182</option>
+                </select>
+            </div>
+            <div class ="row">
+                <button data-command = "128" class="btn-success btn col-xs-2">Passive Mode</button>
+                <button data-command = "131" class="btn-warning btn col-xs-2">Safe Mode</button>
+                <button data-command = "132" class="btn-danger btn col-xs-3">Full Mode</button>
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button data-command = "145,0,0,0,0" class="btn-danger btn-lg btn-block">Stop</button>
+                    <button data-command = "145,0,10,0,10" class="btn-primary btn-lg btn-block">Go</button>
+                    <button id ="play9" data-command="140,0,10,60,8,60,8,60,8,77,20,81,8,60,8,60,8,60,8,77,20,81,8,141,0" class="btn-success btn-lg btn-block">Play Music
+                        <span class="glyphicon glyphicon-music"></span></button>
+                </div>
+            </div>
+ 
+            <div class ="row">
+                <div class="col-xs-3">
+                    Voltage:  <input type="text" id="voltagesensor">
+                </div>
+            </div>
+            <h4>Sensors <button data-command = "" class="btn-info btn">Get Sensors</button>
+            </h4>
+            <div class="alert alert-info wordwrap" id="result">Sensors ...</div>
+ 
+        
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 35</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:260px;
+                height: 194px;
+                background-color: lightblue;
+                background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQEFHJou2tYUQNBPr8tFYuuGxMuEE8UxStMCG52fGLKtxD7IjAX");
+
+            }
+
+            #bird {
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("http://saasmath.seattleacademy.org/garyanderson/days/bird.png");
+            }
+
+            #topPipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-color: blue;
+                background-image: url("http://static4.wikia.nocookie.net/__cb20100219193043/mario/de/images/3/30/Warp-Rohr_NSMB.png");
+
+            }
+            
+             #bottomPipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-color: blue;
+                background-image: url("http://cdn.instructables.com/F5U/DS61/GQ5PWAEX/F5UDS61GQ5PWAEX.SQUARE.jpg");
+
+            }
+
+        </style>
+        <script>
+
+            $(document).ready(function() {
+
+
+                function gameOver(){
+                    var idle;
+                    clearInterval(idle);
+                    alert("Game over, Try again.");
+                }
+                
+                function takeStep(){
+                    birdPosition = $("#bird").position();
+                    $("#debug").text(birdPosition.top);
+                    if (birdPosition.top == 400){
+                        gameOver();
+                    }
+                }
+                
+                $("body").keydown(function() {
+                    //console.log('got here');
+                    $("#bird").stop(true).
+                            animate({top: '-=50px'}, 200).
+                            animate({top: '400px'}, 2000)
+                            ;
+                });
+
+                $("#start").click(function() {
+                    
+                    var idle = setInterval(takeStep,100);
+                    
+                    $("#topPipe, #bottomPipe").stop(true).
+                            animate({left: '-50px'}, 10000)
+                            ;
+                });
+
+            }); //end document ready
+
+        </script>
+    </head>
+    <body>
+
+        <div id="background">
+            <div id="bird"></div>
+            <div id="topPipe">top pipe</div>
+            <div id="bottomPipe">bottom pipe</div>
+            <button id="start">Start</button>
+        </div>
+        <div id="debug">debug</div>
+    </body>
+</html>

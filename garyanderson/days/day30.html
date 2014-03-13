@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 29</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <link href="http://saasmath.seattleacademy.org/css/saasbot.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/saasbot.js"></script>
+        <script src="js/raphael.2.1.0.min.js"></script>
+        <script src="js/justgage.1.0.1.min.js"></script>
+
+
+
+        <style>
+
+        </style>
+
+        <script>
+            
+           var g = new JustGage({
+                id: "gauge",
+                value: 15000,
+                min: 13500,
+                max: 18500,
+                title: "Voltage"
+            });
+            
+
+        </script>
+
+
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class="row">
+                Select Robot: 
+                <select id = "botname" name="botname">
+                    <option>192.168.1.121</option>
+                    <option>10.48.102.178</option>
+                    <option>10.48.102.115</option>
+                    <option>10.48.102.136</option>
+                    <option>10.48.102.113</option>
+                    <option>10.48.102.162</option>
+                    <option>10.48.102.172</option>
+                </select>
+            </div>
+            <!--<div class="row"><img src="http://192.168.1.134/live"/></div>-->
+            <div id="gauge" class="200x160px">Here is my gauge</div>
+            <div class ="row">
+                <button data-command = "128" class="btn-success btn col-xs-2">Passive Mode</button>
+                <button data-command = "131" class="btn-warning btn col-xs-2">Safe Mode</button>
+                <button data-command = "132" class="btn-danger btn col-xs-3">Full Mode</button>
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button data-command = "145,0,0,0,0" class="btn-danger btn-lg btn-block">Stop</button>
+                    <button data-command = "145,0,10,0,10" class="btn-primary btn-lg btn-block">Go</button>
+                </div>
+            </div>
+
+            <div class ="row">
+                <div class="col-xs-3">
+                    Voltage:  <input type="text" id="voltagesensor">
+                </div>
+            </div>
+            <h4>Sensors <button data-command = "" class="btn-info btn">Get Sensors</button>
+            </h4>
+            <div class="alert alert-info wordwrap" id="result">Sensors ...</div>
+
+        </div> <!-- end container -->
+
+    </body>
+</html>

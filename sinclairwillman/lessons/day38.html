@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Day 38</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="apple-touch-icon" href="danieldaylewis.png" />
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:800px;
+                height: 450px;
+                background-image: url("gold.jpg"); 
+                background-size: 100% 100%;
+            }
+
+            #gameOver{
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                font-size: 30px;
+                border: solid thick red;
+                background-color: white;
+                z-index: 200;
+            }
+
+            #score{
+                position: absolute;
+                left: 300px;
+                top: 40px;
+                font-size: 30px;
+            }
+
+            #bird {
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("danieldaylewisSENIORPAGE.png"); 
+                background-size: 100% 100%
+            }
+
+            .topPipe {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-image: url("walken.jpeg"); 
+                background-size: 100% 100%
+
+            }
+
+            .bottomPipe {
+                width: 100px;
+                height: 200px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-image: url("buscemi.jpg"); 
+                background-size: 100% 100%
+            }
+
+        </style>
+        <script>
+
+            $(document).ready(function() {
+                $('#gameOver').hide();
+                numberOfPipes = 15;
+                pipewidth = 100;
+                spaceBetweenPipes = 150;
+                backgroundHeight = 450;
+                minUpperLimit = 50;
+                pipeVariance = 250;
+                horizPipeSeperation = 250;
+                function makePipes() {
+                    $(".bottomPipe").remove();
+                    $(".topPipe").remove();
+                    $('#gameOver').hide();
+                    for (var i = 0; i < numberOfPipes; i++)
+                    {
+                        upperLimit = Math.floor((Math.random() * pipeVariance) + 1);
+                        pipeLeft = 600 + i * horizPipeSeperation;
+                        pipeNum = 'pipes' + i;
+                        var topPipe = $('<div class="topPipe"><div>').
+                                addClass('pipes' + i).
+                                height(upperLimit).
+                                css({left: pipeLeft + 'px'})
+                                ;
+                        var bottomPipe = $('<div class="bottomPipe"><div>').
+                                addClass('pipes' + i).
+                                css({top: upperLimit + spaceBetweenPipes + 'px'}).
+                                height(backgroundHeight - upperLimit - spaceBetweenPipes).
+                                css({left: pipeLeft + 'px'})
+                                ;
+
+                        $("#background").append(topPipe);
+                        $("#background").append(bottomPipe);
+                        //pipePosition = pipeLeft + 'px';
+
+                        pipeTag = "." + pipeNum;
+                        console.log(-5000 + i * horizPipeSeperation);
+                        $(pipeTag).
+                                //animate({left: pipePosition, top: '+=' + shiftDown + 'px'}, 1).
+                                animate({left: -5000 + i * horizPipeSeperation + 'px'}, 40000, 'linear');
+                        ;
+
+
+                    }
+                }
+                function checkCollision() {
+
+                    birdPosition = $("#bird").position();
+                    //If we hit the ground, return true
+                    if (birdPosition.top >= backgroundHeight - 40)
+                        return 1;
+
+                    pipeClass = ".pipes" + $("#score").text();
+                    pipePosition = $(pipeClass).position();
+                    //If we are more than 50 from the pipe, return false
+                    if (pipePosition.left - birdPosition.left > 35)
+                        return 0;
+
+                    pipesHeight = $(pipeClass).height();
+                    pipesCenter = pipePosition.top + pipesHeight + 51;
+                    birdFromCenter = Math.abs(birdPosition.top - pipesCenter);
+                    $("#debug").text(birdFromCenter);
+
+                    if (birdFromCenter > 50)
+                        return 1;
+                    //Increase the score by one if we pass the pipe.
+                    if (pipePosition.left - birdPosition.left < -50) {
+
+                        $("#score").text($("#score").text() * 1 + 1);
+                        if ($("#score").text() * 1 + 1 > numberOfPipes)
+                            gameWon();
+                        return 0;
+                    }                    //otherwise, return false
+                    return 0;
+
+                }
+
+                function gameOver() {
+                    console.log(timerID);
+                    clearInterval(timerID);
+                    $("#bird").stop(true);
+                    $(".bottomPipe").stop(true);
+                    $(".topPipe").stop(true);
+                    $('#gameOver').show();
+                    $('#start').show();
+
+                    //alert("Game over, Try again.");
+                }
+
+
+                function takeStep() {
+                    if (checkCollision()) {
+                        gameOver();
+                    }
+
+
+                }
+
+                $("body").keydown(function(event) {
+                    // console.log(event.which);
+
+                    if (event.which === 38) //up-arrow
+                    {
+                        if (!$("#start").is(":visible")) {
+                            $("#bird").stop(true).
+                                    animate({top: '-=50px'}, 100).//sets duration of up animation
+                                    animate({top: '400px'}, 2000)   //sets duration of down animation
+                                    ;
+                        }
+                    }
+                });
+
+                $("body").on('touchstart click', function(e) {
+                    //e.stopPropagation(); e.preventDefault();
+                    if (!$("#start").is(":visible")) {
+                        $("#bird").stop(true).
+                                animate({top: '-=50px'}, 100).//sets duration of up animation
+                                animate({top: '400px'}, 2000)   //sets duration of down animation
+                                ;
+                    }
+
+                });
+
+                $("#start").click(function() {
+                    makePipes();
+                    $('#wrongsound').get(0).play();
+                    timerID = setInterval(takeStep, 100);
+                    $('#start').hide();
+
+                });
+
+            }); //end document ready
+
+        </script>
+    </head>
+    <body> 
+        <audio controls="controls" id="wrongsound">
+            <source src="VirtuosAccordion_1.ogg" type="audio/mpeg" />
+
+            Your browser does not support the audio tag.
+        </audio> 
+
+
+        <div id="background">
+            <div id="bird"></div>
+            <button id="start">Start</button>
+            <div id="score">0</div>
+            <div id="gameOver">"Perhaps I'm particularly serious, because I'm not unaware of the potential absurdity of what I'm doing." - Daniel Day Lewis </div>
+        </div>
+        <div id="debug">debug</div>
+    </body>
+</html>

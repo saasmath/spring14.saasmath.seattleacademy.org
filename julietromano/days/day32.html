@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Gary Bot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <link href="http://saasmath.seattleacademy.org/garyanderson/days/garybot.css" rel="stylesheet">
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/garyanderson/days/garybot.js"></script>
+ 
+ 
+        <script>
+            function sendCommand(bytestring) {
+                if (bytestring == undefined)
+                    bytestring = '';
+                command = 'http://saasmath.seattleacademy.org/saasbot/writebot.php?';
+                command = command + 'botname=' + $('#botname').val();
+                command = command + '&bytestring=' + bytestring;
+                $.getJSON(command, function(json) {
+                    $('#result').text(JSON.stringify(json, null, 4));
+                });
+ 
+            }
+ 
+ 
+            function onSensor(){
+                sendCommand('');
+                sensors = $.parseJSON($('#result').text());
+                leftBumper = sensors.BUMPS_AND_WHEEL_DROPS.charAt(10);
+               // rightBumper = sensors.BUMPS_AND_WHEEL_DROPS.charAt(9);
+                cliffFront = sensors.CLIFF_FRONT_RIGHT_SIGNAL;
+                //console.log(cliffFront);
+                //console.log(sensors.BUMPS_AND_WHEEL_DROPS);
+                //console.log(leftBumper);
+                //console.log(rightBumper);
+                if (cliffFront > 1000){
+                    //sendCommand('140,0,1,60,20,141,0'); //Play note
+                    sendCommand('145,0,50,0,0'); //Stop
+                }
+                ls 
+                {
+                    sendCommand('145,0,50,0,50'); //Stop 
+                }
+                if(leftBumper == 1){
+                   //sendCommand('140,0,1,55,10,141,0');
+                   console.log('RUN FOR YOUR LIFE!!!!!');
+                   sendCommand('145,0,0,0,50');
+ 
+                }
+            }
+ 
+ 
+ 
+            $(document).ready(function() {
+ 
+                var getSensors = setInterval(function() {
+                    sendCommand('');
+                }, 1000);
+ 
+                $("[data-command]").click(function(event) {
+                    command = $(this).data('command');
+                    sendCommand(command);
+                });
+                checkHit = setInterval(onSensor,1000);
+ 
+                $('#checkSensors').change(function() {
+                    if(this.checked)
+                        checkHit = setInterval(onSensor,1000);
+                    else
+                        clearInterval(checkHit);
+                });
+ 
+            });
+ 
+        </script>
+    </head>
+ 
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class="row">
+                Select Robot: 
+                <select id = "botname" name="botname">
+                    <option>10.48.102.162</option>
+                    <option>10.48.102.113</option>
+                    <option>10.48.102.116</option>
+                    <option>10.48.102.136</option>
+                    <option>10.48.102.172</option>
+                    <option>10.48.102.182</option>
+                </select>
+            </div>
+            <div class ="row">
+                <button data-command = "128" class="btn-success btn col-xs-2">Passive Mode</button>
+                <button data-command = "131" class="btn-warning btn col-xs-2">Safe Mode</button>
+                <button data-command = "132" class="btn-danger btn col-xs-3">Full Mode</button>
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button data-command = "145,0,0,0,0" class="btn-danger btn-lg btn-block">Stop</button>
+                    <button data-command = "145,0,10,0,10" class="btn-primary btn-lg btn-block">Go</button>
+                    <button id ="wimp" class="btn-primary btn-lg btn-block">Wimp</button>
+                    <input type="checkbox" id="checkSensors" checked> sensor check
+                </div>
+            </div>
+            <div class="alert alert-info wordwrap" id="result">Sensors ...</div>
+        </div> <!-- end container -->
+ 
+    </body>
+</html>

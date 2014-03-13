@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Day 31</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            $(document).ready(function() {
+                //$("#live").attr("src", "http://10.48.102.120/live");
+                $("#nexus7").attr("src", "http://192.168.1.132:8080/video");
+
+                $('#togglebot').click(function() {
+                    //$('#live').toggle();
+                    $('#nexus7').toggle();
+                });
+            });
+
+
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row"><img id="live" src="http://saasmath.seattleacademy.org/picts/bot.png"/></div>
+            <div class="row"><img id ="nexus7" src="http://saasmath.seattleacademy.org/picts/bot.png"/></div>
+            <div class="row"><button class="btn" id="togglebot">Toggle camera</button></div>
+        </div>
+    </body>
+</html>

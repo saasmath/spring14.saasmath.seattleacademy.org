@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 08</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css"
+              rel="stylesheet">
+        <style>
+            .score-block{
+                border-style:dashed;
+                border-width:5px;
+                background-color: lightpink;
+            }
+            .score-title{
+                font-size: 40px;
+                color:darkcyan;
+                text-align:left;
+            }
+            .score-number{
+                font-size: 40px;
+                color:darkcyan;
+                outline-width: 500px;
+                text-align:center;
+            }
+            .buttonchoice
+            {
+                padding: 25px 5px;
+                background-color: darkcyan;
+            }
+            .btn{
+                background-color: lightpink;
+                color: darkcyan
+                
+            }
+            .buttonchoice {background-image: url("gary35.jpg")}
+
+        </style>
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            $(document).ready(function() {
+                
+                $("#choice1").click(function() {
+                    //$("#choice1star").toggleClass('hide');
+                });
+                
+               $(".btn").click(function() {
+                    //$(this).slideToggle();
+                });
+
+                $("#choice1").click(function() {
+                    totalscore = $("#totalscore").text();
+                    $("#totalscore").text(totalscore*1 + 1);
+
+                });
+
+
+                
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 score-block col-xs-offset-1">
+                    <div class="score-title">Question</div>
+                    <div class="score-number" id="questnum">1/5</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Time</div>
+                    <div class="score-number" id="elapsedtime">:11</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Score</div>
+                    <div id = "totalscore" class="score-number">0</div>
+                </div>
+            </div>
+
+            <div class="row" id="wordimage">
+                <img class="center-block" src="../../img/clonepicture.png" alt="foolah"/>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block" id="choice1">
+                    <span id ="choice1star" class="glyphicon glyphicon-star"></span>Peter Pan</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">Harry Potter</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">Spongebob</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">Patrick</button>
+            </div>
+
+        </div> <!-- end container -->
+
+    </body>
+</html>

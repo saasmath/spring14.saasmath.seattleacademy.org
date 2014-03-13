@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>FlaPM</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <style>
+            #background {
+                width:800px;
+                height: 450px;
+                background-image: url("http://arpadlukacs.com/wp-content/uploads/2012/09/975.-London-Skyline-from-Gypsy-Hill.jpg");
+            }
+ 
+            #gameOver{
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                font-size: 30px;
+                border: solid thick red;
+                background-color: white;
+                z-index: 200;
+            }
+ 
+            #score{
+                position: absolute;
+                left: 300px;
+                top: 40px;
+                font-size: 30px;
+            }
+ 
+            #bird {
+                height: 100%;
+                width: 100%;    
+                max-height: 50px;
+                max-width: 50px;
+                position: absolute;
+                left: 300px;
+                top: 200px;
+                background-image: url("Cameron.jpg");
+                background-size: 100% 100%;
+            }
+ 
+            .topPipe {
+                width: 100px;
+                height: 20px;
+                position: absolute;
+                left: 600px;
+                top: 10px;
+                background-image: url("Column.jpg") ;
+                background-size: 100% 100%;
+ 
+            }
+ 
+           .bottomPipe {
+                width: 100px;
+                height: 120px;
+                position: absolute;
+                left: 600px;
+                top: 260px;
+                background-image: url("Column.jpg") ;
+                background-size: 100% 100%;
+            }
+ 
+        </style>
+        <script>
+            $(document).ready(function() {
+                $('#gameOver').hide();
+                numberOfPipes = 15;
+                pipewidth = 100;
+                spaceBetweenPipes = 150;
+                backgroundHeight = 450;
+                minUpperLimit = 50;
+                pipeVariance = 250;
+                horizPipeSeperation = 250;
+               
+               
+                function makePipes() {
+                    $(".bottomPipe").remove();
+                    $(".topPipe").remove();
+                    $('#gameOver').hide();
+                    for (var i = 0; i < numberOfPipes; i++)
+                    {
+                        upperLimit = Math.floor((Math.random() * pipeVariance) + 1);
+                        pipeLeft = 600 + i * horizPipeSeperation;
+                        pipeNum = 'pipes' + i;
+                        var topPipe = $('<div class="topPipe"><div>').
+                                addClass('pipes' + i).
+                                height(upperLimit).
+                                css({left: pipeLeft + 'px'})
+                                ;
+                        var bottomPipe = $('<div class="bottomPipe"><div>').
+                                addClass('pipes' + i).
+                                css({top: upperLimit + spaceBetweenPipes + 'px'}).
+                                height(backgroundHeight - upperLimit - spaceBetweenPipes).
+                                css({left: pipeLeft + 'px'})
+                                ;
+ 
+                        $("#background").append(topPipe);
+                        $("#background").append(bottomPipe);
+                        //pipePosition = pipeLeft + 'px';
+ 
+                        pipeTag = "." + pipeNum;
+                        console.log(-5000 + i*horizPipeSeperation);
+                        $(pipeTag).
+                                //animate({left: pipePosition, top: '+=' + shiftDown + 'px'}, 1).
+                                animate({left: -5000 + i*horizPipeSeperation +  'px'}, 40000, 'linear');
+                        ;
+ 
+ 
+                    }
+                }
+                function checkCollision() {
+ 
+                    birdPosition = $("#bird").position();
+                    //If we hit the ground, return true
+                    if (birdPosition.top >= backgroundHeight - 40)
+                        return 1;
+ 
+                    pipeClass = ".pipes" + $("#score").text();
+                    pipePosition = $(pipeClass).position();
+                    //If we are more than 50 from the pipe, return false
+                    if (pipePosition.left - birdPosition.left > 35)
+                        return 0;
+ 
+                    pipesHeight = $(pipeClass).height();
+                    pipesCenter = pipePosition.top + pipesHeight + 51;
+                    birdFromCenter = Math.abs(birdPosition.top - pipesCenter);
+                    $("#debug").text(birdFromCenter);
+ 
+                    if (birdFromCenter > 50)
+                        return 1;
+                    //Increase the score by one if we pass the pipe.
+                    if (pipePosition.left - birdPosition.left < -50) {
+                        $('#correctsound').get(0).play();
+                         
+                        $("#score").text($("#score").text() * 1 + 1);
+                        if ($("#score").text() * 1 + 1 > numberOfPipes)
+                            gameWon();
+                        return 0;
+                    }                    //otherwise, return false
+                    return 0;
+ 
+                }
+ 
+                function gameOver() {
+                    console.log(timerID);
+                    clearInterval(timerID);
+                    $("#bird").stop(true);
+                    $(".bottomPipe").stop(true);
+                    $(".topPipe").stop(true);
+                    $('#gameOver').show();
+                    $('#start').show();
+ 
+                    //alert("Game over, Try again.");
+                }
+ 
+ 
+                function takeStep() {
+                    if (checkCollision()) {
+                        gameOver();
+                    }
+ 
+ 
+                }
+ 
+                $("body").keydown(function(event) {
+                    // console.log(event.which);
+ 
+                    if (event.which === 38) //up-arrow
+                    {
+                        if (!$("#start").is(":visible")) {
+                            $("#bird").stop(true).
+                                    animate({top: '-=50px'}, 100).//sets duration of up animation
+                                    animate({top: '400px'}, 2000)   //sets duration of down animation
+                                    ;
+                        }
+                    }
+                });
+ 
+                $("#start").click(function() {
+                    makePipes();
+                    
+                 
+                    timerID = setInterval(takeStep, 100);
+                    $('#start').hide();
+ 
+                });
+ 
+            }); //end document ready
+ 
+        </script>
+    </head>
+    <body>
+ 
+        <div id="background">
+            <div id="bird"></div>
+            <button id="start">Start</button>
+            <div id="score">0</div>
+            <div id="gameOver">Try again, please.</div>
+        </div>
+        <div id="debug">debug</div>
+
+        <button id="wrong">wrong</button>
+        <audio  id="wrongsound">
+            <source src="http://saasmath.seattleacademy.org/doh.mp3" type="audio/mpeg" />
+            <source src="http://saasmath.seattleacademy.org/doh.ogg" type="audio/ogg" />
+            Your browser does not support the audio tag.
+        </audio>
+        <h3>Us the application Audacity to get a sound and save it both mp3 and ogg formats</h3>
+
+        <button id="correct">correct</button>
+        <audio  id="correctsound">
+            <source src="PM.mp3" type="audio/mpeg" />
+            <source src="correct.ogg" type="audio/ogg" />
+            Your browser does not support the audio tag.
+        </audio>
+    </body>
+</html>

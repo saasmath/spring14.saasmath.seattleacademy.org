@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 24</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            function getRobId(){
+                return $('#robid').val();
+            }
+            $(document).ready(function() {
+                $("#stop").click(function() {
+                    alert(getRobId());
+                    $('#result').load('stop');
+                    
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class="row">Robot IP Address: <input id = "robid" type="text" name="robip" value="192.168.1.126" size="12" /></div>
+            <div class="row"><button id="stop">STOP</button></div>
+            <div id="result" class="row"></div>
+        </div> <!-- end container -->
+
+    </body>
+</html>

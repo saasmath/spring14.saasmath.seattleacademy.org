@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 30 guage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+ 
+        <!--  For jqxguage see:   https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm -->
+        <link rel="stylesheet" href="http://saasmath.seattleacademy.org/jqwidgets/styles/jqx.base.css" type="text/css" />
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxchart.js"></script>
+        <script type="text/javascript" src="http://saasmath.seattleacademy.org/jqwidgets/jqxgauge.js"></script>
+ 
+ <script>
+            $("#live").attr("src", "http://10.48.102.120/live");
+            $(document).ready(function() {
+                
+    });
+            
+           </script>
+           
+           <body>
+        <img id="live" src="Chechen_flag.gif"/>
+        
+    </body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#gaugeContainer').jqxGauge({
+                    ranges: [{startValue: 14, endValue: 14.5, style: {fill: '#FC6A6A', stroke: '#FC6A6A'}, endWidth: 5, startWidth: 1},
+                        {startValue: 14.5, endValue: 15.5, style: {fill: '#FCA76A', stroke: '#FCA76A'}, endWidth: 10, startWidth: 5},
+                        {startValue: 15.5, endValue: 16.5, style: {fill: '#FCF06A', stroke: '#FCF06A'}, endWidth: 15, startWidth: 10},
+                        {startValue: 16.5, endValue: 18, style: {fill: 'green', stroke: 'green'}, endWidth: 20, startWidth: 15}],
+                    ticksMinor: {interval: .5, size: '5%'},
+                    ticksMajor: {interval: 1, size: '9%'},
+                    width: 150,
+                    height: 150,
+                    min: 14,
+                    max: 18,
+                    labels: { interval: 1 },
+                    value: 0,
+                    colorScheme: 'scheme03',
+                    animationDuration: 1200
+                });
+                $('#gaugeContainer').jqxGauge('value', 140);
+ 
+                $('#setValueButton').click(function() {
+                    $('#gaugeContainer').jqxGauge('value', 220);
+                });
+            });
+        </script>
+    </head>
+    <body >
+        <div class="container">
+        <div id="gaugeContainer"></div>
+ 
+        <button id="setValueButton" >Set value</button>
+        <div>
+            See <a href="https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm" target="_blank">https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgauge/jquery-gauge-getting-started.htm</a>
+        </div>
+        </div>
+    </body>
+    
+    
+</html>

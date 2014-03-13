@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 08</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css"
+              rel="stylesheet">
+        <style>
+            .score-block{
+                border-style:solid;
+                border-width:1px;
+            }
+            .score-title{
+                font-size: 20px;
+                color:lightgray;
+                text-align:center;
+            }
+            .score-number{
+                font-size: 60px;
+                color:gray;
+                text-align:center;
+            }
+            .buttonchoice
+            {
+                padding: 2px 2px;
+            }
+
+        </style>
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $("#choice1").click(function() {
+                    //$("#choice1star").toggleClass('hide');
+                });
+
+                $(".btn").click(function() {
+                    $(this).slideToggle();
+                });
+
+                $("#choice1").click(function() {
+                    totalscore = $("#totalscore").text();
+                    $("#totalscore").text(totalscore * 1 + 2);
+                });
+
+                $(".btn").click(function() {
+                    totalscore = $("#totalscore").text();
+                    $("#totalscore").text(totalscore * 1 - 1);
+                });
+
+
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container"><img src="gary12.jpg" width="763" height="960" alt="gary12"/>
+
+            <div class="row">
+                <div class="col-xs-3 score-block col-xs-offset-1">
+                    <div class="score-title">Question</div>
+                    <div class="score-number" id="questnum">1/5</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Time</div>
+                    <div class="score-number" id="elapsedtime">:11</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Score</div>
+                    <div id = "totalscore" class="score-number">0</div>
+                </div>
+            </div>
+
+            <div class="row" id="wordimage">
+                <img class="center-block" src="../../img/foolah.png" alt="foolah"/>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block" id="choice1">
+                    <span id ="choice1star" class="glyphicon glyphicon-star"></span>lafooh</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">hooflah</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">foolah</button>
+            </div>
+
+            <div class="row buttonchoice">
+                <button class="btn btn-lg btn-primary center-block">loofah</button>
+            </div>
+
+        </div> <!-- end container -->
+
+    </body>
+</html>

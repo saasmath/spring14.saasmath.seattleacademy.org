@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ 
+        <title>day13</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+ 
+        <script>
+            $(document).ready(function() {
+                $('input').change(function() {
+                    correct = $(this).data('correct');
+                    response = $(this).val();
+                    if (correct == response) {
+                        $(this).removeClass("incorrect").addClass("correct");
+                        numcorrect = $('#correct').text();
+                        //We multiply by 1 change from type text to number
+                        $('#correct').text(numcorrect * 1 + 1);
+                        $(this).nextAll('span:first').html("&#x2713;");
+                    }
+                    else
+                    {
+                        $(this).removeClass("correct").addClass("incorrect");
+                        numerrors = $('#errors').text();
+                        $('#errors').text(numerrors * 1 + 1);
+                        $(this).nextAll('span:first').html("&#x2718");
+                    }
+ 
+                });
+            });
+        </script>
+ 
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+ 
+            .incorrect { 
+                background:salmon;
+            }
+ 
+            #score{
+                border:2px dashed navy;
+            }
+ 
+            .row {
+                padding-bottom: 4px;
+            }
+        </style>
+ 
+    </head>
+ 
+    <body>
+        <!-- Add bootstrap structure here with divs of class container, row, col-xs-2 etc. -->
+        <div class="container" >
+            <div id="score">
+                Correct: <span id="correct">0</span>
+                Errors:  <span id="errors">0</span>
+            </div>
+            <h2>Evaluate each expression</h2>
+            <div class="row">
+                <div class="col-xs-2">President<input data-correct ="Vladimir Putin" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">Premier<input data-correct ="Dmitriy Mdvedev" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">First Deputy Premier<input data-correct ="Igor Shuvalov" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">Minister of Agriculture<input data-correct ="Nikolay Fedorov" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">Minister of Civil Defense, Emergencies, and Natural Disasters<input data-correct ="Vladimir Puchkov" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>5</sup><input data-correct ="32" type="text" size="4"/><span></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2">2<sup>6</sup><input data-correct ="64" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>7</sup><input data-correct ="128" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>8</sup><input data-correct ="256" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>9</sup><input data-correct ="512" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>10</sup><input data-correct ="1024" type="text" size="4"/><span></span></div>
+                <div class="col-xs-2">2<sup>11</sup><input data-correct ="2048" type="text" size="4"/><span></span></div>
+            </div>
+        </div>   
+    </body>
+ 
+</html>

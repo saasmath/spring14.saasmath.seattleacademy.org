@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 16</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script> $(document).ready(function() {
+
+                $("#wrong").click(function(e) {
+                    $('#wrongsound').get(0).play();
+                });
+
+                $("#right").click(function(e) {
+                    $('#rightsound').get(0).play();
+                });
+
+
+            });
+        </script>
+
+
+    </head>
+    <body>
+        <div>
+            <div>$y = a x^2 + bx + c$</div>
+            <button id="wrong">wrong</button>
+            <audio controls="controls" id="wrongsound">
+                <source src="http://bazaesperanto.com/sonoj/eo1.mp3" type="audio/mpeg" />
+                <source src="http://bazaesperanto.com/sonoj/eo1.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+
+            <button id="right">right</button>
+            <audio controls="controls" id="rightsound">
+                <source src="http://bazaesperanto.com/sonoj/eo1.mp3" type="audio/mpeg" />
+                <source src="http://bazaesperanto.com/sonoj/eo1.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+
+        </div>
+    </body>
+</html>

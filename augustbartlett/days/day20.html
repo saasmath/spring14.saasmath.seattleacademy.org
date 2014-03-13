@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 20</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <link href="day20.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/tabletop.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="day20.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $("#wrong").click(function(e) {
+                     rand = Math.random();
+                    //alert(rand);            
+                      if (rand > .1) {
+                          $('#wrongsound').get(0).play();
+                      }
+                });
+
+                $("#correct").click(function(e) {
+                    rand = Math.random();
+                    //alert(rand);
+                    if (rand > .9) {
+                        $('#correctsound').get(0).play();
+                    }
+                });
+
+
+            });
+        </script>
+        <style type="text/css">
+            .correct { 
+                background:lightgreen;
+            }
+
+            .incorrect { 
+                background:red;
+            }
+
+            #score{
+                border:solid;
+            }
+
+            .row {
+                padding-bottom: 4px;
+            }
+            body 
+            {
+                background-image:url('http://myorcasislandwedding.com/wp-content/uploads/2013/02/flowers-flowers-31723005-fanclubs.jpg');
+                background-color:#cccccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 score-block col-xs-offset-1">
+                    <div class="score-title">Question</div>
+                    <div class="score-number" id="questnum">1</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Time</div>
+                    <div class="score-number" id="elapsedtime">11</div>
+                </div>
+                <div class="col-xs-3 col-xs-offset-1 score-block">
+                    <div class="score-title">Score</div>
+                    <div id = "totalscore" class="score-number">0</div>
+                </div>
+            </div>
+            
+            
+
+            <div class="row" id="wordimage">
+                <img id ="img1" class="center-block" data-correct ="Seahawks" src="seahawks.png" alt="Seahawks"/>
+            
+             <div class="ui-widget">
+            <label for="tags">Name: </label>
+            <input id="tags">
+        </div>
+        </div>
+
+                <div class="row buttonchoice">
+                    <button class="btn btn-lg btn-primary center-block ans" id="b1">loading ...</button>
+                </div>
+
+                <div class="row buttonchoice">
+                    <button class="btn btn-lg btn-primary center-block ans" id="b2">loading ...</button>
+                </div>
+
+                <div class="row buttonchoice">
+                    <button class="btn btn-lg btn-primary center-block ans" id="b3">loading ...</button>
+                </div>
+
+                <div class="row buttonchoice">
+                    <button class="btn btn-lg btn-primary center-block ans" id="b4">loading ...</button>
+                </div>
+            <div class="hide">
+             <audio controls="controls" id="wrongsound">
+                <source src="wrong.mp3" type="audio/mpeg" />
+                <source src="wrong.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+            <audio controls="controls" id="correctsound">
+                <source src="correct.mp3" type="audio/mpeg" />
+                <source src="correct.ogg" type="audio/ogg" />
+                Your browser does not support the audio tag.
+            </audio>
+            </div>   
+
+            </div> <!-- end container -->
+
+    </body>
+</html>

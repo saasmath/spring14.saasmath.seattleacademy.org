@@ -1,0 +1,38 @@
+.score-block{
+    border-style:solid;
+    border-width:1px;
+}
+.score-title{
+    font-size: 20px;
+    color:lightgray;
+    text-align:center;
+}
+.score-number{
+    font-size: 60px;
+    color:gray;
+    text-align:center;
+}
+.buttonchoice
+{
+    padding: 2px 2px;
+}
+ 
+#img1 {
+    width: 30%;
+    height: auto;
+}
+ 
+#keywords{
+    font-size:30px;
+    text-align: center;
+    color: black 
+}
+ 
+.ui-widget{
+    text-align: center;
+}
+
+.buttonschoice{
+    width: auto;
+}
+

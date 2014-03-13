@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Day 26</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.js"></script>
+        <script>
+
+            $(document).ready(function() {
+
+                $("[data-command]").click(function() {
+                    command = $(this).data('command');
+                    $('#result').load(command);
+                });
+
+
+
+                $('body').keydown(function(event) {
+                    console.log(event.which);
+                    robotraw = 'http://saasmath.seattleacademy.org/saasbot/writebot.php?';
+                    robotraw = robotraw + 'botname=' + $('#botname').val();
+                    robotraw = robotraw + '&bytestring='
+
+                    if (event.which === 87) //w
+                    {
+                        $('#result').load(robotraw + '145,0,50,0,50');
+                        event.preventDefault();
+                    }
+                    if (event.which === 65) //a
+                    {
+                        $('#result').load(robotraw + '145,0,50,0,0');
+                        event.preventDefault();
+                    }
+                     if (event.which === 84) //t
+                    {
+                        $('#result').load(robotraw + '145,255,206,0,50');
+                        event.preventDefault();
+                    }
+
+
+                    if (event.which === 32) //space bar
+                    {
+                        $('#result').load(robotraw + '145,0,0,0,0');
+                        event.preventDefault();
+                    }
+                    if (event.which === 83) //s
+                    {
+                         $('#result').load(robotraw + '140,0,2,67,16,112,64,141,0');
+                        event.preventDefault();
+                    }
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <select id = "botname" name="botname">
+                <option></option>
+                <option>192.168.1.121</option>
+                <option>10.48.102.178</option>
+                <option>10.48.102.115</option>
+                <option>10.48.102.136</option>
+                <option>10.48.102.113</option>
+                <option>10.48.102.162</option>
+            </select>
+            <div id="result">Result</div>
+            <div id="result" class="row"></div>
+        </div> <!-- end container -->
+
+    </body>
+</html>

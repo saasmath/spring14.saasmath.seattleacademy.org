@@ -1,0 +1,24 @@
+Server instructions:
+	port: 3389
+	address: saasmath.seattleacademy.org
+	addsaasuser.sh adds a new user
+
+Netbeans install:
+	open a new project
+	open a php project application
+	put in first and last name
+	use a remove ftp/sftp connection
+	use http://saasmath.seattleacademy.org/'username' as the host
+	Manage remote connection
+		type username
+		sftp protocol
+	host name saasmath.seattleacademy.org
+	password is the same as the username
+	initial directory /var/www/'username'
+	port 3389
+	try to test the connection here
+
+	no upload directory
+	compile on run not on save
+
+	instruct to create index.html

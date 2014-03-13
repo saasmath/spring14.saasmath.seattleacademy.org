@@ -1,0 +1,29 @@
+.score-block{
+    border-style:solid;
+    border-width:1px;
+}
+.score-title{
+    font-size: 20px;
+    color:lightgray;
+    text-align:center;
+    background-color: white;
+}
+.score-number{
+    font-size: 60px;
+    color:gray;
+    text-align:center;
+    background-color: white;
+}
+.buttonchoice
+{
+    padding: 2px 2px;
+}
+ 
+#img1 {
+    width: 30%;
+    height: auto;
+    padding-top: 40px;
+}
+body{
+    background-image:url('download.jpg');
+}
