@@ -8,15 +8,17 @@
         <style>
             h1{
                 font-size: 64px;
-                color:#008000;         
+                color:#008000;
+                position: relative;
+                left: 20px;
             }
             
             table{
-                background-image:(<img src="images/lion.jpg" width="4134" height="3195" alt="lion"/>
-                    );
+                background-image: url("images/shooting-star.jpg");
                 width: 600px;
                 height: 400px;
                 background-size: contain;
+                float:left;
 
             }
             
@@ -29,12 +31,25 @@
             }
             
             #favsites{
-                background-color:{008800}
+                background-color: hotpink;
+                width: 200px;
+                float:right;
+            }
+            
+            h2{
+                float:right;
+            }
+            
+            #playfixed{
+                position:fixed;
+                left: 200px;
+                top: 50px;
+                
+            }
         </style>
     </head>
     <body>
-    <base></base>
-    
+        <div id="playfixed">Software is Fun!!!</div>
         <h1>My Classes</h1>
         <table border="1">
             <thead>
@@ -51,42 +66,44 @@
                     <td></td>
                 </tr>
                 <tr class="even">
-                    <td>english</td>
-                    <td>a</td>
-                    <td>lee</td>
+                    <td>Advanced Algebra</td>
+                    <td>B</td>
+                    <td>Gary Anderson</td>
                 </tr>
                 <tr class="odd">
-                    <td>history</td>
-                    <td>b</td>
-                    <td>g eliot</td>
-                </tr>
-                <tr>
-                    <td>spanish</td>
+                    <td>Software Development</td>
                     <td>C</td>
-                    <td>rebeca</td>
+                    <td>Gary Anderson</td>
                 </tr>
                 <tr>
-                    <td>math</td>
-                    <td>D</td>
-                    <td>elie</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>sience</td>
-                    <td>E</td>
-                    <td>mark</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>f</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
-        <ul id="favsites">
+        <h2>Favorite Sites</h2>
+        
+        <ol id="favsites">
             <li><a href="http://google.com" target="_blank">Google</a></li>
-            <li> http://www.funny-games.biz/boxhead2playrooms.html</li>
             <li></li>
-        </ul>
+            <li></li>
+        </ol>
 
     </body>
 </html>

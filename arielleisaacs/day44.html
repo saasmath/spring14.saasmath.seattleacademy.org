@@ -2,18 +2,22 @@
 
 <html>
     <head>
-        <title>Day 43</title>
+        <title>Day 44</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <style>
-           
+            body {background-color:sienna;}
             h1 {
-                color: #008000;
+                color: #00FF00;
                 font-size: 50px;
+                position:relative;
+/*                left:20px;*/
+                
             } 
             h2 {
                 color: #000080;
-                font-size: 25px;
+                font-size: 50px;
+                
             }
             .odd {
                 /*background-color: #0000FF; light blue*/
@@ -28,19 +32,52 @@
             
             #classtable{
                 background-image:url("images/background.jpg");
-                height: 400px;
-                width: 600px;
+                height: 900px;
+                width: 400px;
                 background-size: contain;
+                
             }
             #classtable2{
                 background-image:url("images/background.jpg");
-                height: 400px;
-                width: 600px;
+                height: 900px;
+                width: 400px;
                 background-size: contain;
+                
+            }
+             #favsites{
+                background-color: hotpink;
+                width: 100px;
+                float:right;
+            }
+
+            h4{
+                float:right;
+            }
+            #playfixed{
+                position:fixed;
+                left:530px;
+                top:210px;
+                z-index:1000;
+               
+            }
+            /*#playfixed2{
+                position:fixed;
+                left:500px;
+                top:100px;
+            }*/
+            #popup{
+                position:fixed;
+                left:250px;
+                top:200px;
             }
         </style>     
     </head>
     <body>
+        <div id="playfixed">You can't close out hahahaha</div>
+        <!--        <div id="playfixed2"><img src="images/elephant.jpg" width="600" height="450" alt="elephant"/>
+        </div>-->
+        <div id="popup"><img src="images/popup2.jpg" width="803" height="248" alt="popup2"/>
+        </div>
         <h1>My classes</h1>
         <h2>Monday Schedule</h2>
         <table border="1" id="classtable">
@@ -136,6 +173,12 @@
                 </tr>
             </tbody>
         </table>
+     <h4>Favorite Sites</h4>
+        <ol id="favsites">
+            <li><a href="http://google.com" target="_blank">Google</a></li>
+        </ol>
 
+
+        
     </body>
 </html>

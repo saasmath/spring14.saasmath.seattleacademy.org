@@ -3,72 +3,90 @@
 
 <html>
     <head>
-        <title>Day 43</title>
+        <title>Day 44</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <style>
+            .floatright{
+                float:right;
+            }
             h1{
                 font-size: 64px;
-                color:aqua       
+                color:#008000;         
             }
-            
+
             table{
                 background-image: url("images/picture.jpg");
                 width: 600px;
                 height: 400px;
+                background-size: contain;
+                float:left;
+                margin-left: 30px;
+                
+
             }
-            
+
             .even{
-                background-color: rgb(0,255,255);
+                background-color:orange
             }
-            
+
             .odd{
+                background-color:red 
+
+            #favsites{
+                width:200px;
                 background-color: rgb(255,255,0);
+            }
+            #mymessage{
+                position:fixed;
+                top:100px;
+                left: 200px;
             }
         </style>
     </head>
     <body>
+        <div id="mymessage">Christian Batingan is the best!!</div>
         <h1>My Classes</h1>
         <table border="1">
             <thead>
-                <tr>
+                         <tr class="odd">
                     <th>Class</th>
                     <th>Block</th>
                     <th>Teacher</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="even">
                     <td>English</td>
                     <td>A</td>
                     <td>Lauren lee</td>
                 </tr>
-                <tr class="even">
+                <tr class="odd">
                     <td>History</td>
                     <td>B</td>
                     <td>Gerald elliot</td>
                 </tr>
-                <tr class="odd">
+                <tr class="even">
                     <td>Band</td>
                     <td>C</td>
                     <td>Will</td>
                 </tr>
-                <tr>
+                <tr class="odd">
                     <td>Math</td>
                     <td>D</td>
                     <td>Ellie Wolf</td>
                 </tr>
-                <tr>
+                <tr class="even">
                     <td>Chinese</td>
                     <td>E</td>
                     <td>Chia-Ching</td>
                 </tr>
-                <tr>
+                <tr class="odd">
                     <td>Software development</td>
                     <td>F</td>
                     <td>Gary Anderson</td>
                 </tr>
-                <tr>
+                <tr class="even">
                     <td>Lab Science</td>
                     <td>G</td>
                     <td>Mark Betnel</td>
@@ -76,5 +94,13 @@
             </tbody>
         </table>
 
+        <div class="floatright">
+            <h2>Favorite Web Sites</h2>
+            <ol type = "I" id="favsites">
+                <li><a href="http://google.com" target="_blank">Google</a></li>
+                <li><a href="http://youtube.com">youtube.com</a></li>
+                <li></li>
+            </ol>
+        </div>
     </body>
 </html>
