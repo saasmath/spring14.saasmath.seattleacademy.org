@@ -33,3 +33,10 @@ herro
 %3C?php%3E $ourFileName = %22testFile.txt%22; $ourFileHandle = fopen($ourFileName, %27w%27) or die(%22can%27t open file%22); fclose($ourFileHandle); %3C/?%3E
 
 thi sis saac
+herro wolrd
+hello aj sucks at life
+yolo
+yolo
+yolo
+yolo
+yolo

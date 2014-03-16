@@ -2,40 +2,46 @@ var http = require("http");
 var url = require("url");
 var fs = require("fs");
 var qs = require('querystring');
+var Dictionary = require('../common/Dictionary');
+
+function Format(String)
+{
+	while(String.indexOf("%20") != -1)
+	{
+		String = String.replace("%20", " ");
+	}
+
+	return String;
+}
 
 function onRequest(request, response)
 {
 	//is the folder acessed
 	var path = url.parse(request.url).pathname;
 
-
 	//is the query of the search accessed 
-	var query = url.parse(request.url).query;
-	//console.log(query);
+	var user = qs.parse(url.parse(request.url).query)["user"];
+	var data = qs.parse(url.parse(request.url).query)["data"];
 
-	if(query != null)
+	if(user != null && data != null)
 	{
 		//replaces the annoying %20 with a space
-		while(query.indexOf("%20") != -1)
-		{
-			query = query.replace("%20", " ");
-		}
+		user = Format(user);
+		data = Format(data);
 
-		fs.appendFile("Log.txt", query + "\r\n", function(error)
+		Dictionary.Cache(user, data);
+
+		response.writeHead(201, {"Content-Type": "text/plain"});
+		for(i = 0; i < Dictionary.Input.length; i++)
 		{
-			//response to show the user what they wrote
-			response.writeHead(200, {"Content-Type": "text/html"});
-			response.write("<h1>Wrote Data to the Server</h1>");
-			response.write("<h4>'" + query + "' was written</h4>");
-			response.end();
-		});
+			response.write("{" + Dictionary.Input[i] + ":" + Dictionary.Output[i] + "}");
+		}
+		response.end();
 	}
 	else
 	{
 		//response to show the user that they failed
-		response.writeHead(200, {"Content-Type": "text/html"});
-		response.write("<h1>Failure to Write</h1>");
-		response.write("<h4>No Data to Send.</h4>");
+		response.writeHead(400);
 		response.end();
 	}
 }
