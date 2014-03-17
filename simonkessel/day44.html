@@ -16,7 +16,8 @@
             }
             
             table{
-                background-image: url("images/schoolbus.jpg");
+                /*background-image: url("images/old_map.png");*/
+                
                 width: 600px;
                 height: 400px;
                 background-size: contain;
@@ -34,7 +35,9 @@
             
             #favsites{
                background-color: rgb(255,255,0);
+               height: 75px;
                width: 200px;
+               border-radius: 40px;
             }
             .floatright{
                 float: right;
@@ -55,11 +58,24 @@
                 position: fixed;
                 float:left;
                 top: -80px;
+                background-color: red;
+                height: 150px;
+                width:100%;
                 
             }
         </style>
     </head>
     <body>
+        
+        <div id="nav">
+            <ul class="navbar">
+                <li class="navlist">one</li>
+                <li class="navlist">two</li>
+                <li class="navlist">three</li>
+            </ul>
+
+        </div>
+        
         <div id="mymessage">Software Dev is fun</div>
         <h1>My Classes</h1>
         <table border="1">
@@ -114,17 +130,9 @@
         <ol type = "I" id="favsites">
             <li><a href="http://google.com" target="_blank">Google</a></li>
             <li><a href="http://theonion.com">The Onion</a></li>
-            <li></li>
+            <li><a href="http://youtube.com">YouTube</a></li>
         </ol>
         </div>
         
-        <div id="nav">
-            <ul class="navbar">
-                <li class="navlist">one</li>
-                <li class="navlist">two</li>
-                <li class="navlist">three</li>
-            </ul>
-
-        </div>
     </body>
 </html>
