@@ -1,0 +1,1395 @@
+
+<!DOCTYPE html>
+<!--[if IE 6]><html id="bleacherreport" class="ie ie6 ie67 no-js " lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/"><![endif]--><!--[if IE 7]><html id="bleacherreport" class="ie ie67 ie7 ie78 no-js " lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/"><![endif]--><!--[if IE 8]><html id="bleacherreport" class="ie ie78 ie8 ie89 no-js " lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/"><![endif]--><!--[if IE 9]><html id="bleacherreport" class="ie ie89 ie9 no-js " lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/"><![endif]--><!--[if gt IE 9]><!--><html id="bleacherreport" class=" no-js " lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/"><!--<![endif]-->
+
+
+
+<head>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationID":"1841291","beacon":"beacon-5.newrelic.com","agent":"js-agent.newrelic.com/nr-356.min.js","ttGuid":"","queueTime":0,"transactionName":"Jl0PRBZcVVVRQUpEUwZGCF8KQBZaWUAARUAMUQQ=","licenseKey":"d0c34cbdc7","errorBeacon":"jserror.newrelic.com","agentToken":null,"userAttributes":"HhANXwNUXF1rWgsVDEdUAFwXVhsVFkMXXkUIbQhURgkbDFEKVwNTXABVUlVSWw9VBAAOA1NRVQldVQALA1EEVA9HTw==","applicationTime":695}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQ8UUF5XCQEJVQ=="};window.NREUM||(NREUM={}),__nr_require=function a(b,c,d){function e(f){if(!c[f]){var g=c[f]={exports:{}};b[f][0].call(g.exports,function(a){var c=b[f][1][a];return e(c?c:a)},g,g.exports,a,b,c,d)}return c[f].exports}for(var f=0;f<d.length;f++)e(d[f]);return e}({1:[function(a,b){function c(a,b,c){c||(c={});for(var d=f[a],e=d&&d.length||0,h=c[g]||(c[g]={}),i=0;e>i;i++)d[i].apply(h,b);return h}function d(a,b){var c=f[a]||(f[a]=[]);c.push(b)}function e(a){return delete a[g]}var f={},g="nr@context";b.exports={on:d,emit:c,clear:e}},{}],2:[function(a){function b(a,b,e,g,i){return h?h-=1:c("err",[i||new UncaughtException(a,b,e)]),"function"==typeof f?f.apply(this,d(arguments)):!1}function UncaughtException(a,b,c){this.message=a||"Uncaught error with no additional information",this.sourceURL=b,this.line=c}var c=a("handle"),d=a("lodash._slice"),e=a("../../../contextual-ee"),f=window.onerror,g=!1,h=0;a("loader").features.push("err"),window.onerror=b;try{throw new Error}catch(i){"stack"in i&&(a("../../wrap-timer"),a("../../wrap-raf"),"addEventListener"in window&&a("../../wrap-events"),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&a("../../wrap-xhr"),g=!0)}e.on("fn-start",function(){g&&(h+=1)}),e.on("fn-err",function(a,b,d){g&&(this.thrown=!0,c("err",[d,(new Date).getTime()]))}),e.on("fn-end",function(){g&&!this.thrown&&h>0&&(h-=1)})},{"../../../contextual-ee":1,"../../wrap-events":3,"../../wrap-raf":4,"../../wrap-timer":5,"../../wrap-xhr":6,handle:"4O2Y62",loader:"YLUGVp","lodash._slice":14}],3:[function(a){function b(a){d.inPlace(a,["addEventListener","removeEventListener"],"-",c)}function c(a){return a[1]}var d=a("../wrap-function"),e=(a("lodash._slice"),a("../contextual-ee"));if(b(window),"getPrototypeOf"in Object){for(var f=document;f&&!f.hasOwnProperty("addEventListener");)f=Object.getPrototypeOf(f);f&&b(f);for(var g=XMLHttpRequest.prototype;g&&!g.hasOwnProperty("addEventListener");)g=Object.getPrototypeOf(g);g&&b(g)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&b(XMLHttpRequest.prototype);e.on("addEventListener-start",function(a){if(a[1]){var b=a[1];"function"==typeof b?this.wrapped=b["nr@wrapped"]?a[1]=b["nr@wrapped"]:b["nr@wrapped"]=a[1]=d(b,"fn-"):"function"==typeof b.handleEvent&&d.inPlace(b,["handleEvent"],"fn-")}}),e.on("removeEventListener-start",function(a){var b=this.wrapped;b&&(a[1]=b)})},{"../contextual-ee":1,"../wrap-function":15,"lodash._slice":14}],4:[function(a){var b=(a("lodash._slice"),a("../wrap-function")),c=a("../contextual-ee");b.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),c.on("raf-start",function(a){a[0]=b(a[0],"fn-")})},{"../contextual-ee":1,"../wrap-function":15,"lodash._slice":14}],5:[function(a){function b(a){var b=a[0];"string"==typeof b&&(b=new Function(b)),a[0]=c(b,"fn-")}var c=(a("lodash._slice"),a("../wrap-function")),d=a("../contextual-ee");c.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),d.on("setTimer-start",b)},{"../contextual-ee":1,"../wrap-function":15,"lodash._slice":14}],6:[function(a){function b(){c.inPlace(this,f,"fn-")}var c=a("../wrap-function"),d=a("../contextual-ee"),e=window.XMLHttpRequest,f=["onload","onerror","onabort","onloadstart","onloadend","onprogress","onreadystatechange","ontimeout"];window.XMLHttpRequest=function(a){var f=new e(a);return d.emit("new-xhr",[],f),c.inPlace(f,["addEventListener","removeEventListener"],"-",function(a,b){return b}),f.addEventListener("readystatechange",b,!1),f},window.XMLHttpRequest.prototype=e.prototype},{"../contextual-ee":1,"../wrap-function":15}],7:[function(a){function b(a){var b=this.params,c=this.metrics;if(!this.ended){this.ended=!0;for(var d=0;j>d;d++)a.removeEventListener(i[d],this.listener,!1);if(!b.aborted){if(c.duration=(new Date).getTime()-this.startTime,4===a.readyState){if(b.status=a.status,a.responseText&&a.responseText.length&&(c.rxSize=a.responseText.length),this.sameOrigin){var f=a.getResponseHeader("X-NewRelic-App-Data");f&&(b.cat=f.split(", ").pop())}}else b.status=0;c.cbTime=this.cbTime,e("xhr",[b,c])}}}function c(a,b){var c=f(b),d=a.params;d.host=c.hostname+":"+c.port,d.pathname=c.pathname,a.sameOrigin=c.sameOrigin}function d(a,b){return b}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){a("loader").features.push("xhr");var e=a("handle"),f=a("./parse-url.js"),g=a("../../../wrap-function"),h=a("../../../contextual-ee"),i=["load","error","abort","timeout"],j=i.length,k=a("../../../loader/id");a("../../wrap-events"),a("../../wrap-xhr"),h.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=b,this.ended=!1,this.xhrGuids={}}),g.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",d),h.on("open-xhr-start",function(a){this.params={method:a[0]},c(this,a[1]),this.metrics={}}),h.on("open-xhr-end",function(a,b){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&b.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),h.on("send-xhr-start",function(a,b){var c=this.metrics,d=a[0],e=this;c&&d&&d.length&&(c.txSize=d.length),this.startTime=(new Date).getTime(),this.listener=function(a){"abort"===a.type&&(e.params.aborted=!0),("load"!==a.type||e.called===e.totalCbs&&(e.onloadCalled||"function"!=typeof b.onload))&&e.end(b)};for(var f=0;j>f;f++)b.addEventListener(i[f],this.listener,!1)}),h.on("xhr-cb-time",function(a,b,c){this.cbTime+=a,b?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof c.onload||this.end(c)}),h.on("xhr-load-added",function(a,b){var c=""+k(a)+!!b;this.xhrGuids&&!this.xhrGuids[c]&&(this.xhrGuids[c]=!0,this.totalCbs+=1)}),h.on("xhr-load-removed",function(a,b){var c=""+k(a)+!!b;this.xhrGuids&&this.xhrGuids[c]&&(delete this.xhrGuids[c],this.totalCbs-=1)}),h.on("addEventListener-end",function(a,b){b instanceof XMLHttpRequest&&"load"===a[0]&&h.emit("xhr-load-added",[a[1],a[2]],b)}),h.on("removeEventListener-end",function(a,b){b instanceof XMLHttpRequest&&"load"===a[0]&&h.emit("xhr-load-removed",[a[1],a[2]],b)}),h.on("fn-start",function(a,b,c){b instanceof XMLHttpRequest&&("onload"===c&&(this.onload=!0),("load"===(a[0]&&a[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),h.on("fn-end",function(a,b){this.xhrCbStart&&h.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,b],b)})}},{"../../../contextual-ee":1,"../../../loader/id":11,"../../../wrap-function":15,"../../wrap-events":3,"../../wrap-xhr":6,"./parse-url.js":8,handle:"4O2Y62",loader:"YLUGVp"}],8:[function(a,b){b.exports=function(a){var b=document.createElement("a"),c=window.location,d={};b.href=a,d.port=b.port;var e=b.href.split("://");return!d.port&&e[1]&&(d.port=e[1].split("/")[0].split(":")[1]),d.port&&"0"!==d.port||(d.port="https"===e[0]?"443":"80"),d.hostname=b.hostname||c.hostname,d.pathname=b.pathname,"/"!==d.pathname.charAt(0)&&(d.pathname="/"+d.pathname),d.sameOrigin=!b.hostname||b.hostname===document.domain&&b.port===c.port&&b.protocol===c.protocol,d}},{}],handle:[function(a,b){b.exports=a("4O2Y62")},{}],"4O2Y62":[function(a,b){function c(a,b){var c=d[a];return c?c.apply(this,b):(e[a]||(e[a]=[]),void e[a].push(b))}var d={},e={};b.exports=c,c.queues=e,c.handlers=d},{}],11:[function(a,b){function c(a){if(!a||"object"!=typeof a&&"function"!=typeof a)return-1;if(a===window)return 0;if(e.call(a,"__nr"))return a.__nr;try{return Object.defineProperty(a,"__nr",{value:d,writable:!0,enumerable:!1}),d}catch(b){return a.__nr=d,d}finally{d+=1}}var d=1,e=Object.prototype.hasOwnProperty;b.exports=c},{}],loader:[function(a,b){b.exports=a("YLUGVp")},{}],YLUGVp:[function(a,b){function c(){var a=m.info=NREUM.info;if(a&&a.agent&&a.licenseKey&&a.applicationID){m.proto="https"===l.split(":")[0]||a.sslForHttp?"https://":"http://",g("mark",["onload",f()]);var b=i.createElement("script");b.src=m.proto+a.agent,i.body.appendChild(b)}}function d(){"complete"===i.readyState&&e()}function e(){g("mark",["domContent",f()])}function f(){return(new Date).getTime()}var g=a("handle"),h=window,i=h.document,j="addEventListener",k="attachEvent",l=(""+location).split("?")[0],m=b.exports={offset:f(),origin:l,features:[]};i[j]?(i[j]("DOMContentLoaded",e,!1),h[j]("load",c,!1)):(i[k]("onreadystatechange",d),h[k]("onload",c)),g("mark",["firstbyte",f()])},{handle:"4O2Y62"}],14:[function(a,b){function c(a,b,c){b||(b=0),"undefined"==typeof c&&(c=a?a.length:0);for(var d=-1,e=c-b||0,f=Array(0>e?0:e);++d<e;)f[d]=a[b+d];return f}b.exports=c},{}],15:[function(a,b){function c(a,b,c,d){function nrWrapper(){var g,h=f(arguments),i=this,j=c&&c(h,i)||{};try{e.emit(b+"start",[h,i,d],j)}catch(k){}try{return g=a.apply(i,h)}catch(l){throw e.emit(b+"err",[h,i,l],j),l}finally{try{e.emit(b+"end",[h,i,g],j)}catch(k){}}}return a&&"function"==typeof a&&a.apply&&!a._wrapped?(b||(b=""),nrWrapper._wrapped=!0,nrWrapper):a}function d(a,b,d,e){d||(d="");var f,g,h,i="-"===d.charAt(0);for(h=0;h<b.length;h++)g=b[h],f=a[g],f&&"function"==typeof f&&f.apply&&!f._wrapped&&(a[g]=c(f,i?g+d:d,e,g,a))}var e=a("../contextual-ee"),f=a("lodash._slice");b.exports=c,c.inPlace=d},{"../contextual-ee":1,"lodash._slice":14}]},{},["YLUGVp",2,7]);</script>
+    <!--[if lte IE 8]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+	  <script>var _sf_startpt=(new Date()).getTime()</script>
+
+ 	<meta charset="utf-8">
+	<title>Football news, scores, transfers and more | Bleacher Report</title>
+
+			<meta name="keywords" content="World Football, news, articles, videos, rumors, predictions, scores, stats">
+	
+			<meta name="description" content="Get the latest World Football news, photos, rankings, lists and more on Bleacher Report">
+	
+		        <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.bleacherreport.com/world-football">
+        <link rel="canonical" href="http://bleacherreport.com/world-football">
+    
+	<link href="http://static2.bleacherreport.net/pkg/stylesheets/1a61a73d_redesign_common.css" media="screen" rel="stylesheet" />
+
+	
+
+	<style>
+		.shop-module { background-color: #036; }
+	</style>
+    <style>
+ 	 		
+        
+            
+                #page-header .header-logo {
+                    background-image: url("http://cdn.bleacherreport.net/images/team_logos/73x73/world_football.png");
+                }
+
+                @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+                    #page-header .header-logo { background-image: url("http://cdn.bleacherreport.net/images/team_logos/146x146/world_football.png"); }
+                }
+            
+        
+    </style>
+
+            <script src="http://static2.bleacherreport.net/pkg/javascripts/0b52ae02_redesign_top.js"></script>
+    
+	<script>
+		BR.optimizely_sampling = true;
+		BR.optimizely_cookie = false;
+		BR.front_page_survey = false;
+		BR.newsletter        = true;
+		BR.PageData          = {"app_version":null,"article":"","article_title":null,"buzz":"","channel_context":null,"content_brand":null,"content_type":"adbp:none","division":"none","domain":"bleacherreport.com","editorial_page_type":"programmed_section","event":"none","fantasy":"none","gp_flag":"","league":"World_Football","newsletter_topic":null,"page_name":"br:sf::bleacherreport.com/world-football","ps_bool":null,"render_strategy":null,"search_result_items":null,"search_term":null,"site":"World_Football","site_hierarchy":"sports|bleacher report|bleacher report|bleacherreport.com|world-football","site_section_level_1":"world-football","site_section_level_2":"world-football:","tags":"World_Football","team":"none","template_type":"adbp:section front","tn_bool":null,"url_hierarchy_level_1":"bleacherreport.com/world-football","url_hierarchy_level_2":"bleacherreport.com/world-football","web_version":"desktop","wi_bool":null,"writer":null,"ws_int":null,"zone":"home_page"};
+		BR.UserData          = {"logged_in":"anonymous"};
+        BR.funnel_country    = "USA";
+        BR.QueryString = (function (key) {
+			var vars = {}, hash;
+			var q = document.URL.split('?')[1];
+			if(q != undefined) {
+				q = q.split('&');
+				for(var i = 0; i < q.length; i++){
+					hash = q[i].split('=');
+					vars[hash[0]] = hash[1];
+				}
+			}
+			return vars
+		}());
+	</script>
+
+            <script src="//cdn.optimizely.com/js/261889587.js"></script>
+    
+		  <script>
+  var googletag = googletag || {};
+
+  googletag.cmd = googletag.cmd || [];
+
+  BR.Ads            = BR.Ads || {};
+  BR.Ads.mobile     = false;
+  BR.Ads.noSkins    = false;
+  BR.Ads.sitePrefix = 'br';
+  BR.Ads.slots      = [];
+
+  
+  
+  
+  
+  
+  
+      BR.Ads.tagId = 20;
+  
+  </script>
+
+	
+		        
+            <link href="http://static2.bleacherreport.net/pkg/stylesheets/ec5c0e49_redesign_front_page.css" media="screen" rel="stylesheet" />
+        
+
+			
+	
+	
+        <style>
+      #page-header { background-image: url("http://cdn.bleacherreport.net/images/team_logos/148x148/world_football.png"); }
+      @media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+        #page-header { background-image: url("http://cdn.bleacherreport.net/images/team_logos/296x296/world_football.png"); background-size: 148px 148px; }
+      }
+    </style>
+  
+    <link href="http://static2.bleacherreport.net/pkg/stylesheets/ee23b128_redesign_newsletter_signup.css" media="screen" rel="stylesheet" />
+  
+	<link href="http://static.bleacherreport.net/favicon.ico" rel="shortcut icon">
+	<link href="http://static.bleacherreport.net/apple-touch-icon.png" rel="apple-touch-icon">
+
+		  <link href="http://bleacherreport.com/articles/feed?tag_id=20" rel="alternate" title="World Football RSS feed" type="application/rss+xml" />
+	
+	<link href="http://bleacherreport.com/articles/feed" rel="alternate" title="Bleacher Report RSS feed" type="application/rss+xml" />
+
+				<meta property="fb:app_id" content="135174055162">
+	
+	<meta name="aol-te-auth" content="1c424580-0f86-4d9b-88b2-bc8c0d029d4c">
+	<meta name="verify-v1" content="+Ntj422Jc4V03qgBqLYbF3LMvrursV0X2btn2Zoqn9w=">
+	<meta name="robots" content="NOODP">
+</head>
+
+<body>
+<script>
+  var _comscore = _comscore || [];
+	var _gaq      = _gaq || [];
+	var _qevents  = _qevents || [];
+</script>
+
+		<script>
+  	BR.analyticsLoggedIn = false;
+  	BR.analyticsPageType = "section";
+		BR.partnerDomain     = "";
+  	BR.teamTrackerPath   = "";
+
+		 BR.teamTrackerPath = "/world-football"; 
+  	BR.teamTrackerPath += "?pagetype=" + BR.analyticsPageType + "&logged_in=" + BR.analyticsLoggedIn;
+
+  	if(BR.partnerDomain) { BR.teamTrackerPath += "&external_domain=" + BR.partnerDomain; }
+		try { var author_id = BR.Article.getArticleAuthorId(); if(author_id) { BR.teamTrackerPath += "&author=" + author_id; } } catch(exception) {}
+
+		_gaq.push(
+		  ['_setAccount', 'UA-432905-1'],
+		  ['_addIgnoredOrganic', 'bleacherreport.com'], ['_addIgnoredOrganic', 'www.bleacherreport.com'], ['_addIgnoredOrganic', 'bleacherreport'], ['_addIgnoredOrganic', 'Bleacher Report'], ['_addIgnoredOrganic', 'the bleacher report'],
+		  ['_setCustomVar', 1, "logged_in", "false", 2],
+		  ['_setCustomVar', 2, "page_type", "section", 3],
+			 ['_setCustomVar', 3, "team_tracker_path", "/world-football", 3], 											  ['_trackPageview']
+		);
+
+		
+		
+
+		
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	  })();
+	</script>
+
+		<script>
+	  _comscore.push({ c1: "2", c2: "6246855", c4: 'http://bleacherreport.com/world-football', c5: 'World Football', c6: ''});
+
+	  (function() {
+	    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+	    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+	    el.parentNode.insertBefore(s, el);
+	  })();
+	</script>
+			<noscript>
+		  <img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=6246855&amp;c4=bleacherreport.com/world-football&amp;cv=2.0&amp;cj=1" width="0" height="0" alt="">
+		</noscript>
+	
+		<script>
+		_qevents.push( { qacct:"p-3a-0o8sJKz6Ek"} );
+
+		(function() {
+	  	var elem = document.createElement('script');
+
+	  	elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+	  	elem.async = true;
+	   	elem.type = "text/javascript";
+	   	var scpt = document.getElementsByTagName('script')[0];
+	   	scpt.parentNode.insertBefore(elem, scpt);
+	  })();
+	</script>
+	<noscript>
+	  <img src="http://pixel.quantserve.com/pixel/p-3a-0o8sJKz6Ek.gif" width="1" height="1" alt="">
+	</noscript>
+
+  				<script>
+			window.Krux||((Krux=function(){Krux.q.push(arguments);}).q=[]);
+			(function(){
+				function retrieve(n){
+					var m, k='kx'+n;
+					if (window.localStorage) {
+						return window.localStorage[k] || "";
+					} else if (navigator.cookieEnabled) {
+						m = document.cookie.match(k+'=([^;]*)');
+						return (m && unescape(m[1])) || "";
+					} else {
+						return '';
+					}
+				}
+				Krux.user = retrieve('user');
+				Krux.segments = retrieve('segs') && retrieve('segs').split(',') || [];
+			})();
+		</script>
+		<script class="kxct" data-id="ITb9Q03y" data-timing="async" data-version="1.9" type="text/javascript">
+		  window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+		  (function(){
+		    var k=document.createElement('script');k.type='text/javascript';k.async=true;
+		    var m,src=(m=location.href.match(/\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);
+		    k.src = /^https?:\/\/([^\/]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+		      (location.protocol==="https:"?"https:":"http:")+"//cdn.krxd.net/controltag?confid=ITb9Q03y"
+		  ;
+		    var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+		  }());
+		</script>
+	
+	<div id="hat">
+		<div class="inner">
+      							<div id="news-alerts">
+					<span></span>
+					<div id="news-alerts-container"></div>
+				</div>
+			
+			<ul id="user-menu">
+				<li id="search-container">
+										<form action="/search">
+						<span id="search-glass"></span>
+						<input id="search" name="q" placeholder="Search" class="medium-text text">
+						<input type="submit" id="search-submit" value="Search">
+					</form>
+					<img alt="" id="search-indicator" src="http://static2.bleacherreport.net/images/redesign/common/loading/small.gif?1395056754" />
+				</li>
+
+														<li id="login2"><a href="/login" id="log_in_link">Login</a></li>
+					<li id="signup"><a href="/signup" id="sign_up_link">Sign Up</a></li>
+							</ul>
+		</div>
+	</div>
+
+
+
+				
+<div id="header" class="logo-tall usa">
+	<div class="inner">
+        <a href="/" id="header-logo">
+      Bleacher Report
+      
+    </a>
+  	
+<link href="http://static2.bleacherreport.net/pkg/stylesheets/b3bee331_redesign_scores_turner.css" media="screen" rel="stylesheet" />
+<section id="scoreline"></section>
+      <div id="nav-wrapper" class="clear">
+    <div id="nav-container">
+	
+							<ul id="nav">
+  <li id="nav-item-home" class="home"><a href="/" title="Home" rel="home"><span class="br-sprite br-sprite--logo-red">Home</span></a></li>
+  <li class="nfl" data-sub-nav-position="left"><a href="/nfl">NFL</a></li>
+  <li class="college-football"><a href="/college-football">CFB</a></li>
+  <li class="mlb" data-sub-nav-position="left"><a href="/mlb">MLB</a></li>
+  <li class="nba" data-sub-nav-position="left"><a href="/nba">NBA</a></li>
+  <li class="nhl" data-sub-nav-position="left"><a href="/nhl">NHL</a></li>
+  <li class="college-basketball"><a href="/college-basketball">CBB</a></li>
+  <li class="world-football selected"><a href="/world-football">Soccer</a></li>
+  <li class="ufc" data-sub-nav-position="left"><a href="/ufc">UFC</a></li>
+  <li class="wwe" data-sub-nav-position="left"><a href="/wwe">WWE</a></li>
+  <li class="golf" data-sub-nav-position="left"><a href="/golf" data-sub-nav-position="left">Golf</a></li>
+  <li class="nascar"><a href="/nascar">Nascar</a></li>
+  <li class="more" data-sub-nav-position="right"><a href="#">More</a></li>
+
+  <li id="nav-item-br-teams" class="br-teams separate" data-sub-nav-position="right"><a href="/mybr">My&nbsp;Teams</a></li>
+  <li class="video separate" data-sub-nav-position="right"><a href="/video">Video</a></li>
+        <li class="swagger separate"><a href="/br-swagger">Swagger</a></li>
+    <li id="nav-item-break"></li>
+</ul>
+
+			<div id="br-teams-nav-dropdown" class="nav-dropdown">
+  <div class="nav-column links-column">
+    <ul>
+      <li><a href="/mybr">Edit Favorites</a></li>
+    </ul>
+  </div>
+  <div class="nav-columns-wrapper">
+    <div class="nav-columns">
+          </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+	  	
+</div>
+
+    
+        
+
+	
+	<div id="sub-nav-container">
+		<ul id="sub-nav">
+			
+									<!-- "tag_breadcrumbs_20" cached 03/17/2014 at 08:37 PM -->
+													<li class="breadcrumb br-sprite--sudo br-sprite--sudo-nav-arrow first last world-football ">
+								<a href="/world-football">World Football</a>
+							</li>
+															
+				<li class="active">
+					<a href="/world-football">Home</a>
+				</li>
+
+					<!-- "tag_teams_link_20" cached 03/17/2014 at 03:05 PM -->
+					<li class="teams br-dropdown">
+				<a href="/world-football/teams">Leagues</a>
+			</li>
+			
+
+        
+
+				
+										<li><a href="/2014-fifa-world-cup">World Cup 2014</a></li>
+
+				
+													
+				
+					<li>
+						<a href="/world-football/archives">Archives</a>
+					</li>
+				
+
+				
+					<li>
+						<a href="/world-football/top-writers">Top Writers</a>
+					</li>
+				
+
+				
+
+				
+
+									<li>
+						<a href="/world-football/newsletter">Newsletter</a>
+					</li>
+				
+				
+
+							
+
+							<li id="mobile"><a href="/world-football?m=1">Mobile site</a></li>
+					</ul>
+	</div>
+
+
+    
+</div>
+	</div>
+</div>
+
+	
+	
+		
+	<div id="site-wide-banner" class="module">
+		
+		
+			<div class="banner-title" style="background-image: url(http://cdn.bleacherreport.net/images/skins/march-madness-banner/background_left_bottom_right.png);">
+				
+			</div>
+		
+		
+		<div class="first-slot">
+			<p><a href="http://ble.ac/1i9Xxwh"><span class="icon" style="background-image: url(http://cdn.bleacherreport.net/images/skins/march-madness-icons/bracket-icon.png);"></span>National Bracket Day: Play Now!</a></p>
+		</div>
+		<div class="separator"></div>
+		<div class="second-slot">
+			<p><a href="http://ble.ac/1d2qfdt"><span class="icon" style="background-image: url(http://cdn.bleacherreport.net/images/skins/march-madness-icons/bracket-icon.png);"></span>Complete NCAA Bracket</a></p>
+		</div>
+	</div>
+
+	
+
+
+			<div id="page-header" class="world-football with-logo with-site-wide-banner">
+			<h1><a href="/world-football" class="single">World Football</a></h1>
+		</div>
+	
+
+	
+
+<div id="container">
+	<div id="container-shadow"></div>
+	<!-- "breaking_news_20" cached 03/17/2014 at 09:51 PM -->
+				
+
+	
+
+
+
+
+
+<div id='newsletter-stored-email' style="display:none"></div>
+
+
+  
+  
+  
+
+
+<div id="newsletter-lightbox"></div>
+
+
+
+
+<!-- "world_football" background cached 03/17/2014 at 09:54 PM -->
+	<div id="content" class="world-football">
+		
+			<script>
+	BR.context 			= "world-football";
+	BR.leadType 		= 'lead_horizontal';
+	BR.Leadarticles = [1995518,1995481,1995535,1995392,1995491];
+</script>
+
+	<div id="lead-module">
+		<div id="lead-story">
+							<a href="/articles/1995518-what-lionel-messi-has-taught-neymar-at-barcelona">
+          <img alt="Bf3870804e20886430bf2e991ab58d7b_crop_north" height="440" src="http://img.bleacherreport.net/img/images/photos/002/804/862/bf3870804e20886430bf2e991ab58d7b_crop_north.jpg?w=650&amp;h=440&amp;q=75&amp;v=1395093258" width="650" />
+
+					
+          <span class='floating-comment big'><span class="floating-number">77</span></span>
+				</a>
+
+				<div class="caption-overlay caption-overlay-220"><a href="/articles/1995518-what-lionel-messi-has-taught-neymar-at-barcelona"></div>
+				<div class="caption">
+											<h1><a href="/articles/1995518-what-lionel-messi-has-taught-neymar-at-barcelona">What Messi Has Taught Neymar</a></h1>
+					
+					<p class="credit">
+						By Tre' Atkinson
+													<span>(Photo: Getty)</span>
+											</p>
+
+									</div>
+
+							
+			
+		</div>
+
+					
+			
+			<div class="module wide-module after-lead-story-module">
+				<ul class="thumbnail">
+											<li>
+							<a href="/articles/1995481-jon-flanagans-performance-at-old-trafford-makes-lack-of-england-call-baffling" class="image-with-caption">
+                <img alt="Hi-res-8348c4fbf7a9e8983c0e1c95e7eb74e7_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/014/hi-res-8348c4fbf7a9e8983c0e1c95e7eb74e7_crop_north.jpg?w=150&amp;h=100&amp;q=75&amp;v=1395093258" width="150" />
+								
+
+								
+								                <span class='floating-comment small'><span class="floating-number">36</span></span>
+							</a>
+							<a href="/articles/1995481-jon-flanagans-performance-at-old-trafford-makes-lack-of-england-call-baffling">Flanagan Shows He Deserves England Call</a>
+						</li>
+											<li>
+							<a href="/articles/1995535-how-far-can-zlatan-ibrahimovics-current-stellar-form-take-him-and-psg" class="image-with-caption">
+                <img alt="Ffd58c95d1e9fca085b53017e1dc3820_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/854/ffd58c95d1e9fca085b53017e1dc3820_crop_north.jpg?w=150&amp;h=100&amp;q=75&amp;v=1395093258" width="150" />
+								
+
+								
+								                <span class='floating-comment small'><span class="floating-number">45</span></span>
+							</a>
+							<a href="/articles/1995535-how-far-can-zlatan-ibrahimovics-current-stellar-form-take-him-and-psg">How Far Can Ibra's Form Take PSG?</a>
+						</li>
+											<li>
+							<a href="/articles/1995392-didier-drogba-would-chelsea-be-a-better-side-if-they-re-signed-him" class="image-with-caption">
+                <img alt="7eb4aff28abeb8cd91ee7c6f62412a40_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/850/7eb4aff28abeb8cd91ee7c6f62412a40_crop_north.jpg?w=150&amp;h=100&amp;q=75&amp;v=1395093258" width="150" />
+								
+
+								
+								                
+							</a>
+							<a href="/articles/1995392-didier-drogba-would-chelsea-be-a-better-side-if-they-re-signed-him">Could Drogba Improve Chelsea?</a>
+						</li>
+											<li class="last">
+							<a href="/articles/1995491-premier-league-player-power-rankings-suarez-impresses-sturridge-dives" class="image-with-caption">
+                <img alt="Hi-res-c51a579fefc3fc0b1a11a714f5c7a435_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/045/hi-res-c51a579fefc3fc0b1a11a714f5c7a435_crop_north.jpg?w=150&amp;h=100&amp;q=75&amp;v=1395093258" width="150" />
+								
+
+								
+								                <span class='floating-comment small'><span class="floating-number">48</span></span>
+							</a>
+							<a href="/articles/1995491-premier-league-player-power-rankings-suarez-impresses-sturridge-dives">Premier League Player Rankings</a>
+						</li>
+									</ul>
+			</div>
+			</div>
+		
+
+		
+	<div class="module wide-module" id="breakingnews_worldfootball_or_transferwindow_worldfootball_or_gamerecap_worldfootball_module">
+		<div class="header">
+							<h3>
+					
+						Latest News
+									</h3>
+			
+			
+							
+		</div>
+
+					
+			<a class="image-with-caption" href="/articles/1995976-hull-citys-proposed-name-change-reportedly-set-to-be-rejected">
+              <img alt="A1ae14d4ad7e31a228f0c7a271c259c6_crop_north" height="210" src="http://img.bleacherreport.net/img/images/photos/002/804/789/a1ae14d4ad7e31a228f0c7a271c259c6_crop_north.jpg?w=310&amp;h=210&amp;q=75" width="310" />
+
+				
+
+				<span class="caption-overlay caption-overlay-102"></span>
+				<span class="caption">
+					Report: Hull City Name Change to Be Rejected
+					<span class="credit">By Jason Pettigrove</span>
+				</span>
+                
+			</a>
+
+			<ul class="right thumbnail thumbnail-with-title">
+									<li>
+						<a href="/articles/1995539-carlo-ancelotti-confirms-cristiano-ronaldo-will-play-for-real-madrid-vs-schalke" class="no-decoration">
+                            <img alt="Hi-res-359fc04e3e596bf04e4dbcb718770bfd_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/086/hi-res-359fc04e3e596bf04e4dbcb718770bfd_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+
+							
+
+							                            <span class='floating-comment small'><span class="floating-number">43</span></span>
+						</a>
+						<a href="/articles/1995539-carlo-ancelotti-confirms-cristiano-ronaldo-will-play-for-real-madrid-vs-schalke">Ancelotti: Ronaldo to Play vs. Schalke</a>
+					</li>
+									<li>
+						<a href="/articles/1995556-roberto-mancini-aims-fresh-dig-at-jose-mourinho-ahead-of-chelsea-vs-galatasaray" class="no-decoration">
+                            <img alt="Hi-res-48752e6afd59cabf220a384274f8b7d3_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/083/hi-res-48752e6afd59cabf220a384274f8b7d3_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+
+							
+
+							                            
+						</a>
+						<a href="/articles/1995556-roberto-mancini-aims-fresh-dig-at-jose-mourinho-ahead-of-chelsea-vs-galatasaray">Mancini Aims Fresh Dig at Mourinho</a>
+					</li>
+							</ul>
+			</div>
+
+
+	<div class="module wide-module no-title-module" id="breakingnews_worldfootball_or_transferwindow_worldfootball_module">
+		<div class="header">
+						
+			
+							
+		</div>
+		
+					<ul class="thumbnail">
+									<li>
+						<a href="/articles/1995472-juan-mata-gives-reaction-to-manchester-united-loss-mad-at-performance" class="no-decoration">
+							
+                                <img alt="Hi-res-aa92bd3f4687c73d20db835dc12f33bf_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/803/973/hi-res-aa92bd3f4687c73d20db835dc12f33bf_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            <span class='floating-comment small'><span class="floating-number">36</span></span>
+						</a>
+						<a href="/articles/1995472-juan-mata-gives-reaction-to-manchester-united-loss-mad-at-performance">Mata 'Mad' at Performance vs. LFC</a>
+					</li>
+									<li>
+						<a href="/articles/1995403-tim-sherwood-rubbishes-arsenals-title-hopes-says-tottenham-were-better-team" class="no-decoration">
+							
+                                <img alt="Hi-res-caef682592ba07fbc10c294b5ecb6b4b_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/803/914/hi-res-caef682592ba07fbc10c294b5ecb6b4b_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            <span class='floating-comment small'><span class="floating-number">118</span></span>
+						</a>
+						<a href="/articles/1995403-tim-sherwood-rubbishes-arsenals-title-hopes-says-tottenham-were-better-team">Sherwood Rubbishes Arsenal Title Hopes</a>
+					</li>
+									<li>
+						<a href="/articles/1994780-analysing-lionel-messis-performance-from-barcelona-vs-osasuna" class="no-decoration">
+							
+                                <img alt="8e31cec1044ddcc6e04aabb51b5faf0e_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/803/063/8e31cec1044ddcc6e04aabb51b5faf0e_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            
+						</a>
+						<a href="/articles/1994780-analysing-lionel-messis-performance-from-barcelona-vs-osasuna">Messi Breaks Barca Scoring Record</a>
+					</li>
+									<li class="last">
+						<a href="/articles/1994601-joe-hart-and-george-boyd-clash-during-hull-city-vs-manchester-city" class="no-decoration">
+							
+                                <img alt="Hi-res-c15e2122f5b974e424ca54a8f7d9fef0_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/802/782/hi-res-c15e2122f5b974e424ca54a8f7d9fef0_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            
+						</a>
+						<a href="/articles/1994601-joe-hart-and-george-boyd-clash-during-hull-city-vs-manchester-city">Hart, Boyd Could Face Action After Clash</a>
+					</li>
+							</ul>
+			</div>
+
+
+	<div class="module wide-module" id="worldfootball_module">
+		<div class="header">
+							<h3>
+					
+						Analysis 
+									</h3>  
+						
+			
+									</div>
+		
+									<a href="/articles/1995426-every-premier-league-teams-biggest-regret-as-the-final-stretch-looms" class="image-with-caption">
+                    <img alt="78fb6724d67eb252cb4134d74d97fe63_crop_north" height="205" src="http://img.bleacherreport.net/img/images/photos/002/804/195/78fb6724d67eb252cb4134d74d97fe63_crop_north.jpg?w=310&amp;h=205&amp;q=75" width="310" />
+
+					
+
+					<span class="caption-overlay caption-overlay-102"></span>
+					<span class="caption">
+						Every Prem Club's Top Regret This Season
+						<span class="credit">By Sam Tighe</span>
+					</span>
+
+					                    <span class='floating-comment big'><span class="floating-number">33</span></span>
+				</a>
+							<a href="/articles/1994999-tomas-rosicky-arsenals-derby-hero" class="image-with-caption last">
+                    <img alt="Ef36eb081c3b04074efaea199f948e19_crop_north" height="205" src="http://img.bleacherreport.net/img/images/photos/002/803/978/ef36eb081c3b04074efaea199f948e19_crop_north.jpg?w=310&amp;h=205&amp;q=75" width="310" />
+
+					
+
+					<span class="caption-overlay caption-overlay-102"></span>
+					<span class="caption">
+						Rosicky Becoming Arsenal's Derby Hero
+						<span class="credit">By James McNicholas</span>
+					</span>
+
+					                    
+				</a>
+						</div>
+
+
+	<div class="module wide-module no-title-module" id="worldfootball_module">
+		<div class="header">
+						
+			
+							
+		</div>
+		
+					<ul class="thumbnail">
+									<li>
+						<a href="/articles/1994933-a-5-point-plan-for-tim-sherwood-to-keep-his-job-at-tottenham-hotspur" class="no-decoration">
+							
+                                <img alt="47d2e6d1a9faee740ffcd2a8b86a5530_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/810/47d2e6d1a9faee740ffcd2a8b86a5530_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            <span class='floating-comment small'><span class="floating-number">26</span></span>
+						</a>
+						<a href="/articles/1994933-a-5-point-plan-for-tim-sherwood-to-keep-his-job-at-tottenham-hotspur">How Sherwood Can Keep His Job at Spurs</a>
+					</li>
+									<li>
+						<a href="/articles/1995527-how-much-is-manchester-city-midfielder-yaya-toure-worth-based-on-form-in-2014" class="no-decoration">
+							
+                                <img alt="Hi-res-58aa8763ed87a4d1617706a5e71bf89b_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/026/hi-res-58aa8763ed87a4d1617706a5e71bf89b_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            
+						</a>
+						<a href="/articles/1995527-how-much-is-manchester-city-midfielder-yaya-toure-worth-based-on-form-in-2014">How Much Is Toure Worth in 2014?</a>
+					</li>
+									<li>
+						<a href="/articles/1995634-film-focus-breaking-down-liverpools-impressive-3-0-win-over-manchester-united" class="no-decoration">
+							
+                                <img alt="1d4848ca8f94c67d076d0746b4e81ef2_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/818/1d4848ca8f94c67d076d0746b4e81ef2_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            <span class='floating-comment small'><span class="floating-number">31</span></span>
+						</a>
+						<a href="/articles/1995634-film-focus-breaking-down-liverpools-impressive-3-0-win-over-manchester-united">Breaking Down LFC's Win Over Utd</a>
+					</li>
+									<li class="last">
+						<a href="/articles/1995564-comparing-bayern-munichs-undefeated-run-to-past-greats-of-european-football" class="no-decoration">
+							
+                                <img alt="7b2fc4f9c65393d51b098a6e455fa99c_crop_north" height="100" src="http://img.bleacherreport.net/img/images/photos/002/804/836/7b2fc4f9c65393d51b098a6e455fa99c_crop_north.jpg?w=150&amp;h=100&amp;q=75" width="150" />
+                            
+		
+							
+
+							                            
+						</a>
+						<a href="/articles/1995564-comparing-bayern-munichs-undefeated-run-to-past-greats-of-european-football">Comparing Bayern's Run to Past Greats</a>
+					</li>
+							</ul>
+			</div>
+
+
+<style>
+#br-ad-promo-wrapper:after, #br-ad-promo-wrapper:before { clear: both; content: ""; display: block; height: 0; overflow: hidden; visibility: hidden; }
+#br-ad-p1 { float: left; }
+#br-ad-p1, #br-ad-p2 { height: 100px; margin: 0 0 10px 0; width: 310px; }
+#br-ad-p2 { float: right; }
+</style>
+<div id="br-ad-promo-wrapper" class="br-ad-wrapper">
+<div id="br-ad-p1" class="br-ad" data-placement="btf" data-position="p1" data-size="[310,100]"></div>
+<div id="br-ad-p2" class="br-ad" data-placement="btf" data-position="p2" data-size="[310,100]"></div>
+</div>
+			<div id="wide-featured-columnists" class="module">
+		<div class="header">
+			<h3>Featured Columnists</h3>
+		</div>
+		
+		<ul class="thumbnail">
+															<li>     
+					<div class="feat-col-caption">
+					<a href="/users/1871847-jerrad-peters" class="feat-col-ico"><img alt="Peteca" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/001/871/847/peteca.sweater_212x250__crop_100x100.jpg?1357666424" width="60" /></a>
+					<h4><a href="/users/1871847-jerrad-peters">Jerrad Peters</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1996195-early-talking-points-ahead-of-real-madrid-barcelona-clasico" class="article">Early Talking Points Ahead of Clasico</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/496473-allan-jiang" class="feat-col-ico"><img alt="Aj_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/000/496/473/AJ_crop_100x100.jpg?1314088544" width="60" /></a>
+					<h4><a href="/users/496473-allan-jiang">Allan Jiang</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995479-scouting-report-will-arsenal-replace-bacary-sagna-with-serge-aurier" class="article">Will Arsenal Replace Bacary Sagna with Serge Aurier? </a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/2542773-dan-sheridan" class="feat-col-ico"><img alt="Dsc_0125_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/002/542/773/DSC_0125_crop_100x100.JPG?1370507031" width="60" /></a>
+					<h4><a href="/users/2542773-dan-sheridan">Dan Sheridan</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995857-newcastle-united-transfer-news-and-rumours-tracker-week-of-march-17" class="article">Latest Newcastle Utd Transfer Rumors</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/2553496-stefan-bienkowski" class="feat-col-ico"><img alt="590a7fa78c7bbb2d0490ea6bf494ef05_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/002/553/496/590a7fa78c7bbb2d0490ea6bf494ef05_crop_100x100.jpeg?1370612173" width="60" /></a>
+					<h4><a href="/users/2553496-stefan-bienkowski">Stefan Bienkowski</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995564-comparing-bayern-munichs-undefeated-run-to-past-greats-of-european-football" class="article">Comparing Bayern's Run to Past Greats</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/2912973-nick-miller" class="feat-col-ico"><img alt="Nick-miller-picture_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/002/912/973/Nick-miller-picture_crop_100x100.jpg?1378148130" width="60" /></a>
+					<h4><a href="/users/2912973-nick-miller">Nick  Miller</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995784-manchester-uniteds-choice-between-david-moyes-and-robin-van-persie-is-simple" class="article">Choice Between Moyes, RVP Is Simple</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/1103683-nick-akerman" class="feat-col-ico"><img alt="Nick1_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/001/103/683/Nick1_crop_100x100.jpg?1393201965" width="60" /></a>
+					<h4><a href="/users/1103683-nick-akerman">Nick Akerman</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995693-arsenal-transfer-news-olivier-giroud-departure-should-be-embraced-by-gunners" class="article">Gunners Should Embrace Giroud Departure</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/1685347-samuel-marsden" class="feat-col-ico"><img alt="Image_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/001/685/347/image_crop_100x100.jpg?1377524595" width="60" /></a>
+					<h4><a href="/users/1685347-samuel-marsden">Samuel Marsden</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995671-real-madrid-how-will-they-line-up-vs-schalke-04-in-champions-league" class="article">How Will Real Madrid Line Up vs. Schalke?</a>
+				</li>
+		 													<li>     
+					<div class="feat-col-caption">
+					<a href="/users/631019-sam-tighe" class="feat-col-ico"><img alt="Tighe_br_2_crop_100x100" height="60" src="http://cdn.bleacherreport.net/images_root/users/photos/000/631/019/Tighe_br_2_crop_100x100.jpg?1389915818" width="60" /></a>
+					<h4><a href="/users/631019-sam-tighe">Sam Tighe</a></h4>
+					<div class="image-shadow"></div>
+					</div>
+					<img alt="World Football" class="png-fix" height="16" src="http://cdn.bleacherreport.net/images/team_logos/16x16/world_football.png" width="16" /><a href="/articles/1995628-cristiano-ronaldo-to-play-schalke-affirm-thirst-for-ucl-top-scorer-title" class="article">Ronaldo Will Play vs. Schalke, Up 6-1 Agg.</a>
+				</li>
+		 			 	<div class="clear"></div>
+		</ul>
+	</div> 
+
+	</div>
+
+	<div id="sidebar" class="world-football">
+									      
+<div class="br-ad-wrapper">
+  <div id="br-ad-2" class="br-ad" data-placement="atf" data-position="2" data-reload="2" data-size="[[300,250],[300,2]]"></div>
+</div>
+
+  
+					
+		
+
+    <div class="module lineup" id="lineup">
+        <div class="header">
+            
+        </div>
+
+        <div class="body">
+                            <ul class="thumbnail">
+                    
+                    
+                                            
+                        <li class="lineup hide_video">
+                            <div class="line-up-number">1</div>
+                            <div class="line-up-title"><a href="/articles/1995515-robin-van-persies-son-reportedly-training-with-manchester-city-not-united" data-article-id="1995515"><span>RVP's Son Training with City?</span></a></div>
+                            <div class="line-up-content" data-width="260" data-height="150">
+                                                            <a href="/articles/1995515-robin-van-persies-son-reportedly-training-with-manchester-city-not-united" data-article-id="1995515">
+                                                                                                  <img alt="Hi-res-8d8314e4b92d3bccb77f3cedfc1089e9_crop_north" height="150" src="http://img.bleacherreport.net/img/images/photos/002/804/037/hi-res-8d8314e4b92d3bccb77f3cedfc1089e9_crop_north.jpg?w=260&amp;h=150&amp;q=75" width="260" />                                                                </a>
+                            
+                                <div class="clear"></div>
+                            </div>
+                        </li>
+                                            
+                        <li class="lineup hide_video">
+                            <div class="line-up-number">2</div>
+                            <div class="line-up-title"><a href="/articles/1995482-fred-done-to-refund-all-bets-on-manchester-united-winning-the-title" data-article-id="1995482"><span>Bookmaker Refunds MUFC Title Bets</span></a></div>
+                            <div class="line-up-content" data-width="260" data-height="150">
+                                                            <a href="/articles/1995482-fred-done-to-refund-all-bets-on-manchester-united-winning-the-title" data-article-id="1995482">
+                                                                                                  <img alt="Hi-res-e1fb555e5bca268228a613d00a56641d_crop_north" height="150" src="http://img.bleacherreport.net/img/images/photos/002/803/979/hi-res-e1fb555e5bca268228a613d00a56641d_crop_north.jpg?w=260&amp;h=150&amp;q=75" width="260" />                                                                </a>
+                            
+                                <div class="clear"></div>
+                            </div>
+                        </li>
+                                            
+                        <li class="lineup hide_video">
+                            <div class="line-up-number">3</div>
+                            <div class="line-up-title"><a href="/articles/1995427-gareth-bale-to-wear-lightest-ever-football-boots-for-real-madrid-vs-schalke" data-article-id="1995427"><span>Bale to Wear Lightest Boots Ever</span></a></div>
+                            <div class="line-up-content" data-width="260" data-height="150">
+                                                            <a href="/articles/1995427-gareth-bale-to-wear-lightest-ever-football-boots-for-real-madrid-vs-schalke" data-article-id="1995427">
+                                                                                                  <img alt="2ed50c5e630ffdd9a1db8ce93f6d6efb_crop_north" height="150" src="http://img.bleacherreport.net/img/images/photos/002/803/925/2ed50c5e630ffdd9a1db8ce93f6d6efb_crop_north.jpg?w=260&amp;h=150&amp;q=75" width="260" />                                                                </a>
+                            
+                                <div class="clear"></div>
+                            </div>
+                        </li>
+                                    </ul>
+                <div class="clear"></div>
+                    </div>
+        <div class="footer">
+            <a href="/the-lineup">More Lineup Stories</a>
+            |
+            <a href="mailto:tips@bleacherreport.com">Send Tips</a>
+        </div>
+    </div>
+
+
+<div style="width:300px;border:1px solid #ccc;background:#555;">
+<div style="border:1px solid #fff;background:#555;height:50px">
+<div style="width:160px;float:left;">
+<a href="http://www.newsnow.co.uk/h/Sport/Football" target="newsnow" style="border:0;text-decoration:none;" rel="nofollow"><img src="http://cdn.bleacherreport.net/images/partners/newsnow_f_sb.gif" width="160" height="50" alt="As featured on NewsNow: Football news"></a>
+</div>
+<div style="margin:10px 0 0 170px;">
+<span style="display:inline-block;width:120px;text-align:center;font-size:11px;line-height:14px;font-family:Verdana,Arial,Helvetica,Sans-serif;font-weight:bold;">
+<a href="http://www.newsnow.co.uk/h/Sport/Football" target="newsnow" style="border:0;color:#fff;text-decoration:none;" rel="nofollow">Football</a>
+<a href="http://www.newsnow.co.uk/h/Sport/Football" target="newsnow" style="border:0;color:#fff;text-decoration:none;" rel="nofollow">News 24/7</a>
+</span>
+</div>
+</div>
+</div>
+
+
+<div style="margin: 5px 0px;text-align: center;width: 120px;line-height:10px;"><a href="http://www.kicknews.com" style="color:#000 !important;font-size:9px !important;"><img src="http://www.kicknews.com/Content/images/generated/featured-on-allfootballclubs.png?s=KN00826" width="120" height="45" alt="Kick News - Football News & Transfers" />Kick Football News</a></div>
+		
+		
+
+
+	<div id="article-newsletter-side-module" class="module">
+		<div class="header">
+			<h3><a href="/world-football/newsletter"> Newsletter</a></h3>
+		</div>
+		<div id="article-newsletter-engage-content">
+			<div class="step-1">
+				<img alt="World Football" class="png-fix" height="50" src="http://cdn.bleacherreport.net/images/team_logos/50x50/world_football.png" width="50" />
+				<p class="newsletter-intro">We'd like to send you the most entertaining <strong class="signup_tag">World Football</strong> articles, videos, and podcasts from around the web.</p>
+				<p id="newsletter-error" class="error"></p>
+				<form id="permanent-newsletter" method="post">
+					<p class="newsletter-error error"></p>
+					<p id="email-input"><input type="text" name="newsletter-email" class="text medium-text border-box" placeholder="Your Email Address" id="newsletter-email"></p>
+					<p id="sign-me-up">
+						<a class="medium-orange button" id="newsletter-submit">Subscribe Now</a>
+						<img alt="" height="16" id="newsletter-side-module-spinner" src="http://static2.bleacherreport.net/images/redesign/common/loading/small.gif?1395016719" width="16" />
+					</p>
+					<span class="help secure png-fix">We will never share your email address</span>
+				</form>
+			</div>
+			<div class="step-2">
+				<p><em>Thanks for signing up.</em></p>
+				<span class="small-orange button newsletter-kiosk">Subscribe to More Teams</span>
+			</div>
+		</div>
+	</div>
+
+
+		
+
+		
+	<div id="twitter-sidebar" class="module">
+		<div class="header">
+			<h3>Follow <span class="br-logo">b/r</span></h3>
+		</div>
+		
+		<div class="inner">
+		
+			<p>Get exclusive coverage</p>
+			<ul>	
+
+			<li><a href="http://www.facebook.com/bleacherreport"><img alt="Like us on Facebook" src="http://static2.bleacherreport.net/images/redesign/modules/follow_br/ico_fb.png?1395016719" /> Like us on <span>Facebook</span></a></li>
+
+			<li><a href="http://twitter.com/bleacherreport"><img alt="Follow @BleacherReport" src="http://static2.bleacherreport.net/images/redesign/modules/follow_br/ico_twitter.png?1395016719" /> Follow <span>@BleacherReport</span></a></li>
+
+			<li><a href="/mobile"><img alt="Download Team Stream App" src="http://static2.bleacherreport.net/images/redesign/modules/follow_br/ico_br.png?1395016719" /> Download <span>Team Stream App</span></a></li>
+
+			<li><a href="https://plus.google.com/u/0/113547383016321368364"><img alt="Add to circles on Google+" src="http://static2.bleacherreport.net/images/redesign/modules/follow_br/ico_gplus.png?1395016719" /> Add to circles on <span>Google+</span></a></li>
+
+			</ul>
+		</div>
+	</div>
+
+
+		
+				<div id="top-writers-module" class="module">
+		<div class="header">
+			<h3>
+				Top Writers 
+				<span>(March)</span>
+			</h3>
+			<a href="/world-football/top-writers">More &raquo;</a>
+		</div>
+		
+		<ul class="thumbnail">
+							<li >
+					<a href="/users/1103683-nick-akerman" class="image-with-caption">
+												<img alt="Nick Akerman" height="85" rel="original_file_name:Nick1.jpg" src="http://cdn.bleacherreport.net/images_root/users/photos/001/103/683/Nick1_crop_100x100.jpg?1393201965" width="85" />
+
+						<span class="caption-overlay caption-overlay-30"></span>
+						<span class="caption">
+							999k 
+							<span>reads</span>
+						</span>
+					</a>
+					
+					<a href="/users/1103683-nick-akerman" class="author" target="_parent">Nick Akerman</a>
+					<br>
+					
+					
+					
+						<a href="/articles/1995693-arsenal-transfer-news-olivier-giroud-departure-should-be-embraced-by-gunners">Gunners Should Embrace Giroud Departure</a>
+					
+				</li>
+							<li >
+					<a href="/users/2771456-mark-patterson" class="image-with-caption">
+												<img alt="Mark Patterson" height="85" rel="original_file_name:MP.jpg" src="http://cdn.bleacherreport.net/images_root/users/photos/002/771/456/MP_crop_100x100.jpg?1375105182" width="85" />
+
+						<span class="caption-overlay caption-overlay-30"></span>
+						<span class="caption">
+							557k 
+							<span>reads</span>
+						</span>
+					</a>
+					
+					<a href="/users/2771456-mark-patterson" class="author" target="_parent">Mark Patterson</a>
+					<br>
+					
+					
+					
+						<a href="/articles/1992922-david-moyes-backed-at-manchester-united-by-friend-michael-finnigan-sort-of">Moyes Gets Strange Endorsement</a>
+					
+				</li>
+							<li >
+					<a href="/users/3176433-rob-blanchette" class="image-with-caption">
+												<img alt="Rob Blanchette" height="85" rel="original_file_name:BRprofilepic.jpg" src="http://cdn.bleacherreport.net/images_root/users/photos/003/176/433/BRprofilepic_crop_100x100.jpg?1390559372" width="85" />
+
+						<span class="caption-overlay caption-overlay-30"></span>
+						<span class="caption">
+							497k 
+							<span>reads</span>
+						</span>
+					</a>
+					
+					<a href="/users/3176433-rob-blanchette" class="author" target="_parent">Rob Blanchette</a>
+					<br>
+					
+					
+					
+						<a href="/articles/1995676-copa-mx-2014-quarter-final-fixtures-live-stream-info-and-preview">Copa MX 2014: Quarter-Final Fixtures, Live Stream Info and Preview </a>
+					
+				</li>
+							<li >
+					<a href="/users/1585-karl-matchett" class="image-with-caption">
+												<img alt="Karl Matchett" height="85" rel="original_file_name:anfield_press_28-jan-2014_v2.png" src="http://cdn.bleacherreport.net/images_root/users/photos/000/001/585/anfield_press_28-jan-2014_v2_crop_100x100.png?1391046285" width="85" />
+
+						<span class="caption-overlay caption-overlay-30"></span>
+						<span class="caption">
+							453k 
+							<span>reads</span>
+						</span>
+					</a>
+					
+					<a href="/users/1585-karl-matchett" class="author" target="_parent">Karl Matchett</a>
+					<br>
+					
+					
+					
+						<a href="/articles/1994567-barcelona-vs-osasuna-live-player-ratings-for-la-liga-title-chasers-barca">Final Barca Ratings for Osasuna Match</a>
+					
+				</li>
+							<li  class="last">
+					<a href="/users/631019-sam-tighe" class="image-with-caption">
+												<img alt="Sam Tighe" height="85" rel="original_file_name:Tighe_br_2.jpg" src="http://cdn.bleacherreport.net/images_root/users/photos/000/631/019/Tighe_br_2_crop_100x100.jpg?1389915818" width="85" />
+
+						<span class="caption-overlay caption-overlay-30"></span>
+						<span class="caption">
+							444k 
+							<span>reads</span>
+						</span>
+					</a>
+					
+					<a href="/users/631019-sam-tighe" class="author" target="_parent">Sam Tighe</a>
+					<br>
+					
+					
+					
+						<a href="/articles/1995628-cristiano-ronaldo-to-play-schalke-affirm-thirst-for-ucl-top-scorer-title">Ronaldo Will Play vs. Schalke, Up 6-1 Agg.</a>
+					
+				</li>
+					</ul>
+	</div>
+
+		
+					
+			
+		
+		
+							      
+<div class="br-ad-wrapper">
+  <div id="br-ad-4" class="br-ad" data-placement="btf" data-position="4" data-reload="1" data-size="[[300,250],[300,4]]"></div>
+</div>
+
+  
+						</div>
+
+
+
+</div>
+
+		<!-- "default_footer_" background cached 03/17/2014 at 09:50 PM -->
+<div id="footer">
+	<div class="inner boxed">
+		<div class="footer-module">
+			<div class="footer-module-upper">
+				<div class="footer-header">
+					<h4><a href="#" class="newsletter-kiosk">Sign up for newsletters</a></h4>
+				</div>
+				<p class="action-item"><a href="#" class="newsletter-kiosk">Choose Teams</a></p>
+			</div>
+			<div class="footer-header">
+				<h4><a href="/mobile">Get the app</a></h4>
+			</div>
+			<p>Real-time news for your favorite teams, right on your mobile device.</p>
+			<p class="action-item"><a href="/mobile">Download Now</a></p>
+		</div>
+		<div class="footer-module">
+			<div class="footer-module-upper">
+				<div class="footer-header">
+					<h4>Follow B/R</h4>
+				</div>
+				<ul id="socialmedia-icons">
+											<li><a href="http://twitter.com/bleacherreport" id="twitter">Twitter</a></li>
+						<li><a href="http://www.facebook.com/bleacherreport" id="facebook">Facebook</a></li>
+										<li><a href="http://instagram.com/bleacherreport" id="instagram">Instagram</a></li>
+					<li><a href="http://plus.google.com/+bleacherreport" id="google-plus">Google+</a></li>
+				</ul>
+			</div>
+			<div class="footer-header">
+				<h4>Launch a career</h4>
+			</div>
+			<p>B/R's <a href="/who_should_write_for_br">Writer Program</a> and <a href="/pages/wi">Advanced Program in Sports Media</a> can give you the edge you need to get ahead.</p>
+			<p class="action-item"><a href="/who_should_write_for_br">Apply Now</a></p>
+		</div>
+		<div id="popular-topics" class="footer-module">
+			<div class="footer-header">
+				<h4>Popular Topics</h4>
+			</div>
+			<ul>
+													<li><a href="http://bleacherreport.com/articles/1970832-2014-nfl-mock-draft-post-combine-update">2014 NFL Mock Draft</a></li>
+									<li><a href="http://bleacherreport.com/articles/1904716-nfl-power-rankings-where-does-every-team-stand-at-seasons-end">NFL Power Rankings</a></li>
+									<li><a href="http://bleacherreport.com/articles/1966591-nba-power-rankings-post-trade-deadline-standings-for-all-30-teams">NBA Power Rankings</a></li>
+									<li><a href="http://bleacherreport.com/articles/1956771-2014-nba-mock-draft-projecting-entire-first-round-pre-trade-deadline">2014 NBA Mock Draft</a></li>
+									<li><a href="http://bleacherreport.com/articles/1949461-br-nfl-1000-top-70-guards">NFL 1000</a></li>
+									<li><a href="http://bleacherreport.com/articles/1985629-nfl-free-agents-2014-final-top-100-position-by-position-big-board">NFL Free Agency</a></li>
+									<li><a href="http://bleacherreport.com/articles/1989038-printable-ncaa-tournament-bracket-2014-where-to-download-complete-bracket">NCAA Tournament Bracket</a></li>
+							</ul>
+		</div>
+		<div id="copyright" class="footer-module">
+			<a href="http://www.turner.com" id="corporate-logo">Turner</a>
+			<p>
+				Copyright &copy; 2014 Bleacher Report, Inc. Turner Broadcasting System, Inc. All Rights Reserved.
+				BleacherReport.com is part of Bleacher Report - Turner Sports Network, part of the Turner Sports and Entertainment Network.
+				Certain photos copyright &copy; 2014 by Getty Images.
+				Any commercial use or distribution without the express written consent of Getty Images is strictly prohibited.
+			</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="inner">
+		<ul id="toes">
+			<li><a href="/about">About</a></li>
+			<li><a href="http://blog.bleacherreport.com">Blog</a></li>
+			<li><a href="/contact">Contact Us</a>
+			<li><a href="/careers">Careers</a>
+			<li><a href="/pages/comguidelines">Community Guidelines</a></li>
+			<li><a href="/pages/privacy" rel="nofollow">Privacy</a></li>
+						<li><a href="/pages/terms" rel="nofollow">Terms of Use</a></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>
+
+
+
+<script>
+BR.sign_up_template = "\t<div class=\"sign_up_container\">\n\t\t<div class=\"sign_up_side\">\n\t\t\t<h4>Sign up through Facebook</h4>\n\t\t\t<ul>\n\t\t\t\t<li>Follow your Facebook friends on Bleacher Report</li>\n\t\t\t\t<li>Share your articles, comments, and more with friends</li>\n\t\t\t</ul>\n\t\t\t<img alt=\"Connect with Facebook\" class=\"facebook_connect png-fix\" height=\"23\" src=\"http://static2.bleacherreport.net/images/redesign/facebook/connect.png?1395056754\" width=\"193\" />\n\t\t</div>\n\n\t\t<div class=\"sign_up_body\">\n\t\t\t<div id=\"join_bleacher_report\">\n\t\t\t\t<h4>Join Bleacher Report</h4>\n\t\t\t\t<p id=\"hat_sign_up_required\" class=\"alert\">You must register in order for that functionality to work!</p>\n\t\t\t\t<ul>\n\t\t\t\t\t<form action=\"/account/create_from_hat\" id=\"hat_signup_form\" method=\"post\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"br-hat-sign-up-first_name\">First Name <em>(required)</em></label>\n\t\t\t\t\t\t\t<input class=\"text medium-text\" name=\"first_name\" id=\"br-hat-sign-up-first_name\">\n\t\t\t\t\t\t\t<div class=\"signup_errors\" id=\"first_name_errors\"></div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"br-hat-sign-up-last_name\">Last Name <em>(required)</em></label>\n\t\t\t\t\t\t\t<input class=\"text medium-text\" name=\"last_name\" id=\"br-hat-sign-up-last_name\">\n\t\t\t\t\t\t\t<div class=\"signup_errors\" id=\"last_name_errors\"></div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"br-hat-sign-up-email\">Email <em>(required)</em></label>\n\t\t\t\t\t\t\t<input type=\"email\" class=\"text medium-text\" name=\"email\" id=\"br-hat-sign-up-email\">\n\t\t\t\t\t\t\t<div class=\"signup_errors\" id=\"email_errors\"></div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"br-hat-sign-up-password\">Password <em>(required)</em></label>\n\t\t\t\t\t\t\t<input type=\"password\" class=\"text medium-text\" name=\"password\" id=\"br-hat-sign-up-password\">\n\t\t\t\t\t\t\t<div class=\"signup_errors\" id=\"password_errors\"></div>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"br-hat-sign-up-password_confirmation\">Confirm Password <em>(required)</em></label>\n\t\t\t\t\t\t\t<input type=\"password\" class=\"text medium-text\" name=\"password_confirmation\" id=\"br-hat-sign-up-password_confirmation\">\n\t\t\t\t\t\t\t<div class=\"signup_errors\" id=\"password_confirmation_errors\"></div>\n\t\t\t\t\t\t\t<input name=\"comment\" id=\"br-hat-sign-up-comment\">\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li id=\"hat_sign_up_captcha\">\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<span id=\"hat_signup_submit\" class=\"medium-orange button\">Sign Up</span>\n\t\t\t\t\t\t\t<input type=\"submit\" value=\"\" style=\"display:none\" />\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"sign-up-tos\">By clicking on 'Sign Up' above, you confirm that you have accepted the <a href=\"/pages/terms\" target=\"_blank\">Terms of Service</a>.</li>\n\t\t\t\t\t\t<input type=\"hidden\" id=\"hat_comment_body\" name=\"comment_body\">\n\t\t\t\t\t\t<input type=\"hidden\" id=\"hat_comment_article_id\" name=\"comment_article_id\">\n\t\t\t\t\t\t<input type=\"hidden\" id=\"hat_comment_parent_id\" name=\"comment_parent_id\">\n\t\t\t\t\t\t<input type=\"hidden\" name=\"current_href\">\n\t\t\t\t\t</form>\n\t\t\t\t</ul>\n\t\t\t</div><!-- end of sign up main, join edition -->\n\t\t\n\t\t\t<div id=\"log_in_to_bleacher_report\">\n\t\t\t\t<h4>Log in to Bleacher Report</h4>\n\t\t\t\t<div id=\"login_message\"></div>\n\t\t\t\t<ul>\n\t\t\t\t\t<form id=\"login_form\" action=\"/login\" method=\"post\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"hat_log_in_email\">Email</label>\n\t\t\t\t\t\t\t<input type=\"email\" class=\"text medium-text\" name=\"user[email]\" id=\"hat_log_in_email\">\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"hat_log_in_password\">Password</label>\n\t\t\t\t\t\t\t<input type=\"password\" class=\"text medium-text\" name=\"user[password]\" id=\"hat_log_in_password\">\n\t\t\t\t\t\t\t<a href=\"#\" class=\"forgot-password-link\">Forgot password?</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li><input id=\"login_button\" type=\"submit\" value=\"Log In\" class=\"medium-orange button\"></li>\n\t\t\t\t\t</form>\n\t\t\t\t</ul>\n\t\t\t\n\t\t\t\t<ul id=\"change-password\">\n\t\t\t\t\t<h4>Change your password</h4>\n\t\t\t\t\t<form action=\"/accounts/forgot_password\" method=\"post\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<label for=\"email\">Email Address</label>\n\t\t\t\t\t\t\t<input id=\"email\" name=\"email\" type=\"email\" class=\"text medium-text\">\n\t\t\t\t\t\t\t<a href=\"#\" class=\"forgot-password-link\">I know my password.</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li><input type=\"submit\" value=\"Change password\" class=\"medium-orange button\"></li>\n\t\t\t\t\t</form>\n\t\t\t\t</ul>\n\t\t\t</div><!-- end of sign up main, log in edition -->\n\t\t</div>\n\t</div>\n";
+</script>
+
+<div id="nav-dropdown-template" class="nav-dropdown">
+	<div class="nav-columns-wrapper">
+		<div class="nav-columns"></div>
+	</div>
+</div>
+
+<div id="nav-tabbed-dropdown-template" class="nav-dropdown">
+	<div class="tab-list-container">
+		<ul>
+			<li class="all-link"></li>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>
+
+<div id="tab-container-template" class="tab-container">
+	<div class="nav-columns-wrapper">
+		<div class="nav-columns"></div>
+	</div>
+</div>
+
+<div id="nav-column-template" class="nav-column">
+	<h3></h3>
+	<ul>
+		<li></li>
+	</ul>
+</div>
+
+<div id="sub-nav-dropdown-template" class="sub-nav-dropdown">
+	<div class="nav-columns-wrapper">
+		<div class="nav-columns"></div>
+	</div>
+</div>
+
+<div id="tooltip">
+	<div class="body png-fix"></div>
+	<div class="right png-fix"></div>
+</div>
+
+
+
+	
+<div id="br-ad-5" class="br-ad" data-position="5" data-reload="2" data-size="[[3,3]]"></div>
+
+
+<script>
+    BR.api_url 		 = "http://api.bleacherreport.com/api/v1";
+    BR.env         	 = "production";
+    BR.server_home 	 = "/home/deploy";
+    BR.tag_permalink = "world-football";
+    BR.from_social   = false;
+
+    
+    BR.serverData = {
+        env                  : "production",
+        server_home          : "/home/deploy",
+        api_url              : "http://api.bleacherreport.com/api/v1",
+        base_url             : BR.PageData.url_hierarchy_level_1,
+        request_scheme       : "http",
+        embedded             : false,
+        hide_related_content : false,
+        cnn                  : false,
+        cnn_app              : false,
+        ngtv                 : false,
+        country              : "",
+        from_social          : false
+    }
+</script>
+
+<script>
+    (function (d,s,id) {
+        var t, js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js=d.createElement(s); js.id=id;
+        js.src="//player.ooyala.com/v3/MDYzZmYzZjIwNTA0YjI4Y2YyM2JmNTgw?amp;platform=html5-fallback";
+        js.onload = js.onreadystatechange = function(){
+            var ev;
+
+            js.onreadystatechange = js.onload = null;
+
+            try {
+                ev = new Event('ooyalaLoaded');
+            }
+            catch(e) {
+                ev = document.createEvent('Event');
+                ev.initEvent('ooyalaLoaded', true, true);
+            }
+
+            document.dispatchEvent(ev);
+        };
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, "script", "ooyala-pscript"));
+</script>
+
+	<script src="http://static2.bleacherreport.net/pkg/javascripts/29a80018_redesign_common.js"></script>
+	<script src="http://static2.bleacherreport.net/pkg/javascripts/7f77cb7f_redesign_marionette_common.js"></script>
+
+	
+  
+    
+        
+    
+        <script src="http://static2.bleacherreport.net/pkg/javascripts/43e53af6_redesign_front_page.js"></script>
+    
+
+
+	
+	<script>
+		$('body').addClass('league-page');
+
+			</script>
+
+	<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return window.twttr; js=d.createElement(s); js.id=id;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+	<script>
+	  BR.tag    = {};
+		BR.tag.id = 20;
+	</script>
+    <script>
+      BR.signup_tag = {};
+      BR.signup_tag.id = 20;
+      BR.signup_tag.type = "League";
+      BR.signup_tag.permalink = 'world-football';
+      BR.signup_tag.hide_newsletter_signup = false;
+      BR.signup_tag.facebook_page = "BRWorldFootball";
+      
+        BR.signup_tag.twitter_account = 'BR_Soccer';
+      
+
+      BR.asocial_promo_enabled = true;
+      BR.facebook_like_popup_enabled = false;
+
+      if(BR.cnn || BR.front_page_survey) {
+        BR.facebook_like_popup_enabled = false;
+      }
+
+      
+    </script>
+
+    <script src="http://static2.bleacherreport.net/pkg/javascripts/f18e2869_redesign_newsletter_signup.js"></script>
+    <script src="http://static2.bleacherreport.net/pkg/javascripts/02b3da46_redesign_newsletter_controller.js"></script>
+  
+	<script src="http://static2.bleacherreport.net/pkg/javascripts/635bc589_redesign_scores_turner.js"></script>
+	<script>
+		$(function(){
+			BR.Scores.scoreline = new BR.Scores.Scoreboard.Views.Scoreline({container: 'section#scoreline'});
+		});
+	</script>
+
+<script>
+	BR.environment = "production";
+	BR.imagePrefix = ""
+</script>
+
+
+<div id="kiosk-container"></div>
+<!--[if IE]>
+	<script src="http://static2.bleacherreport.net/pkg/javascripts/31c7ab2a_redesign_ie.js"></script>
+<![endif]-->
+
+<!--[if IE 6]>
+	<script src="http://static2.bleacherreport.net/pkg/javascripts/03d493b6_redesign_ie6.js"></script>
+  <script>DD_belatedPNG.fix("#header-logo,.caption-overlay");</script>
+<![endif]-->
+
+<script>
+	BR.timedConfig = {"uber_module":true,"puggernaut":false,"slideshows_ready":false,"comments_count_display":25,"iphone_promo":true,"tablet_app_promo":true,"new_url_cutoff_date":"2012/01/12","reprocess_photo_delay":10};
+</script>
+
+  				<script>
+		  (function () {
+		    var d = new Image(1, 1);
+		    d.onerror = d.onload = function () {
+		      d.onerror = d.onload = null;
+		    };
+		    d.src = ["//secure-us.imrworldwide.com/cgi-bin/m?ci=us-204044h&cg=0&cc=1&si=", escape(window.location.href), "&rp=", escape(document.referrer), "&ts=compact&rnd=", (new Date()).getTime()].join('');
+		  })();
+		</script>
+		<noscript>
+		  <div>
+		    <img src="//secure-us.imrworldwide.com/cgi-bin/m?ci=us-204044h&amp;cg=0&amp;cc=1&amp;ts=noscript" width="1" height="1" alt="" />
+		  </div>
+		</noscript>
+
+	  		  				<script>
+  var _sf_async_config={};
+
+  _sf_async_config.authors      = BR.PageData.writer;
+  _sf_async_config.domain       = 'bleacherreport.com';
+  _sf_async_config.uid          = 45648;
+  _sf_async_config.useCanonical = true;
+
+  if(BR.cobrand) {
+    _sf_async_config.sections = (BR.PageData.league ? BR.PageData.league : BR.PageData.site) + ',cobrand';
+  } else {
+    _sf_async_config.sections = BR.PageData.site + ',br';
+  }
+
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement('script');
+      e.setAttribute('language', 'javascript');
+      e.setAttribute('type', 'text/javascript');
+      e.setAttribute('src',
+         (('https:' == document.location.protocol) ? 'https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/' : 'http://static.chartbeat.com/') +
+         'js/chartbeat.js');
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != 'function') ?
+       loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+</script>
+
+					  
+
+<script>
+      var s_account = "sidbleacherreport";
+  </script>
+
+    <script src="http://static2.bleacherreport.net/pkg/javascripts/6ebac7a2_redesign_omniture.js"></script>
+
+<noscript>
+  <img src="http://analytics.bleacherreport.com/b/ss/sidbleacherreport/1/H.25.2--NS/0" width="1" height="1" alt="">
+</noscript>
+
+
+<div id="pixels">
+	
+</div>
+
+	<script>
+	(function() {
+		var gads = document.createElement('script');
+		gads.async = true;
+		gads.type = 'text/javascript';
+		var useSSL = 'https:' == document.location.protocol;
+		gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+		var node = document.getElementsByTagName('head')[0];
+		node.parentNode.insertBefore(gads, node);
+	})();
+</script>
+
+
+<script>
+  if(BR.MarionetteApplication) {
+      
+      BR.MarionetteApplication.start();
+  }
+</script>
+
+<!-- generated at: 03/17/2014 at 09:55 PM -->
+</body>
+</html>
