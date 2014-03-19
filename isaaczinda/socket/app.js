@@ -5,21 +5,39 @@ var fs = require('fs')
 app.listen(443);
 
 function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+  if(req.url == "/JQuery.js" || req.url == "JQuery.js")
+  {
+    fs.readFile(__dirname + '/JQuery.js',
+    function (err, data) {
+      if (err) {
+        res.writeHead(500);
+        return res.end('Error loading JQuery.js');
+      }
 
-    res.writeHead(200);
-    res.end(data);
-  });
+      res.writeHead(200);
+      res.end(data);
+    });
+  }
+  else
+  {
+    fs.readFile(__dirname + '/index.html',
+    function (err, data) {
+      if (err) {
+        res.writeHead(500);
+        return res.end('Error loading index.html');
+      }
+
+      res.writeHead(200);
+      res.end(data);
+    });
+  }
 }
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+io.sockets.on('connection', function (socket) 
+{
+  socket.on('update', function (data) 
+  {
+    //send message to all clients
+    io.sockets.emit('serve', data);
   });
 });
