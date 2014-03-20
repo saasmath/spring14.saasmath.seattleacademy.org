@@ -11,6 +11,18 @@
             .score{
                 font-size: 45px;
             }
+            .kewlbutton{
+                background-color: turquoise;
+                color: purple;
+            }
+            .coolbutton{
+                background-color: purple;
+                color: rgb(138,255,65)
+            }
+            .swagbutton{
+                background-color: red;
+                color: white;
+            }
         </style>
  
         <script src="../js/jquery.js"></script>
@@ -23,14 +35,20 @@
                     //console.log(e);
                     var currentScore = $("#homescore").text();
                     //console.log(currentScore);
-                    $("#homescore").text(currentScore * 1 + 1);
+                    $("#homescore").text(currentScore * 1 + 2);
 
                 });
                     $("#puthome").click(function() {
                     console.log("puthome");
                     $("#hometable").load("http://saasmath.seattleacademy.org/day47table.html #myclasses");
                 });
-              });
+                $("#button").click(function() {
+                    //console.log("button");
+                    //var numbarz = $("#homescore").text();
+                    //console.log(numbarz);
+                    $("#homescore").text(0);
+                });
+            });
             
         </script>
  
@@ -39,12 +57,15 @@
     <body>
         <div class="container">
             <div class="row">
-                <button id="clickme" class="btn btn-primary">Click Me!</button>
+                <button id="clickme" class="btn btn-primary kewlbutton">Click This CuhzZz</button>
             </div>
- 
+            <div class="row">
+                <button id="button" class="btn btn-primary swagbutton">Tres Buton Yo</button>
+            </div>
+                
             <div id="homescore" class="score">55</div>
             <div class="row">
-                <button id="puthome" class="btn btn-primary">Put home</button>
+                <button id="puthome" class="btn btn-primary coolbutton">GARY</button>
             </div>        
             <div class="row" id="hometable">
  

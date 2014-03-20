@@ -11,6 +11,14 @@
             .score{
                 font-size: 45px;
             }
+            #myclasses{
+                color: #3377af;
+                float-down:50px;
+            }
+            
+                #clickme{
+                    margin-top: 20px;
+                }
         </style>
  
         <script src="../js/jquery.js"></script>
@@ -28,9 +36,10 @@
                
         $("#puthome").click(function() {
                     console.log("puthome");
-                    $("#hometable").load("http://saasmath.seattleacademy.org/day47table.html #myclasses");
+                    $("#hometable").load("day47table.html #myclasses");
                 });
-                        
+                
+                
                  $("body").on("click","tr", function() {
                     console.log(this);
                     $(this).toggleClass("success");

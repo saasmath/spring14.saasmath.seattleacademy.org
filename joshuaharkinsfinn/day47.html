@@ -18,45 +18,50 @@ and open the template in the editor.
                 font-size: 45px;
             }
         </style>
- 
+
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
                 console.log('hello world');
-                
-                $("#clickme").click(function(e){
+
+                $("#clickme").click(function(e) {
                     //console.log(e);
                     var currentScore = $("#homescore").text();
                     //console.log(currentScore);
-                    $("#homescore").text(currentScore*1+1);
+                    $("#homescore").text(currentScore * 1 + 1);
                 });
-                 $("#puthome").click(function() {
+                $("#puthome").click(function() {
                     console.log("puthome");
                     $("#hometable").load("http://saasmath.seattleacademy.org/day47table.html #myclasses");
                 });
-                   $("body").on("click","tr", function() {
+                $("body").on("click", "tr", function() {
                     console.log(this);
                     $(this).toggleClass("success");
                 });
+                $(document).ready(function() {
+                    $('div').mouseenter(function() {
+                        $('div').fadeOut('slow', 0.8);
+                    });
+                });
             });
-            
+
         </script>
- 
+
     </head>
- 
+
     <body>
         <div class="container">
             <div class="row">
                 <button id="clickme" class="btn btn-primary">Click Me!</button>
             </div>
- 
+
             <div id="homescore" class="score">55</div>
             <div class="row">
                 <button id="puthome" class="btn btn-primary">Put home</button>
             </div>        
             <div class="row" id="hometable">
- 
+
             </div>
         </div>
     </body>

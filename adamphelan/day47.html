@@ -25,22 +25,11 @@
                     $("#homescore").text(currentScore * 1 + 1);
                 });
 
-                var Hidden = 1;
+                
                 $("#puthome").click(function() {
-                    if(Hidden == 1)
-                    {
-                        Hidden = 0;
-                        $("#hometable").load("http://saasmath.seattleacademy.org/adamphelan/day44.html");
-                    }
-                    
-                    {
-                        Hidden = 1;
-                         $(".hometable").hide("http://saasmath.seattleacademy.org/adamphelan/day44.html");
-                    }
-                    }
                     console.log("puthome");
-                    
-                    
+                    $("#hometable").load("http://saasmath.seattleacademy.org/adamphelan/day44.html");
+                    $("#hometable").slideUp();
                 });
 
                 $("body").on("click", "tr", function() {

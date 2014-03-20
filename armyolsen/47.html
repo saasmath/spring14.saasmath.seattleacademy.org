@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,46 +13,61 @@
                 font-size: 45px;
             }
         </style>
- 
+
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script>
-            $(document).ready(function(e)) {
+            $(document).ready(function() {
                 console.log('hello world');
-            $("#clickme").click(function() {
+
+                $("#clickme").click(function(e) {
+                    //console.log(e);
                     var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 33);
+                    //console.log(currentScore);
+                    $("#homescore").text(currentScore * 1 + 1);
                 });
-   
- $("#puthome").click function {
-              (      console.log("puthome");
+
+                $("#puthome").click(function() {
+                    console.log("puthome");
                     $("#hometable").load("http://saasmath.seattleacademy.org/day47table.html #myclasses");
                 });
-            
-    $("body").on("click","tr", function() {
+
+                $("body").on("click", "tr", function() {
                     console.log(this);
                     $(this).toggleClass("success");
                 });
-    });
-            
-            
+                $('.btn').mouseenter(function() {
+                    $(this).animate({
+                        height: '+=10px'
+                    });
+                });
+                $('.btn').mouseleave(function() {
+                    $(this).animate({
+                        height: '-=10px'
+                    });
+                });
+
+            });
         </script>
- 
+
     </head>
- 
+
     <body>
         <div class="container">
             <div class="row">
                 <button id="clickme" class="btn btn-primary">Click Me!</button>
             </div>
- 
+
             <div id="homescore" class="score">55</div>
             <div class="row">
                 <button id="puthome" class="btn btn-primary">Put home</button>
             </div>        
             <div class="row" id="hometable">
- 
+
             </div>
         </div>
+        <a href="http://www.funny-games.biz/boxhead2playrooms.html"> 
+            <img src="http://s3.amazonaws.com/codecademy-blog/assets/f3a16fb6.jpg" /> 
+        </a> 
     </body>
 </html>
