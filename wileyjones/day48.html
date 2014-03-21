@@ -8,15 +8,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
-                
-                $('.homefouls').click(function(event) {
-                    var homesteals = $ (this) .text();
-                    $(this).text(homesteals * 1 + 1);
-                    var homefouls = $("#homesteals").text();
-                    $("#homesteals").text(homefouls * 1 + 2);
-                       
-                });
-                        
 
                 $('.hometwopoint').click(function(event) {
                     //console.log(event);
@@ -24,20 +15,6 @@
                     $(this).text(currentScore * 1 + 2);
                     var currentScore = $("#homescore").text();
                     $("#homescore").text(currentScore * 1 + 2);
-                });
-                       $('.homethreepoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 3);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 3);
-                });
-                 $('.homefreethrow').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 1);
                 });
 
                 $('.awaytwopoint').click(function(event) {
@@ -47,19 +24,21 @@
                     var currentScore = $("#visitingscore").text();
                     $("#visitingscore").text(currentScore * 1 + 2);
                 });
-                 $('.awaythreepoint').click(function(event) {
+                
+                $('.homethreepoint').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 3);
+                    var currentScore = $("#homescore").text();
+                    $("#homescore").text(currentScore * 1 + 3);
+                });
+                
+                $('.awaythreepoint').click(function(event) {
                     //console.log(event);
                     var currentScore = $(this).text();
                     $(this).text(currentScore * 1 + 3);
                     var currentScore = $("#visitingscore").text();
                     $("#visitingscore").text(currentScore * 1 + 3);
-                });
-                 $('.awayfreethrow').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#visitingscore").text();
-                    $("#visitingscore").text(currentScore * 1 + 1);
                 });
 
             });
@@ -75,7 +54,7 @@
             }
             .homestats2{
                 background-color: rgb(42, 104, 154);
-                color: black;
+                color: white;
             }
             .awaystats2{
                 background-color: rgb(255,202,35);
@@ -99,6 +78,25 @@
 
             .advertisment{
                 background-color: #81efbc;
+            }
+
+
+
+
+            .teamastats{
+                background-color: rgb(42,104,154);
+                color: white;
+            }
+            .teamstattitle{
+                background: rgb(200,200,200); 
+                color: black;
+                font-size: 15px;
+            }
+            .teambstats{
+                background-color: #FFCA23;
+            }
+            .period{
+                background-color: #E9E9E9;
             }
 
         </style>
@@ -126,7 +124,7 @@
                 </div>
                 <div class="col-xs-2 text-center">
                     <div class="score">1:03</div>
-                    <div>period 2</div>
+                    <div class="period">Period: 2</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
@@ -150,16 +148,16 @@
             <div class="row">
                 <div class="col-xs-3">
                     <div class="homestats2">
-                        <h3>Team Percentages</h3>
+                        <h3 class="teamstattitle">Team Percentages</h3>
                         <div>Field Goal%: <span id="homeFTper">0</span></div>
                         <div>3 point %: 0</div>
                         <div>Free throw %: 0</div>
-                        <h3>Team Statistics</h3>
+                        <h3 class="teamstattitle">Team Statistics</h3>
                         <div>Turnover Points: 0</div>
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div id="homesteals">Steals: 0</div>
+                        <div>Steals: 0</div>
                     </div>
                 </div>
                 <div class="col-xs-6">
@@ -167,28 +165,28 @@
                 </div>
                 <div class="col-xs-3 awaystats">
                     <div class="awaystats2">
-                        <h3 class>Team Percentages</h3>
+                        <h3 class="teamstattitle">Team Percentages</h3>
                         <div>Field Goal%: <span id="visitingFTper">0</span></div>
                         <div>3 point %: 0</div>
                         <div>Free throw %: 0</div>
-                        <h3>Team Statistics</h3>
+                        <h3 class="teamstattitle">Team Statistics</h3>
                         <div>Turnover Points: 0</div>
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0 </div>
+                        <div>Steals: 0</div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 text-center">
+                <div class="col-xs-12 text-center period">
                     Player Statistics
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 text-center">
                     <!--Team 1 table-->
-                    <table class = "table1 tableformat" border="1">
+                    <table class = "table1 tableformat homestats2" border="1">
                         <thead>
                             <tr>
                                 <th>Players</th>
@@ -208,18 +206,18 @@
                                 <td>Home player 1</td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
-                                <td class="homefreethrow">0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td class="homefouls">0</td>
+                                <td>0</td>
+                                <td>0</td>
                                 <td>0</td>
                             </tr>
                             <tr>
                                 <td>Home player  2</td>
                                 <td class="hometwopoint">0</td>
-                                <td>0</td>
+                                <td class="homethreepoint">0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -234,7 +232,7 @@
 
                 </div>
                 <div class="col-xs-6 text-center">
-                    <table class = "table2 tableformat" border="1">
+                    <table class = "table2 tableformat awaystats2" border="1">
                         <thead>
                             <tr>
                                 <th>Players</th>
@@ -254,7 +252,7 @@
                                 <td>Visiting Player 1</td>
                                 <td class="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
-                                <td class="awayfreethrow">0</td>
+                                <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -264,6 +262,8 @@
                             </tr>
                             <tr>
                                 <td>Visiting Player 2</td>
+                                <td class="awaytwopoint">0</td>
+                                <td class="awaythreepoint">0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -271,8 +271,6 @@
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
-                                <td>0<td>
                             </tr>
                         </tbody>
                     </table>

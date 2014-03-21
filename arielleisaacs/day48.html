@@ -8,16 +8,7 @@
         <script src="../js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
-                
-                $('.homefouls').click(function(event) {
-                    var homesteals = $ (this) .text();
-                    $(this).text(homesteals * 1 + 1);
-                    var homefouls = $("#homesteals").text();
-                    $("#homesteals").text(homefouls * 1 + 2);
-                       
-                });
-                        
-
+ 
                 $('.hometwopoint').click(function(event) {
                     //console.log(event);
                     var currentScore = $(this).text();
@@ -25,21 +16,7 @@
                     var currentScore = $("#homescore").text();
                     $("#homescore").text(currentScore * 1 + 2);
                 });
-                       $('.homethreepoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 3);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 3);
-                });
-                 $('.homefreethrow').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 1);
-                });
-
+                
                 $('.awaytwopoint').click(function(event) {
                     //console.log(event);
                     var currentScore = $(this).text();
@@ -47,23 +24,99 @@
                     var currentScore = $("#visitingscore").text();
                     $("#visitingscore").text(currentScore * 1 + 2);
                 });
-                 $('.awaythreepoint').click(function(event) {
+ 
+                $('.homethreepoint').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 3);
+                    var currentScore = $("#homescore").text();
+                    $("#homescore").text(currentScore * 1 + 3);
+                });
+ 
+                $('.awaythreepoint').click(function(event) {
                     //console.log(event);
                     var currentScore = $(this).text();
                     $(this).text(currentScore * 1 + 3);
                     var currentScore = $("#visitingscore").text();
                     $("#visitingscore").text(currentScore * 1 + 3);
                 });
-                 $('.awayfreethrow').click(function(event) {
+ 
+                $('.homefreethrow').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                    var currentScore = $("#homescore").text();
+                    $("#homescore").text(currentScore * 1 + 1);
+                });
+                
+                $('.awayfreethrow').click(function(event) {
                     //console.log(event);
                     var currentScore = $(this).text();
                     $(this).text(currentScore * 1 + 1);
                     var currentScore = $("#visitingscore").text();
                     $("#visitingscore").text(currentScore * 1 + 1);
                 });
-
+                
+                $('.homerebound').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
+                $('.awayrebound').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
+                $('.homeassists').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
+                $('.awayassists').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
+                $('.homesteals').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                    var currentScore = $("#homest").text();
+                    $("#homest").text(currentScore * 1 + 1);
+                });
+                $('.awaysteals').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                    var currentScore = $("#awayst").text();
+                    $("#awayst").text(currentScore * 1 + 1);
+                });
+                $('.homepf').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                    var currentScore = $("#homefoul").text();
+                    $("#homefoul").text(currentScore * 1 + 1);
+                });
+                $('.awaypf').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                    var currentScore = $("#awayfoul").text();
+                    $("#awayfoul").text(currentScore * 1 + 1);
+                });
+                $('.hometo').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
+                $('.awayto').click(function(event) {
+                    //console.log(event);
+                    var currentScore = $(this).text();
+                    $(this).text(currentScore * 1 + 1);
+                });
             });
-
+ 
         </script>
         <style>
             .tableformat{
@@ -81,7 +134,7 @@
                 background-color: rgb(255,202,35);
                 color: black;
             }
-
+ 
             .teamname {
                 background-color:#000000; /* black in hex */
                 color: rgb(255,255,255); /* white text in rgb */
@@ -96,18 +149,18 @@
             .court{
                 height:300px;
             }
-
+ 
             .advertisment{
                 background-color: #81efbc;
             }
-
+ 
         </style>
     </head>
-
+ 
     <body>
         <div class="container">
             <div class="row">
-
+ 
                 <div class="col-xs-4 col-sm-offset-4 advertisment">
                     <h3>Cybersport available now!</h3>
                     <div>Here is the content!</div>
@@ -120,9 +173,9 @@
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>2</div>
+                    <div><span id="homefoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>5</div>
+                    <div>3</div>
                 </div>
                 <div class="col-xs-2 text-center">
                     <div class="score">1:03</div>
@@ -130,9 +183,9 @@
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>4</div>
+                    <div><span id="awayfoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>2</div>
+                    <div>3</div>
                 </div>
                 <div class="col-xs-3">
                     <div class="teamname text-center">Seattle Academy</div>
@@ -159,7 +212,7 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div id="homesteals">Steals: 0</div>
+                        <div>Steals: <span id="homest">0</span></div>
                     </div>
                 </div>
                 <div class="col-xs-6">
@@ -176,7 +229,7 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0 </div>
+                        <div>Steals: <span id="awayst">0</span></div>
                     </div>
                 </div>
             </div>
@@ -209,29 +262,29 @@
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td class="homefouls">0</td>
+                                <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td>0</td>
                             </tr>
                             <tr>
                                 <td>Home player  2</td>
                                 <td class="hometwopoint">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="homethreepoint">0</td>
+                                <td class="homefreethrow">0</td>
+                                <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td>0</td>
                             </tr>
-
+ 
                         </tbody>
                     </table>
-
+ 
                 </div>
                 <div class="col-xs-6 text-center">
                     <table class = "table2 tableformat" border="1">
@@ -255,23 +308,23 @@
                                 <td class="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td> 
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
                                 <td>0</td>
                             </tr>
                             <tr>
                                 <td>Visiting Player 2</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awaytwopoint">0</td>
+                                <td class="awaythreepoint">0</td>
+                                <td class="awayfreethrow">0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td>
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
                                 <td>0<td>
                             </tr>
                         </tbody>
