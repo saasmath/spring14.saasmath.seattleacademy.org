@@ -1,0 +1,61 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'udp4' ]
+2 info using npm@1.4.4
+3 info using node@v0.11.12-pre
+4 verbose cache add [ 'udp4', null ]
+5 verbose cache add name=undefined spec="udp4" args=["udp4",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'udp4',
+6 verbose parsed url   path: 'udp4',
+6 verbose parsed url   href: 'udp4' }
+7 silly lockFile 5d56853d-udp4 udp4
+8 verbose lock udp4 /home/isaaczinda/.npm/5d56853d-udp4.lock
+9 silly lockFile 5d56853d-udp4 udp4
+10 silly lockFile 5d56853d-udp4 udp4
+11 verbose addNamed [ 'udp4', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 30548173-udp4 udp4@
+14 verbose lock udp4@ /home/isaaczinda/.npm/30548173-udp4.lock
+15 silly addNameRange { name: 'udp4', range: '*', hasData: false }
+16 verbose url raw udp4
+17 verbose url resolving [ 'https://registry.npmjs.org/', './udp4' ]
+18 verbose url resolved https://registry.npmjs.org/udp4
+19 info trying registry request attempt 1 at 10:19:49
+20 http GET https://registry.npmjs.org/udp4
+21 http 404 https://registry.npmjs.org/udp4
+22 silly registry.get cb [ 404,
+22 silly registry.get   { date: 'Tue, 25 Mar 2014 17:19:52 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B)',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     via: '1.1 varnish, 1.1 varnish',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '52',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     age: '0',
+22 silly registry.get     'x-served-by': 'cache-v41-ASH, cache-sv61-SJC3',
+22 silly registry.get     'x-cache': 'MISS, MISS',
+22 silly registry.get     'x-cache-hits': '0, 0',
+22 silly registry.get     'x-timer': 'S1395767992.467047691,VS0,VS-574,VE-459,VE189',
+22 silly registry.get     connection: 'close' } ]
+23 silly lockFile 30548173-udp4 udp4@
+24 silly lockFile 30548173-udp4 udp4@
+25 error 404 'udp4' is not in the npm registry.
+25 error 404 You should bug the author to publish it
+25 error 404
+25 error 404 Note that you can also install from a
+25 error 404 tarball, folder, or http url, or git url.
+26 error System Linux 3.0.0-32-server
+27 error command "node" "/usr/local/bin/npm" "install" "udp4"
+28 error cwd /var/www/isaaczinda/node
+29 error node -v v0.11.12-pre
+30 error npm -v 1.4.4
+31 error code E404
+32 verbose exit [ 1, true ]

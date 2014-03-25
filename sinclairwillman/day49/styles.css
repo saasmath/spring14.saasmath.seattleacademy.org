@@ -1,8 +1,7 @@
 .tableformat{
     width: 100%;
 }
-.courtimage{ 
-    background-image: url("stevebuscemi.jpg") 
+.courtimage{
     max-width:100%; 
     max-height:100%;
 }
@@ -21,6 +20,9 @@
 }  
 .score{
     font-size:45px;
+} 
+#timer{
+    font-size:45px;
 }
 .fouls{
     font-size:14px;
@@ -32,11 +34,4 @@
 
 .advertisment{
     background-color: #81efbc;
-}
-
-.shot{
-    background-color: greenyellow;
-    position: absolute;
-    width: 20;
-    height: 20;
 }

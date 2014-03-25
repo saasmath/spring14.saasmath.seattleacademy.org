@@ -6,49 +6,54 @@ $(document).ready(function() {
                 .css('top', event.offsetY)
                 .css('left', event.offsetX);
     });
-
     $('.hometwopoint').click(function(event) {
+        //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
         var currentScore = $("#homescore").text();
         $("#homescore").text(currentScore * 1 + 2);
+        console.log($(this).parent().children(".hometwopoint").text());
+        
     });
 
+    $('.awaytwopoint').click(function(event) {
+        //console.log(event);
+        var currentScore = $(this).text();
+        $(this).text(currentScore * 1 + 2);
+        var currentScore = $("#awayscore").text();
+        $("#awayscore").text(currentScore * 1 + 2);
+    });
     $('.homethreepoint').click(function(event) {
+        //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#homescore").text();
         $("#homescore").text(currentScore * 1 + 3);
+        console.log($(this).parent().children(".homethreepoint").text());
     });
-
-    $('.homefreethrow').click(function(event) {
-        //console.log(event);
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 1);
-        var currentScore = $("#homescore").text();
-        $("#homescore").text(currentScore * 1 + 1);
-    });
-
-    $('.awaytwopoint').click(function(event) {
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 2);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 2);
-    });
-
     $('.awaythreepoint').click(function(event) {
+        //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 3);
+        var currentScore = $("#awayscore").text();
+        $("#awayscore").text(currentScore * 1 + 3);
+    });
+    $('.awayplsteals').click(function(event) {
+        //console.log(event);
+        var currentSteals = $(this).text();
+        $(this).text(currentSteals * 1 + 1);
+        var currentSteals = $("#awaysteals").text();
+        $("#awaysteals").text(currentSteals * 1 + 1);
     });
 
-    $('.awayfreethrow').click(function(event) {
-        //console.log(event);
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 1);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 1);
+
+    $('.totalplpoints').click(function(event) {
+        console.log($('.active').parent().get(0));
+        var currentSteals = $(this).text();
+        $(this).text(currentSteals * 1 + 1);
+        var currentSteals = $("#awaysteals").text();
+        $("#awaysteals").text(currentSteals * 1 + 1);
     });
+
 
 });
