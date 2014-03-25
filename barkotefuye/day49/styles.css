@@ -1,0 +1,42 @@
+    .tableformat{
+                width: 100%;
+            }
+            .courtimage{
+                max-width:100%; 
+                max-height:100%;
+            }
+            .homestats2{
+                background-color: rgb(42, 104, 154);
+                color: black;
+            }
+            .awaystats2{
+                background-color: rgb(255,202,35);
+                color: black;
+            }
+ 
+            .teamname {
+                background-color:#000000; /* black in hex */
+                color: rgb(255,255,255); /* white text in rgb */
+            }  
+            .score{
+                font-size:45px;
+            }
+            .fouls{
+                font-size:14px;
+                background: rgb(200,200,200);
+            }
+            .court{
+                height:300px;
+            }
+ 
+            .advertisment{
+                background-color: #81efbc;
+            }
+            #home{
+                background-color:#cccccc;
+                border-color: #000000;      
+            }
+            #away{
+                background-color:#cccccc;
+                border-color: #000000; 
+            }

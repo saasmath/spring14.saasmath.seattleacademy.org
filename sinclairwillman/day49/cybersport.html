@@ -1,117 +1,22 @@
 <!DOCTYPE html>
 <html>
+    <!DOCTYPE html>
+<html>
     <head>
-        <title>Day 48</title>
+        <title>Day 49</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <script src="../js/jquery.js"></script>
-        <script src="../js/bootstrap.min.js"></script>
-        <script>
-            $(document).ready(function() {
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="scripts.js"></script>
 
-                $('.rebounds').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 1);
-                });
-
-                $('.hometwopoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 2);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 2);
-                });
-
-                $('.homethreepoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 3);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 3);
-                });
-
-                $('.homefreethrow').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#homescore").text();
-                    $("#homescore").text(currentScore * 1 + 1);
-                });
-
-                $('.visitingtwopoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 2);
-                    var currentScore = $("#visitingscore").text();
-                    $("#visitingscore").text(currentScore * 1 + 2);
-                });
-
-                $('.visitingthreepoint').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 3);
-                    var currentScore = $("#visitingscore").text();
-                    $("#visitingscore").text(currentScore * 1 + 3);
-                });
-
-                $('.visitingfreethrow').click(function(event) {
-                    //console.log(event);
-                    var currentScore = $(this).text();
-                    $(this).text(currentScore * 1 + 1);
-                    var currentScore = $("#visitingscore").text();
-                    $("#visitingscore").text(currentScore * 1 + 1);
-                });
-
-
-
-            });
-
-        </script>
-        <style>
-
-            .tableformat{
-                width: 100%;
-            }
-            .courtimage{
-                max-width:100%; 
-                max-height:100%;
-            }
-            .homestats2{
-                background-color: rgb(42, 104, 154);
-                color: black;
-            }
-            .awaystats2{
-                background-color: rgb(255,202,35);
-                color: black;
-            }
-
-            .teamname {
-                background-color:#000000; /* black in hex */
-                color: rgb(255,255,255); /* white text in rgb */
-            }  
-            .score{
-                font-size:45px;
-            }
-            .fouls{
-                font-size:14px;
-                background: rgb(200,200,200);
-            }
-            .court{
-                height:300px;
-            }
-
-            .advertisment{
-                background-color: #81efbc;
-            }
-
-        </style>
     </head>
 
     <body>
         <div class="container">
+            <div class="shot">shot</div>
             <div class="row">
 
                 <div class="col-xs-4 col-sm-offset-4 advertisment">
@@ -198,7 +103,7 @@
                         <thead>
                             <tr>
                                 <th>Players</th>
-                                <th>2P</th>
+                                <th>FG</th>
                                 <th>3P</th>
                                 <th>FT</th>
                                 <th>RB</th>
@@ -215,7 +120,7 @@
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td class="rebounds">0</td>
+                                <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -223,10 +128,10 @@
                                 <td>0</td>
                             </tr>
                             <tr>
+                                <td>Home player  2</td>
                                 <td class="hometwopoint">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="homethreepoint">0</td>
+                                <td class="homefreethrow">0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -244,7 +149,7 @@
                         <thead>
                             <tr>
                                 <th>Players</th>
-                                <th>2P</th>
+                                <th>FG</th>
                                 <th>3P</th>
                                 <th>FT</th>
                                 <th>RB</th>
@@ -258,10 +163,10 @@
                         <tbody>
                             <tr>
                                 <td>Visiting Player 1</td>
-                                <td class="visitingtwopoint">0</td>
-                                <td class="visitingthreepoint">0</td>
-                                <td class="visitingfreethrow">0</td>
-                                <td class="rebounds">0</td>
+                                <td class ="awaytwopoint">0</td>
+                                <td class="awaythreepoint">0</td>
+                                <td class="awayfreethrow">0</td>
+                                <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -270,15 +175,15 @@
                             </tr>
                             <tr>
                                 <td>Visiting Player 2</td>
+                                <td class ="awaytwopoint">0</td>
+                                <td class="awaythreepoint">0</td>
+                                <td class="awayfreethrow">0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0<td>
                             </tr>
                         </tbody>
                     </table>
