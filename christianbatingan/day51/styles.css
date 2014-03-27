@@ -7,14 +7,14 @@
     
 }
 .homestats2{
-    background-color: rgb(42, 104, 154);
-    color: white;
+    background-color: red;
+    color: orange;
     border: solid thin black;
     height: 350px;
 }
 .awaystats2{
-    background-color: rgb(255,201,75);
-    color: black;
+    background-color: red;
+    color: lightcoral;
     border: solid thin black;
     height: 350px;
 }
@@ -30,7 +30,7 @@
 }
 .fouls{
     font-size:14px;
-    background: rgb(200,200,200);
+    background: red;
     border:solid thin black;
     height: 100px;
 }
@@ -53,7 +53,7 @@
 h3 {
     
    background-color: rgb(204,204,204);
-                color: black;
+                color: brown;
                 text-align: center;
 }
 
@@ -66,7 +66,7 @@ h3 {
 .table1 {
     background-color: rgb(42, 104, 154);
     color: white;
-    border: solid thin black;
+    border: violet;
      width: 100%;
     
 }
@@ -74,7 +74,7 @@ h3 {
 .table2 {
     background-color: rgb(255,201,75);
     color: black;
-    border: solid thin black;
+    border: violet;
      width: 100%;
     
 }
@@ -93,7 +93,7 @@ h3 {
 }
 .period{
     background-color: #E9E9E9;
-    border: solid thin black;
+    border: violet;
 }
 
 .onlycourt {
@@ -104,14 +104,14 @@ h3 {
 .home {
     
     background-color: rgb(200,200,200); 
-     border: solid thin black;
+     border: violet;
      text-align: center;
     
 }
 
 .text-right {
     background-color: rgb(200,200,200); 
-     border: solid thin black;
+     border: violet;
      text-align: center; 
      
     
@@ -136,4 +136,3 @@ h6 {
     text-align: right;
     
 }
-

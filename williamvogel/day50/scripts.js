@@ -45,7 +45,7 @@ $(document).ready(function() {
         $(this).text(currentScore * 1 + 2);
         var currentScore = $("#visitingscore").text();
         $("#visitingscore").text(currentScore * 1 + 2);
-        addUpHomePoints(this);
+        
     });
 
     $('.awaythreepoint').click(function(event) {
@@ -53,7 +53,7 @@ $(document).ready(function() {
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#visitingscore").text();
         $("#visitingscore").text(currentScore * 1 + 3);
-        addUpHomePoints(this);
+        
     });
 
     $('.awayfreethrow').click(function(event) {
@@ -62,7 +62,7 @@ $(document).ready(function() {
         $(this).text(currentScore * 1 + 1);
         var currentScore = $("#visitingscore").text();
         $("#visitingscore").text(currentScore * 1 + 1);  
-        addUpHomePoints(this);
+        
     });
     $('.homerb').click(function(event) {
         //console.log(event);

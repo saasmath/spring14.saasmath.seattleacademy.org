@@ -1,3 +1,5 @@
+var dgram = require('dgram');
+
 var server = dgram.createSocket("udp4");
 
 server.on("error", function (err) {

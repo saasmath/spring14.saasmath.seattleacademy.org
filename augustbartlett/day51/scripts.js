@@ -5,12 +5,6 @@ $(document).ready(function() {
         console.log(event);
         $(".table1").find('tr:last').clone().appendTo(".table1");
     });
-    
-    $('#addvisitingplayer').click(function(event) {
-        console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
-    });
-    
     $('#addawayplayer').click(function(event) {
         console.log(event);
         $(".table2").find('tr:last').clone().appendTo(".table2");
@@ -34,8 +28,8 @@ $(document).ready(function() {
                 .css('top', event.offsetY)
                 .css('left', event.offsetX);
     });
-    
-    $(".table1").on( "click",".hometwopoint",function(event) {
+
+    $(".table1").on("click", ".hometwopoint", function(event) {
         console.log(event)
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
@@ -45,8 +39,9 @@ $(document).ready(function() {
         addUpHomePoints(this);
     });
 
-    $( ".table1" ).on( "click",".homethreepoint",function(event) {
-    //$('.homethreepoint').click(function(event) {
+    $(".table1").on("click", ".homethreepoint", function(event) {
+
+        //$('.homethreepoint').click(function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#homescore").text();
@@ -54,17 +49,8 @@ $(document).ready(function() {
         addUpHomePoints(this);
 
     });
-        $( ".table2" ).on( "click",".awaythreepoint",function(event) {
-    //$('.awaythreepoint').click(function(event) {
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 3);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 3);
-        addUpHomePoints(this);
-        
-        });
 
-    $('.homefreethrow').click(function(event) {
+    $(".table1").on("click", ".homefreethrow", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
@@ -74,7 +60,7 @@ $(document).ready(function() {
 
     });
 
-    $('.awaytwopoint').click(function(event) {
+    $(".table2").on("click", ".awaytwopoint", function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
         var currentScore = $("#visitingscore").text();
@@ -82,7 +68,7 @@ $(document).ready(function() {
         addUpAwayPoints(this);
     });
 
-    $('.awaythreepoint').click(function(event) {
+    $(".table2").on("click", ".awaythreepoint", function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#visitingscore").text();
@@ -90,7 +76,7 @@ $(document).ready(function() {
         addUpAwayPoints(this);
     });
 
-    $('.awayfreethrow').click(function(event) {
+    $(".table2").on("click", ".awayfreethrow", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
@@ -98,60 +84,60 @@ $(document).ready(function() {
         $("#visitingscore").text(currentScore * 1 + 1);
         addUpAwayPoints(this);
     });
-    $('.homerebound').click(function(event) {
+    $(".table1").on("click", ".homerebound", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
     });
-    $('.awayrebound').click(function(event) {
+    $(".table2").on("click", ".awayrebound", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
     });
-    $('.homeassists').click(function(event) {
+    $(".table1").on("click", ".homeassists", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
     });
-    $('.awayassists').click(function(event) {
+    $(".table2").on("click", ".awayassists", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
     });
-    $('.homesteals').click(function(event) {
+    $(".table1").on("click", ".homesteals", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
         var currentScore = $("#homest").text();
         $("#homest").text(currentScore * 1 + 1);
     });
-    $('.awaysteals').click(function(event) {
+    $(".table2").on("click", ".awaysteals", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
         var currentScore = $("#awayst").text();
         $("#awayst").text(currentScore * 1 + 1);
     });
-    $('.homepf').click(function(event) {
+    $(".table1").on("click", ".homepf", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
         var currentScore = $("#homefoul").text();
         $("#homefoul").text(currentScore * 1 + 1);
     });
-    $('.awaypf').click(function(event) {
+    $(".table2").on("click", ".awaypf", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
         var currentScore = $("#awayfoul").text();
         $("#awayfoul").text(currentScore * 1 + 1);
     });
-    $('.hometo').click(function(event) {
+    $(".table1").on("click", ".hometo", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
     });
-    $('.awayto').click(function(event) {
+    $(".table2").on("click", ".awayto", function(event) {
         //console.log(event);
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 1);
@@ -163,5 +149,3 @@ $(document).ready(function() {
     });
 
 });
-
-

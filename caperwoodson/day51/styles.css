@@ -1,0 +1,97 @@
+.tableformat{
+    width: 100%;
+}
+.courtimage{
+    max-width:100%; 
+    max-height:100%;
+}
+.homestats2{
+    background-color: orange;
+    color: white;
+}
+.awaystats2{
+    background-color: red;
+    color: black;
+}
+
+.teamname {
+    background-color:#000000; /* black in hex */
+    color: rgb(255,255,255); /* white text in rgb */
+}  
+.score{
+    font-size:45px;
+}
+.fouls{
+    font-size:14px;
+    background: rgb(200,200,200);
+}
+.court{
+    height:300px;
+}
+
+.advertisment{
+    background-color: #81efbc;
+}
+
+.shot{
+    background-color: greenyellow;
+    position: absolute;
+    padding: 0px 0px;
+    width: 15px;
+    height: 15px;
+}
+
+.teamastats{
+    background-color: rgb(42,104,154);
+    color: white;
+}
+.teamstattitle{
+    background: rgb(200,200,200); 
+    color: black;
+    font-size: 30px;
+}
+.teambstats{
+    background-color: red
+}
+.period{
+    background-color: #E9E9E9;
+}
+.row{
+    font-size: 15px;
+}
+.col-xs-6{
+    font-size: 30px
+}
+.awaytitle{
+    font-size: 35px;
+}
+.hometitle{
+    font-size: 35px;
+}
+.homeplayerstatstable{
+    background-color: dodgerblue;
+    border-color: green;
+    border-width: 10px
+}
+.awayplayerstatstable{
+    background-color: black;
+    border-top-width:
+    
+}
+.zlteamname{
+    background-color: orange;
+    font-size: 40px;    
+}
+.sateamname{
+    background-color: red;
+    font-size: 40px;
+}
+.score{
+    fontsize: 35px;
+}
+#homescore{
+    font-size: 40px;
+}
+.time{
+    font-size: 40px
+}

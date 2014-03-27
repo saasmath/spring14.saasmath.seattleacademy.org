@@ -1,19 +1,32 @@
 $(document).ready(function() {
+    var count = 1500;
+    var counter = setInterval(timer, 1000);
+    function timer()
+    {
+         var mins = ~~(timer / 60);
+        var secs = timer % 60;
+        count = count - 1;
+
+        $("#timer").html(count);
+       
+    }
+
+    $('#pausetimer').click(function() {
+        $('input').val("");
+        $('#correct').text("0");
+        $('#timer').text("0");
+        count = 0;
+
+    });
 
 
     $('#addhomeplayer').click(function(event) {
         console.log(event);
         $(".table1").find('tr:last').clone().appendTo(".table1");
     });
-    
     $('#addvisitingplayer').click(function(event) {
         console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
-    });
-    
-    $('#addawayplayer').click(function(event) {
-        console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
+        $(".table1").find('tr:last').clone().appendTo(".table1");
     });
 
     function addUpHomePoints(itemClicked) {
@@ -34,8 +47,8 @@ $(document).ready(function() {
                 .css('top', event.offsetY)
                 .css('left', event.offsetX);
     });
-    
-    $(".table1").on( "click",".hometwopoint",function(event) {
+
+    $(".table1").on("click", ".hometwopoint", function(event) {
         console.log(event)
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
@@ -44,9 +57,8 @@ $(document).ready(function() {
         //console.log($(this).parent().children(".hometwopoint").text());
         addUpHomePoints(this);
     });
-
-    $( ".table1" ).on( "click",".homethreepoint",function(event) {
-    //$('.homethreepoint').click(function(event) {
+    $(".table1").on("click", ".homethreepoint", function(event) {
+        //$('.homethreepoint').click(function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#homescore").text();
@@ -54,15 +66,6 @@ $(document).ready(function() {
         addUpHomePoints(this);
 
     });
-        $( ".table2" ).on( "click",".awaythreepoint",function(event) {
-    //$('.awaythreepoint').click(function(event) {
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 3);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 3);
-        addUpHomePoints(this);
-        
-        });
 
     $('.homefreethrow').click(function(event) {
         //console.log(event);
@@ -163,5 +166,3 @@ $(document).ready(function() {
     });
 
 });
-
-

@@ -1,9 +1,11 @@
 
 
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 50</title>
+        <title>Day 51</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
@@ -16,7 +18,6 @@
 
     <body>
         <div class="container">
-            <div class="shot">shot</div>
             <div class="row">
 
                 <div class="col-xs-4 col-sm-offset-4 advertisment">
@@ -27,35 +28,36 @@
             <div class="row">
                 <div class="col-xs-3 text-center">
                     <div class="row teamname ">Zillah Lepoards</div>
-                    <div class="row score text-center" id="homescore">26</div>
+                    <div class="row score text-center" id="homescore">0</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>2</div>
+                    <div><span id="homefoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>5</div>
+                    <div class="timeoutbutton">0</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <div class="score">1:03</div>
+                    <div class="score">15:00</div>
                     <div>period 2</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>4</div>
+                    <div><span id="awayfoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>2</div>
+                    <div class="timeoutbutton">0</div>
                 </div>
                 <div class="col-xs-3">
                     <div class="teamname text-center">Seattle Academy</div>
-                    <div class="score text-center" id="visitingscore">23</div>
+                    <div class="score text-center" id="visitingscore">0</div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6">
-                    <h6>home</h6>
+                <div class="col-xs-6 home">
+                    <h6>HOME</h6>
                 </div>
+               
                 <div class="col-xs-6 text-right">
-                    <h6>away</h6>
+                    <h6>AWAY</h6>
                 </div>
             </div>
             <div class="row">
@@ -70,7 +72,7 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0</div>
+                        <div>Steals: <span id="homest">0</span></div>
                     </div>
                 </div>
                 <div class="col-xs-6 onlycourt">
@@ -87,7 +89,7 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0</div>
+                        <div>Steals: <span id="awayst">0</span></div>
                     </div>
                 </div>
             </div>
@@ -116,32 +118,33 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Home player 1</td>
+                                <td><input type="text" name="playername" value="# First Player" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td class="playerpoints">0</td>
                             </tr>
                             <tr>
-                                <td>Home player  2</td>
+                                <td><input type="text" name="playername" value="# Player Name" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                 <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td class="playerpoints">0</td>
                             </tr>
 
                         </tbody>
                     </table>
+                    <button id="addhomeplayer">Add home player</button>
 
                 </div>
                 <div class="col-xs-6 text-center">
@@ -162,31 +165,32 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Visiting Player 1</td>
+                                <td><input type="text" name="playername" value="# First Player" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td>
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
+                                <td class="awayplayerpoints">0</td>
                             </tr>
                             <tr>
-                                <td>Visiting Player 2</td>
+                               <td><input type="text" name="playername" value="# Player Name" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td>
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
+                                <td class="awayplayerpoints">0</td>
                             </tr>
                         </tbody>
                     </table>
+                    <button id="addawayplayer">Add Away Player</button>
                 </div>
             </div>
         </div>

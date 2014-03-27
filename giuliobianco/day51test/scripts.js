@@ -1,19 +1,67 @@
 $(document).ready(function() {
+      (function() {
+
+    var $countdown;
+    var $form;
+    var incrementTime = 70;
+    var currentTime = 300000; // 5 minutes (in milliseconds)
+    
+    $(function() {
+
+        // Setup the timer
+        $countdown = $('#countdown');
+        Example2.Timer = $.timer(updateTimer, incrementTime, true);
+
+        // Setup form
+        $form = $('#example2form');
+        $form.bind('submit', function() {
+            Example2.resetCountdown();
+            return false;
+        });
+
+    });
+
+    function updateTimer() {
+
+        // Output timer position
+        var timeString = formatTime(currentTime);
+        $countdown.html(timeString);
+
+        // If timer is complete, trigger alert
+        if (currentTime == 0) {
+            Example2.Timer.stop();
+            alert('Example 2: Countdown timer complete!');
+            Example2.resetCountdown();
+            return;
+        }
+
+        // Increment timer position
+        currentTime -= incrementTime;
+        if (currentTime < 0) currentTime = 0;
+
+    }
+
+    this.resetCountdown = function() {
+
+        // Get time from form
+        var newTime = parseInt($form.find('input[type=text]').val()) * 1000;
+        if (newTime > 0) {currentTime = newTime;}
+
+        // Stop and reset timer
+        Example2.Timer.stop().once();
+
+    };
+
+});
 
 
     $('#addhomeplayer').click(function(event) {
         console.log(event);
         $(".table1").find('tr:last').clone().appendTo(".table1");
     });
-    
     $('#addvisitingplayer').click(function(event) {
         console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
-    });
-    
-    $('#addawayplayer').click(function(event) {
-        console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
+        $(".table1").find('tr:last').clone().appendTo(".table1");
     });
 
     function addUpHomePoints(itemClicked) {
@@ -34,8 +82,8 @@ $(document).ready(function() {
                 .css('top', event.offsetY)
                 .css('left', event.offsetX);
     });
-    
-    $(".table1").on( "click",".hometwopoint",function(event) {
+
+    $(".table1").on("click", ".hometwopoint", function(event) {
         console.log(event)
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
@@ -44,9 +92,8 @@ $(document).ready(function() {
         //console.log($(this).parent().children(".hometwopoint").text());
         addUpHomePoints(this);
     });
-
-    $( ".table1" ).on( "click",".homethreepoint",function(event) {
-    //$('.homethreepoint').click(function(event) {
+    $(".table1").on("click", ".homethreepoint", function(event) {
+        //$('.homethreepoint').click(function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#homescore").text();
@@ -54,15 +101,6 @@ $(document).ready(function() {
         addUpHomePoints(this);
 
     });
-        $( ".table2" ).on( "click",".awaythreepoint",function(event) {
-    //$('.awaythreepoint').click(function(event) {
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 3);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 3);
-        addUpHomePoints(this);
-        
-        });
 
     $('.homefreethrow').click(function(event) {
         //console.log(event);
@@ -163,5 +201,3 @@ $(document).ready(function() {
     });
 
 });
-
-

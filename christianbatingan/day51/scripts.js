@@ -5,12 +5,6 @@ $(document).ready(function() {
         console.log(event);
         $(".table1").find('tr:last').clone().appendTo(".table1");
     });
-    
-    $('#addvisitingplayer').click(function(event) {
-        console.log(event);
-        $(".table2").find('tr:last').clone().appendTo(".table2");
-    });
-    
     $('#addawayplayer').click(function(event) {
         console.log(event);
         $(".table2").find('tr:last').clone().appendTo(".table2");
@@ -35,7 +29,7 @@ $(document).ready(function() {
                 .css('left', event.offsetX);
     });
     
-    $(".table1").on( "click",".hometwopoint",function(event) {
+    $( ".table1" ).on( "click",".hometwopoint",function(event) {
         console.log(event)
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
@@ -54,15 +48,6 @@ $(document).ready(function() {
         addUpHomePoints(this);
 
     });
-        $( ".table2" ).on( "click",".awaythreepoint",function(event) {
-    //$('.awaythreepoint').click(function(event) {
-        var currentScore = $(this).text();
-        $(this).text(currentScore * 1 + 3);
-        var currentScore = $("#visitingscore").text();
-        $("#visitingscore").text(currentScore * 1 + 3);
-        addUpHomePoints(this);
-        
-        });
 
     $('.homefreethrow').click(function(event) {
         //console.log(event);
@@ -163,5 +148,3 @@ $(document).ready(function() {
     });
 
 });
-
-

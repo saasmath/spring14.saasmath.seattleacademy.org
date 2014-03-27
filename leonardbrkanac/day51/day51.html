@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
-        
+
         <script src="../../js/jquery.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
         <script src="scripts.js"></script>
+
 
     </head>
 
@@ -34,7 +34,9 @@
                     <div class="timeoutbutton">0</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <div class="score">15:00</div>
+                    <div class="score" id="theTarget">900.00</div>
+                    <button id="start">START</button>
+                    <button id="stop">STOP</button>
                     <div>period 2</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
@@ -49,12 +51,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6 home">
-                    <h6>HOME</h6>
+                <div class="col-xs-6">
+                    <h6>Home</h6>
                 </div>
-               
+
                 <div class="col-xs-6 text-right">
-                    <h6>AWAY</h6>
+                    <h6>Away</h6>
                 </div>
             </div>
             <div class="row">
@@ -72,7 +74,7 @@
                         <div>Steals: <span id="homest">0</span></div>
                     </div>
                 </div>
-                <div class="col-xs-6 onlycourt">
+                <div class="col-xs-6">
                     <div class="court"><img class="courtimage" src="http://saasmath.seattleacademy.org/arielleisaacs/images/basketball_court.jpg" width="500" height="400" alt="court"/></div>
                 </div>
                 <div class="col-xs-3 awaystats">
@@ -115,7 +117,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" name="playername" value="# First Player" /></td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
@@ -127,11 +129,11 @@
                                 <td class="playerpoints">0</td>
                             </tr>
                             <tr>
-                                <td><input type="text" name="playername" value="# Player Name" /></td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                 <td class="homerebound">0</td>
+                                <td class="homerebound">0</td>
                                 <td class="homeassists">0</td>
                                 <td class="homesteals">0</td>
                                 <td class="hometo">0</td>
@@ -162,7 +164,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" name="playername" value="# First Player" /></td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
@@ -174,7 +176,7 @@
                                 <td class="awayplayerpoints">0</td>
                             </tr>
                             <tr>
-                               <td><input type="text" name="playername" value="# Player Name" /></td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
@@ -187,7 +189,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button id="addawayplayer">Add Away Player</button>
+                    <button id="addvisitingplayer">Add visiting player</button>
                 </div>
             </div>
         </div>

@@ -1,13 +1,18 @@
-
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 50</title>
+        <title>Day 51</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
-        
+
         <script src="../../js/jquery.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
         <script src="scripts.js"></script>
@@ -16,7 +21,6 @@
 
     <body>
         <div class="container">
-            <div class="shot">shot</div>
             <div class="row">
 
                 <div class="col-xs-4 col-sm-offset-4 advertisment">
@@ -27,35 +31,36 @@
             <div class="row">
                 <div class="col-xs-3 text-center">
                     <div class="row teamname ">Zillah Lepoards</div>
-                    <div class="row score text-center" id="homescore">26</div>
+                    <div class="row score text-center" id="homescore">0</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>2</div>
+                    <div><span id="homefoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>5</div>
+                    <div class="timeoutbutton">0</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <div class="score">1:03</div>
+                    <div class="score">15:00</div>
                     <div>period 2</div>
                 </div>
                 <div class="col-xs-2 fouls text-center">
                     <div>Fouls</div>
-                    <div>4</div>
+                    <div><span id="awayfoul">0</span></div>
                     <div>Timeouts</div>
-                    <div>2</div>
+                    <div class="timeoutbutton">0</div>
                 </div>
                 <div class="col-xs-3">
                     <div class="teamname text-center">Seattle Academy</div>
-                    <div class="score text-center" id="visitingscore">23</div>
+                    <div class="score text-center" id="visitingscore">0</div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6">
-                    <h6>home</h6>
+                    <h6>Home</h6>
                 </div>
+
                 <div class="col-xs-6 text-right">
-                    <h6>away</h6>
+                    <h6>Away</h6>
                 </div>
             </div>
             <div class="row">
@@ -70,10 +75,12 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0</div>
+                        <div>Steals: <span id="homest">0</span></div>
+                        <div>Rebounds: <span id="homest">0</span></div>
+                        <div>Points of turnovers <span id="homest">0</span></div>
                     </div>
                 </div>
-                <div class="col-xs-6 onlycourt">
+                <div class="col-xs-6">
                     <div class="court"><img class="courtimage" src="http://saasmath.seattleacademy.org/arielleisaacs/images/basketball_court.jpg" width="500" height="400" alt="court"/></div>
                 </div>
                 <div class="col-xs-3 awaystats">
@@ -87,7 +94,10 @@
                         <div>2nd Chance Points: 0</div>
                         <div>Bench Points: -</div>
                         <div>Turnovers: 0</div>
-                        <div>Steals: 0</div>
+                        <div>Steals: <span id="awayst">0</span></div>
+                        <div>Rebounds: <span id="homest">0</span></div>
+                        <div>Points of turnovers <span id="homest">0</span></div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -116,32 +126,33 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Home player 1</td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td class="playerpoints">0</td>
                             </tr>
                             <tr>
-                                <td>Home player  2</td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class="hometwopoint">0</td>
                                 <td class="homethreepoint">0</td>
                                 <td class="homefreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="homerebound">0</td>
+                                <td class="homeassists">0</td>
+                                <td class="homesteals">0</td>
+                                <td class="hometo">0</td>
+                                <td class="homepf">0</td>
                                 <td class="playerpoints">0</td>
                             </tr>
 
                         </tbody>
                     </table>
+                    <button id="addhomeplayer">Add home player</button>
 
                 </div>
                 <div class="col-xs-6 text-center">
@@ -162,33 +173,49 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Visiting Player 1</td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td>
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
+                                <td class="awayplayerpoints">0</td>
                             </tr>
                             <tr>
-                                <td>Visiting Player 2</td>
+                                <td><input type="text" name="playername" value="" placeholder="Enter Player" /></td>
                                 <td class ="awaytwopoint">0</td>
                                 <td class="awaythreepoint">0</td>
                                 <td class="awayfreethrow">0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td class="awayrebound">0</td>
+                                <td class="awayassists">0</td>
+                                <td class="awaysteals">0</td>
+                                <td class="awayto">0</td>
+                                <td class="awaypf">0</td>
+                                <td class="awayplayerpoints">0</td>
                             </tr>
                         </tbody>
                     </table>
+                    <button id="addawayplayer">Add away player</button>
                 </div>
-            </div>
-        </div>
-    </body>
-</html>
+                <div id="myvideo" class="hidden">
+                   <iframe width="560" height="315" src="//www.youtube.com/embed/t5Eala5gWrc" frameborder="0" allowfullscreen></iframe></div>
+                <button id = "button">click</button>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+    $("#button").click(function()
+  {
+    $("#myvideo").toggle();
+    });
+</script>
+
+ </tr>
+                        </tbody>
+                    </table>
+            <img src="https://www.google.com/search?q=seattle+academy+basketball&source=lnms&tbm=isch&sa=X&ei=BkszU6P0MseAoQT2k4CoBw&ved=0CAgQ_AUoAQ&biw=1280&bih=728#facrc=_&imgdii=_&imgrc=rZoax1dDT4yukM%253A%3B7O6aSgN15FGQgM%3Bhttp%253A%252F%252Fwww.seattleacademy.info%252Fwp%252Fwp-content%252Fthemes%252Farras-theme%252Flibrary%252Ftimthumb.php%253Fsrc%253Dhttp%253A%252F%252Fwww.seattleacademy.info%252Fwp%252Fwp-content%252Fuploads%252F2012%252F01%252Fboys-bb.jpg%3Bhttp%253A%252F%252Fwww.seattleacademy.info%252Fwp%252Fboys%2525E2%252580%252599-varsity-basketball-tops-2a-lindbergh%252F%3B630%3B250" 
+    alt="Seattle academy basketball">
+            </script>
