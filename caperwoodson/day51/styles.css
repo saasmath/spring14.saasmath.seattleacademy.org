@@ -64,9 +64,11 @@
 }
 .awaytitle{
     font-size: 35px;
+    background-color: orangered;
 }
 .hometitle{
     font-size: 35px;
+    background-color:orange;
 }
 .homeplayerstatstable{
     background-color: dodgerblue;
@@ -75,7 +77,8 @@
 }
 .awayplayerstatstable{
     background-color: black;
-    border-top-width:
+    border-top-width: 10px;
+    color: lightgrey;
     
 }
 .zlteamname{
@@ -87,11 +90,30 @@
     font-size: 40px;
 }
 .score{
-    fontsize: 35px;
+    font-size: 35px;
+    color: white;
 }
 #homescore{
     font-size: 40px;
 }
 .time{
-    font-size: 40px
+    font-size: 40px;
+    color: white;
+}
+.period{
+    font-size: 20px;
+}
+body{
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed;
+}
+.statnames{
+    background-color: cornflowerblue;
+}
+.statnames2{
+    background-color: black;
 }
