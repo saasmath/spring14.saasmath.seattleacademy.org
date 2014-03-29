@@ -1,0 +1,138 @@
+.tableformat{
+    width: 100%;
+}
+.courtimage{
+    max-width:100%; 
+    max-height:100%;
+    
+}
+.homestats2{
+    background-color: red;
+    color: orange;
+    border: solid thin black;
+    height: 350px;
+}
+.awaystats2{
+    background-color: red;
+    color: lightcoral;
+    border: solid thin black;
+    height: 350px;
+}
+
+.teamname {
+    background-color:#000000; /* black in hex */
+    color: rgb(255,255,255); /* white text in rgb */
+    
+}  
+.score{
+    font-size:45px;
+    font-weight: bold;
+}
+.fouls{
+    font-size:14px;
+    background: red;
+    border:solid thin black;
+    height: 100px;
+}
+.court{
+    height:300px;
+}
+
+.advertisment{
+    background-color: #81efbc;
+}
+
+.shot{
+    background-color: greenyellow;
+    position: absolute;
+    padding: 0px 0px;
+    width: 15px;
+    height: 15px;
+}
+
+h3 {
+    
+   background-color: rgb(204,204,204);
+                color: brown;
+                text-align: center;
+}
+
+
+.col-xs-12 {
+    
+    background-color: rgb(204,204,204);
+}
+
+.table1 {
+    background-color: rgb(42, 104, 154);
+    color: white;
+    border: violet;
+     width: 100%;
+    
+}
+
+.table2 {
+    background-color: rgb(255,201,75);
+    color: black;
+    border: violet;
+     width: 100%;
+    
+}
+
+.teamastats{
+    background-color: rgb(42,104,154);
+    color: white;
+}
+.teamstattitle{
+    background: rgb(200,200,200); 
+    color: black;
+    font-size: 15px;
+}
+.teambstats{
+    background-color: #FFCA23;
+}
+.period{
+    background-color: #E9E9E9;
+    border: violet;
+}
+
+.onlycourt {
+    background-color: transparent;
+    border: none;
+}
+
+.home {
+    
+    background-color: rgb(200,200,200); 
+     border: violet;
+     text-align: center;
+    
+}
+
+.text-right {
+    background-color: rgb(200,200,200); 
+     border: violet;
+     text-align: center; 
+     
+    
+}
+
+h6 {
+    
+    text-align: center;
+    font-size: 15px;
+    
+}
+
+.homestats2 {
+    
+    text-align: right;
+    
+}
+
+
+.awaystats2 {
+    
+    text-align: right;
+    
+}

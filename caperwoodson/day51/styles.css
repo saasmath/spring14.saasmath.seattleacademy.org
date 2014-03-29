@@ -6,8 +6,10 @@
     max-height:100%;
 }
 .homestats2{
-    background-color: orange;
-    color: white;
+    background-image: url(../images/zillah.jpg);
+    color: red;
+    background-size: cover;
+   
 }
 .awaystats2{
     background-color: red;
