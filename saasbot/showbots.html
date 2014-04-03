@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>showbots</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script>
+            nIntervId = setInterval(fillStatus, 1000);
+            function fillStatus()
+            {
+                $('#botstatus').load('showbots.php');
+            }
+            ;
+            $(document).ready(function() {
+                fillStatus();
+            });
+        </script>
+    </head>
+    <body>
+        <div class = "container">
+            <table class="table" id="botstatus"></table>
+        </div>
+    </body>
+</html>

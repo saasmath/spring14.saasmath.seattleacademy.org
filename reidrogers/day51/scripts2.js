@@ -5,6 +5,10 @@ $(document).ready(function() {
         console.log(event);
         $(".table1").find('tr:last').clone().appendTo(".table1");
     });
+    $('#addawayplayer').click(function(event) {
+        console.log(event);
+        $(".table2").find('tr:last').clone().appendTo(".table2");
+    });
 
     function addUpHomePoints(itemClicked) {
         var twopoints = $(itemClicked).parent().children(".hometwopoint").text();
@@ -25,7 +29,7 @@ $(document).ready(function() {
                 .css('left', event.offsetX);
     });
     
-    $( "table" ).on( "click",".hometwopoint",function(event) {
+    $( ".table1" ).on( "click",".hometwopoint",function(event) {
         console.log(event)
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 2);
@@ -35,7 +39,8 @@ $(document).ready(function() {
         addUpHomePoints(this);
     });
 
-    $('.homethreepoint').click(function(event) {
+    $( ".table1" ).on( "click",".homethreepoint",function(event) {
+    //$('.homethreepoint').click(function(event) {
         var currentScore = $(this).text();
         $(this).text(currentScore * 1 + 3);
         var currentScore = $("#homescore").text();
