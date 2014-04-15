@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.moveTo(75, 50);
+                ctx.lineTo(25, 200);
+                ctx.moveTo(75, 50);
+                ctx.lineTo(125, 200);
+                ctx.moveTo(50, 125);
+                ctx.lineTo(100, 125);
+                ctx.moveTo(150, 50);
+                ctx.lineTo(150, 200);
+                ctx.lineTo(200, 200);
+                ctx.lineTo(200, 50);
+                ctx.moveTo(325, 50);
+                ctx.lineTo(250, 50);
+                ctx.lineTo(250, 200);
+                ctx.lineTo(325, 200);
+                ctx.lineTo(325, 150);
+                ctx.lineTo(300, 150);
+                ctx.moveTo(375, 50);
+                ctx.lineTo(375, 200);
+                ctx.moveTo(500, 50);
+                ctx.lineTo(425, 50);
+                ctx.lineTo(425, 200);
+                ctx.lineTo(500, 200);
+                ctx.moveTo(425, 125);
+                ctx.lineTo(460, 125);
+
+
+                ctx.stroke();
+                ctx.beginPath();
+                //ctx.moveTo(250,300);
+                ctx.arc(250, 300, 50, 0, 2 * Math.PI);
+                ctx.fillStyle = "blue";
+                ctx.fill();
+                ctx.stroke();
+
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Get a newer browser to use canvas!
+            </canvas>
+        </div>
+    </body>
+</html>

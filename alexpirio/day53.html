@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                //A
+                ctx.moveTo(100, 100);
+                ctx.lineTo(50, 250);
+                ctx.moveTo(70, 190);
+                ctx.lineTo(130, 190);
+                ctx.moveTo(100, 100);
+                ctx.lineTo(150,250);
+                
+                //L
+                ctx.moveTo(200, 100);
+                ctx.lineTo(200, 250);
+                ctx.lineTo(250, 250);
+
+                //E
+                ctx.moveTo(375,100);
+                ctx.lineTo(300,100);
+                ctx.lineTo(300,175);
+                ctx.lineTo(375,175);
+                ctx.lineTo(300,175);
+                ctx.lineTo(300,250);
+                ctx.lineTo(375,250);
+
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = 'ff0000';
+                
+                ctx.stroke();
+
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.moveTo(110, 70);
+                ctx.lineTo(110, 50);
+                ctx.lineTo(40, 50);
+                ctx.lineTo(40, 160);
+                ctx.lineTo(110, 160);
+                ctx.lineTo(110, 140);
+                ctx.moveTo(130,50);
+                ctx.lineTo(130,160);
+                ctx.moveTo(130,110);
+                ctx.lineTo(180,110);
+                ctx.moveTo(180,50);
+                ctx.lineTo(180,160);
+                ctx.moveTo(200,50);
+                ctx.lineTo(200,160);
+                ctx.moveTo(200,50);
+                ctx.lineTo(260,50);
+                ctx.lineTo(260,160);
+                ctx.moveTo(260,110);
+                ctx.lineTo(200,110);
+                ctx.moveTo(280,50);
+                ctx.lineTo(280,160);
+                ctx.moveTo(280,50);
+                ctx.lineTo(330,50);
+                ctx.lineTo(330,100);
+                ctx.lineTo(280,100);
+                ctx.lineTo(330,160);
+                ctx.moveTo(350,50);
+                ctx.lineTo(350,160);
+                ctx.lineTo(410,160);
+                ctx.stroke();
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

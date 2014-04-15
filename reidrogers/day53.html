@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.moveTo(100, 50);
+                ctx.lineTo(100, 350);
+                ctx.bezierCurveTo(100, 100, 300, 140, 170, 100); //end of rounded part
+                ctx.lineTo(125, 200);
+                ctx.lineTo(125, 150);
+                ctx.moveTo(250,50);
+                ctx.lineTo(450,50)
+                ctx.moveTo(250,200)
+                ctx.lineTo(450,200)
+                ctx.stroke();
+               
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="600">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

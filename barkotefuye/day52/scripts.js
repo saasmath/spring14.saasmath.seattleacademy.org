@@ -8,6 +8,15 @@ $(document).ready(function() {
         console.log(event);
         $(".table2").find('tr:last').clone().appendTo(".table2");
     });
+    $('#removehomeplayer').click(function(event){
+        console.log(event);
+       $(".table1").find('tr:last').remove("tr:last");
+    });
+     
+    $('#removeawayplayer').click(function(event){
+        console.log(event);
+       $(".table2").find('tr:last').remove("tr:last");
+   });
 
     function addUpHomePoints(itemClicked) {
         var twopoints = $(itemClicked).parent().children(".hometwopoint").text();
@@ -28,12 +37,12 @@ $(document).ready(function() {
                 .css('left', event.offsetX);
     });
     
-    $('#reset').click(function(){
-        $(".playername").val("");
+    $('.table1').click(function(){
+        $(".playername2").val("");
     });
     
-    $('#reset').click(function(){
-        $(".awayplayername").val("");
+    $('.table2').click(function(){
+        $(".awayplayername2").val("");
     });
 
     $(".table1").on("click", ".hometwopoint", function(event) {

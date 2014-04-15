@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #FFFFFF;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.beginPath();
+                ctx.moveTo(50, 150);
+                ctx.lineTo(100, 50);
+                ctx.lineTo(150, 150);
+                ctx.moveTo(150, 50);
+                ctx.lineTo(250, 50);
+                ctx.moveTo(200, 50);
+                ctx.lineTo(200, 150);
+                ctx.lineTo(150, 150);
+                ctx.lineTo(250, 150);
+                ctx.moveTo(75, 100);
+                ctx.lineTo(125, 100);
+                ctx.moveTo(250, 50);
+                ctx.lineTo(250, 150);
+                ctx.bezierCurveTo(350, 150, 350, 50, 250, 50);
+                ctx.moveTo(350, 150);
+                ctx.lineTo(400, 50);
+                ctx.lineTo(450, 150);
+                ctx.moveTo(375, 100);
+                ctx.lineTo(425, 100);
+                ctx.moveTo(450, 150);
+                ctx.lineTo(450, 50);
+                ctx.lineTo(550, 150);
+                ctx.lineTo(550, 50);
+                ctx.stroke();
+                ctx.closePath();
+                
+                ctx.beginPath();
+                ctx.moveTo(200, 300);
+                ctx.arc(200, 300, 50, 1.75*Math.PI, .25*Math.PI, true); //creates Pacman
+                ctx.lineTo(200, 300);
+                ctx.stroke();
+                ctx.fillStyle = "#ffff00";
+                ctx.fill();
+                ctx.closePath();
+                
+                ctx.beginPath();
+                ctx.moveTo(300, 300);
+                ctx.arc(300, 300, 25, 0*Math.PI, 0*Math.PI);
+                ctx.strokeStyle = "#000000";
+                ctx.stroke();
+                ctx.closePath();
+
+                
+                
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

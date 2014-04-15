@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                
+                
+                //A
+                ctx.moveTo(100, 100);
+                ctx.lineTo(50, 250);
+                ctx.moveTo(70, 190);
+                ctx.lineTo(130, 190);
+                ctx.moveTo(100, 100);
+                ctx.lineTo(150,250);
+                //R
+              
+                ctx.moveTo(170, 100);
+                //ctx.lineTo(250, 100);
+                //ctx.lineTo(250, 170);
+                ctx.lineTo(170, 170);
+                ctx.bezierCurveTo(170, 170, 300, 140, 170, 100); //end of rounded part
+                
+                ctx.moveTo(170,170);
+                ctx.lineTo(170,250);
+                ctx.moveTo(170,170);
+                ctx.lineTo(250,250);
+                
+                
+                //I
+                ctx.moveTo(270, 100);
+                ctx.lineTo(350, 100);
+                ctx.moveTo(310, 100);
+                ctx.lineTo(310, 250);
+                ctx.lineTo(270, 250);
+                ctx.lineTo(350,250);
+                //E
+                ctx.moveTo(430, 100);
+                ctx.lineTo(370, 100);
+                ctx.lineTo(370, 170);
+                ctx.lineTo(430, 170);
+                ctx.moveTo(370, 170);
+                ctx.lineTo(370,250);
+                ctx.lineTo(430,250);
+                
+                //L
+                ctx.moveTo(460, 100);
+                ctx.lineTo(460, 250);
+                ctx.lineTo(510, 250);
+                
+                //L
+                ctx.moveTo(530, 100);
+                ctx.lineTo(530, 250);
+                ctx.lineTo(570, 250);
+                
+                //E
+                ctx.moveTo(640, 100);
+                ctx.lineTo(580, 100);
+                ctx.lineTo(580, 170);
+                ctx.lineTo(640, 170);
+                ctx.moveTo(580, 170);
+                ctx.lineTo(580,250);
+                ctx.lineTo(640,250);
+                
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = 'ff0000';
+                
+                ctx.stroke();
+            });
+            
+            
+        </script>
+ 
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="700" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>
