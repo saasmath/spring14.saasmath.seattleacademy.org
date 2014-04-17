@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-image:url("../images/mariohills.jpg");    
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.beginPath();
+                
+ctx.arc(100,100,50,0,2*Math.PI);
+ctx.fillStyle="yellow";
+ctx.fill();
+ctx.stroke();
+ctx.moveTo(80, 90);
+ ctx.beginPath();
+ctx.arc(80,80,10,0,2*Math.PI);
+
+ctx.fillStyle="black";
+ctx.fill();
+ 
+ctx.moveTo(120,90);
+ctx.beginPath();
+ctx.arc(120,80,10,0,2*Math.PI);
+ctx.fillStyle="black";
+ctx.fill();
+
+ctx.moveTo(100,110);
+ctx.beginPath();
+ctx.arc(100,110,30,0,1*Math.PI);
+ctx.fillStyle="red";
+ctx.fill();
+
+
+ctx.moveTo(70,110);
+ctx.lineTo(130,110);
+ctx.moveTo(100,155);
+ctx.lineTo(100,250);
+ctx.moveTo(100,250);
+ctx.lineTo(150,320);
+ctx.moveTo(100,250);
+ctx.lineTo(50,320);
+ctx.moveTo(100,180);
+ctx.lineTo(20,160);
+ctx.moveTo(100,180);
+ctx.lineTo(180,160);
+ ctx.lineWidth = 10;
+                ctx.lineJoin = "round";
+                  ctx.lineCap = "round";
+
+ ctx.stroke();
+                
+            });
+        </script>
+            </head>
+    <body>
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

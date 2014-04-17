@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var context = c.getContext("2d");
+
+      var Offset = 0;  // Starting value for offset
+      var dashList = [12, 3, 3, 3];  // Create a dot/dash sequence
+
+      function draw() {
+
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          //  set dashList for the dash sequence
+          context.setLineDash(dashList);
+          //  Set the current offset 
+          context.lineDashOffset = Offset;
+          context.lineJoin = "round";
+          context.lineWidth = "3";
+          context.strokeStyle = "green";
+          context.strokeRect(5, 5, 300, 250);    		  
+      }
+
+      function dodashes() {
+        Offset++;
+        if (Offset > 20)  
+        {
+          Offset = 0;
+        }
+        draw();
+        setTimeout(dodashes, 30);  
+      }
+      dodashes();  //  Start
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Playing with canvas elements</h1>
+        <button id="drawCircle">Draw Circle</button>
+        <button id="drawArc">Draw Arc</button>
+        <button id="drawRect">Draw Rectangle</button>
+        <button id="drawQuadratic">Draw Quadratic</button>
+        <button id="drawRect">Draw Rectangle</button>
+
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

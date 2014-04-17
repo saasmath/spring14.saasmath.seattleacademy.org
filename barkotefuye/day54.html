@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 53</title>
+        <title>Day 54</title>
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <style>
             #myCanvas{
@@ -13,6 +13,11 @@
             $(document).ready(function() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
+                
+                $("#myname").click(function(){
+                   console.log('myname');
+                   ctx.beginPath();
+                
                 ctx.moveTo(50,50);
                 ctx.lineTo(50,160);
                 ctx.lineTo(100,160);
@@ -44,18 +49,37 @@
                 ctx.moveTo(350,50);
                 ctx.lineTo(400,50);
                 ctx.lineTo(400,160);
-                ctx.lineTo(350,160);
-                ctx.lineTo(350,50);
-                ctx.moveTo(430,50);
-                lineTo
+                ctx.lineTo(350,160);   
                 ctx.stroke();
             });
+            
+            $("#myname").click(function(){
+                   console.log('myname');
+                   ctx.beginPath();
+                   ctx.drawArc(700,100,50,0,2*Math.PI);
+                   ctx.moveTo(660,100);
+                   ctx.quadraticCurveTo(670,70,700,50);
+                   ctx.moveTo(730,100);
+                   ctx.quadraticCurveTo(720,70,700,50);
+               });
+               
+        });
+    
+           
+           
         </script>
- 
+
     </head>
     <body>
+        <h1>Playing with canvas elements</h1>
+        <button id="myname"> write my name </button>
+        <button id="person">A person!!!</button>
+         
+        
+        
+
         <div class="container">
-            <canvas id="myCanvas" width="600" height ="400">
+            <canvas id="myCanvas" width="1200" height ="600">
                 Your browser does not support the canvas element!
             </canvas>
         </div>

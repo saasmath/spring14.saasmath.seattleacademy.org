@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title> 
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                background-color: #dddddd;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                //change the shape of the objject; get animation frame
+
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw, 10);
+                }
+
+                var x = 400;
+                var y = 300;
+                var dx = 2;
+                var dy = 4;
+                var WIDTH = 600;
+                var HEIGHT = 400;
+var redness = 256;
+                var green = 256;
+                var blueness = 256;
+
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 2, true);
+                    ctx.fillStyle = "rgb(" + redness + "," + green + "," + blueness + " )";
+                    ctx.fill();
+                    ctx.strokeStyle = "blue";
+                    ctx.stroke();
+
+
+                }
+
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+                function clear() {
+                    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+                }
+
+                function draw() {
+                    clear();
+                    ctx.fillStyle = "#FAF7F8";
+                    rect(0, 0, WIDTH, HEIGHT);
+                     console.log(redness);
+                    ctx.fillStyle = "rgb(" + redness + "," + green + "," + blueness + " )";
+                    ctx.fillStyle = "#444444";
+                    circle(x, y, 15);
+                    
+
+                    if (x + dx > WIDTH || x + dx < 0)
+                        //||=or symbol
+                        dx = -dx;
+                     
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+
+                    x += dx;
+                    y += dy;
+                }
+                green = Math.floor((Math.random() * 255) + 1);
+                    blueness = Math.floor((Math.random() * 255) + 1);
+
+
+                init();
+
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div id="Container">
+            <h1>Animation Demo</h1>
+            <canvas id="stage" width="600" height="400"></canvas>
+        </div>
+    </body>
+</html>

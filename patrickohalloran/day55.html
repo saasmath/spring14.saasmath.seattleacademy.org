@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+               // background-color: red;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+ 
+              function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw, 8);
+                   
+                }
+ 
+                var x = 40;
+                var y = 30;
+                var dx = 1;
+                var dy = 2;
+                var WIDTH = 200;
+                var HEIGHT = 400;
+               var red = 105;
+                var green = 243;
+                var blue = 13;
+ 
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 1, true);
+                    ctx.fill();
+                     ctx.lineWidth = 100;
+                    ctx.stroke();
+                }
+ 
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+ 
+                function clear() {
+                    ctx.clearRect(200, 20, WIDTH, HEIGHT);
+                }
+ 
+                function draw() {
+                    
+                    clear();
+                    mycolor="rgb("+red+","+blue+","+green+")";
+                    console.log(mycolor);
+                    ctx.fillStyle = mycolor;
+                    console.log(ctx.fillStyle);
+                    
+                    rect(30, 0, WIDTH, HEIGHT);
+                  
+                    ctx.fillStyle = "yellow";
+                    circle(x, y, 20);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                    
+        red = Math.floor((Math.random() * 130) + 1);
+                    green = Math.floor((Math.random() * 150) + 1);
+                    blue = Math.floor((Math.random() * 100) + 1);
+                    
+
+                    
+                   
+                }
+ 
+                init();
+                
+ 
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div id="Container">
+            <h1>Animation Demo</h1>
+            <canvas id="stage" width="600" height="400"></canvas>
+        </div>
+    </body>
+</html>

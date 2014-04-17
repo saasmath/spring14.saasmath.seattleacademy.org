@@ -19,14 +19,14 @@
                 ctx.moveTo(50,200);
                 ctx.lineTo(150,200);
                 ctx.stroke();
-                
-                ctx.moveTo(200,0);
-                ctx.lineTo (200,200);
-                ctx.moveTo (200,0);
-                ctx.bezierCurveTo(300,(200,100)); //end of rounded part
-
+               
+                ctx.beginPath();
+                ctx.moveTo(400,200);
+                ctx.arc(400,200,100,0,2 * Math.PI); 
+                ctx.fillStyle ='#008000';
                 ctx.stroke();
-                
+                ctx.fill();
+                 
             });
         </script>
  

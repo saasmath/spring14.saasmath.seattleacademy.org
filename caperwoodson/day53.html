@@ -13,9 +13,30 @@
             $(document).ready(function() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
-                ctx.moveTo(150, 50);
-                ctx.bezierCurveTo(150,50,5,150,150,250)
-               
+                ctx.moveTo(90,50);
+                ctx.bezierCurveTo(90,50,-40,150,90,250);
+                ctx.moveTo(120,250);
+                ctx.lineTo(190,50);
+                ctx.lineTo(260,250);
+                ctx.moveTo(290,250)
+                ctx.lineTo(290,50);
+                ctx.moveTo(290,50);
+                ctx.bezierCurveTo(370,70,370,130,290,150);
+                ctx.moveTo(400,50);
+                ctx.lineTo(400,250);
+                ctx.lineTo(480,250);
+                ctx.moveTo(400,150);
+                ctx.lineTo(450,150);
+                ctx.moveTo(400,50);
+                ctx.lineTo(480,50);
+                ctx.moveTo(155,150);
+                ctx.lineTo(225,150);
+                ctx.moveTo(510,50);
+                ctx.lineTo(510,250);
+                ctx.moveTo(510,150);
+                ctx.lineTo(580,250);
+                ctx.moveTo(510,50);
+                ctx.bezierCurveTo(580,50,580,150,510,150);
                 ctx.stroke();
             });
         </script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="day55.js"></script>
+        <style>
+            #stage {
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+ 
+              function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    startSetup();
+                    return setInterval(drawAll, 10);
+                }
+ 
+                var x = 400;
+                var y = 300;
+                var dx = Math.floor(Math.random()*10)+3;
+                var dy = Math.floor(Math.random()*10)+3;
+                var WIDTH = 600;
+                var HEIGHT = 400;
+ 
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 2, true);
+                    ctx.fill();
+                    ballNumber++;
+                }
+ 
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+ 
+                function clear() {
+                    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+                    //ballNumber = 0;
+                }
+ 
+                function draw() {
+                    clear();
+                    ctx.fillStyle = "#FAF7F8";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "#444444";
+                    circle(x, y, 10);
+ 
+                    if (x + dx > WIDTH -5 || x + dx < 5)
+                        dx = -dx;
+                    if (y + dy > HEIGHT-5 || y + dy < 5)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+                
+                function drawAll() {
+                    var bn = ballNumber;
+                    for(var i = 1; i < ballNumber; i++) 
+                    {
+                        clear();
+                        ctx.fillStyle = "#FAF7F8";
+                        rect(0, 0, WIDTH, HEIGHT);
+                        ctx.fillStyle = "#444444";
+                        var number = i;
+                        var nx = number + 2^number;
+                        var ny = number + 2^(number + 1);
+                        locStore(i, locBalls[nx], locBalls[ny]);
+                        //locBalls[nx] = x;
+                        //locBalls[ny] = y;
+                        circle(locBalls[nx], locBalls[ny], 10);
+                        if (locBalls[nx] + dx > WIDTH -5 || locBalls[nx] + dx < 5)
+                            dx = -dx;
+                        if (locBalls[ny] + dy > HEIGHT-5 || locBalls[ny] + dy < 5)
+                            dy = -dy;
+
+                        locBalls[nx] += dx;
+                        locBalls[ny] += dy;
+                        ballNumber++;
+                        
+                    }
+                    ballNumber = 0;
+
+                }
+ 
+                init();
+ 
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div id="Container">
+            <h1>Animation Demo</h1>
+            <canvas id="stage" width="600" height="400"></canvas>
+        </div>
+    
+    </body>
+</html>

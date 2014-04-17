@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                background-color: #DDDDDD;
+            }
+            
+        </style>
+        <script>
+            $(document).ready(function() {
+ 
+              function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    //return setInterval(draw, 10);
+                    requestID = window.requestAnimationFrame(draw);
+                }
+ 
+                var x = 400;
+                var y = 300;
+                var a = 200;
+                var b = 300;
+                var dx = 6;
+                var dy = 32;
+                var WIDTH = 600;
+                var HEIGHT = 400;
+                var u = 10;
+                var du = 1;
+                var umax = 20;
+                var umin = 5;
+                
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 2, true);
+                    ctx.fill();
+                }
+                
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                
+                function clear() {
+                    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+                }
+ 
+                function draw() {
+                    console.log(x);
+                    clear();
+                    ctx.fillStyle = "#FAF7F8";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "#444444";
+                    circle(x, y, u);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                    u += du;
+                    
+                    if (u > umax)
+                        du = -1;
+                    if (u < umin)
+                        du = 1;
+                    console.log("anframe");
+                    requestID = window.requestAnimationFrame(draw);
+                }
+               
+                
+ 
+                init();
+ 
+            
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <div id="Container">
+            <h1>Animation Demo</h1>
+            <canvas id="stage" width="600" height="400"></canvas>
+            <h2> Hello F-Block </h2>
+                
+            
+           
+        </div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 54</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+                $("#drawFace").click(function() {
+                    ctx.beginPath();
+                    ctx.fillStyle = "FFCB00";
+                    ctx.arc(200, 200, 150, 0, 5 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+
+                });
+
+                $("#drawMouth").click(function() {
+                    console.log('drawArc');
+                    ctx.beginPath();
+                    ctx.fillStyle = "#FF0000";
+                    ctx.arc(200, 300, 75, 1.25 * Math.PI, 7 / 4 * Math.PI, false);
+                    ctx.stroke();
+                    ctx.fill();
+                    
+                });
+
+                $("#drawEye1").click(function() {
+                    ctx.beginPath();
+                    ctx.fillStyle = "#000000";
+                    ctx.arc(150, 150, 20, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+                });
+                $("#drawEye2").click(function() {
+                    ctx.beginPath();
+                    ctx.fillStyle = "#000000";
+                    ctx.arc(200, 100, 20, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Playing with canvas elements</h1>
+        <button id="drawFace">Draw Face</button>
+        <button id="drawMouth">Draw Mouth</button>
+        <button id="drawEye1">Draw First Eye</button>
+        <button id="drawEye2">Second Eye</button>
+        <button id="drawRect">Draw Rectangle</button>
+
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

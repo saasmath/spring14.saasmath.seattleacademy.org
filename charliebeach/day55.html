@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                // background-color: red;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw, 50);
+                    ctx.fillStyle = "red";
+                    ctx.clearRect(20, 20, 100, 50);
+
+                }
+
+                var x = 400;
+                var y = 300;
+                var dx = 1;
+                var dy = 4;
+                var WIDTH = 600;
+                var HEIGHT = 400;
+                var red = 256;
+                var green = 400;
+                var blue = 256;
+                var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var img=document.getElementById("scream");
+ctx.drawImage(img,10,10);
+
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 2, false);
+                    ctx.fill();
+                    ctx.lineWidth = 5;
+                    ctx.stroke();
+                    ctx.fillStyle = "#FF0000";
+                }
+
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+                function clear() {
+                    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+                }
+
+                function draw() {
+
+                    clear();
+                    mycolor = "rgb(" + red + "," + blue + "," + green + ")";
+                    console.log(mycolor);
+                    ctx.fillStyle = mycolor;
+                    console.log(ctx.fillStyle);
+
+                    rect(0, 0, WIDTH, HEIGHT);
+
+                    ctx.fillStyle = "red";
+                    circle(x, y, 20);
+
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+
+                    x += dx;
+                    y += dy;
+
+                    red = Math.floor((Math.random() * 255) + 1);
+                    green = Math.floor((Math.random() * 100));
+                    blue = Math.floor((Math.random() * 255) + 1);
+
+
+
+
+                }
+
+                init();
+
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div id="Container">
+            <h1>Animation Demo</h1>
+            <canvas id="stage" width="600" height="400"></canvas>
+        </div>
+    </body>
+</html>

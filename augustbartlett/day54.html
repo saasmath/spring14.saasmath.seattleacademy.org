@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+                $("#drawCircle").click(function() {
+                    ctx.beginPath();
+                    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+                    ctx.stroke();
+                });
+
+                $("#drawArc").click(function() {
+                    console.log('drawArc');
+                    ctx.beginPath();
+                    ctx.fillStyle = "#FF0000";
+                    ctx.arc(220, 150, 50, .3 * Math.PI, 1.5 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+                });
+
+                $("#drawQuadratic").click(function() {
+                    console.log('drawQuadratic');
+                    ctx.beginPath();
+                    ctx.moveTo(100, 100);
+                    ctx.quadraticCurveTo(100, 200, 200, 200);
+                    ctx.stroke();
+                });
+                $("#drawPizza").click(function() {
+                    console.log('drawPizza');
+                    ctx.beginPath();
+                    ctx.arc(250, 300, 100, 5 / 4 * Math.PI, 7 / 4 * Math.PI);
+                    ctx.fillStyle = "tan";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(320, 230);
+                    ctx.lineTo(250, 350);
+                    ctx.lineTo(180, 230);
+                    ctx.lineTo(320, 230);
+                    ctx.fillStyle = "yellow";
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(281, 260, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(220, 270, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(251, 280, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(250, 320, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(210, 250, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(250, 245, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = "red";
+                    ctx.fill();
+
+                });
+                $("#drawSoda").click(function() {
+                    console.log('drawSoda');
+                    ctx.beginPath();
+                    ctx.moveTo(350,300);
+                    ctx.lineTo(350,225);
+                     
+                    ctx.stroke();
+                    
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Playing with canvas elements</h1>
+        <button id="drawCircle">Draw Circle</button>
+        <button id="drawArc">Draw Arc</button>
+        <button id="drawRect">Draw Rectangle</button>
+        <button id="drawQuadratic">Draw Quadratic</button>
+        <button id="drawRect">Draw Rectangle</button>
+        <button id="drawPizza">Draw Pizza</button>
+        <button id="drawSoda">Draw Soda</button>
+
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>

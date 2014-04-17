@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #FFFFFF;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+ 
+                $("#drawCircle").click(function() {
+                    var points = new Array();
+                    points = randGen();
+                    ctx.beginPath();
+                    ctx.arc(points[0], points[1], points[2], 0, 2 * Math.PI);
+                    var r = Math.floor((Math.random()*5)+1);
+                    if(r == 1)
+                        ctx.fillStyle = "0061ff";
+                    else if(r == 2)
+                        ctx.fillStyle = "ff0000";
+                    else if(r == 3)
+                        ctx.fillStyle = "26e029";
+                    else if(r == 4)
+                        ctx.fillStyle = "eff237";
+                    else
+                        ctx.fillStyle = "ed15be";
+                    ctx.strokeStyle = "000000";
+                    ctx.fill();
+                    ctx.stroke()
+                    ctx.closePath();
+                });
+ 
+                $("#drawArc").click(function() {
+                    console.log('drawArc');
+                    var points = new Array();
+                    points = randGen();
+                    ctx.beginPath();
+                    var r = Math.floor((Math.random()*5)+1);
+                    if(r == 1)
+                        ctx.fillStyle = "0061ff";
+                    else if(r == 2)
+                        ctx.fillStyle = "ff0000";
+                    else if(r == 3)
+                        ctx.fillStyle = "26e029";
+                    else if(r == 4)
+                        ctx.fillStyle = "eff237";
+                    else
+                        ctx.fillStyle = "ed15be";
+                    ctx.arc(points[0], points[1], points[2], (Math.random() * (1.5 - .5) + .5) * Math.PI, (Math.random() * (1.5 -.5) + .5) * Math.PI);
+                    ctx.strokeStyle = "000000";
+                    ctx.stroke();
+                    ctx.fill(); 
+                });
+ 
+                $("#drawQuadratic").click(function() {
+                    console.log('drawQuadratic');
+                    ctx.beginPath();
+                    ctx.moveTo(100,100);
+                    ctx.quadraticCurveTo(100,200,200,200);
+                    ctx.stroke();
+                });
+                
+                $("#refresh").click(function() {
+                    location.reload();
+                })
+            });
+        </script>
+ 
+    </head>
+    <body>
+        <h1>Grey's Awesome Shapes! :D</h1>
+        <button id="drawCircle">Draw Circle</button>
+        <button id="drawArc">Draw Arc</button>
+        <button id="refresh"> Clear </button>
+        <button id="drawCircle"> obtain swag</button>
+ 
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+        <script>
+            function randGen()
+            {
+                var points = new Array();
+                var px = Math.floor((Math.random()*550)+50); //Assigns a random number between 50 and 550 to px
+                var py = Math.floor((Math.random()*350)+50); //Assigns a random number between 50 and 350 to py
+                points[0] = px;
+                points[1] = py;
+                points[2] = Math.floor((Math.random()*70)+20);
+                return points;
+            }
+            
+        </script>
+    </body>
+</html>

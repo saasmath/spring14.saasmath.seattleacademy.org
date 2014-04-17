@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 55 | Animation</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                //background-color: black;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+ 
+              function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw, 10);
+                    }
+                     function init2() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw2, 100);
+                     }
+                     
+                     function init3() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw3, 200);
+                     }
+                     
+                     function init4() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw4, 300);
+                     }
+                     
+                      function init5() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    return setInterval(draw5, 400);
+                     }
+ 
+                var x = 400;
+                var y = 300;
+                var dx = 2;
+                var dy = 4;
+                var WIDTH = 600;
+                var HEIGHT = 400;
+ 
+                function circle(x, y, r) {
+                    ctx.beginPath();
+                    ctx.arc(x, y, r, 0, Math.PI * 2, true);
+                    ctx.fill();
+                }
+ 
+                function rect(x, y, w, h) {
+                    ctx.beginPath();
+                    ctx.rect(x, y, w, h);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+ 
+                function clear() {
+                    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+                }
+ 
+                function draw() {
+                    clear();
+                    ctx.fillStyle = "black";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "red";
+                    circle(x+10, y+100, 10);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+                
+                 function draw2() {
+                    //clear();
+                    ctx.fillStyle = "brown";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "orange";
+                    circle(x+10, y+100, 50);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+                
+                function draw3() {
+                    //clear();
+                    ctx.fillStyle = "yellow";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "green";
+                    circle(x+10, y+100, 100);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+                
+                 function draw4() {
+                    //clear();
+                    ctx.fillStyle = "red";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "purple";
+                    circle(x+10, y+100, 150);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+                
+                 function draw5() {
+                    //clear();
+                    ctx.fillStyle = "blue";
+                    rect(0, 0, WIDTH, HEIGHT);
+                    ctx.fillStyle = "brown";
+                    circle(x+10, y+100, 200);
+ 
+                    if (x + dx > WIDTH || x + dx < 0)
+                        dx = -dx;
+                    if (y + dy > HEIGHT || y + dy < 0)
+                        dy = -dy;
+ 
+                    x += dx;
+                    y += dy;
+                }
+ 
+                init();
+                 init2();
+                 init3();
+                 init4();
+                 init5();
+
+            });
+        </script>
+ 
+    </head>
+    <body>
+         <div id="Container">
+            <h1>follow the red dot</h1>
+            <canvas id="stage" width="10000" height="10000"></canvas>
+            <h2>ITS AN ALEX PARTY!!!!!! 
+             
+           </h2>
+            
+                
+            
+           
+        </div>
+
+    </body>
+</html>

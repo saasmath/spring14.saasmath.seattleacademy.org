@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 53</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #myCanvas{
+                border: solid 1px;
+                background-color: #DDDDDD;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+                $("#drawCircle").click(function() {
+                    ctx.beginPath();
+                    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+                    ctx.stroke();
+                });
+                
+                $("#drawArc").click(function() {
+                    console.log('drawArc');
+                    ctx.beginPath();
+                    ctx.fillStyle = "#FF0000";
+                    ctx.arc(220, 150, 50, .3 * Math.PI, 1.5 * Math.PI);
+                    ctx.stroke();
+                    ctx.fill();
+                });
+                
+                $("#drawQuadratic").click(function() {
+                    console.log('drawQuadratic');
+                    ctx.beginPath();
+                    ctx.moveTo(100,100);
+                    ctx.quadraticCurveTo(100,200,200,200);
+                    ctx.stroke();
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <h1>Playing with canvas elements</h1>
+        <button id="drawCircle">Draw Circle</button>
+        <button id="drawArc">Draw Arc</button>
+        <button id="drawRect">Draw Rectangle</button>
+        <button id="drawQuadratic">Draw Quadratic</button>
+        <button id="drawRect">Draw Rectangle</button>
+
+        <div class="container">
+            <canvas id="myCanvas" width="600" height ="400">
+                Your browser does not support the canvas element!
+            </canvas>
+        </div>
+    </body>
+</html>
