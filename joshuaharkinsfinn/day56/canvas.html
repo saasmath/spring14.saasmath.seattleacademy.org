@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 56 | Bouncing Balls</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                border: solid;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                ball1rad = 20;
+                ball2rad = 30;
+                ball3rad = 15;
+
+
+
+
+
+                var t = 0;
+                var canvas;
+                var ctx;
+                var balls = [
+                    {x: 50, y: 50, r: ball1rad, m: 1, dx: 1, dy: 1.5},
+                    {x: 200, y: 150, r: ball2rad, m: 2, dx: -1, dy: 0.3},
+                    {x: 450, y: 250, r: ball3rad, m: 0.75, dx: -0.5, dy: 3}
+
+                ];
+
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (var a = 0; a < balls.length; a++) {
+                        for (var b = 0; b < balls.length; b++) {
+                            if (a != b) { // make sure both balls being tested are not the same
+                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
+                                if (distToBalls <= balls[a].r + balls[b].r) {
+                                    var newVel = ballsCollide(balls[a], balls[b]);
+                                }
+                            }
+                        }
+                    }
+                    t = t * 1 + 0.1;
+                    for (var a = 0; a < balls.length; a++) {
+                        ctx.beginPath();
+                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                        ctx.fill();
+                        ctx.closePath();
+                        if (balls[a].x <= balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of top boundary
+                        if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of right boundary
+                        if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of bottom boundary
+                        console.log(t);
+
+
+                        balls[a].x += balls[a].dx * Math.cos(t);
+                        balls[a].y += balls[a].dy * Math.cos(t);
+                    }
+                }
+
+                function ballsCollide(b1, b2) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 3;
+                    ctx.arc(b1.x, b1.y, b1.r, 0, Math.PI * 2, true);
+                    ctx.arc(b2.x, b2.y, b2.r, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.closePath();
+                    var currentscore = $("#collisions").text();
+                    $("#collisions").text(currentscore * 1 + 1);
+                    t = currentscore * 0.001;
+                }
+
+                init();
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="col-xs-3 text-center">
+                <div class="row teamname ">Number of Collisions</div>
+                <div class="row score text-center" id="collisions">0</div>
+            </div>
+            <div id="container">
+                <canvas id="stage" width=600 height=400>
+                    Your browser does not support the canvas element.
+                </canvas>
+            </div>
+    </body>
+</html> 

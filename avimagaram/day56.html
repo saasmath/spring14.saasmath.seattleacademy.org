@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<head>
+    <title>Draw Along The Edges</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="400">
+        <!-- Insert fallback content here -->
+        Sorry, your browser doesn't support canvas technology
+    </canvas>
+
+    <script type="text/javascript">
+        var canvas;
+        var ctx;
+        var x = 284;
+        var y = 130;
+        var mx = 0;
+        var my = 0;
+        var WIDTH = 568;
+        var HEIGHT = 262;
+        var canvas;
+        var ctx;
+        var balls = [
+            {x: 50, y: 50, r: 20, m: 1, dx: 1, dy: 1.5},
+            {x: 200, y: 150, r: 30, m: 2, dx: -1, dy: 0.3},
+            {x: 450, y: 250, r: 15, m: 0.75, dx: -0.5, dy: 3}
+        ];
+        function init() {
+            canvas = document.getElementById("stage");
+            ctx = canvas.getContext("2d");
+            setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var a = 0; a < balls.length; a++) {
+                for (var b = 0; b < balls.length; b++) {
+                    if (a != b) { // make sure both balls being tested are not the same
+                        var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
+                        if (distToBalls <= balls[a].r + balls[b].r) {
+                            var newVel = ballsCollide(balls[a], balls[b]);
+                        }
+                    }
+                }
+            }
+            for (var a = 0; a < balls.length; a++) {
+                ctx.beginPath();
+                ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                ctx.fill();
+                ctx.closePath();
+                if (balls[a].x <= balls[a].r)
+                    balls[a].dx *= -1; // bounce ball off of left boundary
+                if (balls[a].y <= balls[a].r)
+                    balls[a].dy *= -1; // bounce ball off of top boundary
+                if (balls[a].x >= canvas.width - balls[a].r)
+                    balls[a].dx *= -1; // bounce ball off of right boundary
+                if (balls[a].y >= canvas.height - balls[a].r)
+                    balls[a].dy *= -1; // bounce ball off of bottom boundary
+                balls[a].x += balls[a].dx;
+                balls[a].y += balls[a].dy;
+            }
+        }
+
+        function ballsCollide(b1, b2) {
+            ctx.beginPath();
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 3;
+            ctx.arc(b1.x, b1.y, b1.r, 0, Math.PI * 2, true);
+            ctx.arc(b2.x, b2.y, b2.r, 0, Math.PI * 2, true);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        function circle(x, y, r) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2, true);
+            ctx.fill();
+        }
+
+        function clear() {
+            ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        }
+
+        function init() {
+            canvas = document.getElementById("myCanvas");
+            ctx = canvas.getContext("2d");
+            window.onkeydown = keydownControl;
+            return setInterval(draw, 10);
+        }
+
+        function draw() {
+            clear();
+            circle(x, y, 20);
+
+            if (x + mx > WIDTH || x + mx < 0)
+                mx = -mx;
+            if (y + my > HEIGHT || y + my < 0)
+                my = -my;
+
+            x += mx;
+            y += my;
+
+        }
+
+        function keydownControl(e) {
+            if (e.keyCode == 37) {
+                mx = -2;
+                my = 0;
+            } else
+            if (e.keyCode == 38) {
+                mx = 0;
+                my = -2;
+            } else if
+                    (e.keyCode == 39) {
+                mx = 2;
+                my = 0;
+            } else
+            if (e.keyCode == 40) {
+                mx = 0;
+                my = 2;
+
+            }
+        }
+
+        init();
+
+    </script>
+</body>
+</html>

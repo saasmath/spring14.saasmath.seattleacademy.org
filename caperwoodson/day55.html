@@ -5,7 +5,7 @@
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <style>
             #stage {
-                background-color: #DDDDDD;
+                background-color: red;
             }
         </style>
         <script>
@@ -17,8 +17,8 @@
                     return setInterval(draw, 10);
                 }
  
-                var x = 400;
-                var y = 300;
+                var x = 100;
+                var y = 100;
                 var dx = 2;
                 var dy = 4;
                 var WIDTH = 600;
@@ -26,13 +26,14 @@
  
                 function circle(x, y, r) {
                     ctx.beginPath();
-                    ctx.arc(x, y, r, 0, Math.PI * 2, true);
+                    ctx.arc(x, y, 100, 0, Math.PI * 2,true);
                     ctx.fill();
+                    
                 }
  
                 function rect(x, y, w, h) {
                     ctx.beginPath();
-                    ctx.rect(x, y, w, h);
+                    ctx.rect(200, 300, 50, 100);
                     ctx.closePath();
                     ctx.fill();
                 }
@@ -49,7 +50,7 @@
                     circle(x, y, 10);
  
                     if (x + dx > WIDTH || x + dx < 0)
-                        dx = -dx;
+                        dx = -1*dx;
                     if (y + dy > HEIGHT || y + dy < 0)
                         dy = -dy;
  

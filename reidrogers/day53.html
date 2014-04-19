@@ -13,10 +13,7 @@
             $(document).ready(function() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
-                ctx.moveTo(100, 50);
-                ctx.lineTo(100, 350);
-               
-                 ctx.moveTo(170, 100);
+              ctx.moveTo(170, 100);
                 //ctx.lineTo(250, 100);
                 //ctx.lineTo(250, 170);
                 ctx.lineTo(170, 170);
@@ -27,21 +24,40 @@
                 ctx.moveTo(170,170);
                 ctx.lineTo(250,250);
                 
+               ctx.moveTo(430, 100);
+                ctx.lineTo(370, 100);
+                ctx.lineTo(370, 170);
+                ctx.lineTo(430, 170);
+                ctx.moveTo(370, 170);
+                ctx.lineTo(370,250);
+                ctx.lineTo(430,250);
+                
+                ctx.moveTo(490, 100);
+                ctx.lineTo(650, 100);
+                ctx.moveTo(570, 100);
+                ctx.lineTo(570, 250);
+                ctx.lineTo(490, 250);
+                ctx.lineTo(650,250);
+                
+                ctx.font="40px Georgia";
+            ctx.fillText("D",770,200);
+            ctx.font="100px Verdana";
 
                 
-                ctx.moveTo(250,50);
-                ctx.lineTo(450,50)
-                ctx.moveTo(250,200)
-                ctx.lineTo(450,200)
+
+
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '000000';
+                
                 ctx.stroke();
-               
+
             });
         </script>
  
     </head>
     <body>
         <div class="container">
-            <canvas id="myCanvas" width="600" height ="600">
+            <canvas id="myCanvas" width="1000" height ="600">
                 Your browser does not support the canvas element!
             </canvas>
         </div>

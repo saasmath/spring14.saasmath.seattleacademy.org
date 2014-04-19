@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 56 | Bouncing Balls</title>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                border: red;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+ 
+                var canvas;
+                var ctx;
+                var balls = [
+                    {x: 50, y: 50, r: 20, m: 1, dx: 1, dy: 1.5},
+                    {x: 200, y: 150, r: 30, m: 2, dx: -1, dy: 0.3},
+                    {x: 450, y: 250, r: 15, m: 0.75, dx: -0.9, dy: 3},
+                    {x: 350, y: 50, r: 45, m: 0.75, dx: -0.5, dy: 3},
+                    {x: 440, y: 20, r: 16, m: 0.75, dx: -0.6, dy: 7},
+                    {x: 460, y: 90, r: 49, m: 0.75, dx: -0.3, dy: 4},
+                    {x: 340, y: 30, r: 65, m: 0.75, dx: -0.2, dy: 9},
+                    {x: 420, y: 10, r: 19, m: 0.75, dx: -0.1, dy: 7}
+                ];
+ 
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
+                }
+ 
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    for (var a = 0; a < balls.length; a++) {
+                        for (var b = 0; b < balls.length; b++) {
+                            if (a != b) { // make sure both balls being tested are not the same
+                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
+                                if (distToBalls <= balls[a].r + balls[b].r) {
+                                    var newVel = ballsCollide(balls[a], balls[b]);
+                                }
+                            }
+                        }
+                    }
+                    for (var a = 0; a < balls.length; a++) {
+                        ctx.beginPath();
+                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                        ctx.fill();
+                        ctx.closePath();
+                        if (balls[a].x <= balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of top boundary
+                        if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of right boundary
+                        if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of bottom boundary
+                        balls[a].x += balls[a].dx;
+                        balls[a].y += balls[a].dy;
+                    }
+                }
+ 
+                function ballsCollide(b1, b2) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 3;
+                    ctx.arc(b1.x, b1.y, b1.r, 0, Math.PI * 2, true);
+                    ctx.arc(b2.x, b2.y, b2.r, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+ 
+                init();
+            });
+ 
+        </script>
+    </head>
+ 
+    <body>
+        <div id="container">
+            <canvas id="stage" width=600 height=400>
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+    </body>
+</html>

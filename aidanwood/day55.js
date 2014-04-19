@@ -23,7 +23,6 @@ function locStore(number, x, y)
     ny = number + 2^(number + 1);
     locBalls[nx] = x;
     locBalls[ny] = y;
-    console.log(locBalls);
 }
 
 function startSetup()
