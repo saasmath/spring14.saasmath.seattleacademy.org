@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 57 | Eating Balls</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                border: solid;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+
+                var canvas;
+                var ctx;
+                var balls = [
+                    {x: 50, y: 50, r: 40, m: 1, dx: 1, dy: 1.5},
+                    {x: 200, y: 150, r: 30, m: 2, dx: -1, dy: 0.3},
+                    {x: 450, y: 250, r: 20, m: 0.75, dx: -0.5, dy: 3}
+                ];
+
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    for (var a = 0; a < balls.length; a++) {
+                        if (balls[a].r <= 0)
+                            balls.splice(a, 1);//delete balls with no radius                        }
+                    }
+
+                    for (var a = 0; a < balls.length; a++) {
+                        for (var b = 0; b < balls.length; b++) {
+                            if (a !== b) { // make sure both balls being tested are not the same
+                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
+                                if (distToBalls <= balls[a].r + balls[b].r) {
+                                    var newVel = ballsCollide(a, b);
+                                }
+                            }
+                        }
+                    }
+                    for (var a = 0; a < balls.length; a++) {
+                        if (balls[a].r <= 0)
+                            continue;
+                        ctx.beginPath();
+                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                        ctx.fill();
+                        ctx.closePath();
+                        if (balls[a].x <= balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of top boundary
+                        if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx *= -1; // bounce ball off of right boundary
+                        if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy *= -1; // bounce ball off of bottom boundary
+                        balls[a].x += balls[a].dx;
+                        balls[a].y += balls[a].dy;
+                    }
+                }
+
+                function ballsCollide(a, b) {
+                    if (balls[a].r <= 0)
+                        return;
+                    if (balls[b].r <= 0)
+                        return;
+                    ctx.beginPath();
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 3;
+                    ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                    ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.closePath();
+                    if (balls[a].r <= 0 || balls[b].r <= 0)
+                    {
+                        console.log("non-positive radius.");
+                        return;
+                    }
+                    if (balls[a].r > balls[b].r)
+                    {
+                        balls[a].r = balls[a].r + 0.1;
+                        balls[b].r = balls[b].r - 0.1;
+                        console.log(balls[a].r);
+                    }
+
+                    if (balls[b].r > balls[a].r)
+                    {
+                        balls[b].r = balls[b].r + 0.1;
+                        balls[a].r = balls[a].r - 0.1;
+                    }
+                    var currentscore = $("#collisions").text();
+                    $("#collisions").text(currentscore * 1 + 1);
+
+                }
+
+                init();
+
+                $("body").keydown(function(event) {
+                    console.log(event.which);
+                    if (event.which === 38) //up-arrow
+                    {
+                        balls[0].dy = -2;
+                        balls[0].dx = 0;
+                    }
+
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="col-xs-3 text-center">
+                <div class="row teamname ">Number of Collisions</div>
+                <div class="row score text-center" id="collisions">0</div>
+            </div>
+            <canvas id="stage" width=600 height=400>
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+    </body>
+</html>

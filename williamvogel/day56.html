@@ -10,23 +10,25 @@
         </style>
         <script>
             $(document).ready(function() {
- 
+
                 var canvas;
                 var ctx;
                 var balls = [
-                    {x: 50, y: 50, r: 20, m:1, dx: 1, dy: 1.5},
+                    {x: 50, y: 50, r: 20, m: 1, dx: 1, dy: 1.5},
                     {x: 200, y: 150, r: 30, m: 2, dx: -1, dy: 0.3},
                     {x: 450, y: 250, r: 15, m: 0.75, dx: -0.5, dy: 3}
                 ];
- 
+
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
                     setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
                 }
- 
+
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    var canvas = document.getElementById('stage');
+                    var context = canvas.getContext('2d');
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a != b) { // make sure both balls being tested are not the same
@@ -54,7 +56,7 @@
                         balls[a].y += balls[a].dy;
                     }
                 }
- 
+
                 function ballsCollide(b1, b2) {
                     ctx.beginPath();
                     ctx.strokeStyle = "blue";
@@ -64,13 +66,13 @@
                     ctx.stroke();
                     ctx.closePath();
                 }
- 
+
                 init();
             });
- 
+
         </script>
     </head>
- 
+
     <body>
         <div id="container">
             <canvas id="stage" width=600 height=400>
