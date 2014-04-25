@@ -1,24 +1,23 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
-  </head>
-  <body>
-    <canvas id="myCanvas" width="578" height="400"></canvas>
-    <script>
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-      var imageObj = new Image();
+<head>
+	<title></title>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="particle.js"></script>
+	<script type="text/javascript" src="postcards.js"></script>
+	<style type="text/css">
+	html, body {
+		margin: 0px;
+		background-image: url("https://www.google.com/search?q=pictures&es_sm=93&source=lnms&tbm=isch&sa=X&ei=dyhYU8WTO6WOyAHA9YHYCA&ved=0CAgQ_AUoAQ&biw=1366&bih=667#facrc=_&imgdii=_&imgrc=SMQBJsB_LE-k0M%253A%3BF9cPW2BuyPSxFM%3Bhttp%253A%252F%252Fcrispyclicks.com%252Fwp-content%252Fuploads%252F2013%252F02%252FWeird-pictures-art-pictures-Igor-Morski.jpg%3Bhttp%253A%252F%252Fcrispyclicks.com%252Fweird-art-pictures-by-igor-morski%252F%3B600%3B440");
+	}
 
-      imageObj.onload = function() {
-        context.drawImage(imageObj, 69, 50);
-      };
-      imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
-    </script>
-  </body>
+	canvas {
+		display: block;
+	}
+
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 58 | colored balls</title>
+        <title>Day 59 | turning balls</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <style>
@@ -15,10 +15,16 @@
                 var canvas;
                 var ctx;
                 var balls = [
-                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
+                    {x: 50, y: 50, r: 45, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
                     {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'}
-                ];
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
+                    {x: 500, y: 300, r: 25, v: 0, theta: 0, dx: 1, dy: 2, fill: 'purple'},
+                    {x: 100, y: 220, r: 40, v: 0, theta: 0, dx: -2, dy: .75, fill: 'turquoise'},
+                    {x: 250, y: 125, r: 28, v: 0, theta: 0, dx: 2, dy: 2.5, fill: 'white'},
+                    {x: 200, y: 200, r: 33, v: 0, theta: 0, dx: 2.5, dy: 3.75, fill: 'yellow'},
+                    {x: 300, y: 350, r: 40, v: 0, theta: 0, dx: 3, dy: 1.5, fill: 'tan'},
+                    {x: 170, y: 130, r: 23, v: 0, theta: 0, dx: -1.5, dy: 1.2, fill: 'limegreen'},         
+                    ];
  
                 function init() {
                     canvas = document.getElementById("stage");
@@ -26,24 +32,24 @@
                     draw();
                 }
  
+ 
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
  
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
-                            balls.splice(a, 15);//delete balls with no radius
+                            balls.splice(a, 1);//delete balls with no radius
                             console.log(balls);
                         }
                     }
  
-                    for (var a = 0; a < balls.length; a++) { 
-                        //balls.length: stands for length of radius of biggest ball
+                    for (var a = 0; a < balls.length; a++) {
                         ctx.beginPath();
-                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, balls[a].theta, balls[a].theta + Math.PI * 2);
                         ctx.fillStyle = balls[a].fill;
                         ctx.fill();
-                        ctx.strokeStyle="#000000";//black lines around circle
-                        ctx.lineTo(balls[a].x, balls[a].y);//lines to center
+                        ctx.strokeStyle = "#000000";
+                        ctx.lineTo(balls[a].x, balls[a].y);
                         ctx.stroke();
                         if (balls[a].x <= balls[a].r)
                             balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
@@ -60,7 +66,7 @@
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a !== b) { // make sure both balls being tested are not the same
-                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2)); //pythagorean theorem
+                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
                                 if (distToBalls <= balls[a].r + balls[b].r) {
                                     var newVel = ballsCollide(a, b);
                                 }
@@ -68,6 +74,12 @@
                         }
                     }
  
+                    //set velocity and angle
+                    for (var a = 0; a < balls.length; a++) {
+                        balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
+                        balls[a].v = Math.sqrt(Math.pow(balls[a].dx, 2) + Math.pow(balls[a].dy, 2));
+                    }
+                    $('#vel').text(balls[0].v);
                     requestAnimationFrame(draw);
                 }
  
@@ -103,19 +115,19 @@
  
                 $("body").keydown(function(event) {
                     console.log(event.which);
-                    if (event.which === 38) //up-arrow
+                    if (event.which === 87) //w
                     {
                         balls[0].dy += -1;
                     }
-                    else if (event.which === 37) //left-arrow
+                    else if (event.which === 65) //a
                     {
                         balls[0].dx += -1;
                     }
-                    else if (event.which === 39) //right-arrow
+                    else if (event.which === 68) //d
                     {
                         balls[0].dx += 1;
                     }
-                    else if (event.which === 40) //down-arrow
+                    else if (event.which === 83) //s
                     {
                         balls[0].dy += 1;
                     }
@@ -124,7 +136,16 @@
                         balls[0].dy = 0;
                         balls[0].dx = 0;
                     }
- 
+                    else if (event.which === 38) //up-arrow
+                    {
+                        balls[0].dy = (balls[0].v*1+1) * Math.sin(balls[0].theta);
+                        balls[0].dx = (balls[0].v*1+1) * Math.cos(balls[0].theta);
+                    }
+                   else if (event.which === 40) //down-arrow
+                    {
+                        balls[0].dy = (balls[0].v*1-1) * Math.sin(balls[0].theta);
+                        balls[0].dx = (balls[0].v*1-1) * Math.cos(balls[0].theta);
+                    }
                 });
  
             });
@@ -137,6 +158,8 @@
             <div class="col-xs-3 text-center">
                 <div class="row teamname ">Number of Collisions</div>
                 <div class="row score text-center" id="collisions">0</div>
+                <div class="row teamname ">Velocity</div>
+                <div class="row score text-center" id="vel">0</div>
             </div>
             <canvas id="stage" width=600 height=400>
                 Your browser does not support the canvas element.
