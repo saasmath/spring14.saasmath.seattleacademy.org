@@ -4,10 +4,10 @@
                     {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0)'}
                 ];
                 var changing = false;
-                for(var i = 0; i < 50; i++)
+                for(var i = 0; i < 20; i++)
                 {
                     balls[i] = new Array();
-                    balls[i].x = Math.floor(Math.random() * (950 - 50 + 1)) + 50;
+                    balls[i].x = Math.floor(Math.random() * (1250 - 50 + 1)) + 50;
                     balls[i].y = Math.floor(Math.random() * (450 - 50 + 1)) + 50;
                     
                     if(i != 0)
@@ -60,4 +60,12 @@
                     //    location.reload();
                     
                 }
+                var Planets = [
+                    {x: 500, y: 250, r: 50, color: "red", gravity: 24.79}
+                ]
+                function makePlanet(x, y, r, color, gravity)
+                {
+
+                }
+                
                 

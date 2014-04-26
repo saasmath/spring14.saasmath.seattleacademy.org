@@ -10,45 +10,80 @@
             }
         </style>
         <script>
-
-
-
-
             $(document).ready(function() {
-
-                var seconds = 900;
-                function secondPassed() {
-                    var minutes = Math.round((seconds - 30) / 60);
-                    var remainingSeconds = seconds % 60;
-                    if (remainingSeconds < 10) {
-                        remainingSeconds = "0" + remainingSeconds;
-                    }
-                    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
-                    if (seconds == 0) {
-                        clearInterval(countdownTimer);
-                        document.getElementById('countdown').innerHTML = "Buzz Buzz";
-                    } else {
-                        seconds--;
-                    }
-                }
-
-                var countdownTimer = setInterval('secondPassed()', 1000);
-
-
+ 
                 var canvas;
                 var ctx;
                 var balls = [
                     {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
                     {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'}
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
+                    {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                    {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                    {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
+                     {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
                 ];
-
+ 
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
                     draw();
                 }
-
+ 
                 function addBall(x, y, r, dx, dy, fill) {
                     ball = new Array();
                     ball.x = x;
@@ -61,7 +96,7 @@
                 }
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+ 
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
                             balls.splice(a, 1);//delete balls with no radius
@@ -70,7 +105,7 @@
                             addBall(100, 100, 20, 1, 1, "blue");
                         }
                     }
-
+ 
                     for (var a = 0; a < balls.length; a++) {
                         ctx.beginPath();
                         ctx.arc(balls[a].x, balls[a].y, balls[a].r, balls[a].theta, balls[a].theta + Math.PI * 2);
@@ -90,7 +125,7 @@
                         balls[a].x += balls[a].dx;
                         balls[a].y += balls[a].dy;
                     }
-
+ 
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a !== b) { // make sure both balls being tested are not the same
@@ -101,7 +136,7 @@
                             }
                         }
                     }
-
+ 
                     //set velocity and angle
                     for (var a = 0; a < balls.length; a++) {
                         balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
@@ -109,13 +144,13 @@
                     }
                     var vel = balls[0].v;
                     $('#vel').text(balls[0].v.toFixed(2));
-
+ 
                     var theta = balls[0].theta;
                     $('#theta').text(balls[0].theta.toFixed(2));
-
+ 
                     requestAnimationFrame(draw);
                 }
-
+ 
                 function ballsCollide(a, b) {
                     if (balls[a].r <= 0)
                         return;
@@ -127,13 +162,13 @@
                     ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
                     ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
                     ctx.stroke();
-
+ 
                     if (balls[a].r > balls[b].r)
                     {
                         balls[a].r = balls[a].r + 0.1;
                         balls[b].r = balls[b].r - 0.1;
                     }
-
+ 
                     if (balls[b].r > balls[a].r)
                     {
                         balls[b].r = balls[b].r + 0.1;
@@ -141,11 +176,11 @@
                     }
                     var currentscore = $("#collisions").text();
                     $("#collisions").text(currentscore * 1 + 1);
-
+ 
                 }
-
+ 
                 init();
-
+ 
                 $("body").keydown(function(event) {
                     console.log(event.which);
                     if (event.which === 38) //up-arrow
@@ -191,15 +226,14 @@
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
-
+ 
                 });
-
+ 
             });
-
-
+ 
         </script>
     </head>
-
+ 
     <body>
         <div id="container">
             <div class="col-xs-3 text-center">
@@ -212,18 +246,11 @@
                 <div class="row ">Balls Eaten</div>
                 <div class="row text-center" id="points">0</div>
                 <button onclick="location.reload()">Reset</button>
-
+ 
             </div>
             <canvas id="stage" width=600 height=400>
                 Your browser does not support the canvas element.
             </canvas>
         </div>
-        <div class="col-xs-2 text-center">
-            <div class="score"><span id="countdown" class="timer">1234</span></div>
-            <button id="start">Start</button>
-            <button id="stop">Stop</button>
-            <div>period 2</div>
-        </div>
-
     </body>
 </html>
