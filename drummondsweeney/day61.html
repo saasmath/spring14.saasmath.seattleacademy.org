@@ -1,18 +1,17 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Day 60 | making balls</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script type="text/javascript" src="utils.js"></script>
-        
-	<script type="text/javascript" src="particle.js"></script>
-	<script type="text/javascript" src="final.js"></script>
         <style>
             #stage {
                 border: solid;
+                background-image:url('http://www.la-lights.com/streetball/assets/img_upload/Magic-will-pay-James-to-enter-dunk-contest.jpg');
+                background-position: center;
+                 
             }
-            
         </style>
         <script>
             $(document).ready(function() {
@@ -20,17 +19,24 @@
                 var canvas;
                 var ctx;
                 var balls = [
-                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
-                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'}
+                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'orange'},
+                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'orange'},
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'orange'},
+                    {x: 500, y: 300, r: 25, v: 0, theta: 0, dx: 1, dy: 2, fill: 'orange'},
+                    {x: 100, y: 220, r: 40, v: 0, theta: 0, dx: -2, dy: .75, fill: 'orange'},
+                    {x: 250, y: 125, r: 28, v: 0, theta: 0, dx: 2, dy: 2.5, fill: 'orange'},
+                    {x: 200, y: 200, r: 33, v: 0, theta: 0, dx: 2.5, dy: 3.75, fill: 'orange'},
+                    {x: 300, y: 350, r: 40, v: 0, theta: 0, dx: 3, dy: 1.5, fill: 'orange'},
+                    {x: 170, y: 130, r: 23, v: 0, theta: 0, dx: -1.5, dy: 1.2, fill: 'orange'}
+
                 ];
-                            
+ 
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
                     draw();
                 }
-           
+ 
                 function addBall(x, y, r, dx, dy, fill) {
                     ball = new Array();
                     ball.x = x;
@@ -40,21 +46,16 @@
                     ball.dy = dy;
                     ball.fill = fill;
                     balls.push(ball);
-                     }
-                
-                
+                }
                 function draw() {
-                    ctx.clearRect(0,0, canvas.width, canvas.height);
-                    
-                    
-                    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
  
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
                             balls.splice(a, 1);//delete balls with no radius
                             currentscore = $("#points").text();
                             $("#points").text(currentscore * 1 + 1);
-                            addBall(100, 100, 20, 1, 1, "blue");
+                            addBall(100, 100, 20, 1, 1, "orange");
                         }
                     }
  
@@ -66,20 +67,17 @@
                         ctx.strokeStyle = "#000000";
                         ctx.lineTo(balls[a].x, balls[a].y);
                         ctx.stroke();
-                       // if (balls[a].x <= balls[a].r)
-                            //balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
-                      //  if (balls[a].y <= balls[a].r)
-                           // balls[a].dy = Math.abs(balls[a].dy); // bounce ball off of top boundary
-                      //  if (balls[a].x >= canvas.width - balls[a].r)
-                           // balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
-                      //  if (balls[a].y >= canvas.height - balls[a].r)
-                            //balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
+                        if (balls[a].x <= balls[a].r)
+                            balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy = Math.abs(balls[a].dy); // bounce ball off of top boundary
+                        if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
+                        if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
                         balls[a].x += balls[a].dx;
                         balls[a].y += balls[a].dy;
                     }
-                   
-                        
-                    
  
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
@@ -181,16 +179,12 @@
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
-                    
-                 
  
                 });
  
             });
  
         </script>
-        
-       
     </head>
  
     <body>
@@ -207,7 +201,7 @@
                 <button onclick="location.reload()">Reset</button>
  
             </div>
-            <canvas id="stage" width=1000 height=700>
+            <canvas id="stage" width=600 height=400>
                 Your browser does not support the canvas element.
             </canvas>
         </div>

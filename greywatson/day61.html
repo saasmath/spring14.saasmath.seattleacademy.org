@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-        <title>Day 60 | making balls</title>
+        <title>Day 61 | making balls</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        	<script src="utils.js"></script>
+	<script src="particle.js"></script>
         <style>
             #stage {
                 border: darkolivegreen;
@@ -174,6 +177,11 @@
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
+                    else if (event.which === 73) //i
+                    {
+                        balls[1].dy += 1;
+                    }
+                    
  
                 });
  

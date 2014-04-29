@@ -46,8 +46,12 @@
                 function draw() {
                     ctx.clearRect(0,0, canvas.width, canvas.height);
                     
-                    
-                    
+                  if (balls[a],balls[b]>=0)
+                      balls.theta+1;
+                  
+                  
+                      
+                  
  
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
@@ -66,14 +70,14 @@
                         ctx.strokeStyle = "#000000";
                         ctx.lineTo(balls[a].x, balls[a].y);
                         ctx.stroke();
-                       // if (balls[a].x <= balls[a].r)
-                            //balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
-                      //  if (balls[a].y <= balls[a].r)
-                           // balls[a].dy = Math.abs(balls[a].dy); // bounce ball off of top boundary
-                      //  if (balls[a].x >= canvas.width - balls[a].r)
-                           // balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
-                      //  if (balls[a].y >= canvas.height - balls[a].r)
-                            //balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
+                       if (balls[a].x <= balls[a].r)
+                            balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy = Math.abs(balls[a].dy); // bounce ball off of top boundary
+                      if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
+                      if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
                         balls[a].x += balls[a].dx;
                         balls[a].y += balls[a].dy;
                     }
@@ -93,6 +97,7 @@
                     }
  
                     //set velocity and angle
+                    
                     for (var a = 0; a < balls.length; a++) {
                         balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
                         balls[a].v = Math.sqrt(Math.pow(balls[a].dx, 2) + Math.pow(balls[a].dy, 2));
@@ -105,6 +110,7 @@
  
                     requestAnimationFrame(draw);
                 }
+                
  
                 function ballsCollide(a, b) {
                     if (balls[a].r <= 0)
