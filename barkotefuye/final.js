@@ -1,6 +1,6 @@
 
 window.onload = function() {
-	var canvas = document.getElementById("canvas"),
+	var canvas = document.getElementById("stage"),
 		context = canvas.getContext("2d"),
 		width = canvas.width = window.innerWidth,
 		height = canvas.height = window.innerHeight,
@@ -36,7 +36,7 @@ window.onload = function() {
 	function update() {
 		baseAngle += rotationSpeed;
 		cards.sort(zsort);
-		context.clearRect(-width / 2, -height / 2, width, height);
+		//context.clearRect(-width / 2, -height / 2, width, height);
 		for(var i = 0; i < numCards; i += 1) {
 			var card = cards[i],
 				perspective = fl / (fl + card.z);

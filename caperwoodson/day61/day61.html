@@ -11,17 +11,28 @@
                 border: solid;
             }
         </style>
-        <div>Hello<div>
         <script>
             $(document).ready(function() {
 
                 var canvas;
                 var ctx;
                 var balls = [
-                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
-                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'}
+                    {x: 50, y: 50, r: 10, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
+                    {x: 800, y: 150, r: 5, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 7, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'purple'},
+                    {x: 72, y: 853, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'pink'},
+                    {x: 634, y: 250, r: 5, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'violet'},
+                    {x: 234, y: 43, r: 6, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'hotpink'},
+                    {x: 42, y: 950, r: 10, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'green'},
+                    {x: 932, y: 342, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'lightgreen'},
+                    {x: 342, y: 424, r: 35, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'black'},
+                    {x: 243, y: 624, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'pink'},
+                    {x: 843, y: 434, r: 10, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'green'},
+                    {x: 23, y: 44, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'orange'}
+                    
                 ];
+                var ddy
 
                 function init() {
                     canvas = document.getElementById("stage");
@@ -202,7 +213,7 @@
                 <button onclick="location.reload()">Reset</button>
 
             </div>
-            <canvas id="stage" width=550 height=380>
+            <canvas id="stage" width="600" height="400">
                 Your browser does not support the canvas element.
             </canvas>
         </div>

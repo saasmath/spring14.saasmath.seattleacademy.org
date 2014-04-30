@@ -7,6 +7,8 @@
         <script src="day59.js"></script>
         <script src="utils.js"></script>
 	<script src="particle.js"></script>
+        <script src="balls.js"></script>
+        <!--<script src="onLoad"></script> -->
         
         <style>
             #stage {
@@ -23,6 +25,7 @@
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
+                    planet = ball.create(100, 150, 0, 0);
                     draw();
                     endGame();
                 }
@@ -149,6 +152,7 @@
                         balls[a].v = Math.sqrt(Math.pow(balls[a].dx, 2) + Math.pow(balls[a].dy, 2));
                     }
                     $('#vel').text(balls[0].v);
+                    //draw1(planet, "red");
                     requestAnimationFrame(draw);
                 }
  

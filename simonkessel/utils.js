@@ -124,6 +124,6 @@ var utils = {
             var red = utils.randomInt(0,250);
             var green = utils.randomInt(0,250);
             var blue = utils.randomInt(0,250);
-            return ("rgb(" + red + "," + green + "," blue + "");
+            return("rgb(" + red + "," + green + "," + blue + ")");
         }
-}
+};

@@ -67,5 +67,14 @@
                 {
 
                 }
+                function draw1(p, color) {
+                                //ctx.fillStyle = color;
+                                ctx.beginPath();
+                                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
+                                ctx.fill();
+                                ctx.closePath();
+                               
+                        }
+
                 
                 

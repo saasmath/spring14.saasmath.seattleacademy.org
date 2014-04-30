@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 61 | making balls</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <script src ="utils.js"></script>
-        <script src ="particle.js"></script>
+        <title>Day 62 | making balls</title>
+        <script src="utils.js"></script>
+        <script src="particle.js"></script>
+        <script src="vector.js"></script>
+        <script src="spring1.js"></script>
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <style>
             #stage {
@@ -17,12 +18,10 @@
 
                 var canvas;
                 var ctx;
-                
                 var balls = [
-                    {x: 300, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: makeRandomfill()},
-                    {x: 200, y: 150, r: 45, v: 0, theta: 0, dx: -1, dy: 0.3, fill: makeRandomfill()},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: makeRandomfill()},
-                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 500), r: Math.floor((Math.random() * (80 - 5 + 1) + 5)), v: 0, theta: 0, dx: 1, dy: 1.5, fill: makeRandomfill()}
+                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
+                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'}
                 ];
 
                 function init() {
@@ -30,13 +29,6 @@
                     ctx = canvas.getContext("2d");
                     draw();
                 }
-                function makeRandomfill() {
-                    var redness = utils.randomInt(1, 255);
-                    var green = utils.randomInt(1, 255);
-                    var blueness = utils.randomInt(1, 255);
-                    return("rgb(" + redness + "," + green + "," + blueness + " )");
-                }
-
 
                 function addBall(x, y, r, dx, dy, fill) {
                     ball = new Array();
@@ -56,10 +48,7 @@
                             balls.splice(a, 1);//delete balls with no radius
                             currentscore = $("#points").text();
                             $("#points").text(currentscore * 1 + 1);
-                            var redness = utils.randomInt(1, 255);
-                            var green = utils.randomInt(1, 255);
-                            var blueness = utils.randomInt(1, 255);
-                            addBall(utils.randomInt(1, 400), utils.randomInt(1, 400), utils.randomInt(1, 50), 1, 1, "rgb(" + redness + "," + green + "," + blueness + " )");
+                            addBall(100, 100, 20, 1, 1, "blue");
                         }
                     }
 
@@ -79,8 +68,11 @@
                             balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
                         if (balls[a].y >= canvas.height - balls[a].r)
                             balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
-                        balls[a].x += balls[a].dx;
+                        delta=0;
+                        //delta=utils.randomInt(10); console.log (delta); 
+                        balls[a].x = balls[a].x * 1 + balls[a].dx * 1 + delta *1; //+ utils.randomInt(10);
                         balls[a].y += balls[a].dy;
+                        
                     }
 
                     for (var a = 0; a < balls.length; a++) {
@@ -134,12 +126,7 @@
                     var currentscore = $("#collisions").text();
                     $("#collisions").text(currentscore * 1 + 1);
 
-
-
-
-
                 }
-
 
                 init();
 
@@ -178,13 +165,13 @@
                     }
                     else if (event.which === 65)//a 
                     {
-                        var newtheta = balls[0].theta * 1 + 10 / 360 * Math.PI;
+                        var newtheta = balls[0].theta * 1 + 5 / 360 * Math.PI;
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
                     else if (event.which === 68)//d
                     {
-                        var newtheta = balls[0].theta * 1 + -10 / 360 * Math.PI;
+                        var newtheta = balls[0].theta * 1 + -5 / 360 * Math.PI;
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
@@ -210,10 +197,9 @@
                 <button onclick="location.reload()">Reset</button>
 
             </div>
-            <canvas id="stage" width=800 height=600>
+            <canvas id="stage" width=500 height=600>
                 Your browser does not support the canvas element.
             </canvas>
         </div>
     </body>
 </html>
-

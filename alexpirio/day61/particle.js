@@ -28,14 +28,7 @@ var particle = {
 		this.gravitations.push(p);
 	},
 
-	removeGravitation: function(p) {
-		for(var i = 0; i < this.gravitations.length; i += 1) {
-			if(p === this.gravitations[i]) {
-				this.gravitations.splice(i, 1);
-				return;
-			}
-		}
-	},
+
 
 	addSpring: function(point, k, length) {
 		this.removeSpring(point);
