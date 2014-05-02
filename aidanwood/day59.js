@@ -76,5 +76,47 @@
                                
                         }
 
+function drawGrid()
+{
+   var graphstartx = 0;
+   var graphstarty = 0;
+   var e = 0;
+   var x = graphstartx;
+   var y = graphstarty;
+   
+   while (e < 20)
+   {
+     
+     for (var i = 0; i <= 52; i++)
+     {
+         ctx.beginPath();
+         ctx.strokeStyle = "#000000";
+         ctx.rect(x, y, 25, 25);
+         ctx.stroke();
+         ctx.closePath();
+         x += 25;
+     }
+     y += 25;
+     e++;
+     x = graphstartx;
+   }
+}
+function addBalls()
+{
+    n = 10; //number of balls
+    
+    for(var i = 0; i<n; i++)
+    {
+        var bx = Math.floor(Math.random() * (1250 - 50 + 1)) + 50;
+        var by = Math.floor(Math.random() * (450 - 50 + 1)) + 50;
+        
+        
+        var ball = particle.create(bx, by, 10, 0, 0, 0, "red" );
+        console.log(ball);
+        balls.push(ball);
+        
+    }
+}
+
                 
                 

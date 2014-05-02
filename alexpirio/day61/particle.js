@@ -52,11 +52,7 @@ var particle = {
 		return Math.sqrt(this.vx * this.vx + this.vy * this.vy);
 	},
 
-	setSpeed: function(speed) {
-		var heading = this.getHeading();
-		this.vx = Math.cos(heading) * speed;
-		this.vy = Math.sin(heading) * speed;
-	},
+	
 
 	getHeading: function() {
 		return Math.atan2(this.vy, this.vx);

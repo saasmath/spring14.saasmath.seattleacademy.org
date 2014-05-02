@@ -44,15 +44,11 @@
                 
                 
                 function draw() {
-                    ctx.clearRect(0,0, canvas.width, canvas.height);
+                   
                     
                   if (balls[a],balls[b]>=0)
                       balls.theta+1;
-                  
-                  
-                      
-                  
- 
+             
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
                             balls.splice(a, 1);//delete balls with no radius
@@ -205,19 +201,8 @@
  
     <body>
         <div id="container">
-            <div class="col-xs-3 text-center">
-                <div class="row teamname ">Number of Collisions</div>
-                <div class="row score text-center" id="collisions">0</div>
-                <div class="row teamname ">Velocity</div>
-                <div class="row score text-center" id="vel">0</div>
-                <div class="row teamname ">Angle Theta</div>
-                <div class="row score text-center" id="theta">0</div>
-                <div class="row ">Balls Eaten</div>
-                <div class="row text-center" id="points">0</div>
-                <button onclick="location.reload()">Reset</button>
- 
-            </div>
-            <canvas id="stage" width=1000 height=700>
+        
+            <canvas id="stage">
                 Your browser does not support the canvas element.
                
 

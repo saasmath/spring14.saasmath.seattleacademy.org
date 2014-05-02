@@ -8,18 +8,21 @@ var particle = {
 	bounce: -1,
 	friction: 1,
 	gravity: 0,
+        fill: "red",
 	springs: null,
 	gravitations: null,
 
-	create: function(x, y, speed, direction, grav) {
+	create: function(x, y, radius, speed, direction, grav, fill) {
 		var obj = Object.create(this);
 		obj.x = x;
 		obj.y = y;
+                obj.radius = radius;
 		obj.vx = Math.cos(direction) * speed;
 		obj.vy = Math.sin(direction) * speed;
 		obj.gravity = grav || 0;
 		obj.springs = [];
 		obj.gravitations = [];
+                obj.fill = fill;
 		return obj;
 	},
 

@@ -25,9 +25,11 @@
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
-                    planet = ball.create(100, 150, 0, 0);
+                    //wplanet = ball.create(100, 150, 0, 0);
+                    //setInterval(drawGraph, 10);
                     draw();
                     endGame();
+                    addBalls();
                 }
  
                 if(changing == true)
@@ -164,7 +166,11 @@
                     ctx.beginPath();
                     ctx.strokeStyle = "red";
                     ctx.lineWidth = 3;
+                    
+                    ctx.moveTo(balls[a].x, balls[a].y);
                     ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                    ctx.stroke();
+                    ctx.moveTo(balls[b].x, balls[b].y);
                     ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
                     ctx.stroke();
  
