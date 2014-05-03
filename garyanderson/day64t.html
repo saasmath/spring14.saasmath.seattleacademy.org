@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 64 | particle balls</title>
+        <script src="utils.js"></script>
+        <script src="particle.js"></script>
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <style>
+            #stage {
+                border: solid;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+
+                var canvas;
+                var ctx;
+                var particles = [];
+
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    ball = particle.create(200,300,1,3.14,0);
+                    ball.radius = 50;
+                    ball.fillStyle = 'red';
+                    particles.push(ball);
+                    ball = particle.create(100,200,1,1,0);
+                    ball.radius = 30;
+                    ball.fillStyle = 'blue';
+                    particles.push(ball);
+                    draw();
+                }
+
+
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+                    for (var a = 0; a < particles.length; a++) {
+                        ctx.beginPath();
+                        ctx.arc(particles[a].x, particles[a].y, particles[a].radius, particles[a].getHeading(), particles[a].getHeading() + Math.PI * 2);
+                        ctx.fillStyle = 'blue';// ctx.fillStyle = particles[a].fill;
+                        ctx.fill();
+                        ctx.fillStyle = '#000000';
+                        ctx.font="20px Georgia";
+                        ctx.fillText(a,particles[a].x,particles[a].y);
+                        ctx.strokeStyle = "#000000";
+                        ctx.lineTo(particles[a].x, particles[a].y);
+                        ctx.stroke();
+                        
+                        
+                        
+                        if (particles[a].x <= particles[a].radius)
+                            particles[a].vx = Math.abs(particles[a].vx); // bounce ball off of left boundary
+                        if (particles[a].y <= particles[a].radius)
+                            particles[a].vy = Math.abs(particles[a].vy); // bounce ball off of top boundary
+                        if (particles[a].x >= canvas.width - particles[a].radius)
+                            particles[a].vx = -Math.abs(particles[a].vx); // bounce ball off of right boundary
+                        if (particles[a].y >= canvas.height - particles[a].radius)
+                            particles[a].vy = -Math.abs(particles[a].vy); // bounce ball off of bottom boundary
+                        particles[a].x += particles[a].vx;
+                        particles[a].y += particles[a].vy;
+                    }
+                    img = document.getElementById("star");
+                    ctx.drawImage(img,50,60,70,80,90,100,110,120);
+
+                    for (var a = 0; a < particles.length; a++) {
+                        for (var b = 0; b < particles.length; b++) {
+                            if (a !== b) { // make sure both balls being tested are not the same
+                                var distToBalls = Math.sqrt(Math.pow(particles[a].x - particles[b].x, 2) + Math.pow(particles[a].y - particles[b].y, 2));
+                                if (distToBalls <= particles[a].radius + particles[b].radius) {
+                                    var newVel = ballsCollide(a, b);
+                                }
+                            }
+                        }
+                    }
+
+                    //set velocity and angle
+
+                    var vel = particles[0].getHeading();
+                    $('#vel').text(particles[0].getHeading().toFixed(2));
+
+                    $('#theta').text(particles[0].getHeading().toFixed(2));
+
+                    requestAnimationFrame(draw);
+                }
+
+                function ballsCollide(a, b) {
+                    if (particles[a].radius <= 0)
+                        return;
+                    if (particles[b].radius <= 0)
+                        return;
+                    ctx.beginPath();
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 3;
+                    ctx.arc(particles[a].x, particles[a].y, particles[a].radius, 0, Math.PI * 2, true);
+                    ctx.arc(particles[b].x, particles[b].y, particles[b].radius, 0, Math.PI * 2, true);
+                    ctx.stroke();
+
+                    if (particles[a].radius > particles[b].radius)
+                    {
+                        particles[a].radius = particles[a].radius + 0.1;
+                        particles[b].radius = particles[b].radius - 0.1;
+                    }
+
+                    if (particles[b].radius > particles[a].radius)
+                    {
+                        particles[b].radius= particles[b].radius + 0.1;
+                        particles[a].radius = particles[a].radius - 0.1;
+                    }
+                    var currentscore = $("#collisions").text();
+                    $("#collisions").text(currentscore * 1 + 1);
+                    
+                }
+
+                init();
+
+                $("body").keydown(function(event) {
+                    console.log(event.which);
+                    if (event.which === 38) //up-arrow
+                    {
+                        particles[0].dy += -1;
+                    }
+                    else if (event.which === 37) //left-arrow
+                    {
+                        particles[0].vx += -1;
+                    }
+                    else if (event.which === 39) //right-arrow
+                    {
+                        particles[0].vx += 1;
+                    }
+                    else if (event.which === 40) //down-arrow
+                    {
+                        particles[0].vy += 1;
+                    }
+                    else if (event.which === 32) //Spacebar
+                    {
+                        particles[0].vy = 0;
+                        particles[0].vx = 0;
+                    }
+                    else if (event.which === 87) //w
+                    {
+                        particles[0].vy = (particles[0].getSpeed() * 1 + 1) * Math.sin(particles[0].getHeading());
+                        particles[0].vx = (particles[0].getSpeed() * 1 + 1) * Math.cos(particles[0].getHeading());
+                    }
+                    else if (event.which === 83)//s 
+                    {
+                        particles[0].vy = (particles[0].getSpeed() * 1 - 1) * Math.sin(particles[0].getHeading());
+                        particles[0].vx = (particles[0].getSpeed() * 1 - 1) * Math.cos(particles[0].getHeading());
+                    }
+                    else if (event.which === 65)//a 
+                    {
+                        var newtheta = particles[0].getHeading() * 1 + 5 / 360 * Math.PI;
+                        particles[0].vx = particles[0].getSpeed() * Math.cos(newtheta);
+                        particles[0].vy = particles[0].getSpeed() * Math.sin(newtheta);
+                    }
+                    else if (event.which === 68)//d
+                    {
+                        var newtheta = particles[0].theta * 1 + -5 / 360 * Math.PI;
+                        particles[0].vx = particles[0].getSpeed * Math.cos(newtheta);
+                        particles[0].vy = particles[0].getSpeed * Math.sin(newtheta);
+                    }
+
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="col-xs-3 text-center">
+                <div class="row teamname ">Number of Collisions</div>
+                <div class="row score text-center" id="collisions">0</div>
+                <div class="row teamname ">Velocity</div>
+                <div class="row score text-center" id="vel">0</div>
+                <div class="row teamname ">Angle Theta</div>
+                <div class="row score text-center" id="theta">0</div>
+                <div class="row ">Balls Eaten</div>
+                <div class="row text-center" id="points">0</div>
+                <button onclick="location.reload()">Reset</button>
+                
+
+            </div>
+            <canvas id="stage" width=600 height=400>
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+        <div style="display:block;"> <!-- display:none to hide; display:block to show-->
+            <img id="star" src="images/shooting-star.jpg" width="768" height="480" alt="shooting-star"/>
+        </div>
+    </body>
+</html>

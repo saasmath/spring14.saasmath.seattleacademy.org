@@ -119,4 +119,5 @@ var utils = {
 		p1 = points[points.length - 1];
 		context.quadraticCurveTo(p0.x, p0.y, p1.x, p1.y);
 	}
+
 }

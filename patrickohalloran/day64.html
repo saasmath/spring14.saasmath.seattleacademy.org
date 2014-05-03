@@ -1,79 +1,115 @@
 
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 61 | making balls</title>
+        
+        <title>Day 60 | making balls</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="utils.js"></script>
-        <script src="particle.js"></script>
         <style>
             #stage {
                 border: solid;
+                background-image:url('http://alienxfiles.com/wp-content/uploads/2011/11/UFO-in-Space.jpg');
+                background-position: center;
+                background-repeat:no-repeat;
             }
+            #gameOver{
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                font-size: 30px;
+                border: solid thick red;
+                background-color: white;
+                z-index: 200;
+
+            }
+            #TryAgain{
+                position: absolute;
+                left: 200px;
+                top: 100px;
+                font-size: 30px;
+                color: red;
+                border: solid thick red;
+                background-color: black;
+                z-index: 200;
+            }
+            
         </style>
         <script>
             $(document).ready(function() {
- 
+                $('#gameOver').hide(); //This makes it so the game over and try again pop ups are hidden at first
                 var canvas;
                 var ctx;
                 var balls = [
                     {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
-                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
-                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'red'},
-                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'blue'},
-                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
-                    {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                    {x: 830, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                    {x: 650, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                     {x: -100, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                     {x: -300, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                     {x: 1000, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                     {x: 720, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'},
-                     {x: -231, y: 1, r: 10, v: 12, theta: 2, dx: 2, dy: 1.5, fill: 'pink'}
+                    {x: 200, y: 150, r: 30, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'red'},
+                    {x: 200, y: 150, r: 60, v: 0, theta: 0, dx: -1, dy: 0.3, fill: 'red'},
+                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 60), r: 25, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'blue'},
+                    {x: Math.floor(Math.random() * 100), y: Math.floor(Math.random() * 60), r: 50, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'blue'},
+                    {x: Math.floor(Math.random() * 555), y: Math.floor(Math.random() * 60), r: 15, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'blue'},
+                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 60), r: 20, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'},
+                    {x: 450, y: 250, r: 62, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'blue'}
+                                                  
                 ];
- 
+
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
-                    
                     draw();
                 }
- 
+
                 function addBall(x, y, r, dx, dy, fill) {
                     ball = new Array();
-                    ball.x = x;
-                    ball.y = y;
-                    ball.r = r;
+                    ball.x = Math.floor(Math.random() * 1000);
+                    ball.y = Math.floor(Math.random() * 500);
+                    ball.r = Math.floor(Math.random(20) * 45);
                     ball.dx = dx;
                     ball.dy = dy;
                     ball.fill = fill;
                     balls.push(ball);
                 }
                 function draw() {
-                    //ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.translate(150,200);
-                    ctx.rotate(20*Math.PI/180);
-                    ctx.translate(-150,-200);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
                     for (var a = 0; a < balls.length; a++) {
-                        if (balls[a].r <= 0) {
+                        if (balls[a].r <= 3) {
                             balls.splice(a, 1);//delete balls with no radius
                             currentscore = $("#points").text();
                             $("#points").text(currentscore * 1 + 1);
                             addBall(100, 100, 20, 1, 1, "blue");
                         }
                     }
-                    value = utils.distanceXY (1,2,3,4);
+
                     for (var a = 0; a < balls.length; a++) {
-                        
                         ctx.beginPath();
                         ctx.arc(balls[a].x, balls[a].y, balls[a].r, balls[a].theta, balls[a].theta + Math.PI * 2);
                         ctx.fillStyle = balls[a].fill;
+                        ctx.lineWidth = 3;
                         ctx.fill();
                         ctx.strokeStyle = "#000000";
                         ctx.lineTo(balls[a].x, balls[a].y);
-                        
                         ctx.stroke();
                         if (balls[a].x <= balls[a].r)
                             balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
@@ -85,9 +121,8 @@
                             balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
                         balls[a].x += balls[a].dx;
                         balls[a].y += balls[a].dy;
-
                     }
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a !== b) { // make sure both balls being tested are not the same
@@ -98,7 +133,7 @@
                             }
                         }
                     }
- 
+
                     //set velocity and angle
                     for (var a = 0; a < balls.length; a++) {
                         balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
@@ -106,45 +141,56 @@
                     }
                     var vel = balls[0].v;
                     $('#vel').text(balls[0].v.toFixed(2));
- 
+
                     var theta = balls[0].theta;
                     $('#theta').text(balls[0].theta.toFixed(2));
- 
-                        
+
                     requestAnimationFrame(draw);
                 }
- 
+
                 function ballsCollide(a, b) {
                     if (balls[a].r <= 0)
                         return;
                     if (balls[b].r <= 0)
                         return;
-                    ctx.beginPath();
-                    ctx.strokeStyle = "red";
-                    ctx.lineWidth = 3;
-                    ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
-                    ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
-                    ctx.stroke();
- 
+
+
                     if (balls[a].r > balls[b].r)
                     {
-                        balls[a].r = balls[a].r + 0.1;
-                        balls[b].r = balls[b].r - 0.1;
+                        var areaA = Math.PI * balls[a].r * balls[a].r;
+                        var areaB = Math.PI * balls[b].r * balls[b].r;
+
+                        areaA += areaB * .08;
+                        areaB -= areaB * .08;
+
+                        balls[a].r = Math.sqrt(areaA / Math.PI);
+                        balls[b].r = Math.sqrt(areaB / Math.PI);
                     }
- 
+
                     if (balls[b].r > balls[a].r)
                     {
-                        balls[b].r = balls[b].r + 0.1;
-                        balls[a].r = balls[a].r - 0.1;
+                        var areaA = Math.PI * balls[a].r * balls[a].r;
+                        var areaB = Math.PI * balls[b].r * balls[b].r;
+
+                        areaA -= areaA * .5;
+                        areaB += areaA * .5;
+
+                        balls[a].r = Math.sqrt(areaA / Math.PI);
+                        balls[b].r = Math.sqrt(areaB / Math.PI);
                     }
-                    var currentscore = $("#collisions").text();
-                    $("#collisions").text(currentscore * 1 + 1);
- 
+
                 }
- 
+                function gameOver() {
+                    $('#hide').show();
+                    $('#gameOver').show();
+                    $('#TryAgain').show();
+
+
+                    //alert("Game over, Try again.");
+                }
+
+
                 init();
-                
-                
                 $("body").keydown(function(event) {
                     console.log(event.which);
                     if (event.which === 38) //up-arrow
@@ -172,18 +218,6 @@
                     {
                         balls[0].dy = (balls[0].v * 1 + 1) * Math.sin(balls[0].theta);
                         balls[0].dx = (balls[0].v * 1 + 1) * Math.cos(balls[0].theta);
-                        balls[0].r = balls[0].r * 1 - 1;
-                        //function shootballs(e){
-                                //console.log("shootballs");
-                                //balls[0].dx=parseInt(e.clientX-offsetX);
-                                //balls[0].dy=parseInt(e.clientY-offsetY);
-                                //ctx.beginPath();
-                                //ctx.arc(balls[0].x, balls[0].y, balls[0].r, balls[0].theta, balls[0].theta + Math.PI * 2);
-                                //ctx.closePath();
-                                //ctx.fillStyle="black";
-                                //ctx.fill(); 
-                              //}
-                        console.log("shooting");
                     }
                     else if (event.which === 83)//s 
                     {
@@ -202,17 +236,15 @@
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
                         balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
-                     else if (event.which === 82) //restarts if r
-                    {
-                        location.reload();
-                    }
-                });
- 
-            });
- 
-        </script>
+
+                }
+                )
+                        ;
+
+            }
+            );</script>
     </head>
- 
+
     <body>
         <div id="container">
             <div class="col-xs-3 text-center">
@@ -225,11 +257,14 @@
                 <div class="row ">Balls Eaten</div>
                 <div class="row text-center" id="points">0</div>
                 <button onclick="location.reload()">Reset</button>
- 
+                <div id="gameOver">Game Over!
+                    <button onclick="location.reload()" id="TryAgain">Try again?</button>
+
+                </div>
             </div>
-            <canvas id="stage" width=600 height=400>
+            <canvas id="stage" width=1000 height=650>
                 Your browser does not support the canvas element.
             </canvas>
         </div>
-    </body>
-</html> 
+    </body>                 
+</html>
