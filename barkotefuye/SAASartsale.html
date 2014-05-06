@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>SAAS art gallery</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet"> 
         <link href="styles.css" rel="stylesheet">
@@ -15,64 +15,130 @@ and open the template in the editor.
         <script src="../../js/bootstrap.min.js"></script>
         <script src="scripts.js"></script>
         <style>
-            .col-xs-3{
-                background-color:#ff9999;
+            body{
+                background-image: url(../../../Pictures/background.jpg); 
             }
+            #webpagetitle{
+                color: white;
+                background-color:red;
+                display: inline
+            }
+            
             #black{
                     background-color: #000000;
-                     height: 6px
-                        
+                    border:;
+                    display: inline   
                 }
+                
                 .col-xs-7{
                     
                 }    
-            .col-xs-6{
-                    margin: 3px;
-                    left:582px;
-                    bottom: 228px;
-                    background-color: #fcebdd;
+            //#piece{
+                   // margin: 3px;
+                   // left:582px;
+                   // bottom: 228px;
+                    //background-color: #fcebdd;
                     
-                } 
+               // } 
                 #photo{
                     bottom:500px
-                }   
+                } 
+                #table{
+                    border-color:pink
+                }
+                .a{
+                  display:inline;
+                  color:#ffffff; 
+                  background-color:#000000;
+                  border: solid;
+                  border:black;
+                  border-width:3px;
+                  padding: .1em 8em;
+                }
+                .a:hover{
+                  background-color: #ffffff;
+                  color:#000000
+                }
+                #background{
+                    background-color: #fcebdd;
+                    height:1000px;  
+                }
+                .search{
+                    
+                    text-transform: uppercase;
+                }  
+                
             
         </style>
     </head>
+    
     <body>
+        
         <div class="container">
             <div class="row">
-                <div class="col-xs-3">
-                    <h1>SAAS Art for Sale</h1> 
-                    <h4>the best of SAAS!</h4>
-            </div>
-                <div class='col-xs-12'id="black"></div>
-                <div class='col-xs-7'>
+                <div class="col-xs-6" id='webpagetitle'>
+                    <h1>SAAS GALLERY</h1>
+               </div>
+                <div>
+                    <form class="search submit">
+        <input type="text" placeholder="Search here..." required>
+        <button type="submit">Search</button>
+    </form>   
+              
+                </div>
+            <ul class='col-xs-12' id="black">
+                <li class='a'>Home</li> 
+                <li class='a'>Gallery</li>
+                <li class='a'>Art on Sale</li>
+                <li class='a'>Contacts</li>
+            </ul>
+                <div class='col-xs-12' id="background">
+                   
+                     
+                </div>
+             
+               <!-- <div class='col-xs-7'>
                     <h2>Photos of art for sale:</h2>
                     from most recent to oldest
                 </div>
               
-                <div class='col-xs-6'>
+               <div class='col-xs-6' id='piece'>
                     <h3> Own a piece today!</h3>
                     Contact  me at<br> 
                     barkotefuye@seattleacademy.org<br> or 
                     aferry@seattleacademy.org<br>
                     (contact list at bottom of page)
                 </div>
-                <div class="col-xs-12">
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                <div class="col-xs-12">-->
+                 <!--   <table border="1" id="table">
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                            </tr>
+                            <tr>
+                                <td  class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                            </tr>
+                            <tr>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                            </tr>
+                            <tr>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                                <td class="box"></td>
+                            </tr>
+                            <tr>
+                                <td class="box"></td>
+                                <td class="box"></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -100,35 +166,12 @@ and open the template in the editor.
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                      </tbody><img src="../../../Pictures/background.jpg" width="300" height="168" alt="background"/>
+
+                    </table>-->
 
                 </div>
-        </div>
+                
             </div>
         
     </body>

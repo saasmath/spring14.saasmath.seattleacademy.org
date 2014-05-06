@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quadratic Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var A = $("#A").val();
+                    var B = $("#B").val();
+                    var C = $("#C").val();
+                    disc = (Math.pow(B,2)-(4*A*C));
+                    axsym = ((B*-1)/(2*A));
+                    $("#disc").text(disc);
+                    $("#axsym").text(axsym);
+                    $("#quadformadd").text(axsym+(Math.sqrt(disc,2))/2*A);
+                    $("#quadformsub").text(axsym-(Math.sqrt(disc,2))/2*A);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic Calculator</h1>
+            <div class="row">
+                A:  <input id="A" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                B:  <input id="B" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                C:  <input id="C" />
+            </div>
+            
+            <div class="row"> 
+                Discriminant:  <span id="disc">Undefined</span>
+               
+            </div>
+            <div class="row"> 
+                Axis of Symmetry:  <span id="axsym">Undefined</span>
+               
+            </div>
+          <div class="row"> 
+                Quadratic Formula Addition:  <span id="quadformadd">Undefined</span>
+            </div>
+            <div class="row"> 
+                Quadratic Formula Subtraction:  <span id="quadformsub">Undefined</span>
+            </div>
+            <div class="row">
+
+            </div>
+            <img class="background"  src="http://2.bp.blogspot.com/-BvrEAGeVEzw/TmkyvYpV_WI/AAAAAAAAAMI/F0wLEBXAno0/s1600/calculator.jpg" alt="img"/>
+        </div>
+    </body>
+</html>
+
+     <style>
+            body{
+               background-image: "http://hawaii-tourismus.com/images/wallpaper/hawaii-wallpaper-09.jpg";
+               font-family:"Times New Roman", Times, serif;
+               font-size:30px;
+
+border-style:dotted;
+border-width:5px;
+border-color:greenyellow
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#side2,#lenght,#width, #height, #side").keyup(function(e) {
+                    var side = $("#side").val();
+                     var side2 = $("#side2").val();
+                    $("#perimeter").text( (side*1 + side2*1) * 2 );
+                    $("#area").text(side * side2);
+                
+               
+                   
+                      var length = $("#lenght").val();
+                      var width = $("#width").val();
+                      var height = $("#height").val();
+                    $("#surfacearea").text( 2*(length * width*1 + width * height* + length * height*1) );
+                    $("#area2").text(length * width * height);
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Rectangle Calculator</h1>
+            <div class="row">
+                Side #1:  <input id="side" value="0" />
+            </div>
+             <div class="row">
+                 Side #2:  <input id="side2" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Perimeter:  <span id="perimeter">0</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">0</span>
+            </div>
+            
+           
+             <h1>Rectangular Prism Calculator</h1>
+            <div class="row">
+                Length:  <input id="lenght" value="0" />
+            </div>
+             <div class="row">
+                 Width :  <input id="width" value="0" />
+            </div>
+             <div class="row">
+                 Height:  <input id="height" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Surface Area:  <span id="surfacearea">0</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Volume:  <span id="area2">0</span>
+            </div>
+            <button onclick="location.reload()">Reset</button>
+           
+        </div>
+    </body>
+</html>

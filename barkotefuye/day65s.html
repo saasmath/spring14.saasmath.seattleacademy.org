@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>square Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+               
+            }
+            .container{
+                border-style: solid;
+                border-color:skyblue;
+                border-radius: 10px
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="text/javascript"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var side = $("#side").val();
+                    $("#perimeter").val(side * 4);
+                    $("#area").text(Math.pow(side, 2));
+                    $("#volume").text(Math.pow(side,3));
+                    $("#larea").text(4*Math.pow(side,2));
+                    $("#sarea").text(6*Math.pow(side,2));
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Square Calculator</h1>
+            <div class="row">
+                side:  <input id="side" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                perimeter:  <input id="perimeter" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span>
+            </div>
+            <div>
+                If face of a cube...<br>
+                Volume: <span id="volume">undefined</span><br>
+                
+                Lateral Area:<span id="larea"></span><br>
+                
+                Surface Area:<span id="sarea"></span><br>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+            
+        </div>
+    </body>
+</html>

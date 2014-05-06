@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <title>Grapher</title>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+    </style>
+    <script src="grapher.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="578" height="300"></canvas>
+    <script>
+      
+      var myGraph = new Graph({
+        canvasId: 'myCanvas',
+        minX: -10,
+        minY: -10,
+        maxX: 10,
+        maxY: 10,
+        unitsPerTick: 1
+      });
+
+      myGraph.drawEquation(function(x) {
+        return 5 * Math.sin(x);
+      }, 'green', 2);
+
+      myGraph.drawEquation(function(x) {
+        return x * x;
+      }, 'blue', 3);
+
+      myGraph.drawEquation(function(x) {
+        return 1 * x;
+      }, 'red', 1);
+
+    </script>
+  </body>
+</html>

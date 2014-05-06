@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Circle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+           //function factorial(k)
+           //{
+               //var f = 1;
+               //for (i = 1; i < k; i++)
+               //{
+                //   f *= i;
+               //}
+               //return f;    
+               //console.log(f);
+           //}
+           var f = [];
+           function factorial (n) { //http://stackoverflow.com/questions/3959211/fast-factorial-function-in-javascript
+              if (n == 0 || n == 1)
+                return 1;
+              if (f[n] > 0)
+                return f[n];
+              return f[n] = factorial(n-1) * n;
+            } ​
+           $(document).ready(function() {
+                $("#p").click(function(e) {
+                    var a = $("ap").val();
+                    var b = $("bp").val();
+                    
+                    var fa = factorial(a);
+                    var fab = factorial(a-b);
+                    $("#apb").text(fa/fab);
+                    console.log(a, b);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Permutation Calculator</h1>
+            <div class="row">
+                a:  <input id="ap" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                b:  <input id="bp" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                aPb:  <span id="apb">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="p">Calculate</button>
+            </div>
+          
+        </div>
+        
+    </body>
+</html>

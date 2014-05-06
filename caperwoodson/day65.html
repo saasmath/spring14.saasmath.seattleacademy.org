@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Matrices Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(100%,80%,70%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".container").keyup(function(e) {
+                    var A = $("#a").val();
+                    var B = $("#b").val();
+                    var C = $("#c").val();
+                    var D = $("#d").val();
+                    $("#determinant").text =((A * D)-(B * C));
+                    $("#inv").text);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Square Calculator</h1>
+            <div class="row">
+                A value:  <input id="a" />
+                B value:  <input id="b" />
+            </div>
+            <div class="row">
+                C value:  <input id="c" />
+                D value:  <input id="d" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Determinant:  <input id="determinant" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Inverse:  <span id="inv">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>

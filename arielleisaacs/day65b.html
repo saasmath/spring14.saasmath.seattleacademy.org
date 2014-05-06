@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Circle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var radius = $("#radius").val();
+                    $("#circumference").val(radius * 2 * Math.PI);
+                    $("#area").text(Math.PI * Math.pow(radius, 2));
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Circle Calculator</h1>
+            <div class="row">
+                Radius:  <input id="radius" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Circumference:  <input id="circumference" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>
+

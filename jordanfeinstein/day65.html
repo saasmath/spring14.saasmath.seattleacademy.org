@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <title>Geometryr</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+               font-family:"Times New Roman", Times, serif;
+               font-size:24px;
+
+border-style:groove;
+border-width:10px;
+border-color:pink
+            }
+
+        </style>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var side = $("#side").val();
+                    var side2 = $("#side2").val();
+                    $("#perimeter").val(side * 1 + side * 1 + side2 * 1 + side2 * 1);
+                    $("#area").val(side * side2);
+                });
+                $("#cubecalculate").click(function(e) {
+                    var cubeside = $("#cubeside").val();
+                    $("#cubesa").val(Math.pow(cubeside, 2) * 6);
+                    $("#cubearea").val(Math.pow(cubeside, 3));
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+    </h1 >Geomtrey</h1>
+        <font:50 px>
+        <div class="container">
+            <div class="accordion" id="accordion">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        
+                        <h1 >Rectangle Calculator</h1>
+                        <div class="row">
+                            Side:  <input id="side" />
+                        </div>
+                        <div class="row">
+                            Side 2:  <input id="side2" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Perimeter:  <input id="perimeter" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="area" />
+                        </div>
+                        <div class="row">
+                            <button id="calculate">Calculate</button>
+                        </div>
+
+                        <h1>Cube Calculator</h1>
+                        <div class="row">
+                            Side:  <input id="cubeside" />
+                        </div>
+
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Surface Area:  <input id="cubesa" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="cubearea" />
+                        </div>
+                        <div class="row">
+                            <button id="cubecalculate">Calculate</button>
+                        </div>
+                        <div
+                            class="row"></div>
+                             <button>Clear</button>
+                        </div>
+                    <img class="center-block"  src="http://0.tqn.com/d/math/1/0/1/F/cubesa.gif" alt="img"/>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+            Rectangles
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#side2,#lenght,#width, #height, #side").keyup(function(e) {
+                    var side = $("#side").val();
+                     var side2 = $("#side2").val();
+                    $("#perimeter").text( (side*1 + side2*1) * 2 );
+                    $("#area").text(side * side2);
+                
+               
+                   
+                      var length = $("#lenght").val();
+                      var width = $("#width").val();
+                      var height = $("#height").val();
+                    $("#surfacearea").text( 2*(length * width*1 + width * height* + length * height*1) );
+                    $("#area2").text(length * width * height);
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Rectangle Calculator</h1>
+            <div class="row">
+                Side #1:  <input id="side" value="0" />
+            </div>
+             <div class="row">
+                 Side #2:  <input id="side2" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Perimeter:  <span id="perimeter">0</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">0</span>
+            </div>
+            
+           
+             <h1>Rectangular Prism Calculator</h1>
+            <div class="row">
+                Length:  <input id="lenght" value="0" />
+            </div>
+             <div class="row">
+                 Width :  <input id="width" value="0" />
+            </div>
+             <div class="row">
+                 Height:  <input id="height" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Surface Area:  <span id="surfacearea">0</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Volume:  <span id="area2">0</span>
+            </div>
+            <button onclick="location.reload()">Reset</button>
+            <img class="center-block"  src="http://www.onlineconversion.com/images/shape_area_rectangle.png" alt="img"/>
+        </div>
+        
+    </body>
+</html>

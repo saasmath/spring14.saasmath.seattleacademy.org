@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Circle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: turquoise;
+                background-image: url("http://images4.fanpop.com/image/photos/15400000/Screw-that-seto-kaiba-15485888-720-515.jpg");
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#side").keyup(function(e) {
+                    var side = $("#side").val();
+                    $("#perimeter").val(side * 4);
+                    $("#area").text(Math.pow(side, 2));
+                    if (side == 2) {
+                        $("#message").text("Or Nah");
+                    }
+                    if (side == 3) {
+                        $("#message2").text("SebulbaZ");
+                    }
+                    if (side == 4) {
+                        $("#message3").text("Zuuuben");
+                    }
+                    if (side == 5) {
+                        $("#message4").text("NipZ");
+                    }
+                    if (side == 6) {
+                        $("#message5").text("BallaZ L0oiFe");
+                    }
+                    if (side == 7) {
+                        $("#message6").text("GaryZ A Balla");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Square Calculator</h1>
+            <div class="row">
+                Side Length:  <input id="side" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Perimeter  <input id="perimeter" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+                <div id="message"></div>
+                <div id="message2"></div>
+                <div id="message3"></div>
+                <div id="message4"></div>
+                <div id="message5"></div>
+                <div id="message6"></div>
+            </div>
+        </div>
+    </body>
+</html>

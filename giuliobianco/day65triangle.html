@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Right Triangle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#sideA").change(function(e) {
+                    var side = $("#sideA").val();
+                    $("#sideB").change(function(e) {
+                        var side = $("#sideB").val();
+                        $("#perimeter").text(side + 1 ); //formula for perimeter is; A + B + square root of A squared + B squared
+                        $("#area").text(Math.pow(side, 2));
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Right Triangle Calculator</h1>
+            <div class="row">
+                Side A:  <input id="sideA" />
+            </div>
+            <div class="row">
+                Side B:  <input id="sideB" />
+            </div>
+
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Perimeter:  <span id="perimeter">Undefined</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+            <div class="col-xs-3 col-xs-offset-1 score-block">
+                <img class="center-block"  src="http://www.analyzemath.com/Geometry/formulas/right_triangle.gif" alt="img"/>
+            </div>
+        </div>
+    </body>
+</html>

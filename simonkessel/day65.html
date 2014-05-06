@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Matrices Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    var d = $("#d").val();
+                    var det = (a * d)-(b*c);
+                    
+                    var inv_a = 1/det * a;
+                    var inv_b = 1/det * b;
+                    var inv_c = 1/det * c;
+                    var inv_d = 1/det * d;
+                    
+                    $("#det").text(det);
+                    $("#inv").text(inv_a + "," + inv_b + "," + inv_c + "," + inv_d);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Matrices Calculator</h1>
+            <div class="row">
+                <input id="a" /> x
+                + <input id="b" /> y = 
+                <input id="first" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                <input id="c" /> x
+                + <input id="d" /> y = 
+                <input id="second" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Determinant:  <span id="det">Undefined</span>
+            </div>
+            <div class="row">
+                 Inverse:  <span id="inv">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>

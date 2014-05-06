@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Circle Calculator 65</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function() {
+                    var radius = $("#radius").val();
+                    $("#surfacearea").text(Math.PI * 4 * Math.pow(radius, 2));
+                    $("#volume").text(Math.PI * .75 * Math.pow(radius, 3));
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Sphere Calculator</h1>
+            <div class="row">
+                Radius:  <input id="radius" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Surface Area:  <span id="surfacearea" >Undefined</span>
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Volume:  <span id="volume">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>

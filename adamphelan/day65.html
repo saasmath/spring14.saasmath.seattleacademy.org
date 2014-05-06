@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quadratic Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,90%,70%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var A = $("#A").val();
+                    var B = $("#B").val();
+                    var C = $("#C").val();
+                    disc = (Math.pow(B,2)-(4*A*C));
+                    axsym = ((B*-1)/(2*A));
+                    $("#disc").text(disc);
+                    $("#axsym").text(axsym);
+                    $("#quadformadd").text(axsym+(Math.sqrt(disc,2))/2*A);
+                    $("#quadformsub").text(axsym-(Math.sqrt(disc,2))/2*A);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic Calculator</h1>
+            <div class="row">
+                A:  <input id="A" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                B:  <input id="B" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                C:  <input id="C" />
+            </div>
+            
+            <div class="row"> 
+                Discriminant:  <span id="disc">Undefined</span>
+               
+            </div>
+            <div class="row"> 
+                Axis of Symmetry:  <span id="axsym">Undefined</span>
+               
+            </div>
+          <div class="row"> 
+                Quadratic Formula Addition:  <span id="quadformadd">Undefined</span>
+            </div>
+            <div class="row"> 
+                Quadratic Formula Subtraction:  <span id="quadformsub">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>
