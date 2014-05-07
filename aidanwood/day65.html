@@ -13,33 +13,35 @@
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script>
-           //function factorial(k)
-           //{
-               //var f = 1;
-               //for (i = 1; i < k; i++)
-               //{
-                //   f *= i;
-               //}
-               //return f;    
-               //console.log(f);
-           //}
-           var f = [];
-           function factorial (n) { //http://stackoverflow.com/questions/3959211/fast-factorial-function-in-javascript
-              if (n == 0 || n == 1)
-                return 1;
-              if (f[n] > 0)
-                return f[n];
-              return f[n] = factorial(n-1) * n;
-            } ​
+           function factorial(k)
+           {
+               var f = 1;
+               for (i = 1; i < k; i++)
+               {
+                   f *= i;
+               }
+               return f;    
+               console.log(f);
+           }
+//           var f = [];
+//           function factorial (n) {
+//               if (n == 0 || n == 1)
+//                return 1;
+//              if (f[n] > 0)
+//                return f[n];
+//              return f[n] = factorial(n-1) * n;
+//           }
+           
            $(document).ready(function() {
-                $("#p").click(function(e) {
+            console.log(factorial(5));    
+            $("#p").click(function(e) {
                     var a = $("ap").val();
                     var b = $("bp").val();
                     
                     var fa = factorial(a);
                     var fab = factorial(a-b);
                     $("#apb").text(fa/fab);
-                    console.log(a, b);
+                    console.log(a);
                 });
  
             });

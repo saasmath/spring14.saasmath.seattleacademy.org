@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rectangle and Cube Calculators</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: blue;
+                border-style:solid;
+                border-width:20px;
+                border-color:pink
+
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var side = $("#side").val();
+                    var side2 = $("#side2").val();
+                    $("#perimeter").val(side * 1 + side * 1 + side2 * 1 + side2 * 1);
+                    $("#area").val(side * side2);
+                });
+                $("#cubecalculate").click(function(e) {
+                    var cubeside = $("#cubeside").val();
+                    $("#cubesurface").val(Math.pow(cubeside, 2) * 6);
+                    $("#cubearea").val(Math.pow(cubeside, 3));
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Rectangle Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div><img src="http://www.math.fsu.edu/~wooland/hm2ed/Part3Module8/Sol3/graphics/Sol33.jpeg" width="150" height="151" alt="CirclePicture"/></div>
+
+
+
+
+                        <div class="row">
+                            Length:  <input id="side" />
+                        </div>
+                        <div class="row">
+                            Width:  <input id="side2" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Perimeter:  <input id="perimeter" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="area" />
+                        </div>
+                        <div class="row">
+                            <button id="calculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Cube Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div><img src="data:image/jpeg;base64,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" width="150" height="151" alt="CirclePicture"/></div>
+                        <div class="row">
+                            Side:  <input id="cubeside" />
+                        </div>
+
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Surface Area:  <input id="cubesurface" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="cubearea" />
+                        </div>
+                        <div class="row">
+                            <button id="cubecalculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Circle Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div><img src="images/CirclePicture.png" width="150" height="151" alt="CirclePicture"/></div>
+                <div class = "row">
+                    Radius:  <input id="radius" />
+                </div>
+                <div class = "row">
+                    Circumference:  <input id="circumference" /> \(C = 2 &pi; r \)
+                </div>
+                <div class = "row"> <!--This shows how to write to a span or div, etc.-->
+                    Area:  <span id="area">Undefined</span> \(A = &pi; r^2 \)
+                </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $("#radius").keyup(function(e) {
+                        var radius = $("#radius").val();
+                        var circumference = (radius * 2 * Math.PI).toFixed(2);
+                        $("#circumference").val(circumference);
+                        var area = (Math.PI * Math.pow(radius, 2)).toFixed(2);
+                        $("#area").text(area);
+                    });
+
+                    $("#circumference").keyup(function(e) {
+                        var circumference = $("#circumference").val();
+                        var radius = circumference / (2 * Math.PI);
+                        $("#radius").val(radius);
+                        $("#area").text(Math.PI * Math.pow(radius, 2));
+                    });
+
+                });
+            </script> 
+
+</html>

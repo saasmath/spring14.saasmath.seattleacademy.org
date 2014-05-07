@@ -1,6 +1,5 @@
 
 
-
 <html>
     <head>
         <title>Rectangle and Cube Calculator</title>
@@ -9,12 +8,17 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <style>
             body{
-                background-color: green;
+                background-color: yellow;
+                border-style:groove;
+                border-width:20px;
+                border-color:green
+
             }
         </style>
 
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script>
             $(document).ready(function() {
                 $("#calculate").click(function(e) {
@@ -33,17 +37,28 @@
         </script>
     </head>
     <body>
-        <div class="container">
-            <div class="accordion" id="accordion">
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        
-                        <h1 >Rectangle Calculator</h1>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Rectangle Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div><img src="http://www.math.fsu.edu/~wooland/hm2ed/Part3Module8/Sol3/graphics/Sol33.jpeg" width="150" height="151" alt="CirclePicture"/></div>
+
+
+
+
                         <div class="row">
-                            Side:  <input id="side" />
+                            Length:  <input id="side" />
                         </div>
                         <div class="row">
-                            Side 2:  <input id="side2" />
+                            Width:  <input id="side2" />
                         </div>
                         <div class="row"> <!--This shows how to write to a input field.-->
                             Perimeter:  <input id="perimeter" />
@@ -54,8 +69,22 @@
                         <div class="row">
                             <button id="calculate">Calculate</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Cube Calculator
+                        </a>
+                    </h4>
+                </div>
 
-                        <h1>Cube Calculator</h1>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
                         <div class="row">
                             Side:  <input id="cubeside" />
                         </div>
@@ -73,5 +102,9 @@
                 </div>
             </div>
         </div>
+
+
+
+
     </body>
 </html>

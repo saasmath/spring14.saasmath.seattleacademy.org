@@ -1,116 +1,140 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Slide Show</title>
-<style type="text/css">
-body {
-text-align: center;
-margin: 0;
-padding: 0;
-}
- 
-#imageContainer {
-min-height: 550px;
-background-color: lightblue;
- 
-}
- 
-a  {
-text-decoration: none;
-padding: 5px;
-color: #333;
-}
-</style>
- 
-<script type="text/javascript">
- 
-var imgSlide;
-var pic = 0;
-window.onload = function ()
-{
- 
-imgSlide = document.getElementById('img');
- 
-// preload images
-images = new Array();
-images[0] = new Image();
-images[0].src = "RiverCath.jpg";
-images[1] = new Image();
-images[1].src = "PragueHills.jpg";
-images[2] = new Image();
-images[2].src = "PragueLunch.jpg";
-images[3] = new Image();
-images[3].src = "RiverBridge.png";
- 
-}
- 
-function slide()
-{
-imgSlide.src = images[pic].src;
-if(pic < 3) // images.length - 1 can be used here
-{
-pic++;
-}
-else
-{
-pic = 0
- 
-}
-timer = setTimeout(slide, 5000);
-}
- 
-function prev()
-{
-if(timer)
-stopSlide();
- 
-if(pic == 0)
-{
- 
-pic = 3;
- 
-imgSlide.src = images[pic].src;
-}
-else
-{
-pic--;
-imgSlide.src = images[pic].src;
-}
-}
- 
-function next()
-{
-if(timer)
-stopSlide();
- 
-if(pic == 3)
-{
- 
-pic = 0;
-imgSlide.src = images[pic].src;
-}
-else
-{
-pic++;
-imgSlide.src = images[pic].src;
-}
- 
- 
-}
- 
-function stopSlide()
-{
-clearTimeout(timer);
-}
- 
- 
-</script>
-</head>
- 
-<body>
-<div id="imageContainer"><img id="img" src="OldTownCath.jpg" alt="image" title="image"/></div>
-<a href="JavaScript:slide()" title="Start">Start</a><a href="JavaScript:next()" title="Next">Next</a><a href="JavaScript:prev()" title="Previous">Previous</a><a href="JavaScript:stopSlide()" title="Stop">Stop</a>
- 
-</body>
+    <link href="Prague.css" rel="stylesheet">
+    <title> My Trip to Prague</title>
+    <style type="text/css">
+        .title {
+            color: red;
+            position: absolute;
+            right: 390px;
+            top: -10px;
+            z-index: 1;
+
+
+
+        }
+        .message{
+            color: blue;
+            font-size: 30px;
+            background-color: white; 
+            position:fixed;
+            top: 550px;
+            right:500px;
+
+        }
+        .flag1{
+            width: 200px; 
+            height: 100px;
+            top: 550px;
+            right: 950px;
+            position: fixed;
+        }
+        .flag2{
+            width: 200px; 
+            height: 100px;
+            top: 550px;
+            right: 250px;
+            position: fixed;
+        }
+        .map{
+            position: fixed;
+            top: 350px;
+            right: 990px;
+           
+        }
+
+    </style>
+
+    <body>
+        <h1 class="title"> My Trip to Prague</h1>
+        <h1 class="message"> Prague is in the Czech Republic</h1>
+        <div class="flagpos">
+            <img class="flag1" src="http://www.crwflags.com/fotw/images/c/cz.gif"/>
+        </div>
+        <div class="flagpos2">
+            <img class="flag2" src="http://www.crwflags.com/fotw/images/c/cz.gif"/>
+        </div>
+        <div class="map">
+            <img class="Map" src="http://t3.gstatic.com/images?q=tbn:ANd9GcRRYUI8f4DI3wpXZX-rY4YtE7hSRzJpKf5GUCbuzf194PVCgC_i"/>
+        </div>
+
+
+    </body>
+
+    <ul class="slides">
+        <input type="radio" name="radio-btn" id="img-1" checked/>
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/CastleRiver.JPG" class="rotate180" />
+            </div>
+            <div class="nav">
+                <label for="img-6" class="prev">&#x2039;</label>
+                <label for="img-2" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <input type="radio" name="radio-btn" id="img-2" />
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/RiverBridge.JPG" />
+            </div>
+            <div class="nav">
+                <label for="img-1" class="prev">&#x2039;</label>
+                <label for="img-3" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <input type="radio" name="radio-btn" id="img-3" />
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/OldTownSquare.JPG" />
+            </div>
+            <div class="nav">
+                <label for="img-2" class="prev">&#x2039;</label>
+                <label for="img-4" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <input type="radio" name="radio-btn" id="img-4" />
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/OldTownTower.JPG" class="rotate90" />
+            </div>
+            <div class="nav">
+                <label for="img-3" class="prev">&#x2039;</label>
+                <label for="img-5" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <input type="radio" name="radio-btn" id="img-5" />
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/PragueLunch.JPG" />
+            </div>
+            <div class="nav">
+                <label for="img-4" class="prev">&#x2039;</label>
+                <label for="img-6" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <input type="radio" name="radio-btn" id="img-6" />
+        <li class="slide-container">
+            <div class="slide">
+                <img src="http://saasmath.seattleacademy.org/giuliobianco/Prague/images/CharlesNight.JPG" class="rotate90" />
+            </div>
+            <div class="nav">
+                <label for="img-5" class="prev">&#x2039;</label>
+                <label for="img-1" class="next">&#x203a;</label>
+            </div>
+        </li>
+
+        <li class="nav-dots">
+            <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+            <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+            <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+            <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+            <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+            <label for="img-6" class="nav-dot" id="img-dot-6"></label>
+        </li>
+    </ul>
 </html>
+

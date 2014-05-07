@@ -1,0 +1,197 @@
+
+
+
+<html>
+    <head>
+        <title>Rectangle and Cube Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+          body{
+                background-color: white;
+               font-family:"Times New Roman", Times, serif;
+               font-size:24px;
+
+border-style:groove;
+border-width:10px;
+border-color:pink
+            }
+
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var side = $("#side").val();
+                    var side2 = $("#side2").val();
+                    $("#perimeter").val(side * 1 + side * 1 + side2 * 1 + side2 * 1);
+                    $("#area").val(side * side2);
+                });
+                $("#cubecalculate").click(function(e) {
+                    var cubeside = $("#cubeside").val();
+                    $("#cubesa").val(Math.pow(cubeside, 2) * 6);
+                    $("#cubearea").val(Math.pow(cubeside, 3));
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Rectangle Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div><img src="http://www.algebra-class.com/images/area-rectangle.gif" width="250" height="251" alt="CirclePicture"/></div>
+
+
+
+
+                        <div class="row">
+                            Length:  <input id="side" />
+                        </div>
+                        <div class="row">
+                            Width:  <input id="side2" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Perimeter:  <input id="perimeter" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="area" />
+                        </div>
+                        <div class="row">
+                            <button id="calculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Cube Calculator
+                        </a>
+                    </h4>
+                </div>
+                <div><img src="http://images.tutorvista.com/cms/images/67/cube-surface-area.png" width="350" height="151" alt="CirclePicture"/></div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            Side:  <input id="cubeside" />
+                        </div>
+
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Surface Area:  <input id="cubesa" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="cubearea" />
+                        </div>
+                        <div class="row">
+                            <button id="cubecalculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </style>
+        <script>
+            $(document).ready(function() {
+                $("#side2,#lenght,#width, #height, #side").keyup(function(e) {
+                    var side = $("#side").val();
+                     var side2 = $("#side2").val();
+                    $("#perimeter").text( (side*1 + side2*1) * 2 );
+                    $("#area").text(side * side2);
+                
+               
+                   
+                      var length = $("#lenght").val();
+                      var width = $("#width").val();
+                      var height = $("#height").val();
+                    $("#surfacearea").text( 2*((width * length*1) + (height * length*1) + (height * width*1)) );
+                    $("#area2").text(length * width * height);
+                });
+
+            });
+        </script>
+        <body>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-4 col-sm-offset-0">
+                    
+                    
+                    <div><img src="http://i01.i.aliimg.com/wsphoto/v0/599041407_1/-5-off-per-50-order-freeshipping-TRNFA-tr-1200v-calculator-Financial-Calculators-12-digit-LCD.jpg" width="150" height="151" alt="CirclePicture"/></div>
+                    <h3>Buy caculators now</h3>
+                    <div>Dont miss out! $5</div>
+                    
+    </head>
+    <body>
+        <div class="container">
+            
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                <----Click Me
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div>
+
+            
+            <div class="row">
+                Side #1:  <input id="side" value="0" />
+            </div>
+             <div class="row">
+                 Side #2:  <input id="side2" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+               \(Perimeter = 2*(length+width): \) <span id="perimeter">0</span> 
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                \(Area = length*width: \)  <span id="area">0</span> 
+
+            </div>
+             </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                <--- Click Me
+                            </a>
+                        </h4>
+                    </div>
+    <button onclick="location.reload()">Hide caculation</button>
+    <button onclick="location.http://www.bestbuy.com/site/office-electronics/calculators/abcat0805001.c?id=abcat0805001()">link to website</button>    
+           
+        </div>
+                         </div>
+                        </div>
+                    </div>
+                </div>
+    </body>
+</html>
+

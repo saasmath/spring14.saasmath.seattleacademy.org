@@ -1,0 +1,89 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Grapher</title>
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+            }
+
+        </style>
+        <script src="day67.js"></script>
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="578" height="300"></canvas>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var A = $("#A").val();
+                    var B = $("#B").val();
+                    var C = $("#C").val();
+                    disc = (Math.pow(B, 2) - (4 * A * C));
+                    axsym = ((B * -1) / (2 * A));
+                    $("#disc").text(disc);
+                    $("#axsym").text(axsym);
+                    $("#quadformadd").text(axsym + (Math.sqrt(disc, 2)) / 2 * A);
+                    $("#quadformsub").text(axsym - (Math.sqrt(disc, 2)) / 2 * A);
+                    myGraph.drawEquation(function(x) {
+                        return (A * x * x) + (B * x) + C;
+                    }, 'blue', 3);
+                });
+                var myGraph = new Graph({
+                    canvasId: 'myCanvas',
+                    minX: -10,
+                    minY: -10,
+                    maxX: 10,
+                    maxY: 10,
+                    unitsPerTick: 1
+                });
+
+            });
+
+
+    //      myGraph.drawEquation(function(x) {
+    //        return 5 * Math.sin(x);
+    //      }, 'green', 2);
+
+
+
+    //      myGraph.drawEquation(function(x) {
+    //        return 1 * x;
+    //      }, 'red', 1);
+
+        </script>
+        <div class="container">
+            <h1>Quadratic Calculator</h1>
+            <div class="row">
+                A:  <input id="A" value="1" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                B:  <input id="B" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                C:  <input id="C" value="0"/>
+            </div>
+
+            <div class="row"> 
+                Discriminant:  <span id="disc">Undefined</span>
+
+            </div>
+            <div class="row"> 
+                Axis of Symmetry:  <span id="axsym">Undefined</span>
+
+            </div>
+            <div class="row"> 
+                Quadratic Formula Addition:  <span id="quadformadd">Undefined</span>
+            </div>
+            <div class="row"> 
+                Quadratic Formula Subtraction:  <span id="quadformsub">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>

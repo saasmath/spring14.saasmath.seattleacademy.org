@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Circle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            $(document).ready(function() {
+                $("#radius").keyup(function(e) {
+                    var radius = $("#radius").val();
+                    var circumference = (radius * 2 * Math.PI).toFixed(2);
+                    $("#circumference").val(circumference);
+                    var area = (Math.PI * Math.pow(radius, 2)).toFixed(2);
+                    $("#area").text(area);
+                });
+ 
+                $("#circumference").keyup(function(e) {
+                    var circumference = $("#circumference").val();
+                    var radius = circumference / (2 * Math.PI);
+                    $("#radius").val(radius);
+                    $("#area").text(Math.PI * Math.pow(radius, 2));
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+         <div class="container">
+             <h1>Circle Calculator</h1>
+ 
+             <div><img src="images/circle.jpg" width="150" height="150" alt="circle"/>
+             </div>
+            <div class="row">
+                Radius:  <input id="radius" />
+            </div>
+            <div class="row">
+                Circumference:  <input id="circumference" /> \(C = 2 &pi; r \)
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span> \(A = &pi; r^2 \)
+            </div>
+        </div>
+ 
+        <h2>Entering Math Notation</h2>
+        <div>
+            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+            $$x = {-b \over 2a}\pm { \sqrt{b^2-4ac} \over 2a}.$$
+        </div>
+ 
+        <p>You may find <a href="http://saasmath.seattleacademy.org/wiki/index.php/Help:Contents">
+                http://saasmath.seattleacademy.org/wiki/index.php/Help:Contents</a> 
+            helpful, but rather than the &lt;math&gt; tag, use
+            the &#92;&#40; and &#92;&#40; for inline expressions and open and close with &#36;&#36; for block expressions.</p>
+    </body>
+</html>
+<html>
+    <head>
+        <title>Matrices Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(100%,80%,70%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#determinant").keyup(function(e) {
+                    var A = $("#a").val();
+                    var B = $("#b").val();
+                    var C = $("#c").val();
+                    var D = $("#d").val();
+                    $("#determinant").text =((A * D)-(B * C));
+                    $(("#inv").text);
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Matrices Calculator</h1>
+            <div class="row">
+                A value:  <input id="a" />
+                B value:  <input id="b" />
+            </div>
+            <div class="row">
+                C value:  <input id="c" />
+                D value:  <input id="d" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+                Determinant:  <input id="determinant" />
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Inverse:  <span id="inv">Undefined</span>
+            </div>
+            <div class="row">
+                <button id="calculate">Calculate</button>
+            </div>
+        </div>
+    </body>
+</html>

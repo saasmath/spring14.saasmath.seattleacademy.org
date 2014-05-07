@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Circle Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            $(document).ready(function() {
+                $("#radius").keyup(function(e) {
+                    var radius = $("#radius").val();
+                    var circumference = (radius * 2 * Math.PI).toFixed(2);
+                    $("#circumference").val(circumference);
+                    var area = (Math.PI * Math.pow(radius, 2)).toFixed(2);
+                    $("#area").text(area);
+                    if(radius==3){
+                        <img src="images/activate-swag.gif" width="250" height="199" alt="activate-swag"/>;
+                    }
+                });
+ 
+                $("#circumference").keyup(function(e) {
+                    var circumference = $("#circumference").val();
+                    var radius = circumference / (2 * Math.PI);
+                    $("#radius").val(radius);
+                    $("#area").text(Math.PI * Math.pow(radius, 2));
+                });
+ 
+            });
+        </script>
+    </head>
+    <body>
+        <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Circle Calculator
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+          <div><img src="images/CirclePicture.gif" width="150" height="151" alt="CirclePicture"/></div>
+            <div class="row">
+                Radius:  <input id="radius" />
+            </div>
+            <div class="row">
+                Circumference:  <input id="circumference" /> \(C = 2 &pi; r \)
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                Area:  <span id="area">Undefined</span> \(A = &pi; r^2 \)
+            </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          Or Nah
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        nah
+        <img src="images/likeigiveafuck.gif" width="260" height="146" alt="likeigiveafuck"/>
+        <img src="images/activate-swag.gif" width="250" height="199" alt="activate-swag"/>
+
+ </div>
+    </div>
+  </div>
+    </div>
+  </div>
+         </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Math In Coding</title>
+        <style>
+        </style>
+	</head>
+
+	<script type="text/javascript" src="JQuery.js"></script>
+    <script>
+        $(document).ready(function() 
+        {
+        	//defines globals
+        	var Objects = new Array();
+            var Canvas = document.getElementById("Canvas");
+            var Context = Canvas.getContext("2d");
+
+
+            function AddObjects()
+            {
+                console.log("objects populated");
+                Objects.push({"Position": [400, 400], "Radius": 40, "Mass": 40});
+                Objects.push({"Position": [200, 200], "Radius": 20, "Mass": 20});
+                Objects.push({"Position": [400, 200], "Radius": 10, "Mass": 10});
+                Objects.push({"Position": [0, 0], "Radius": 50, "Mass": 50});
+            }
+
+            function Draw()
+            {
+                Context.clearRect(0, 0, Canvas.width, Canvas.height);
+
+                for(var i = 0; i < Objects.length; i++)
+                {
+                    Context.beginPath();
+                    Context.arc(Objects[i].Position[0], Objects[i].Position[1], Objects[i].Radius, 0, 2*Math.PI);
+                    Context.stroke();
+                }
+            }
+
+            function CalculateForceVectors(PositionOne, PositionTwo, MassOne, MassTwo)
+            {
+            	var GConstant = 1;
+
+            	var Distance = Math.sqrt(Math.pow(PositionOne[0] - PositionTwo[0], 2) + Math.pow(PositionOne[1] - PositionTwo[1], 2));
+
+
+            	var Strength =  GConstant * ((MassOne * MassTwo) / Distance);
+
+
+            	var VectorOne = [PositionOne[0] - PositionTwo[0], PositionOne[1] - PositionTwo[1]];
+            	var VectorTwo = [PositionTwo[0] - PositionOne[0], PositionTwo[1] - PositionOne[1]];
+
+
+            	VectorOne = [VectorOne[0] / Distance, VectorOne[1] / Distance];
+            	VectorTwo = [VectorTwo[0] / Distance, VectorTwo[1] / Distance];
+
+            	var SpeedOne;
+            	var SpeedTwo;
+
+            	if(MassOne > MassTwo)
+            	{
+            		SpeedOne = MassTwo / MassOne;
+            		SpeedTwo = MassOne / MassTwo;
+            	}
+            	else
+            	{
+					SpeedTwo = MassOne / MassTwo;
+            		SpeedOne = MassTwo / MassOne;
+            	}
+
+            	VectorOne = [VectorOne[0] * SpeedOne, VectorOne[1] * SpeedOne];
+            	VectorTwo = [VectorTwo[0] * SpeedTwo, VectorTwo[1] * SpeedTwo];
+
+            	return [VectorOne, VectorTwo];
+            }
+
+            function MoveObjects()
+            {
+                console.log("_____");
+
+                for(var i = 0; i < Objects.length; i++)
+                {
+                    for(var p = 0; p < Objects.length; p++)
+                    {
+                        //if we are not comparing the same object
+                        if(p != i)
+                        {
+                            console.log(p + ", " + i);
+                            //uses the mass and location data to get the vectors
+                            var Vectors = CalculateForceVectors(Objects[i].Position, Objects[p].Position, Objects[i].Mass, Objects[p].Mass);
+
+                            //alert(Objects[p].Position);
+
+                            //subtracts the vectors from the current positions
+                            Objects[i].Position = [Objects[i].Position[0] - Vectors[0][0], Objects[i].Position[1]  - Vectors[0][1]];
+                            Objects[p].Position = [Objects[p].Position[0] - Vectors[1][0], Objects[p].Position[1]  - Vectors[1][1]];
+                        }
+                    }
+                }
+            }
+
+            AddObjects();
+
+            setInterval(function() 
+            {
+                MoveObjects();
+                Draw();
+            }, 50);
+            
+            
+        });
+    </script>
+
+	<body>
+	    <canvas id="Canvas" width=600 height=600>
+	        Your browser does not support the canvas element.
+	    </canvas>
+	</body>
+</html>

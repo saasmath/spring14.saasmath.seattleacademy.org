@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Square Calculator</title>
+        <title>Rectangle Calculator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -15,9 +16,10 @@
         <script>
             $(document).ready(function() {
                 $("#calculate").click(function(e) {
-                    var side = $("#side").val();
-                    $("#perimeter").val(side * 4);
-                    $("#area").text(Math.pow(side, 2));
+                    var width = $("#width").val();
+                    var height= $("#height").val1();
+                    $("#perimeter").val(width * 2 + height * 2);
+                    $("#area").text(width*height);
                 });
  
             });
@@ -27,7 +29,8 @@
         <div class="container">
             <h1>Square Calculator</h1>
             <div class="row">
-                side:  <input id="side" />
+                width:  <input id="width" />
+                height: <input id="height"/>
             </div>
             <div class="row"> <!--This shows how to write to a input field.-->
                 perimeter:  <input id="perimeter" />
