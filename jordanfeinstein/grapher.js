@@ -7,12 +7,12 @@ function Graph(config) {
     this.maxX = config.maxX;
     this.maxY = config.maxY;
     this.unitsPerTick = config.unitsPerTick;
-
+ 
     // constants
     this.axisColor = '#aaa';
-    this.font = '8pt Calibri';
+    this.font = '12pt times new roman';
     this.tickSize = 20;
-
+ 
     // relationships
     this.context = this.canvas.getContext('2d');
     this.rangeX = this.maxX - this.minX;
@@ -24,14 +24,14 @@ function Graph(config) {
     this.iteration = (this.maxX - this.minX) / 1000;
     this.scaleX = this.canvas.width / this.rangeX;
     this.scaleY = this.canvas.height / this.rangeY;
-
+ 
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+ 
     // draw x and y axis
     this.drawXAxis();
     this.drawYAxis();
 }
-
+ 
 Graph.prototype.drawXAxis = function() {
     var context = this.context;
     context.save();
@@ -41,14 +41,14 @@ Graph.prototype.drawXAxis = function() {
     context.strokeStyle = this.axisColor;
     context.lineWidth = 2;
     context.stroke();
-
+ 
     // draw tick marks
     var xPosIncrement = this.unitsPerTick * this.unitX;
     var xPos, unit;
     context.font = this.font;
     context.textAlign = 'center';
     context.textBaseline = 'top';
-
+ 
     // draw left tick marks
     xPos = this.centerX - xPosIncrement;
     unit = -1 * this.unitsPerTick;
@@ -60,7 +60,7 @@ Graph.prototype.drawXAxis = function() {
         unit -= this.unitsPerTick;
         xPos = Math.round(xPos - xPosIncrement);
     }
-
+ 
     // draw right tick marks
     xPos = this.centerX + xPosIncrement;
     unit = this.unitsPerTick;
@@ -74,7 +74,7 @@ Graph.prototype.drawXAxis = function() {
     }
     context.restore();
 };
-
+ 
 Graph.prototype.drawYAxis = function() {
     var context = this.context;
     context.save();
@@ -82,16 +82,16 @@ Graph.prototype.drawYAxis = function() {
     context.moveTo(this.centerX, 0);
     context.lineTo(this.centerX, this.canvas.height);
     context.strokeStyle = this.axisColor;
-    context.lineWidth = 2;
+    context.lineWidth = 1;
     context.stroke();
-
+ 
     // draw tick marks
     var yPosIncrement = this.unitsPerTick * this.unitY;
     var yPos, unit;
     context.font = this.font;
     context.textAlign = 'right';
     context.textBaseline = 'middle';
-
+ 
     // draw top tick marks
     yPos = this.centerY - yPosIncrement;
     unit = this.unitsPerTick;
@@ -103,7 +103,7 @@ Graph.prototype.drawYAxis = function() {
         unit += this.unitsPerTick;
         yPos = Math.round(yPos - yPosIncrement);
     }
-
+ 
     // draw bottom tick marks
     yPos = this.centerY + yPosIncrement;
     unit = -1 * this.unitsPerTick;
@@ -117,20 +117,20 @@ Graph.prototype.drawYAxis = function() {
     }
     context.restore();
 };
-
+ 
 Graph.prototype.drawEquation = function(equation, color, thickness) {
     var context = this.context;
     context.save();
     context.save();
     this.transformContext();
-
+ 
     context.beginPath();
     context.moveTo(this.minX, equation(this.minX));
-
+ 
     for (var x = this.minX + this.iteration; x <= this.maxX; x += this.iteration) {
         context.lineTo(x, equation(x));
     }
-
+ 
     context.restore();
     context.lineJoin = 'round';
     context.lineWidth = thickness;
@@ -138,13 +138,13 @@ Graph.prototype.drawEquation = function(equation, color, thickness) {
     context.stroke();
     context.restore();
 };
-
+ 
 Graph.prototype.transformContext = function() {
     var context = this.context;
-
+ 
     // move context to center of canvas
     this.context.translate(this.centerX, this.centerY);
-
+ 
     /*
      * stretch grid to fit the canvas window, and
      * invert the y scale so that that increments

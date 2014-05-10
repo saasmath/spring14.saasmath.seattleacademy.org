@@ -3,10 +3,11 @@ function Graph(config) {
     // user defined properties
     this.canvas = document.getElementById(config.canvasId);
     this.minX = config.minX;
-    this.minY = config.minY;
+    this.minY = config.maxY;//bug in orginal code, is flipped
     this.maxX = config.maxX;
-    this.maxY = config.maxY;
+    this.maxY = config.minY;//--
     this.unitsPerTick = config.unitsPerTick;
+    this.unitsPerTicky = config.unitsPerTick;
 
     // constants
     this.axisColor = '#aaa';
@@ -16,7 +17,7 @@ function Graph(config) {
     // relationships
     this.context = this.canvas.getContext('2d');
     this.rangeX = this.maxX - this.minX;
-    this.rangeY = this.maxY - this.minY;
+    this.rangeY = this.minY - this.maxY;
     this.unitX = this.canvas.width / this.rangeX;
     this.unitY = this.canvas.height / this.rangeY;
     this.centerY = Math.round(Math.abs(this.minY / this.rangeY) * this.canvas.height);

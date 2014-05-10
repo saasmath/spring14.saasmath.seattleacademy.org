@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quadratic Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+                font-family:"Times New Roman", Times, serif;
+                font-size:24px;
+                border-style:groove;
+                border-width:10px;
+                border-color:pink
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphQuadratic(a, b, c, root1, root2) {
+                    minX = -5;
+                    maxX = 5;
+                    if(root1 < minX){
+                        minX = root1;
+                    }
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: minX,
+                        minY: -5,
+                        maxX: 5,
+                        maxY: 5,
+                        unitsPerTick: 1
+                    });
+ 
+                    myGraph.drawEquation(function(x) {
+                        return a * (x * x) + b * x + c * 1;
+                    }, 'black', 3);
+ 
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+ 
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    //$("#xintercept").text(xintercept);
+ 
+ 
+                    aos = -b / (2 * a);
+                    $("#aos").text(aos);
+                    yvertex = a * aos * a * aos + b * aos + c * 1;
+                    $("#yvertex").text(yvertex);
+                    D = b * b - 4 * a * c;
+                    $("#D").text(D);
+                    root1 = aos - Math.sqrt(D) / (2 * a);
+                    root2 = aos + Math.sqrt(D) / (2 * a);
+                    $("#root1").text(root1);
+                    $("#root2").text(root2);
+                     graphQuadratic(a, b, c, root1, root2);
+
+                });
+ 
+                $(".container").keyup();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic Grapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">A</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">B</div>
+                <div class="col-xs-1"><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">C</div>
+                <div class="col-xs-1"><input type="text" id="c" value="0" size="3" /></div>
+            </div>
+ 
+ 
+            <div class="row">
+                <div class="col-xs-3">Axis of Symmetry: x= </div>
+                <div class="col-xs-1" id="aos">0</div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">YVertex</div>
+                <div class="col-xs-1" id="yvertex">0</div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">D</div>
+                <div class="col-xs-1" id="D">0</div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">Root1</div>
+                <div class="col-xs-1" id="root1">0</div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">Root2</div>
+                <div class="col-xs-1" id="root2">0</div>
+            </div>
+ 
+        </div>
+    </body>
+</html>

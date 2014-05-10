@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liner Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+ 
+            #xintercept{
+                border-bottom: solid 1px;
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphquad(a, b, c) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1
+                    });
+ 
+                    myGraph.drawEquation(function(x) {
+                        return a * x * x + (b * x) + c*1 ;
+                    }, 'blue', 3);
+  
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+ 
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    var xvertex = (-b / (2 * a));
+                    var yvertex = a*xvertex*xvertex + b * xvertex + c*1 ;
+                    var discriminant = b * b - 4 * a * c*1;
+                    if (discriminant < 0){
+                         discriminant = Math.abs(discriminant);
+                         $("#rootone").text(rootone+"i");
+                    $("#roottwo").text(roottwo+"i");}
+                         else{ 
+                             
+                            var rootone = xvertex - Math.sqrt(discriminant) / (2 * a);
+                             var roottwo = xvertex + Math.sqrt(discriminant) / (2 * a);
+                             
+                         }
+                    
+                  
+                    $("#xvertex").text (xvertex);
+                    $("#yvertex").text(yvertex);
+                    $("#discriminant").text(discriminant);
+                    $("#rootone").text(rootone);
+                    $("#roottwo").text(roottwo);
+                    
+                    //$("#yv").text((a * vertex)Math.pow(2));
+                    
+                    graphquad(a,b,c);
+                });
+ 
+                $(".container").keyup();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic  Grapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">A:</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">B:</div>
+                <div class="col-xs-1"><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">C:</div>
+                 <div class="col-xs-1"><input type="text" id="c" value="0" size="3" /></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">X Vertex:</div>
+                <div class="col-xs-1" id="xvertex">0</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Y Vertex:</div>
+                <div class="col-xs-1" id="yvertex">0</div>
+            </div>
+             <div class="row">
+                <div class="col-xs-3">Discriminant:</div>
+                <div class="col-xs-1" id="discriminant">0</div>
+            </div>
+             <div class="row">
+                <div class="col-xs-3">Root One:</div>
+                <div class="col-xs-1" id="rootone">0</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Root Two:</div>
+                <div class="col-xs-1" id="roottwo">0</div>
+            </div>
+ 
+        </div>
+    </body>
+</html>
+
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liner Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+ 
+            #xintercept{
+                border-bottom: solid 1px;
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphLine(m,b) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1// numberline
+                    });//draws graph on canvas
+ 
+                    myGraph.drawEquation(function(x) {
+                        return m * x + b * 1;
+                    }, 'blue', 3);
+ 
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+ 
+                $("#calculate").click(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    $("#xvertex").text(-b/2*a);
+                    var xvertex=$("#xvertex").val();
+                    $("#maxheight").text(a*(sqrt(xvertex,2))+b*xvertex+c);
+                    var maxyvalue= $("#maxheight");
+                   
+                });
+ 
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic Grapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">a value</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3" >b value</div>
+                <div class="col-xs-1" ><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3" >c value</div>
+                <div class="col-xs-1"><input type="text" id="c" value="0" size="3"/></div>
+            </div>
+            <div class="row">
+                <div class=col-xs-3>
+                    x-vertex:<span id="xvertex">0</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-3">
+                    y-max:<span id="maxheight">0</span>
+                </div>
+            </div>
+            
+           <!-- <div>
+                <div>
+                    
+                </div> 
+            </div>-->
+            
+            <button id="calculate">Calculate</button>
+           
+        </div>
+    </body>
+</html>

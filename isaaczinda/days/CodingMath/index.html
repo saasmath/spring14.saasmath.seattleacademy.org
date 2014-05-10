@@ -3,6 +3,10 @@
 	<head>
         <title>Math In Coding</title>
         <style>
+        #Readoutp p
+        {
+            
+        }
         </style>
 	</head>
 
@@ -10,19 +14,32 @@
     <script>
         $(document).ready(function() 
         {
-        	//defines globals
+        	//planet object
         	var Objects = new Array();
+
+            //global engine variables
+            var Translation = [0, 0];
+            var TimeSpeed = 1;
+            var Scale = 1;
+            var UpdatesPerSecond = 10;
+            var DrawsPerSecond = 50;
+
+            //canvas data
             var Canvas = document.getElementById("Canvas");
             var Context = Canvas.getContext("2d");
-
+            
 
             function AddObjects()
             {
-                console.log("objects populated");
-                Objects.push({"Position": [400, 400], "Radius": 40, "Mass": 40});
-                Objects.push({"Position": [200, 200], "Radius": 20, "Mass": 20});
-                Objects.push({"Position": [400, 200], "Radius": 10, "Mass": 10});
-                Objects.push({"Position": [0, 0], "Radius": 50, "Mass": 50});
+                //Objects.push({"Force": [0, 0], "Speed": [20, 0], "Acceleration": [0, 0], "Position": [200, 100], "Radius": 10, "Mass": 10});
+                //Objects.push({"Force": [0, 0], "Speed": [0, 0], "Acceleration": [0, 0], "Position": [200, 180], "Radius": 40, "Mass": 40});
+                //Objects.push({"Force": [0, 0], "Speed": [0, 0], "Acceleration": [0, 0], "Position": [400, 400], "Radius": 40, "Mass": 40});
+
+                for(var i = 0; i < 10; i++)
+                {
+                    var size = Math.random() * 40;
+                    Objects.push({"Force": [0, 0], "Speed": [0, 0], "Acceleration": [0, 0], "Position": [Math.random() * 1000, Math.random()*1000], "Radius": size, "Mass": size});
+                }
             }
 
             function Draw()
@@ -32,17 +49,29 @@
                 for(var i = 0; i < Objects.length; i++)
                 {
                     Context.beginPath();
-                    Context.arc(Objects[i].Position[0], Objects[i].Position[1], Objects[i].Radius, 0, 2*Math.PI);
+
+                    var TranslationX = Canvas.width / 2 + Translation[0];
+                    var TranslationY = Canvas.height / 2 + Translation[1];
+
+                    Context.arc((Objects[i].Position[0] - TranslationX) * Scale + TranslationX, (Objects[i].Position[1] - TranslationY) * Scale + TranslationY, Objects[i].Radius * Scale, 0, 2 * Math.PI);
                     Context.stroke();
                 }
             }
 
+            //declares variables to be used in the function
+            var SpeedOne;
+            var SpeedTwo;
+            
             function CalculateForceVectors(PositionOne, PositionTwo, MassOne, MassTwo)
             {
             	var GConstant = 1;
 
             	var Distance = Math.sqrt(Math.pow(PositionOne[0] - PositionTwo[0], 2) + Math.pow(PositionOne[1] - PositionTwo[1], 2));
 
+                if(Distance == 0 || MassOne == 0 || MassTwo == 0)
+                {
+                    return [[0, 0], [0, 0]];
+                }
 
             	var Strength =  GConstant * ((MassOne * MassTwo) / Distance);
 
@@ -53,9 +82,6 @@
 
             	VectorOne = [VectorOne[0] / Distance, VectorOne[1] / Distance];
             	VectorTwo = [VectorTwo[0] / Distance, VectorTwo[1] / Distance];
-
-            	var SpeedOne;
-            	var SpeedTwo;
 
             	if(MassOne > MassTwo)
             	{
@@ -68,50 +94,125 @@
             		SpeedOne = MassTwo / MassOne;
             	}
 
-            	VectorOne = [VectorOne[0] * SpeedOne, VectorOne[1] * SpeedOne];
-            	VectorTwo = [VectorTwo[0] * SpeedTwo, VectorTwo[1] * SpeedTwo];
+            	VectorOne = [VectorOne[0] * SpeedOne * Strength, VectorOne[1] * SpeedOne * Strength];
+            	VectorTwo = [VectorTwo[0] * SpeedTwo * Strength, VectorTwo[1] * SpeedTwo * Strength];
 
-            	return [VectorOne, VectorTwo];
+            	return [[-VectorOne[0], -VectorOne[1]], [-VectorTwo[0], -VectorTwo[1]]];
             }
 
-            function MoveObjects()
+            function CalculateForce()
             {
                 console.log("_____");
-
                 for(var i = 0; i < Objects.length; i++)
                 {
-                    for(var p = 0; p < Objects.length; p++)
+                    for(var p = i; p < Objects.length; p++)
                     {
                         //if we are not comparing the same object
                         if(p != i)
                         {
-                            console.log(p + ", " + i);
                             //uses the mass and location data to get the vectors
                             var Vectors = CalculateForceVectors(Objects[i].Position, Objects[p].Position, Objects[i].Mass, Objects[p].Mass);
 
-                            //alert(Objects[p].Position);
+                            console.log(Vectors);
 
                             //subtracts the vectors from the current positions
-                            Objects[i].Position = [Objects[i].Position[0] - Vectors[0][0], Objects[i].Position[1]  - Vectors[0][1]];
-                            Objects[p].Position = [Objects[p].Position[0] - Vectors[1][0], Objects[p].Position[1]  - Vectors[1][1]];
+                            Objects[i].Force = [Vectors[0][0] + Objects[i].Force[0], Vectors[0][1]  + Objects[i].Force[1]];
+                            Objects[p].Force = [Vectors[1][0] + Objects[p].Force[0], Vectors[1][1] + Objects[p].Force[1]];
                         }
                     }
                 }
             }
 
+            function UpdateReadouts()
+            {
+                //sets the static display tags
+                $("#Translation").text(Translation);
+                $("#Scale").text(Scale);  
+
+                //sets timespeed based off of the slider
+                $('#TimeSlider').change(function()
+                {
+                    $("#Time").text(this.value);
+                    TimeSpeed = this.value;
+                });
+            }
+
+            function CalculatePositions()
+            {
+                for(var i = 0; i < Objects.length; i++)
+                {
+                    Objects[i]["Acceleration"][0] = Objects[i].Force[0] / Objects[i].Mass;
+                    Objects[i]["Acceleration"][1] = Objects[i].Force[1] / Objects[i].Mass;
+
+                    Objects[i]["Speed"][0] += Objects[i].Acceleration[0] / DrawsPerSecond;
+                    Objects[i]["Speed"][1] += Objects[i].Acceleration[1] / DrawsPerSecond;
+
+                    Objects[i]["Position"][0] += Objects[i].Speed[0] / DrawsPerSecond * TimeSpeed;
+                    Objects[i]["Position"][1] += Objects[i].Speed[1] / DrawsPerSecond * TimeSpeed;
+                }
+            }
+
             AddObjects();
+            
+            setInterval(function() 
+            {
+                console.log("Draw");
+                CalculatePositions();
+                Draw();
+                
+            }, 1000 / DrawsPerSecond);
 
             setInterval(function() 
             {
-                MoveObjects();
-                Draw();
-            }, 50);
-            
+                console.log("Update");
+                UpdateReadouts();
+                CalculateForce();
+                
+            }, 1000 / UpdatesPerSecond);
+
+
+            console.log("Update");
+            UpdateReadouts();
+            CalculateForce();
+
+
+            $(document).keydown(function(e)
+            {
+                if(e.which == 38)
+                {
+                    Translation[1] += 5;
+                }
+                if(e.which == 40)
+                {
+                    Translation[1] -= 5;
+                }
+                if(e.which == 37)
+                {
+                    Translation[0] += 5;
+                }
+                if(e.which == 39)
+                {
+                    Translation[0] -= 5;
+                }
+                if(e.which == 83)
+                {
+                    Scale /= 1.1;
+                }
+                if(e.which == 87)
+                {
+                    Scale *= 1.1;
+                }
+            });
             
         });
     </script>
 
 	<body>
+        <div id = "Readout">
+            <p>Spacetime Constant: <span><input id="TimeSlider" type="range" min="0" max="10000"/></span><span id = "Time"></span></p>
+            <p>XY Translation: <span id = "Translation"></span></p>
+            <p>Universal Scale Factor: <span id = "Scale"></span></p>
+        </div>
 	    <canvas id="Canvas" width=600 height=600>
 	        Your browser does not support the canvas element.
 	    </canvas>

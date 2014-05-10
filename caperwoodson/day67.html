@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quadratic Grapher And Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+        <style>
+            body{
+                background-color: rgb(100%,50%,50%);
+            }
+ 
+            #xintercept{
+                border-bottom: solid 1px;
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphquad(a, b, c) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -100,
+                        minY: -100,
+                        maxX: 100,
+                        maxY: 100,
+                        unitsPerTick: 10
+                    });
+ 
+                    myGraph.drawEquation(function(x) {
+                        return a * x * x + b * x + c * 1;
+                    }, 'royalblue', 3);
+ 
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+ 
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    var discriminant = b * b - 4 * a * c;
+                        //if (discriminant < 0)
+                            //return Math.abs(discriminant);
+                    $("#disc").text(discriminant);
+                    var xvertex = -1 * b / 2 * a;
+                    $("#xvert").text(xvertex);
+                    var yvertex = a * xvertex * xvertex + b * xvertex + c * 1;
+                    $("#yvert").text(yvertex);
+                    var root1 = (b * -1 / (a * 2)) - (Math.sqrt(b * b - 4 * a * c) / (2 * a));
+                    $("#root1").text(root1);
+                    var root2 = (b * -1 / (a * 2)) + (Math.sqrt(b * b - 4 * a * c) / (2 * a));
+                    $("#root2").text(root2);
+                    graphquad(a, b, c);
+                });
+ 
+ 
+                $(".container").keyup();
+            });
+        </script>
+        <style>
+            #title{
+                font-size: 100px;
+                background-color: red;
+                color: blue;
+                font-family: Rock Salt;
+                src: url(http://fonts.googleapis.com/css?family=Rock+Salt)
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="title">Quadratic Grapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">a:</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">b:</div>
+                <div class="col-xs-1"><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-3">c:</div>
+                <div class="col-xs-1"><input type="text" id="c" value="0" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">discriminant:</div>
+                <div class="col-xs-1" id="disc">0</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-3">xvertex:</div>
+                <div class="col-xs-1" id="xvert">0</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-3">yvertex:</div>
+                <div class="col-xs-1" id="yvert">0</div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-3">root1:</div>
+                <div class="col-xs-1" id="root1">0</div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">root2:</div>
+                <div class="col-xs-1" id="root2">0</div>
+            </div>
+        </div>
+    </body>
+</html>

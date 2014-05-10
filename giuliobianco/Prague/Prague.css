@@ -61,6 +61,7 @@ html, body { background: #333 url("http://codepen.io/images/classy_fabric.png");
     height: 100%;
     display: none;
     position: absolute;
+    top: 50px;
 
 	  opacity: 0;
     z-index: 9;

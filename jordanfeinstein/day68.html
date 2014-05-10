@@ -1,13 +1,158 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+       
+<html>
+    <head>
+<title>Quadratic Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+               font-family:"Times New Roman", Times, serif;
+               font-size:24px;
+
+border-style:groove;
+border-width:10px;
+border-color:pink
+            }
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphQuadratic(a, b, c) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: $("#minX").val()*1,
+                        
+                        minY: -5,
+                        maxX: 5,
+                        maxY: 5,
+                        unitsPerTick: 1
+                    });
+
+                    myGraph.drawEquation(function(x) {
+                        return a * (x * x) + b * x + c * 1;
+                    }, 'black', 3);
+
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    //$("#xintercept").text(xintercept);
+
+
+                    graphQuadratic(a, b, c);
+                    aos=-b/(2*a);
+                    $("#aos").text(aos);
+                    yvertex=a*aos*a*aos+b*aos+c*1;
+                    $("#yvertex").text(yvertex);
+                    D=b*b-4*a*c;
+                    $("#D").text(D);
+                    root1=aos-Math.sqrt(D)/(2*a);
+                    root2=aos+Math.sqrt(D)/(2*a);
+                    $("#root1").text(root1);
+                    $("#root2").text(root2);
+                    
+                });
+
+
+                $(".container").keyup();
+            });
+        </script>
+    </head>
+    <body>
+        <img class="side-block"  src="http://images.tutorvista.com/cms/images/67/quadratic-graph2.png" alt="img"/>
+        <div class="container">
+
+            <h1>Quadratic Grapher</h1>
+              <div class="row">
+                <div class="col-xs-3">minX</div>
+                <div class="col-xs-1"><input type="text" id="minX" value="-10" size="3" /></div>
+
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">A</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">B</div>
+                <div class="col-xs-1"><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+                 <div class="row">
+                <div class="col-xs-3">C</div>
+                <div class="col-xs-1"><input type="text" id="c" value="0" size="3" /></div>
+            </div>
+                
+                    
+                <div class="row">
+                <div class="col-xs-3">Axis of Symmetry: x=</div>
+                <div class="col-xs-1" id="aos" />0</div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3"> YVertex</div>
+            <div class="col-xs-1" id="yvertex" />0</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3">D</div>
+        <div class="col-xs-1" id="D" />0</div>
+</div>
+
+<div class="row">
+    <div class="col-xs-3">Root1</div>
+    <div class="col-xs-1" id="root1" />0</div>
+
+</div>
+            <div class="row">
+    <div class="col-xs-3">Root2</div>
+    <div class="col-xs-1" id="root2" />0</div>
+    </div>
+            <button onclick="location.reload()">Reset</button>
+        </div>            
+            <video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=O8ezDEk3qCg">
+  </object> 
+</video>
+</div>
+</div>
+</body>
+</html>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 60 | making balls</title>
+
+        <title>Day 63 | making balls</title>
+
         <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script src ="utils.js"></script>
+        <script src ="particle.js"></script>
         <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
         <style>
             #stage {
-                border: dotted
+                border: solid;
+                background-image:url('http://d1jqu7g1y74ds1.cloudfront.net/wp-content/uploads/2010/11/milkyway.jpg');
+                background-position: center;
+                background-repeat:no-repeat;
+
             }
         </style>
         <script>
@@ -15,28 +160,36 @@
 
                 var canvas;
                 var ctx;
-                var redness = Math.floor((Math.random() * 255) + 1);
-                var green = Math.floor((Math.random() * 255) + 1);
-                var blueness = Math.floor((Math.random() * 255) + 1);
-                var yellowness = Math.floor((Math.random() * 255) + 1)
+
                 var balls = [
-                    {x: 20, y: 50, r: 40, v: 0, theta: 0, dx: 9, dy: 1.5, fill: 'pink'},
-                    {x: 20, y: 150, r: 45, v: 0, theta: 0, dx: -7, dy: 0.3, fill: 'blue'},
-                    {x: 150, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
-                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 3, dy: 1.5, fill: 'yellow'},
-                    {x: 30, y: 10, r: 45, v: 0, theta: 0, dx: -1, dy: 0.9, fill: 'orange'},
-                    {x: 10, y: 50, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
-                    {x: 70, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'yellow'},
-                    {x: 60, y: 10, r: 45, v: 0, theta: 0, dx: -1, dy: 0.9, fill: 'orange'},
-                    {x: 20, y: 50, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
-                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 800), r: Math.floor((Math.random() * (80 - 5 + 1) + 5)), v: 0, theta: 0, dx: 1, dy: 1.5, fill: "rgb(" + redness + "," + green + "," + blueness + " )"}
+                    {x: 300, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 2.5, fill: makeRandomfill()},
+                    {x: 200, y: 150, r: 45, v: 0, theta: 0, dx: -1, dy: 0.3, fill: makeRandomfill()},
+                    {x: 450, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 9, fill: makeRandomfill()},
+                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 500), r: Math.floor((Math.random() * (80 - 5 + 1) + 5)), v: 0, theta: 0, dx: 1, dy: 1.5, fill: makeRandomfill()}
                 ];
-                
+
+
+
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
+                    img = document.getElementById("sun");
                     draw();
                 }
+                function makeRandomfill() {
+                    var redness = utils.randomInt(1, 255);
+                    var green = utils.randomInt(1, 255);
+                    var blueness = utils.randomInt(1, 255);
+                    return("rgb(" + redness + "," + green + "," + blueness + " )");
+                }
+
+                //function makeSun(){
+                //ctx.beginPath();
+                //ctx.arc(400,300, 50, 0, 2 * Math.PI);
+                //ctx.clip();
+                //ctx.drawImage(img, 50,50);
+                //ctx.stroke();
+                //}
 
 
                 function addBall(x, y, r, dx, dy, fill) {
@@ -52,12 +205,16 @@
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+                    ctx.drawImage(img, 220, 160, 800, 800, 350, 250, 100, 100);
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
                             balls.splice(a, 1);//delete balls with no radius
                             currentscore = $("#points").text();
                             $("#points").text(currentscore * 1 + 1);
-                            addBall(100, 100, 20, 1, 1, "purple");
+                            var redness = utils.randomInt(1, 255);
+                            var green = utils.randomInt(1, 255);
+                            var blueness = utils.randomInt(1, 255);
+                            addBall(utils.randomInt(1, 400), utils.randomInt(1, 400), utils.randomInt(1, 50), 1, 1, "rgb(" + redness + "," + green + "," + blueness + " )");
                         }
                     }
 
@@ -66,7 +223,10 @@
                         ctx.arc(balls[a].x, balls[a].y, balls[a].r, balls[a].theta, balls[a].theta + Math.PI * 2);
                         ctx.fillStyle = balls[a].fill;
                         ctx.fill();
-                        ctx.strokeStyle = "#777777";
+                        ctx.fillStyle = '#000000';
+                        ctx.font="24px Georgia";
+                        ctx.fillText(a,balls[a].x,balls[a].y);
+                        ctx.strokeStyle = "#000000";
                         ctx.lineTo(balls[a].x, balls[a].y);
                         ctx.stroke();
                         if (balls[a].x <= balls[a].r)
@@ -93,7 +253,7 @@
                     }
 
                     //set velocity and angle
-                    for (var a = 7; a < balls.length; a++) {
+                    for (var a = 0; a < balls.length; a++) {
                         balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
                         balls[a].v = Math.sqrt(Math.pow(balls[a].dx, 2) + Math.pow(balls[a].dy, 2));
                     }
@@ -112,8 +272,8 @@
                     if (balls[b].r <= 0)
                         return;
                     ctx.beginPath();
-                    ctx.strokeStyle = "red";
-                    ctx.lineWidth = 0;
+                    ctx.strokeStyle = "pink";
+                    ctx.lineWidth = 1;
                     ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
                     ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
                     ctx.stroke();
@@ -195,23 +355,25 @@
     </head>
 
     <body>
+        <div style="display: none;">
+        <img id="sun" src="images/sun.jpg" alt="Sun" width="100" height="100"></div>
         <div id="container">
             <div class="col-xs-3 text-center">
                 <div class="row teamname ">Number of Collisions</div>
                 <div class="row score text-center" id="collisions">0</div>
-                <div class="row teamname ">Velocity</div>
+                <div class="row teamname ">Speed</div>
                 <div class="row score text-center" id="vel">0</div>
                 <div class="row teamname ">Angle Theta</div>
                 <div class="row score text-center" id="theta">0</div>
                 <div class="row ">Balls Eaten</div>
                 <div class="row text-center" id="points">0</div>
-                <button onclick="location.reload()">Reset</button>
+                <button onclick="location.reload()">Try again</button>
 
             </div>
-            <canvas id="stage" width=800 height=600>
+            <canvas id="stage" width=500 height=600>
                 Your browser does not support the canvas element.
             </canvas>
         </div>
     </body>
-    
 </html>
+

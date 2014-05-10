@@ -25,8 +25,8 @@ and open the template in the editor.
             }
             
             #black{
-                    background-color: #000000;
-                    border:;
+                    background-color:#81efbc;
+                  
                     display: inline   
                 }
                 
@@ -46,7 +46,7 @@ and open the template in the editor.
                 #table{
                     border-color:pink
                 }
-                .a{
+                .active{
                   display:inline;
                   color:#ffffff; 
                   background-color:#000000;
@@ -55,7 +55,7 @@ and open the template in the editor.
                   border-width:3px;
                   padding: .1em 8em;
                 }
-                .a:hover{
+                .active:hover{
                   background-color: #ffffff;
                   color:#000000
                 }
@@ -79,6 +79,9 @@ and open the template in the editor.
                 
             
         </style>
+        <script>
+            
+        </script>
     </head>
     
     <body>
@@ -96,26 +99,26 @@ and open the template in the editor.
               
                 </div>
             <ul class='col-xs-12'  id="black">
-                <li class='a'><a  href="#home" data-toggle="tab">Home</a></li> 
-                <li class='a'><a  href="#gallery" data-toggle="tab">Gallery</a></li>
-                <li class='a'><a  href="#art" data-toggle="tab">Art on Sale</a></li>
-                <li class='a'><a>Contacts</a></li>
+                <li class='active'><a  href="#home" data-toggle="tab">Home</a></li> 
+                <li class='active'><a  href="#gallery" data-toggle="tab">Gallery</a></li>
+                <li class='active'><a  href="#art" data-toggle="tab">Art on Sale</a></li>
+                <li class='active'><a>Contacts</a></li>
             </ul>
                 
                 <div class='col-xs-12' id="home">
-                    <div class='col-xs-7' id="art">
+                    <div class='col-xs-7' class='tab-pane' id="art">
                     <h2>Photos of art for sale:</h2>
                     from most recent to oldest
                 </div>
-                    <div>
+                    <div >
                         home
                     </div>
                 
-                    <div>
+                    <div >
                         gallery
                     </div>
             
-                    <div>
+                    <div >
                         sale
                     </div>
                 </div>

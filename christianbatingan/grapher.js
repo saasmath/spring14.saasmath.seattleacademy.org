@@ -152,3 +152,4 @@ Graph.prototype.transformContext = function() {
      */
     context.scale(this.scaleX, -this.scaleY);
 };
+

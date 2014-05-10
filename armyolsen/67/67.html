@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liner Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+
+            #xintercept{
+                border-bottom: solid 1px;
+            }
+        </style>
+
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphquad(a, b, c) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1
+                    });
+
+                    myGraph.drawEquation(function(x) {
+                        return  a * x * x + b * x + c * 1;
+                    }, 'red', 4);
+
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+
+                $(".container").keyup(function(e) {
+                    var a = $("#a").val();
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    var discriminant = b * b - 4 * a * c;
+                    var xvertex = -b / (2 * a);
+                    var bigd = b * b - 4 * a * c;
+                    var root1 = xvertex - Math.sqrt(bigd) / (2 * a);
+                    var root2 = xvertex + Math.sqrt(bigd) / (2 * a);
+                    $("#xvertex").text(xvertex);
+                    graphquad(a, b, c);
+                    $("#bigd").text(bigd);
+                    graphquad(a, b, c);
+                    $("#discriminant").text(discriminant);
+                    graphquad(a, b, c);
+                    $("#root1").text(root1);
+                    graphquad(a, b, c);
+                    $("#root2").text(root2);
+                    graphquad(a, b, c);
+                });
+
+                $(".container").keyup();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>quadGrapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">a</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">b</div>
+                <div class="col-xs-1"><input type="text" id="b" value="0" size="3" /></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">c</div>
+                <div class="col-xs-1"><input type="text" id="c" value="0" size="3" /></div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">discriminant:</div>
+                <div class="col-xs-1" id="discriminant">0</div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-3">xVertex</div>
+                <div class="col-xs-1" id="xvertex" />0</div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">Big D</div>
+            <div class="col-xs-1" id="bigd" />0</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3">Root1</div>
+        <div class="col-xs-1" id="root1" />0</div>
+</div>
+<div class="row">
+    <div class="col-xs-3">Root2</div>
+    <div class="col-xs-1" id="root2" />0</div>
+</div>
+
+</div>
+</body>
+</html>

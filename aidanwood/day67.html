@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liner Grapher Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: rgb(80%,80%,80%);
+            }
+ 
+            #xintercept{
+                border-bottom: solid 1px;
+            }
+        </style>
+ 
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="grapher.js"></script>
+        <script>
+            $(document).ready(function() {
+                function graphLine(m, b) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1
+                    });
+                    
+                    
+ 
+                    myGraph.drawEquation(function(x) {
+                        return m * x + b * 1;
+                    }, 'blue', 3);
+ 
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+                function graphQuad(a, b, c) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1
+                    });
+                    
+                    
+ 
+                    myGraph.drawEquation(function(x) {
+                        return (a*x*x) + (b*x) + c;
+                    }, 'blue', 3, a, b, c);
+ 
+//                    myGraph.drawEquation(function(x) {
+//                        return x*x;
+//                    }, 'red', 1);
+                }
+                
+       
+ 
+                $(".container").keyup(function(e) {
+                    //var slope = $("#slope").val();
+                    //var yintercept = $("#yintercept").val();
+                    //var xintercept = -yintercept / slope;
+                    var a = $("#a").val();
+                    var a2 = 1;
+                    
+                    if(a == 0)
+                    {
+                        alert("a can't be 0");
+                        $("a").text(a2);
+                    }
+                    
+                    var b = $("#b").val();
+                    var c = $("#c").val();
+                    var xx = -b / 2 * a;
+                    var yy = (a * xx * xx) + (b * xx) + c;
+                    $("#vertexX").text(xx);
+                    $("#vertexY").text(yy);
+                    var disc = (b*b) - (4*a*c);
+                    $("#disc").text(disc);
+                    graphQuad(a, b, c);
+                    
+                    localStorage.setItem("as", a);
+                    localStorage.setItem("bs", b);
+                    localStorage.setIteam("cs", c);
+                });
+ 
+                $(".container").keyup();
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Quadratic Grapher</h1>
+            <canvas id="myCanvas" width="578" height="300"></canvas>
+            <div class="row">
+                <div class="col-xs-3">A:</div>
+                <div class="col-xs-1"><input type="text" id="a" value="1" size="3" /></div>
+            </div>
+             
+            <div class="row">
+                <div class="col-xs-3">B:</div>
+                <div class="col-xs-1"><input type="text" id="b" value="2" size="3" /></div>
+            </div>
+ 
+            <div class="row">
+                <div class="col-xs-3">C:</div>
+                <div class="col-xs-1" id="c"><input type="text" id="c" value="2" size="3" /></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Discriminant:</div>
+                <div class="col-xs-1" id="disc">n/a</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">VertexX:</div>
+                <div class="col-xs-1" id="vertexX">n/a</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">VertexY:</div>
+                <div class="col-xs-1" id="vertexY">n/a</div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Save" name="Save" />
+                <input type="submit" value="Load" name="Load" />
+            </div>
+            
+            
+           
+ 
+        </div>
+    </body>
+</html>
