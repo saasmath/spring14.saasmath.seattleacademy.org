@@ -13,6 +13,9 @@
         <script src="../../js/bootstrap.min.js"></script>
         <script src="scripts.js"></script>
         <style>
+            body{
+                background-color: black
+            }
             .container{
                 font-family:Berlin Sans FB;
             }
@@ -30,7 +33,7 @@
                 border-radius:10px          
             }
             #line{
-                background-color: white;
+                background-color: #000;
                 height: 3px;
             }
             #body{
@@ -53,6 +56,7 @@
               background-color:#81efbc ;
                 border-radius: 30px; 
                 padding: 10px; 
+                width: 550px
             }
             #line2{
               background-color: #dafffd;
@@ -61,7 +65,22 @@
             #inner2{
                background-color:#81efbc ;
                 border-radius: 30px; 
-                padding: 10px;  
+                padding: 10px; 
+                width: 550px
+            }
+            #inner3{
+              background-color:#81efbc ;
+                border-radius: 30px; 
+                padding: 10px; 
+                width: 450px;
+                height:340px; 
+                position: absolute;
+                left: 630px;
+                top: 203px;   
+                
+            }
+            square{
+                
             }
            
         </style>
@@ -81,7 +100,7 @@
                 <li class="a"><a href="againstafricanamericanracism.html">Home</a></li>
                 <li class="a"><a href="againstafricanamericanracism-aboutus.html">About Us</a></li>
                 <li class="a"><a href="againstafricanamerican-volunteer.html">Volunteer</a></li>
-                <li class="a"><a href="">Make a Change</a></li>
+                <li class="a"><a href="againstafricanamericanracism-makeachange.html">Make a Change</a></li>
                 <li class="a"><a href="againstafricanamericanracism-contacts.html">Contact</a></li>
             </ul>
         </div>
@@ -93,7 +112,7 @@
                   <h2 style="font-family:Berlin Sans FB"> Make a Change!</h2>
                    <h4 style="font-family:Berlin Sans FB">Come make a change! Take a pledge to stop racism by joining our weekly events and protests on friday,
                     from 10am-2pm at pike place market. For more information, click the link to our facebook page below: <br>
-                     at <a> http://againstamericanracism-events.html</a></h4>
+                    at <a href="http://www.classtools.net/FB/home-page"> http://www.classtools.net/FB/home-page</a></h4>
               </div>
          <div  class="col-xs-12" id="line1"></div>
               <div id="inner1" style="font-family:Berlin Sans FB">
@@ -103,7 +122,7 @@
                     </h4>
                </div>
          <div class="col-xs-12" id="line2"></div>
-         
+         <div id="square"> 
                <div id="inner2">
                    <h2 style="font-family:Berlin Sans FB"> Upcoming Events</h2>
                    <h4 style="font-family:Berlin Sans FB"> Click on event for more information</h4>
@@ -145,9 +164,28 @@
                    </table>
 
                </div>
+             <div id="inner3">
+                 <h2 style="font-family:Berlin Sans FB" >Donate money for the Cause!</h2>
+                 <h4 style="font-family:Berlin Sans FB"> Fill the form below</h4> 
+                 <form action="thankyouforsupport.html" method="get" target="blank">
+                <h5 style="font-family:Berlin Sans FB">Which cause do you wish to support?</h5> 
+                <select>
+		<option selected="selected">Weekly protests</option>
+		<option>annual events</option>
+                <option>spreading flyers</option>
+                <option>School talks</option>
+		<option>no specific cause</option>
+                </select><br>
+                How did you come to know AASF?(Optional):<input type="text" id="input">
+                <br>How much do you wish to donate? $<input type="number"><br>
+	        <input type="submit" value="Submit">
+	</form>
+             </div>
+         </div>    
+             </div>
                  
              </div>
-         </div>
+       
          
            
     </body>
