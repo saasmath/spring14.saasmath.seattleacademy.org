@@ -18,7 +18,18 @@
         <canvas id="myCanvas" width="578" height="300"></canvas>
         <script>
             $(document).ready(function() {
-                $("#calculate").click(function(e) {
+                    var myGraph = new Graph({
+                        canvasId: 'myCanvas',
+                        minX: -10,
+                        minY: -10,
+                        maxX: 10,
+                        maxY: 10,
+                        unitsPerTick: 1
+                    });
+
+                
+                $(".container").keyup(function(e) {
+                   
                     var A = $("#A").val();
                     var B = $("#B").val();
                     var C = $("#C").val();
@@ -32,14 +43,8 @@
                         return (A * x * x) + (B * x) + C;
                     }, 'blue', 3);
                 });
-                var myGraph = new Graph({
-                    canvasId: 'myCanvas',
-                    minX: -10,
-                    minY: -10,
-                    maxX: 10,
-                    maxY: 10,
-                    unitsPerTick: 1
-                });
+                
+        $(".container").keyup();
 
             });
 
