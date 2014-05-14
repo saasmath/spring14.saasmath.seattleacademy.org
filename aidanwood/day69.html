@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sundays</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function div3PS() {
+                var currentDay = 1;
+                //var currentMonth = 1;
+                var currentYear = 1901;
+                var sunCounter = 0;
+                function sunCheck(s) { //A function to check if the input is a Sunday or not
+                    if (s % 7 == 0)
+                        return true;
+                    else
+                        return false;
+                }
+                function leapCheck(y) { //A function to check if the current year is a leap year
+                    if (y % 4 == 0 && currentYear % 400 == 0)
+                        return true
+                    else
+                        return false
+                }
+                function month(monthC)
+                {
+                    var days; //Creates variable "days"
+
+                    if (monthC == 4 || monthC == 6 || monthC == 9 || monthC == 11)
+                        days = 30; //If the month is September, April, June, or November, there are 30 days
+                    else if (monthC == 1 || monthC == 3 || monthC == 5 || monthC == 7 || monthC == 8 || monthC == 10 || monthC == 12)
+                        days = 31; //If the month is January, March, May, July, August, October, or December, there are 31 days
+                    else if (monthC == 2 && leapCheck(currentYear) == true)
+                        days = 29; //If the month is February and it is a leap year then there are 29 days
+                    else if (monthC == 2 && leapCheck(currentYear) == false)
+                        days = 28; //If the month is February and it is not a leap year then there are 28 days
+
+                    if (sunCheck(currentDay) == true)
+                        sunCounter++; //If the current day (being the first of the month) is a Sunday, then add one to count of Sundays
+                    for (var i = 0; i <= days; i++)
+                    {
+                        currentDay++; //Add a day to the total number of days for each day of the month, so as to advance to the next month
+                    }
+
+                }
+                function year()
+                {
+                    for (var i = 1901; i <= 2000; i++) //Iterates for every year between 1901 and 2000
+                    {
+                        for (var i = 1; i <= 12; i++) //Iterates for each month
+                        {
+                            month(i); //Passes i (being the number for each month) to the function month
+                        }
+                        currentYear++; //Adds one to year counter for the purpose of checking leap years
+                    }
+                }
+                //year();
+
+                return sunCounter;
+
+            }
+            $(document).ready(function() {
+                $('#answer1').text(div3PS());
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                You are given the following information, but you may prefer to do some research for yourself. 
+                <ul>
+                    <li>1 Jan 1900 was a Monday.</li>
+                    <li>Thirty days has September,</li>
+                    <li>April, June and November.</li>
+                    <li>All the rest have thirty-one,</li>
+                    <li>Saving February alone,</li>
+                    <li>Which has twenty-eight, rain or shine.</li>
+                    <li>And on leap years, twenty-nine.</li>
+                    <li>A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.</li>
+                    <li>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</li>
+                </ul>
+            </div> 
+            <div class="row">
+                Answer:  <span id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

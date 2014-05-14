@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Day 70</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: pink;
+            }
+        </style>
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 2)
+                        return false;
+                }
+                return true;
+            }
+            function sumstoprime(n) {
+                var counter = 1;
+                for (var i = 1; i < n; i++) {
+                    var digits = i.toString().split('');
+                    digitsum = 1;
+                    for (var x = 1; x < digits.length; x++) {
+                        digitsum += digits[x] * 1;
+                    for (var x= 2; x < digits. length; x++) {
+                    
+                    }
+ 
+                    if (isPrime(digitsum)) {
+                        counter = counter + 1;
+                        //console.log(i,digitsum);
+                    }
+ 
+                }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer').text(sumstoprime(30000));
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                Find how many numbers from 2 to a  3 million that are prime 
+            </div> 
+            
+        Jordan Feinstein>Charlie beach     
+            
+        </div>
+        </div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+        <button onclick="#answer">Answer: </button><span      
+            id="answer">Calculating</span>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sundays</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function div3PS() {
+                var currentDay = 1;
+                //var currentMonth = 1;
+                var currentYear = 1900;
+                var sunCounter = 0;
+                function sunCheck(s) { 
+                    if (s % 7 == 0)
+                        return true;
+                    else
+                        return false;
+                }
+                function leapCheck(y) { 
+                    if (y % 4 == 0 && currentYear % 400 == 0)
+                        return true
+                    else
+                        return false
+                }
+                function month(monthC)
+                {
+                    var days; 
+
+                    if (monthC == 4 || monthC == 6 || monthC == 9 || monthC == 11)
+                        days = 30;
+                    else if (monthC == 1 || monthC == 3 || monthC == 5 || monthC == 7 || monthC == 8 || monthC == 10 || monthC == 12)
+                        days = 31; 
+                    else if (monthC == 2 && leapCheck(currentYear) == true)
+                        days = 29; 
+                    else if (monthC == 2 && leapCheck(currentYear) == false)
+                        days = 28; 
+
+                    if (sunCheck(currentDay) == true)
+                        sunCounter++; 
+                    for (var i = 0; i <= days; i++)
+                    {
+                        currentDay++;
+                    }
+
+                }
+                function year()
+                {
+                    for (var i = 1900; i <= 2000; i++) 
+                    {
+                        for (var i2 = 1; i2 <= 12; i2++) 
+                        {
+                            month(i2); 
+                        }
+                        currentYear++; 
+                    }
+                }
+                year();
+
+                return sunCounter;
+
+            }
+            $(document).ready(function() {
+                $('#answer').text(div3PS());
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                You are given the following information, but you may prefer to do some research for yourself. 
+                <ul>
+                    <li>1 Jan 1900 was a Monday.</li>
+                    <li>Thirty days has September,</li>
+                    <li>April, June and November.</li>
+                    <li>All the rest have thirty-one,</li>
+                    <li>Saving February alone,</li>
+                    <li>Which has twenty-eight, rain or shine.</li>
+                    <li>And on leap years, twenty-nine.</li>
+                    <li>A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.</li>
+                    <li>How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?</li>
+                </ul>
+            </div> 
+            <div class="row">
+                Answer:  <span id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Divisible by 3 and perfect square</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function div3PS(n) {
+                var counter = 0;
+                for (var i = 0; i < n; i++) {
+                    //console.log(Math.sqrt(i));
+                    if (i % 3 === 0) {
+                        //counter +=i
+                        console.log(i);
+                        if (i % 5 === 0) {
+                            counter += i;
+                            console.log(i);
+                        }
+
+                    }
+
+                }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer').text(div3PS(1000));
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                Find how many numbers are less than 1 million that are both divisible
+                by 3 and are perfect squares.
+            </div> 
+            <div class="row">
+                Answers:  <span id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>
