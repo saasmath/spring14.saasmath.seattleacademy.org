@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+
+            function primeFactors(n) {
+                factors = new Array();
+                for (var i = 2; i <= n; i++) {
+                    if (n % i === 0) {
+                        if (isPrime(i)) {
+                            factors.push(i);
+                        }
+                    }
+                }
+                console.log(n, factors);
+                return factors;
+            }
+
+            function largestPrimeSum(n) {
+                biggest = 0;
+                for (var j = 2; j <= n; j++) {
+                    console.log(j);
+                    factorlist = primeFactors(j);
+                    console.log(j, factorlist);
+                    sum = 0;
+                    listlength = factorlist.length;
+                    console.log(listlength);
+                    for (var k = 0; k <= listlength-1; k++) {
+                        console.log(factorlist[k]);
+                        sum = sum + factorlist[k];
+                    }
+                    console.log(sum);
+                }
+            }
+            largestPrimeSum(100);
+        </script>
+    </head>
+    <body>
+        <div>Find the largest sum of prime factors</div>
+    </body>
+</html>

@@ -24,43 +24,43 @@
                 color: rgb(138,255,65)
             }
         </style>
- 
+
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
                 console.log('hello world');
-                
-                $("#clickme").click(function(e){
+
+                $("#clickme").click(function(e) {
                     //console.log(e);
                     var currentScore = $("#homescore").text();
                     //console.log(currentScore);
                     $("#homescore").text(currentScore * 1 + 1);
 
                 });
-                    $("#puthome").click(function() {
+                $("#puthome").click(function() {
                     console.log("puthome");
                     $("#hometable").load("http://saasmath.seattleacademy.org/day47table.html #myclasses");
                 });
-              });
-            
+            });
+
         </script>
- 
+
     </head>
- 
+
     <body>
         <div class="container">
             <div class="row">
                 <button id="clickme" class="btn btn-primary kewlbutton">CLICKME</button>
             </div>
             <div id="mypicture">mypicture</div>
- 
+
             <div id="homescore" class="score">0</div>
             <div class="row">
                 <button id="puthome" class="btn btn-primary coolbutton">Reid</button>
             </div>        
             <div class="row" id="hometable">
- 
+
             </div>
         </div>
     </body>

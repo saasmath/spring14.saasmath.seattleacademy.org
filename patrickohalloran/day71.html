@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+            function sumsofprime7(n) {
+                var counter = 0;
+                for (var i = 0; i < n; i++) {
+                    var digits = i.toString().split('');
+                   // console.log(i,digits[digits.length-1]);
+                   
+                    if (isPrime (i)){
+                         
+                    
+                     if (digits[digits.length-1] == 7){
+                    
+                    
+            
+                        counter = counter + 1;
+                        //console.log(i);
+                    }
+                }
+            }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer7').text(sumsofprime7(1000));
+            });
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+            function sumsofprime5(n) {
+                var counter = 0;
+                for (var i = 0; i < n; i++) {
+                    var digits = i.toString().split('');
+                   // console.log(i,digits[digits.length-1]);
+                   
+                    if (isPrime (i)){
+                         
+                    
+                     if (digits[digits.length-1] == 5){
+                    
+                    
+            
+                        counter = counter + 1;
+                        //console.log(i);
+                    }
+                }
+            }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer5').text(sumsofprime5(1000));
+            });
+                        function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+            function findprime(low, high) {
+                var counter = 0;
+                for (var i = low; i <= high; i++) {
+                    //console.log(counter);
+                    if (isPrime(i)===true){
+                       counter = counter + 1;
+                        console.log(i);
+                    }
+                }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer').text(findprime(2, 1000000));
+            });
+
+
+            
+            
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1><em>Programming Challenge!</em></h1>
+            <div class="row">
+                A Find how many numbers from 1 to 1000  that are prime and
+                end with 7.
+            </div> 
+            <div class="row">
+                <div class="row">
+                B Find how many numbers from 1 to 1000  that are prime and
+                end with 5.
+            </div>
+                <div class="row">
+                <div class="row">
+                C How many prime numbers are between 1 to 1000000.
+            </div> 
+            <div style="font-family:Impact;color:green" class="row">
+               A Answer:  <span style="color:red" id="answer7">Calculating</span>
+               B Answer:  <span style="color:yellow" id="answer5">Calculating</span>
+               C Answer:  <span style="color:aqua" id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -10,20 +10,20 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <script>
-            function onetomill(n){
-            console.log("function called!");  
-            counter = 0;
-            for (var i = 1; i <=n;  i++) { 
-            if (i%3===0 ) {
-                counter = counter + i;
-            }    
-            counter = counter+i;
-            console.log(counter);
+            function onetomill(n) {
+                console.log("function called!");
+                counter = 0;
+                for (var i = 1; i <= n; i++) {
+                    if (i % 3 === 0) {
+                        counter = counter + i;
+                    }
+                    counter = counter + i;
+                    console.log(counter);
+                }
+                return counter;
+                //console.log(counter);
             }
-            return counter;
-            //console.log(counter);
-            }
-            
+
             total = onetomill(10);
             console.log(total);
         </script>

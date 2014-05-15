@@ -13,13 +13,13 @@
             $(document).ready(function() {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
- 
+
                 $("#drawCircle").click(function() {
                     ctx.beginPath();
                     ctx.arc(95, 50, 40, 0, 2 * Math.PI);
                     ctx.stroke();
                 });
- 
+
                 $("#drawArc").click(function() {
                     console.log('drawArc');
                     ctx.beginPath();
@@ -28,27 +28,27 @@
                     ctx.stroke();
                     ctx.fill();
                 });
- 
+
                 $("#drawQuadratic").click(function() {
                     console.log('drawQuadratic');
                     ctx.beginPath();
-                    ctx.moveTo(100,100);
-                    ctx.quadraticCurveTo(100,200,200,200);
+                    ctx.moveTo(100, 100);
+                    ctx.quadraticCurveTo(100, 200, 200, 200);
                     ctx.stroke();
                 });
                 $("#drawRect").click(function() {
                     console.log('drawRect');
                     ctx.beginPath();
-                    ctx.moveTo(100,100);
-                    ctx.lineTo(400,100);
-                    ctx.lineTo(400,200);
-                    ctx.lineTo(100,200);
-                    ctx.lineTo(100,100);
+                    ctx.moveTo(100, 100);
+                    ctx.lineTo(400, 100);
+                    ctx.lineTo(400, 200);
+                    ctx.lineTo(100, 200);
+                    ctx.lineTo(100, 100);
                     ctx.stroke();
                 });
             });
         </script>
- 
+
     </head>
     <body>
         <h1>Playing with canvas elements</h1>
@@ -56,8 +56,8 @@
         <button id="drawArc">Draw Arc</button>
         <button id="drawRect">Draw Rectangle</button>
         <button id="drawQuadratic">Draw Quadratic</button>
-        
- 
+
+
         <div class="container">
             <canvas id="myCanvas" width="600" height ="900">
                 Your browser does not support the canvas element!

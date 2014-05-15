@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <script>
+        function findFact(n) {
+            if (n === 1, n === 0) {
+                return 1;
+            }
+            else {
+                return (n * findFact(n - 1));
+            }
+            console.log('working');
+        }
+        findFact(10);
+    </script>
+    
+        <title>Day 71D</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                Factorials (Does not work yet)
+            </div> 
+            <div class="row">
+                Answers:  <span id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

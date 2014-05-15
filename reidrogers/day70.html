@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 70</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+                    if (isPrime(digitsum)) {
+                        counter = counter + 1;
+                        //console.log(i,digitsum);
+                    }
+                    if (isPrime(digitsum)) {
+                        counter = counter + 1;
+                        //console.log(i,digitsum);
+                    }
+                }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer').text(sumstoprime(1000000));
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                Find how many numbers from 1 to a million are both prime and
+                that the sum of their digits is prime.
+            </div> 
+            <div class="row">
+                Answers:  <span id="answer">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

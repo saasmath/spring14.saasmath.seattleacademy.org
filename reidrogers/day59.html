@@ -11,6 +11,7 @@
         </style>
         <script>
             document.write("Hello World!");
+
             $(document).ready(function() {
 
                 var canvas;
@@ -163,20 +164,20 @@
                     }
                     else if (event.which === 65)//A 
                     {
-                        var newtheta = balls[0].theta*1 + 5/360 * Math.PI;
+                        var newtheta = balls[0].theta * 1 + 5 / 360 * Math.PI;
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
-                         balls[0].dy = balls[0].v * Math.sin(newtheta);
-                        
-                        
-                        
-                        
-                        
+                        balls[0].dy = balls[0].v * Math.sin(newtheta);
+
+
+
+
+
                     }
                     else if (event.which === 68)//D
                     {
-                      var newtheta = balls[0].theta*1 + -5/360 * Math.PI;
+                        var newtheta = balls[0].theta * 1 + -5 / 360 * Math.PI;
                         balls[0].dx = balls[0].v * Math.cos(newtheta);
-                         balls[0].dy = balls[0].v * Math.sin(newtheta);  
+                        balls[0].dy = balls[0].v * Math.sin(newtheta);
                     }
 
                 });

@@ -11,7 +11,7 @@
         </style>
         <script>
             $(document).ready(function() {
- 
+
                 var canvas;
                 var ctx;
                 var balls = [
@@ -20,21 +20,21 @@
                     {x: 450, y: 250, r: 20, m: 0.75, dx: -0.5, dy: 3},
                     {x: 200, y: 150, r: 10, m: 0.5, dx: 0.5, dy: 1}
                 ];
- 
+
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
                     setInterval(draw, 10); // this will run 100 times per second, every 10 milliseconds
                 }
- 
+
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0)
                             balls.splice(a, 1);//delete balls with no radius                        }
                     }
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a !== b) { // make sure both balls being tested are not the same
@@ -64,7 +64,7 @@
                         balls[a].y += balls[a].dy;
                     }
                 }
- 
+
                 function ballsCollide(a, b) {
                     if (balls[a].r <= 0)
                         return;
@@ -88,7 +88,7 @@
                         balls[b].r = balls[b].r - 0.1;
                         console.log(balls[a].r);
                     }
- 
+
                     if (balls[b].r > balls[a].r)
                     {
                         balls[b].r = balls[b].r + 0.1;
@@ -96,11 +96,11 @@
                     }
                     var currentscore = $("#collisions").text();
                     $("#collisions").text(currentscore * 1 + 2);
- 
+
                 }
- 
+
                 init();
- 
+
                 $("body").keydown(function(event) {
                     console.log(event.which);
                     if (event.which === 38) //up-arrow
@@ -117,11 +117,11 @@
                     console.log(event.which);
                     if (event.which === 65) //letter-a
                     {
-                        balls[0].dy =  2;
+                        balls[0].dy = 2;
                         balls[0].dx = -2;
                     }
-                    
-                     console.log(event.which);
+
+                    console.log(event.which);
                     if (event.which === 40) //down-arrow
                     {
                         balls[0].dy = 2;
@@ -133,20 +133,20 @@
                         balls[0].dy = 0;
                         balls[0].dx = 2;
                     }
-                     console.log(event.which);
+                    console.log(event.which);
                     if (event.which === 37) //left-arrow
                     {
-                        balls[0].dy =  0;
+                        balls[0].dy = 0;
                         balls[0].dx = -2;
                     }
                 });
- 
- 
+
+
             });
- 
+
         </script>
     </head>
- 
+
     <body>
         <div id="container">
             <div class="col-xs-3 text-center">

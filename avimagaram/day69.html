@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,24 +9,28 @@
         <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
         <style>
             body{
-                background-color: white;
+                background-color: white
             }
         </style>
- 
+
         <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
         <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <script>
             function div3PS(n) {
                 var counter = 0;
-                for (var i = 1; i < 10; i++) {
-                     //console.log(Math.sqrt(i));
-                    if (i % 3 == 0) {
-                        if (Math.round(Math.sqrt(i)) == Math.sqrt(i)) {
-                            counter = counter + 1;
+                for (var i = 0; i < n; i++) {
+                    //console.log(Math.sqrt(i));
+                    if (i % 3 === 0) {
+                        //counter +=i
+                        console.log(i);
+                        if (i % 5 === 0) {
+                            counter += i;
                             console.log(i);
                         }
+
                     }
+
                 }
                 return counter;
             }

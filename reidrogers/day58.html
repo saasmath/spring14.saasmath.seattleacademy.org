@@ -11,7 +11,7 @@
         </style>
         <script>
             $(document).ready(function() {
- 
+
                 var canvas;
                 var ctx;
                 var balls = [
@@ -20,29 +20,29 @@
                     {x: 450, y: 250, r: 30, v: 0, theta: 0, dx: -0.5, dy: 30, fill: 'rgb(0,80,0'},
                     {x: 800, y: 400, r: 20, v: 0, theta: 0, dx: 2, dy: 20, fill: 'blue'}
                 ];
- 
+
                 function init() {
                     canvas = document.getElementById("stage");
                     ctx = canvas.getContext("2d");
                     draw();
                 }
- 
+
                 function draw() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         if (balls[a].r <= 0) {
                             balls.splice(a, 1);//delete balls with no radius
                             console.log(balls);
                         }
                     }
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         ctx.beginPath();
                         ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
                         ctx.fillStyle = balls[a].fill;
                         ctx.fill();
-                        ctx.strokeStyle="#FFFFFF";
+                        ctx.strokeStyle = "#FFFFFF";
                         ctx.lineTo(balls[a].x, balls[a].y);
                         ctx.stroke();
                         if (balls[a].x <= balls[a].r)
@@ -56,7 +56,7 @@
                         balls[a].x += balls[a].dx;
                         balls[a].y += balls[a].dy;
                     }
- 
+
                     for (var a = 0; a < balls.length; a++) {
                         for (var b = 0; b < balls.length; b++) {
                             if (a !== b) { // make sure both balls being tested are not the same
@@ -67,10 +67,10 @@
                             }
                         }
                     }
- 
+
                     requestAnimationFrame(draw);
                 }
- 
+
                 function ballsCollide(a, b) {
                     if (balls[a].r <= 0)
                         return;
@@ -82,13 +82,13 @@
                     ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
                     ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
                     ctx.stroke();
- 
+
                     if (balls[a].r > balls[b].r)
                     {
                         balls[a].r = balls[a].r + 0.05;
                         balls[b].r = balls[b].r - 0.05;
                     }
- 
+
                     if (balls[b].r > balls[a].r)
                     {
                         balls[b].r = balls[b].r + 0.05;
@@ -96,11 +96,11 @@
                     }
                     var currentscore = $("#collisions").text();
                     $("#collisions").text(currentscore * 1 + 1);
- 
+
                 }
- 
+
                 init();
- 
+
                 $("body").keydown(function(event) {
                     console.log(event.which);
                     if (event.which === 38) //up-arrow
@@ -124,14 +124,14 @@
                         balls[0].dy = 0;
                         balls[0].dx = 0;
                     }
- 
+
                 });
- 
+
             });
- 
+
         </script>
     </head>
- 
+
     <body>
         <div id="container">
             <div class="col-xs-3 text-center">
@@ -142,6 +142,6 @@
                 Your browser does not support the canvas element.
             </canvas>
         </div>
-    <center><img src="<a href="coach cameron.jpg" /></center>
+
     </body>
 </html>

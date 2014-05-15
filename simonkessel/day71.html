@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+            function isTriple(n) {
+                var sum = 0;
+                for (a = 0; a <= n; a++) {
+                    //console.log(a);
+                    var sqA = a * a;
+                    //console.log(sqA);
+
+                    for (b = 0; b <= n; b++) {
+                        var sqB = b * b;
+                        //console.log(sqB);
+
+                        var sqAB = sqA + sqB;
+                        //console.log(sqAB);
+                        
+                        if(sqAB === math.floor(sqAB)){
+                            console.log("perfect square");
+                        }
+                    }
+                }
+
+                for (c = 0; c <= n; c++) {
+                    sqC = c * c;
+                }
+            }
+
+
+
+            isTriple(10);
+        </script>
+
+    </head>
+    <body>
+        <div># of pythag triples from 1 - 100</div>
+    </body>
+</html>

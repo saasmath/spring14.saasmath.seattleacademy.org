@@ -1,16 +1,51 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Day 70 2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function finddig(n){
+                var digits = i.toString().split('');
+            }
+            //source: http://stackoverflow.com/questions/4438131/factorial-of-a-number
+            function fact(x) {
+                if (x === 0) {
+                    return 1;
+                }
+                if (x < 0) {
+                    return undefined;
+                }
+                for (var i = x; --i; ) {
+                    x *= i;
+                }
+                return x;
+            }
+            $(document).ready(function() {
+                $('#answer').text(sumstoprime(1000000));
+            });
+        </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                Find how many numbers from 1 to a million are both prime and
+                that the sum of their digits is prime.
+            </div> 
+            <div class="row">
+                Answers:  <span id="answer">Calculating</span>
+            </div>
+        </div>
     </body>
 </html>

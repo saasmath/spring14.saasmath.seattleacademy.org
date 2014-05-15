@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+
+            function largestPrimeSum(lowest,high) {
+                //console.log("is running",high);
+                sum = 0;
+                for (i = lowest; i <= high; i++) {
+                    if(isPrime(i)){
+                       sum += i;
+                    }
+        }
+                
+                //console.log("sum:", sum);
+                return sum;
+
+            }
+
+
+            largestPrimeSum(2,10);
+            console.log(largest)
+        </script>
+
+    </head>
+    <body>
+        <div>Largest sum of primes</div>
+    </body>
+</html>

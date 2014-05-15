@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+            function isPalindrome(n) {
+
+                //if (n < 0)
+                //return false;
+
+                var digies = n.toString().split('');
+                //console.log(digies);
+                var q = n.toString().split('');
+                q.reverse();
+                //console.log(q);
+                var digilength = digies.length;
+                //console.log(digies, digilength);
+                for (var i = 0; i < digilength; i++) {
+
+                    if (digies[i] !== q[i]) {
+                        //console.log(digies[i], q[i]);
+                        //console.log("false");
+                        return false;
+                    }
+                }
+                //console.log(n);
+                //console.log("true");
+                return true;
+            }
+            function numbersPalindrome(n) {
+                var counter = 0;
+                for (var i = 0; i <= n; i++)
+                    if (isPalindrome(i)) {
+                        counter = counter + 1;
+                        //console.log(i);
+                    }
+                return counter;
+            }
+            function sumstoprime(n) {
+                var counter = 0;
+                for (var i = 0; i < n; i++) {
+                    //numstring = i.toString
+                    var digits = i.toString().split('');
+                    digitsum = 0;
+                    for (var x = 0; x < digits.length; x++) {
+                        digitsum += digits[x] * 1;
+
+                    }
+                    if (isPrime(digitsum)) {
+                        counter = counter + 1;
+                        // console.log(i,digitsum);
+                    }
+                }
+                return counter;
+            }
+            $(document).ready(function() {
+                $('#answer').text(sumstoprime(1000000));
+                $('#answer2').text(numbersPalindrome(1000));
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Programming Challenge!</h1>
+            <div class="row">
+                1. Find how many numbers from 1 to a million are both prime and
+                that the sum of their digits is prime.
+            </div> 
+            <div class="row">
+                2. Find how many positive numbers from one to 1000 are the same forward as backwards (palindromes).
+            </div> 
+            <div class="row">
+                Answer 1:  <span id="answer">Calculating</span>
+            </div>
+            <div class="row">
+                Answer 2:  <span id="answer2">Calculating</span>
+            </div>
+        </div>
+    </body>
+</html>

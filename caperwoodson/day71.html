@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+
+            function fib(numMax) {
+                for (i = 0, j = 1, k = 0; k < numMax; i = j, j = x, k++) {
+                    x = i + j;
+                    console.log(x);
+                }
+            }
+
+            fib(1000)
+
+            function isPrime(n)
+            {
+                //console.log(n);
+                //source:  http://stackoverflow.com/questions/11966520/how-to-find-prime-numbers
+                if (n < 2)
+                    return false;
+                var q = Math.floor(Math.sqrt(n));
+                for (var i = 2; i <= q; i++)
+                {
+                    if (n % i === 0)
+                        return false;
+                }
+                return true;
+            }
+
+            function fibonacciNumbers(digit)
+            {
+                sum = 0;
+                for (i = lowest; i <= high; i++)
+                    if (isPrime(i)) {
+                        sum += i;
+                    }
+                console.log("sum:", sum);
+                return sum;
+            }
+
+
+            largestPrimeSum(2, 100000);
+        </script>
+    </head>
+    <body>
+        <div>Largest Sum of Primes</div>
+    </body>
+</html>
