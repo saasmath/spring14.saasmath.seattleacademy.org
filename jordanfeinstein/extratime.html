@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Everything in 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div>Everything in 1</div>
+ 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <style>
+            .col-xs-2{
+                font-size: 30px;
+                text-align: center;
+            }
+
+            .col-xs-4{
+                background-color: black;
+                color:white
+            }
+            .col-xs-6{
+                background-color: yello;
+            }
+
+            .teamname {
+                background-color:#000000; /* black in hex */
+                color: rgb(255,255,255); /* white text in rgb */
+            }  
+            .score{
+                font-size:45px;
+            }
+            .fouls{
+                font-size:14px;
+                background: rgb(200,200,200);
+            }
+            .court{
+                height:300px;
+                background-image: url("days/court.jpg"); 
+                background-size: 60%;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            .away{
+                background-color:white;
+                left:300px;
+
+            }
+            .home{
+                background-color:pink;
+
+            }
+            .teamastats{
+                background-color: rgb(42,104,154);
+                color: white;
+            }
+            .teambstats{
+                background-color: rgb(255,202,35);
+            }
+            .pencil{
+                background-color: gray;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-4 col-sm-offset-4">
+                    <h3>Cybersport available now buy it asap!</h3>
+                    <div>Dont miss out!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <div class="row teamname ">Zillah Lepoards</div>
+                    <div class="row score text-center">26</div>
+                </div>
+                <div class="col-xs-2 fouls text-center">
+                    <div>Fouls</div>
+                    <div>2</div>
+                    <div>Timeouts</div>
+                    <div>5</div>
+                </div>
+                <div class="col-xs-2">
+                    <div>1:03</div>
+                    <div>period 2</div>
+                </div>
+                <div class="col-xs-2 fouls">
+                    <div>Fouls</div>
+                    <div>4</div>
+                    <div>Timeouts</div>
+                    <div>2</div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="teamname text-center">Seattle Academy</div>
+                    <div class="score text-center">23</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 home">
+                    <h6>Seattle Academy</h6>
+                </div>
+                <div class="col-xs-6 away">
+                    <h6>Zillah</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 teamastats">
+                    <h3>Team Percentages</h3>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <h3>Team Statistics</h3>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                </div>
+                <div class="col-xs-6 court">
+
+                </div>
+                <div class="col-xs-3 teambstats">
+                    <h3>Team Percentages</h3>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <h3>Team Statistics</h3>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                    <div>Field Goal%: 34.5</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    Player Statistics
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-center pencil">
+                    Team 1 table
+                </div>
+                <div class="col-xs-6 text-center pencil">
+                    Team 2 table
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+
+<html>
+    <head>
+        <title>Rectangle and Cube Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <style>
+          body{
+                background-color: white;
+               font-family:"Times New Roman", Times, serif;
+               font-size:24px;
+
+border-style:groove;
+border-width:10px;
+border-color:pink
+            }
+
+        </style>
+
+        <script src="../js/jquery.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            $(document).ready(function() {
+                $("#calculate").click(function(e) {
+                    var side = $("#side").val();
+                    var side2 = $("#side2").val();
+                    $("#perimeter").val(side * 1 + side * 1 + side2 * 1 + side2 * 1);
+                    $("#area").val(side * side2);
+                });
+                $("#cubecalculate").click(function(e) {
+                    var cubeside = $("#cubeside").val();
+                    $("#cubesa").val(Math.pow(cubeside, 2) * 6);
+                    $("#cubearea").val(Math.pow(cubeside, 3));
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Rectangle Calculator
+                        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div><img src="http://www.algebra-class.com/images/area-rectangle.gif" width="250" height="251" alt="CirclePicture"/></div>
+
+
+
+
+                        <div class="row">
+                            Length:  <input id="side" />
+                        </div>
+                        <div class="row">
+                            Width:  <input id="side2" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Perimeter:  <input id="perimeter" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="area" />
+                        </div>
+                        <div class="row">
+                            <button id="calculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                            Cube Calculator
+                        </a>
+                    </h4>
+                </div>
+                <div><img src="http://images.tutorvista.com/cms/images/67/cube-surface-area.png" width="350" height="151" alt="CirclePicture"/></div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            Side:  <input id="cubeside" />
+                        </div>
+
+                        <div class="row"> <!--This shows how to write to a input field.-->
+                            Surface Area:  <input id="cubesa" />
+                        </div>
+                        <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                            Area:  <input id="cubearea" />
+                        </div>
+                        <div class="row">
+                            <button id="cubecalculate">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </style>
+        <script>
+            $(document).ready(function() {
+                $("#side2,#lenght,#width, #height, #side").keyup(function(e) {
+                    var side = $("#side").val();
+                     var side2 = $("#side2").val();
+                    $("#perimeter").text( (side*1 + side2*1) * 2 );
+                    $("#area").text(side * side2);
+                
+               
+                   
+                      var length = $("#lenght").val();
+                      var width = $("#width").val();
+                      var height = $("#height").val();
+                    $("#surfacearea").text( 2*((width * length*1) + (height * length*1) + (height * width*1)) );
+                    $("#area2").text(length * width * height);
+                });
+
+            });
+        </script>
+        <body>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-4 col-sm-offset-0">
+                    
+                    
+                    <div><img src="http://i01.i.aliimg.com/wsphoto/v0/599041407_1/-5-off-per-50-order-freeshipping-TRNFA-tr-1200v-calculator-Financial-Calculators-12-digit-LCD.jpg" width="150" height="151" alt="CirclePicture"/></div>
+                    <h3>Buy caculators now!</h3>
+                    <div>Don't miss out! $5</div>
+                    
+    </head>
+    <body>
+        <div class="container">
+            
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                Click Me
+                            </a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div>
+
+            
+            <div class="row">
+                Side #1:  <input id="side" value="0" />
+            </div>
+             <div class="row">
+                 Side #2:  <input id="side2" value="0" />
+            </div>
+            <div class="row"> <!--This shows how to write to a input field.-->
+               \(Perimeter = 2*(length+width): \) <span id="perimeter">0</span> 
+            </div>
+            <div class="row"> <!--This shows how to write to a span or div, etc.-->
+                \(Area = length*width: \)  <span id="area">0</span> 
+
+            </div>
+             </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                Click Me
+                            </a>
+                        </h4>
+                    </div>
+    <button onclick="location.reload()">Hide caculation</button>
+    <button onclick="location.goto()http://www.bestbuy.com/site/office-electronics/calculators/abcat0805001.c?id=abcat0805001()">link to website</button>    
+           
+                         </div>
+                         </div>
+                        </div>
+                    </div>
+             
+        <script>
+            $(document).ready(function() {
+
+                var redness = Math.floor((Math.random() * 255) + 1);
+                var green = Math.floor((Math.random() * 255) + 1);
+                var blueness = Math.floor((Math.random() * 255) + 1);
+                var yellowness = Math.floor((Math.random() * 255) + 1)
+                var balls = [
+                    {x: 20, y: 50, r: 40, v: 0, theta: 0, dx: 9, dy: 1.5, fill: 'pink'},
+                    {x: 20, y: 150, r: 45, v: 0, theta: 0, dx: -7, dy: 0.3, fill: 'blue'},
+                    {x: 150, y: 250, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
+                    {x: 50, y: 50, r: 40, v: 0, theta: 0, dx: 3, dy: 1.5, fill: 'yellow'},
+                    {x: 30, y: 10, r: 45, v: 0, theta: 0, dx: -1, dy: 0.9, fill: 'orange'},
+                    {x: 10, y: 50, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
+                    {x: 70, y: 50, r: 40, v: 0, theta: 0, dx: 1, dy: 1.5, fill: 'yellow'},
+                    {x: 60, y: 10, r: 45, v: 0, theta: 0, dx: -1, dy: 0.9, fill: 'orange'},
+                    {x: 20, y: 50, r: 20, v: 0, theta: 0, dx: -0.5, dy: 3, fill: 'rgb(0,80,0'},
+                    {x: Math.floor(Math.random() * 1000), y: Math.floor(Math.random() * 800), r: Math.floor((Math.random() * (80 - 5 + 1) + 5)), v: 0, theta: 0, dx: 1, dy: 1.5, fill: "rgb(" + redness + "," + green + "," + blueness + " )"}
+                ];
+                
+                function init() {
+                    canvas = document.getElementById("stage");
+                    ctx = canvas.getContext("2d");
+                    draw();
+                }
+
+
+                function addBall(x, y, r, dx, dy, fill) {
+                    ball = new Array();
+                    ball.x = x;
+                    ball.y = y;
+                    ball.r = r;
+                    ball.dx = dx;
+                    ball.dy = dy;
+                    ball.fill = fill;
+                    balls.push(ball);
+                }
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    for (var a = 0; a < balls.length; a++) {
+                        if (balls[a].r <= 0) {
+                            balls.splice(a, 1);//delete balls with no radius
+                            currentscore = $("#points").text();
+                            $("#points").text(currentscore * 1 + 1);
+                            addBall(100, 100, 20, 1, 1, "purple");
+                        }
+                    }
+
+                    for (var a = 0; a < balls.length; a++) {
+                        ctx.beginPath();
+                        ctx.arc(balls[a].x, balls[a].y, balls[a].r, balls[a].theta, balls[a].theta + Math.PI * 2);
+                        ctx.fillStyle = balls[a].fill;
+                        ctx.fill();
+                        ctx.strokeStyle = "#777777";
+                        ctx.lineTo(balls[a].x, balls[a].y);
+                        ctx.stroke();
+                        if (balls[a].x <= balls[a].r)
+                            balls[a].dx = Math.abs(balls[a].dx); // bounce ball off of left boundary
+                        if (balls[a].y <= balls[a].r)
+                            balls[a].dy = Math.abs(balls[a].dy); // bounce ball off of top boundary
+                        if (balls[a].x >= canvas.width - balls[a].r)
+                            balls[a].dx = -Math.abs(balls[a].dx); // bounce ball off of right boundary
+                        if (balls[a].y >= canvas.height - balls[a].r)
+                            balls[a].dy = -Math.abs(balls[a].dy); // bounce ball off of bottom boundary
+                        balls[a].x += balls[a].dx;
+                        balls[a].y += balls[a].dy;
+                    }
+
+                    for (var a = 0; a < balls.length; a++) {
+                        for (var b = 0; b < balls.length; b++) {
+                            if (a !== b) { // make sure both balls being tested are not the same
+                                var distToBalls = Math.sqrt(Math.pow(balls[a].x - balls[b].x, 2) + Math.pow(balls[a].y - balls[b].y, 2));
+                                if (distToBalls <= balls[a].r + balls[b].r) {
+                                    var newVel = ballsCollide(a, b);
+                                }
+                            }
+                        }
+                    }
+
+                    //set velocity and angle
+                    for (var a = 7; a < balls.length; a++) {
+                        balls[a].theta = Math.atan2(balls[a].dy, balls[a].dx);
+                        balls[a].v = Math.sqrt(Math.pow(balls[a].dx, 2) + Math.pow(balls[a].dy, 2));
+                    }
+                    var vel = balls[0].v;
+                    $('#vel').text(balls[0].v.toFixed(2));
+
+                    var theta = balls[0].theta;
+                    $('#theta').text(balls[0].theta.toFixed(2));
+
+                    requestAnimationFrame(draw);
+                }
+
+                function ballsCollide(a, b) {
+                    if (balls[a].r <= 0)
+                        return;
+                    if (balls[b].r <= 0)
+                        return;
+                    ctx.beginPath();
+                    ctx.strokeStyle = "red";
+                    ctx.lineWidth = 0;
+                    ctx.arc(balls[a].x, balls[a].y, balls[a].r, 0, Math.PI * 2, true);
+                    ctx.arc(balls[b].x, balls[b].y, balls[b].r, 0, Math.PI * 2, true);
+                    ctx.stroke();
+
+                    if (balls[a].r > balls[b].r)
+                    {
+                        balls[a].r = balls[a].r + 0.1;
+                        balls[b].r = balls[b].r - 0.1;
+                    }
+
+                    if (balls[b].r > balls[a].r)
+                    {
+                        balls[b].r = balls[b].r + 0.1;
+                        balls[a].r = balls[a].r - 0.1;
+                    }
+                    var currentscore = $("#collisions").text();
+                    $("#collisions").text(currentscore * 1 + 1);
+
+
+
+
+
+                }
+
+
+                init();
+
+                $("body").keydown(function(event) {
+                    console.log(event.which);
+                    if (event.which === 38) //up-arrow
+                    {
+                        balls[0].dy += -1;
+                    }
+                    else if (event.which === 37) //left-arrow
+                    {
+                        balls[0].dx += -1;
+                    }
+                    else if (event.which === 39) //right-arrow
+                    {
+                        balls[0].dx += 1;
+                    }
+                    else if (event.which === 40) //down-arrow
+                    {
+                        balls[0].dy += 1;
+                    }
+                    else if (event.which === 32) //Spacebar
+                    {
+                        balls[0].dy = 0;
+                        balls[0].dx = 0;
+                    }
+                    else if (event.which === 87) //w
+                    {
+                        balls[0].dy = (balls[0].v * 1 + 1) * Math.sin(balls[0].theta);
+                        balls[0].dx = (balls[0].v * 1 + 1) * Math.cos(balls[0].theta);
+                    }
+                    else if (event.which === 83)//s 
+                    {
+                        balls[0].dy = (balls[0].v * 1 - 1) * Math.sin(balls[0].theta);
+                        balls[0].dx = (balls[0].v * 1 - 1) * Math.cos(balls[0].theta);
+                    }
+                    else if (event.which === 65)//a 
+                    {
+                        var newtheta = balls[0].theta * 1 + 10 / 360 * Math.PI;
+                        balls[0].dx = balls[0].v * Math.cos(newtheta);
+                        balls[0].dy = balls[0].v * Math.sin(newtheta);
+                    }
+                    else if (event.which === 68)//d
+                    {
+                        var newtheta = balls[0].theta * 1 + -10 / 360 * Math.PI;
+                        balls[0].dx = balls[0].v * Math.cos(newtheta);
+                        balls[0].dy = balls[0].v * Math.sin(newtheta);
+                    }
+
+                });
+
+            });
+
+        </script>
+    </head>
+img src
+    <body>
+            </div>
+            <canvas id="stage" width=800 height=600>

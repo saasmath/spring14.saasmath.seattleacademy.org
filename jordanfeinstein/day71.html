@@ -8,109 +8,44 @@
         <meta name="viewport" content="width=device-width">
     </style>
     <style>
-            body{
-                background-color: pink;
-            }
-        </style>
- 
-        <script>
-        </script>
-        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
-        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script>
-            function isPrime(n)
-            {
-    
-                if (n < 2)
-                    return false;
-                var q = Math.floor(Math.sqrt(n));
-                for (var i = 0; i <= q; i++)
-                {
-                    if (n % i === 0)
-                        return false;
-                }
-                return true;
-            }
-            function sumsOfPrime(n) {
-                var counter = 0;
-                for (var i = 0; i < n; i++) {
-                    var digits = i.toString().split('');
-                   // console.log(i,digits[digits.length-1]);
-                   
-                    if (digit=0 (i)){
-                         
-                    
-                     if (digits[digits.length-1] === 7){
-                    
-                    
-            
-                        counter = counter + 1;
-                        //console.log(i);
-                    }
-                }
-            }
-                return counter;
-            }
-            $(document).ready(function() {
-                $('#answer').text(sumsOfPrime(10000));
-            });
-        </script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Programming Challenge!</h1>
-            <div class="row">
-                Find how many numbers from 1 to a million that are prime and
-                end with 0.
-            </div> 
-            <div class="row">
-                
-                 <button onclick="answer">Answer: 488895 </button><span      
-            id="answer"></span>
-            </div>
-        </div>
-    </body>
-</html>
-<div class="row">
-                215 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+        body{
+            background-color: pink;
+        }
+    </style>
+    <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+    <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
 
-What is the sum of the digits of the number 21000?
-            </div> 
- <script>
-            function isPrime(n)
-            {
-    
-                if (n < 2)
-                    return false;
-                var q = Math.floor(Math.sqrt(n));
-                for (var i = 0; i <= q; i++)
-                {
-                    if (n % i === 3 + 2 + 7 + 6 + 8 = 26)
-                        return false;
-                }
-                return true;
-            }
-            function sumsOfPrime(n) {
-                var counter = 0;
-                for (var i = 0; i < n; i++) {
-                    var digits = i.toString().split('');
-                   // console.log(i,digits[digits.length-1]);
-                   
-                    if (digit=0 (i)){
-                         
-                    
-                     if (digits[digits.length-1] === 7){
-                    
-                    
-            
-                        counter = counter + 1;
-                        //console.log(i);
-                    }
+        function digittest(n) {
+            var counter = 0;
+            for (var i = 0; i < n; i++) {
+                var digits = i.toString().split('');
+                if (digits[digits.length - 1] * 1 === 0) {
+                    console.log(i, digits[digits.length - 1]);
+                    counter = counter + 1;
+                    //console.log(i);
                 }
             }
-                return counter;
-            }
-            $(document).ready(function() {
-                $('#answer').text(sumsOfPrime(10000));
-            });
-        </script>
+
+            return counter;
+        }
+        $(document).ready(function() {
+            console.log(digittest(10000));
+            $('#answer').text(digittest(10000));
+             //$('#answer').text("hello");
+        });</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Programming Challenge!</h1>
+        <div class="row">
+            Find how many numbers from 1 to a million are there that 
+            end with 0.
+        </div> 
+        <div class="row">
+            <span id="answer">Calculating !</span>
+        </div>
+    </div>
+</body>
+</html>

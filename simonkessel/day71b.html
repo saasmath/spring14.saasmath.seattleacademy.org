@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Day 71</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+
+            $(document).ready(function() {
+            function addmult(n){
+            var counter = 0;
+                    var howmany = 0;
+                    var mult = 0;
+                    for (var i = 0; i < n; i++){
+            //console.log(i);
+            counter = i + i;
+                    console.log("counter = ", counter);
+                    mult = i * i;
+                    console.log("mult = ", mult);
+                    var howmany = mult - counter;
+            }
+            }
+
+            $(document).ready(function() {
+            $('#answer').text(add - mult(100));
+            });
+
+        </script>
+
+    </head
+    <body>
+        <div>the product of all the numbers 1-1000 - the sum of all numbers 1-1000</div>
+        <div class="row">
+            Answer:  <span id="answer">Calculating</span>
+        </div>
+    </body>
+</html>

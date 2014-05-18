@@ -1,18 +1,12 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Day 70</title>
+        <title>Day 71</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body{
-                background-color: white;
-            }
-        </style>
-
+        
+ 
         <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
         <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -31,30 +25,25 @@
                 }
                 return true;
             }
-            function sumsOfPrime(n) {
-                //console.log(i);
+            function sumstoprime(n) {
                 var counter = 0;
-                for (var i = 2; i < n; i++) {
+                for (var i = 500; i < 1000000; i++) {
+                    //numstring = i.toString
                     var digits = i.toString().split('');
-                    //console.log(digits)     
-
-                    //console.log(i);
-                    if (isPrime(i)) {
-                        //console.log(i,'isPrime');
-                        if (digits[digits.length - 1] * 1 === 7) {
-                            //console.log(i,digits[digits.length-1] * 1 ===7 );
-                            counter = counter + 1;
-                            //console.log(counter);    
-                            //console.log(i,digits[digits.length-1] * 1===7);
-                        }
+                    digitsum = 0;
+                    for (var x = 0; x < digits.length; x++) {
+                        digitsum += digits[x] * 1;
+ 
+                    }
+                    if (isPrime(digitsum)) {
+                        counter = counter + 1;
+                       // console.log(i,digitsum);
                     }
                 }
-                //console.log(counter);    
                 return counter;
             }
             $(document).ready(function() {
-                $('#answer').text(sumsOfPrime(1000000));
-
+                $('#answer').text(sumstoprime(970000));
             });
         </script>
     </head>
@@ -62,8 +51,7 @@
         <div class="container">
             <h1>Programming Challenge!</h1>
             <div class="row">
-                Find how many numbers from 1 to a million that are prime and
-                end with 7.
+                Find how many numbers from 500 to 1000000 are prime numbers.
             </div> 
             <div class="row">
                 Answers:  <span id="answer">Calculating</span>

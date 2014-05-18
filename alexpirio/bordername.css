@@ -1,0 +1,166 @@
+.Box1{
+	height: 200px;
+	width: 200px;
+	border-radius: 0px;
+	background-color: green;
+	float: left;
+}
+
+.Box2 {
+	height: 200px;
+	width: 200px;
+	border-radius: 25px;
+	background-color: red;
+	float: left;
+
+}
+
+.Box3 {
+	height: 200px;
+	width: 200px;
+	border-radius: 0px 300px 0px 0px;
+	background-color: orange;
+	float: left;
+}
+
+.Circle {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	background-color: blue;
+	float: left;
+}
+
+.Ellipse{
+	height: 200px;
+	width: 200px;
+	border-radius: 40% 100% 40% 100%;
+	float: left;
+	background-color: orange;
+}
+
+.Egg {
+	height: 200px;
+	width: 120px;
+	background-color: red;
+	border-radius: 50%/ 60% 60% 40% 40%;
+	float: left;
+}
+.A1{
+ 	height:300px;   width:60px;
+	background-color: red;
+	-webkit-transform:rotate(20deg);
+	position:relative;
+	left:40px;
+
+ }
+ 	.A2{
+ 	height:300px;   width:60px;
+	background-color: red;
+	-webkit-transform:rotate(-20deg);
+	float:left;
+	position:relative;
+	left:190px;
+	top: -300px; 
+
+ }
+	.A3{
+ 	height:50px;   width:200px;
+	background-color: red;
+	position:relative;
+	left:40px;
+	top:-150px;
+ }
+	.A4{
+ 	height:30px;   width:102px;
+	background-color: red;
+	position:relative;
+	left:95px;
+	top:-352px;
+ }
+.L1{
+ 	height:300px;   width:60px;
+	background-color: red;
+	position:relative;
+ }
+ .L2{
+ 	height:60px;   width:150px;
+	background-color: black;
+	position:relative;
+ }
+.E1{
+	height:300px;   width:60px;
+	background-color: black;
+	float:left;
+	position:relative;
+	top:30px;
+ }
+	.E2{
+	height:60px;   width:80px;
+	background-color: black;
+	float:left;
+	margin-top:30px;
+ }
+ .E3{
+	height:60px;   width:80px;
+	background-color: red;
+	float:left;
+	position:relative;
+	top:150px;
+	right: 80px;
+ }
+  .E4{
+	height:60px;   width:80px;
+	background-color: black;
+	float:left;
+	position:relative;
+	top:270px;
+	right: 160px
+ }
+.X1{
+	height:300px;   width:60px;
+	background-color: red;
+	-webkit-transform:rotate(35deg);
+	position:relative;
+	top:330px;
+	left:80px;}
+  .X2{
+	height:300px;   width:60px;
+	background-color: black;
+	-webkit-transform:rotate(-35deg);
+	position:relative;
+	top:30px;
+	left:80px;
+}
+
+.N1{
+	height: 300px;
+	width: 60px;
+	position: relative;
+	background-color: black;
+
+}
+.N2{
+	height:350px;   width:60px;
+	background-color: black;
+	-webkit-transform:rotate(-35deg);
+	position:relative;
+	top:-320px;
+	left:80px;
+}
+.N3{
+	height: 300px;
+	width: 60px;
+	position: relative;
+	background-color: black;
+	left: 180px;
+	top:-660px;
+
+}
+.D1{
+	height:300px;   width:60px;
+	background-color: black;
+	float:left;
+	position:relative;
+	top:30px;
+}

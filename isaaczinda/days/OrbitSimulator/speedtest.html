@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Math In Coding</title>
+        <style>
+        #Readoutp p
+        {
+            
+        }
+        </style>
+	</head>
+
+	<script type="text/javascript" src="JQuery.js"></script>
+    <script>
+        $(document).ready(function() 
+        {
+            function CalculateForceVectors(PositionOne, PositionTwo, MassOne, MassTwo)
+            {
+                var GConstant = 1;
+
+                var Distance = Math.sqrt(Math.pow(PositionOne[0] - PositionTwo[0], 2) + Math.pow(PositionOne[1] - PositionTwo[1], 2));
+
+                if(Distance == 0 || MassOne == 0 || MassTwo == 0)
+                {
+                    return [[0, 0], [0, 0]];
+                }
+
+                var Strength =  GConstant * ((MassOne * MassTwo) / Distance);
+
+
+                var VectorOne = [PositionOne[0] - PositionTwo[0], PositionOne[1] - PositionTwo[1]];
+                var VectorTwo = [PositionTwo[0] - PositionOne[0], PositionTwo[1] - PositionOne[1]];
+
+
+                VectorOne = [VectorOne[0] / Distance, VectorOne[1] / Distance];
+                VectorTwo = [VectorTwo[0] / Distance, VectorTwo[1] / Distance];
+                
+                if(MassOne > MassTwo)
+                {
+                    SpeedOne = MassTwo / MassOne;
+                    SpeedTwo = MassOne / MassTwo;
+                }
+                else
+                {
+                    SpeedTwo = MassOne / MassTwo;
+                    SpeedOne = MassTwo / MassOne;
+                }
+
+                VectorOne = [VectorOne[0] * SpeedOne * Strength, VectorOne[1] * SpeedOne * Strength];
+                VectorTwo = [VectorTwo[0] * SpeedTwo * Strength, VectorTwo[1] * SpeedTwo * Strength];
+
+                return [[-VectorOne[0], -VectorOne[1]], [-VectorTwo[0], -VectorTwo[1]]];
+            }
+            var OldTime = new Date().getTime();
+            console.log(OldTime);
+            for(var i = 0; i < 1000; i++)
+            {
+
+                CalculateForceVectors([0, 3], [100, 100], 2, 4);
+            }
+            
+            var NewTime = new Date().getTime();
+            console.log(NewTime);
+            console.log(NewTime - OldTime);
+        });
+    </script>
+
+	<body>
+        <div id = "Readout">
+            <p>Spacetime Constant: <span><input id="TimeSlider" type="range" min="0" max="10000"/></span><span id = "Time"></span></p>
+            <p>XY Translation: <span id = "Translation"></span></p>
+            <p>Universal Scale Factor: <span id = "Scale"></span></p>
+        </div>
+	    <canvas id="Canvas" width=600 height=600>
+	        Your browser does not support the canvas element.
+	    </canvas>
+	</body>
+</html>

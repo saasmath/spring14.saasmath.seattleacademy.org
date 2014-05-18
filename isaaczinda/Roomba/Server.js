@@ -2,6 +2,11 @@ var net = require('net');
 var HOST = '0.0.0.0';
 var PORT = 443;
 
+function ComputeData(Data)
+{
+    return "Reply...";
+}
+
 net.createServer(function(sock) 
 {
     // We have a connection - a socket object is assigned to the connection automatically
@@ -11,8 +16,14 @@ net.createServer(function(sock)
     sock.on('data', function(data) {
         console.log('Recieved: '+ data);
         // Write the data back to the socket, the client will receive it as data from the server
-        sock.write('Reply...');
-        
+        sock.write(ComputeData(data));
+        client.destroy();
+    });
+
+    // Add a 'close' event handler to this instance of socket
+    sock.on('error', function(exception) 
+    {
+        console.log('Exception: ' + exception);
     });
     
     // Add a 'close' event handler to this instance of socket

@@ -6,16 +6,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <script>
-            function multiple(i){
-            for(i>0;i++){
-                if(i%2
+            function Multiple(i){
+            for(i>=0;i++){
+                if(i%2){
                 return true;
-            }  
-          }
-            
+            }
+            else{
+             break;
+             }
+           }  
+         }
+           Multiple(i) 
         </script>
     </head>
     <body>
-        <div>integers</div>
+        <div id="number">integers</div>
     </body>
 </html>
