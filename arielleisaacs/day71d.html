@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-    <script>
+
+        <head>
+        <title>Factorials</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: white;
+            }
+        </style>
+ 
+        <script src="http://saasmath.seattleacademy.org/js/jquery.js"></script>
+        <script src="http://saasmath.seattleacademy.org/js/bootstrap.min.js"></script>  
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
         function findFact(n) {
+            console.log(findFact);
             if (n === 1, n === 0) {
                 return 1;
-            }
+            console.log('working1');
+        }
             else {
                 return (n * findFact(n - 1));
             }
             console.log('working');
-        }
-        findFact(10);
+        };
+        $(document).ready(function() {
+                $('#answer').text(findFact(10));
+            });
     </script>
-    
-        <title>Day 71D</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+
     </head>
     <body>
         <div class="container">
             <h1>Programming Challenge!</h1>
             <div class="row">
-                Factorials (Does not work yet)
+                Factorials
             </div> 
             <div class="row">
                 Answers:  <span id="answer">Calculating</span>
