@@ -7,11 +7,10 @@
         </title>
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../../css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="styles.css" rel="stylesheet">
-        
+        <link href="styles.css" rel="stylesheet"> 
         <script src="../../js/jquery.js"></script>
         <script src="../../js/bootstrap.min.js"></script>
-        <script src="scripts.js"></script>
+          
         <style>
             body{
                 background-color: #81efbc
@@ -87,7 +86,12 @@
             }
            
         </style>
-        
+         <script type="text/javascript" ></script>
+         <script>
+           $(document).ready(function(){
+               prompt("#form");
+           });  
+         </script>
        
     </head>
     
@@ -170,7 +174,7 @@
              <div id="inner3">
                  <h2 style="font-family:Berlin Sans FB" >Donate money for the Cause!</h2>
                  <h4 style="font-family:Berlin Sans FB"> Fill the form below</h4> 
-                 <form action="thankyouforsupport.html" method="get" target="blank">
+                 <form id="form" action="thankyouforsupport.html" method="get" target="blank">
                 <h5 style="font-family:Berlin Sans FB">Which cause do you wish to support?</h5> 
                 <select>
 		<option selected="selected">Weekly protests</option>

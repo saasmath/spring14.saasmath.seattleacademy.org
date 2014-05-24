@@ -60,11 +60,6 @@ net.createServer(function(sock)
     // We have a connection - a socket object is assigned to the connection automatically
     console.log(sock.remoteAddress +' has been connected on '+ sock.remotePort);
 
-    robot.on('sensordata', function (data) 
-    {
-      console.log('SENSOR DATA', data);
-    });
-
     // Add a 'data' event handler to this instance of socket
     sock.on('data', function(data) 
     {
