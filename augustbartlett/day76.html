@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 76</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+
+        <script>
+
+            aidansong =
+                    [[987.8, 266.6],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [740, 266.6],
+                        [830.6, 266.6],
+                        [987.8, 133.3],
+                        [830.6, 66.65],
+                        [880, 66.65],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [740, 133.3],
+                        [830.6, 133.3],
+                        [740, 133.3],
+                        [830.6, 133.3],
+                        [830.6, 66.65],
+                        [880, 66.65],
+                        [987.8, 133.3],
+                        [830.6, 266.6],
+                        [987.8, 266.6],
+                        [1108.7, 266.6],
+                        [830.6, 266.6],
+                        [1108.7, 266.6],
+                        [987.8, 266.6],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [null, 533.2],
+                        [1244.4, 266.6],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [932.3, 266.6],
+                        [1046.5, 266.6],
+                        [1244.5, 133.3],
+                        [1046.5, 66.65],
+                        [1108.7, 66.65],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [932.3, 133.3],
+                        [1046.5, 133.3],
+                        [932.3, 133.3],
+                        [1046.5, 133.3],
+                        [1046.5, 66.65],
+                        [1108.7, 66.65],
+                        [1244.5, 133.3],
+                        [1046.5, 266.6],
+                        [1244.5, 266.6],
+                        [1318.5, 266.6],
+                        [1046.5, 266.6],
+                        [1318.5, 266.6],
+                        [1244.5, 266.6],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [null, 533.2]];
+
+            $(document).ready(function() {
+                var socket = io.connect('http://10.48.102.163:3001');
+                socket.on('sensordata', function(data) {
+                    //console.log(data);
+
+                    $("#voltage").text(data.battery.voltage.volts);
+                    $("#front_left").text(data.cliff_sensors.front_left.signal.raw);
+                });
+
+
+                $("#forward").click(function(e) {
+                    console.log('forward');
+                    socket.emit('drive', {left: 15, right: 15});
+                });
+
+                $("#halt").click(function(e) {
+                    console.log('halt');
+                    socket.emit('drive', {left: 0, right: 0});
+                });
+
+                $("#alien").click(function(e) {
+                    socket.emit('sing', aidansong);
+                });
+
+                $("#safeMode").click(function(e) {
+                    socket.emit('safeMode');
+                });
+                $('body').keydown(function(event) {
+
+                    if (event.which === 87) //w - move forward
+                    {
+                        socket.emit('drive', {left: 30, right: 30});
+                    }
+
+                    if (event.which === 83) //s - move backward
+                    {
+                        socket.emit('drive', {left: -30, right: -30});
+                    }
+                    
+                    if (event.which === 68) //d - move left
+                    {
+                        socket.emit('drive', {left: 30, right: -15});
+                        console.log("You pressed the D");
+                    }
+
+
+                });
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <button id="forward">forward</button>
+            <button id="halt">halt</button>
+            <button id="alien">Aidan's Song</button>
+            <button id="safeMode">safeMode</button>
+            Voltage  <span id="voltage">...</span>
+            front_left  <span id="front_left">...</span>
+        </div>
+    </body>
+</html>

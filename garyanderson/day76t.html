@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 76</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+
+        <script>
+
+            aliensong =
+                    [[1046, 100],
+                        [1108, 100],
+                        [1174, 100],
+                        [1244.5, 100],
+                        [1318.5, 100],
+                        [1046, 100]];
+
+            $(document).ready(function() {
+                var socket = io.connect('http://10.48.102.113:3001');
+                socket.on('sensordata', function(data) {
+                    //console.log(data);
+
+                    $("#voltage").text(data.battery.voltage.volts);
+                    $("#front_left").text(data.cliff_sensors.front_left.signal.raw);
+                    socket.emit('sensorswritten');
+                });
+
+
+                $("#forward").click(function(e) {
+                    console.log('forward');
+                    socket.emit('drive', {left: 15, right: 15});
+                });
+
+                $("#halt").click(function(e) {
+                    console.log('halt');
+                    socket.emit('drive', {left: 0, right: 0});
+                })
+
+                $("#alien").click(function(e) {
+                    socket.emit('sing', aliensong);
+                });
+
+                $("#safeMode").click(function(e) {
+                    socket.emit('safeMode');
+                });
+
+                $("#fullMode").click(function(e) {
+                    socket.emit('fullMode');
+                });
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <button id="forward">forward</button>
+            <button id="halt">halt</button>
+            <button id="alien">alien</button>
+            <button id="safeMode">safeMode</button>
+            <button id="fullMode">fullMode</button>
+            Voltage  <span id="voltage">...</span>
+            front_left  <span id="front_left">...</span>
+        </div>
+    </body>
+</html>
