@@ -17,20 +17,61 @@
                         [659.3, 266.6],
                         [740, 266.6],
                         [830.6, 266.6],
-                        [987.8, 133.3]
-                    ];
-            note1 = 
-                [[100,100]
-                ];
-            note2 = 
-                [[200,100]
-                ];                    
-            note3 = 
-                [[300,100]
-                ];                    
+                        [987.8, 133.3],
+                        [830.6, 66.65],
+                        [880, 66.65],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [740, 133.3],
+                        [830.6, 133.3],
+                        [740, 133.3],
+                        [830.6, 133.3],
+                        [830.6, 66.65],
+                        [880, 66.65],
+                        [987.8, 133.3],
+                        [830.6, 266.6],
+                        [987.8, 266.6],
+                        [1108.7, 266.6],
+                        [830.6, 266.6],
+                        [1108.7, 266.6],
+                        [987.8, 266.6],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [null, 533.2],
+                        [1244.4, 266.6],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [932.3, 266.6],
+                        [1046.5, 266.6],
+                        [1244.5, 133.3],
+                        [1046.5, 66.65],
+                        [1108.7, 66.65],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [932.3, 133.3],
+                        [1046.5, 133.3],
+                        [932.3, 133.3],
+                        [1046.5, 133.3],
+                        [1046.5, 66.65],
+                        [1108.7, 66.65],
+                        [1244.5, 133.3],
+                        [1046.5, 266.6],
+                        [1244.5, 266.6],
+                        [1318.5, 266.6],
+                        [1046.5, 266.6],
+                        [1318.5, 266.6],
+                        [1244.5, 266.6],
+                        [1046.5, 266.6],
+                        [932.3, 266.6],
+                        [830.6, 266.6],
+                        [null, 533.2]];
 
             $(document).ready(function() {
-                var socket = io.connect('http://10.48.102.136:3001');
+                var socket = io.connect('http://10.48.102.163:3001');
                 socket.on('sensordata', function(data) {
                     //console.log(data);
                     $("#voltage").text(data.battery.voltage.volts);
@@ -56,17 +97,6 @@
                 $("#aidan").click(function(e) {
                     socket.emit('sing', aidansong);
                 });
-                
-                if (event.which === 49 ) {
-                    socket.emit('sing', note1);
-                    console.log('note1');
-                };                
-                if (event.which === 50 ) {
-                    socket.emit('sing', note2);
-                };                                
-                if (event.which === 51 ) {
-                    socket.emit('sing', note3);
-                };
 
                 $("#safeMode").click(function(e) {
                     socket.emit('safeMode');
@@ -84,22 +114,25 @@
                     if (event.which === 87) //w - move forward
                     {
                         speed = $("#speed").text();
-                        speed = speed * 1 + 50;
+                        speed = speed*1 + 50;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
 
                     }
 
+
+
                     if (event.which === 83) //s - move backward
-                    {
+                        {
                         speed = $("#speed").text();
-                        speed = speed * 1 - 50;
+                        speed = speed*1 - 50;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
+
                     }
 
                     if (event.which === 65) //d - move right
-                    {
+                       {
                         speed = $("#speed").text();
                         speed = 50;
                         $("#speed").text(speed);
@@ -108,22 +141,19 @@
                     }
 
                     if (event.which === 68) //a - move left
-                    {
-                        speed = $("#speed").text();
-                        speed = 50;
-                        $("#speed").text(speed);
                         socket.emit('drive', {left: -speed, right: speed});
-                    }
 
                     if (event.which === 32) //space - stop
-
-                    {
+                        
+                         {
                         speed = $("#speed").text();
                         speed = 0;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
+
                     }
                 });
+
 
             });
         </script>

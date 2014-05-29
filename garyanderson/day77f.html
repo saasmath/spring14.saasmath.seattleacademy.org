@@ -19,18 +19,9 @@
                         [830.6, 266.6],
                         [987.8, 133.3]
                     ];
-            note1 = 
-                [[100,100]
-                ];
-            note2 = 
-                [[200,100]
-                ];                    
-            note3 = 
-                [[300,100]
-                ];                    
 
             $(document).ready(function() {
-                var socket = io.connect('http://10.48.102.136:3001');
+                var socket = io.connect('http://10.48.102.113:3001');
                 socket.on('sensordata', function(data) {
                     //console.log(data);
                     $("#voltage").text(data.battery.voltage.volts);
@@ -56,17 +47,6 @@
                 $("#aidan").click(function(e) {
                     socket.emit('sing', aidansong);
                 });
-                
-                if (event.which === 49 ) {
-                    socket.emit('sing', note1);
-                    console.log('note1');
-                };                
-                if (event.which === 50 ) {
-                    socket.emit('sing', note2);
-                };                                
-                if (event.which === 51 ) {
-                    socket.emit('sing', note3);
-                };
 
                 $("#safeMode").click(function(e) {
                     socket.emit('safeMode');
@@ -79,6 +59,13 @@
 
                 $('body').keydown(function(event) {
                     console.log(event.which);
+                    if (event.which === 49) //1 - play song
+                    {
+
+                    socket.emit('sing', aidansong);
+
+                    }
+
                     speed = $("#speed").text();
                     //speed = 100;
                     if (event.which === 87) //w - move forward

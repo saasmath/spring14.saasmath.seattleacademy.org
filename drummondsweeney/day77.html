@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
-
+ 
         <script>
-
+ 
             aidansong =
                     [[987.8, 266.6],
                         [830.6, 266.6],
@@ -19,18 +19,9 @@
                         [830.6, 266.6],
                         [987.8, 133.3]
                     ];
-            note1 = 
-                [[100,100]
-                ];
-            note2 = 
-                [[200,100]
-                ];                    
-            note3 = 
-                [[300,100]
-                ];                    
-
+ 
             $(document).ready(function() {
-                var socket = io.connect('http://10.48.102.136:3001');
+                var socket = io.connect('http://10.48.102.163:3001');
                 socket.on('sensordata', function(data) {
                     //console.log(data);
                     $("#voltage").text(data.battery.voltage.volts);
@@ -41,42 +32,31 @@
                     //$("#allsensors").text(JSON.stringify(data));
                     socket.emit('sensorswritten');
                 });
-
-
+ 
+ 
                 $("#forward").click(function(e) {
                     console.log('forward');
                     socket.emit('drive', {left: 15, right: 15});
-                });
-
-                $("#halt").click(function(e) {
+            
+ 
+                 });   $("#halt").click(function(e) {
                     console.log('halt');
                     socket.emit('drive', {left: 0, right: 0});
                 });
-
+ 
                 $("#aidan").click(function(e) {
                     socket.emit('sing', aidansong);
                 });
-                
-                if (event.which === 49 ) {
-                    socket.emit('sing', note1);
-                    console.log('note1');
-                };                
-                if (event.which === 50 ) {
-                    socket.emit('sing', note2);
-                };                                
-                if (event.which === 51 ) {
-                    socket.emit('sing', note3);
-                };
-
+ 
                 $("#safeMode").click(function(e) {
                     socket.emit('safeMode');
                 });
-
+ 
                 $("#fullMode").click(function(e) {
                     socket.emit('fullMode');
                 });
-
-
+ 
+ 
                 $('body').keydown(function(event) {
                     console.log(event.which);
                     speed = $("#speed").text();
@@ -87,9 +67,9 @@
                         speed = speed * 1 + 50;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
-
+ 
                     }
-
+ 
                     if (event.which === 83) //s - move backward
                     {
                         speed = $("#speed").text();
@@ -97,16 +77,16 @@
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
                     }
-
+ 
                     if (event.which === 65) //d - move right
                     {
                         speed = $("#speed").text();
                         speed = 50;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: -speed});
-
+ 
                     }
-
+ 
                     if (event.which === 68) //a - move left
                     {
                         speed = $("#speed").text();
@@ -114,9 +94,9 @@
                         $("#speed").text(speed);
                         socket.emit('drive', {left: -speed, right: speed});
                     }
-
+ 
                     if (event.which === 32) //space - stop
-
+ 
                     {
                         speed = $("#speed").text();
                         speed = 0;
@@ -124,10 +104,10 @@
                         socket.emit('drive', {left: speed, right: speed});
                     }
                 });
-
+ 
             });
         </script>
-
+ 
     </head>
     <body>
         <div class="container">
@@ -138,7 +118,7 @@
                 <button id="safeMode">safeMode</button>
                 <button id="fullMode">fullMode</button>
                 Voltage  <span id="voltage">...</span>
-
+ 
             </div>
             <div>speed:<span id="speed">100</span></div>
             <div>left  <span id="left">...</span>

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+        
 
         <script>
 
@@ -19,18 +20,9 @@
                         [830.6, 266.6],
                         [987.8, 133.3]
                     ];
-            note1 = 
-                [[100,100]
-                ];
-            note2 = 
-                [[200,100]
-                ];                    
-            note3 = 
-                [[300,100]
-                ];                    
 
             $(document).ready(function() {
-                var socket = io.connect('http://10.48.102.136:3001');
+                var socket = io.connect('http://10.48.102.113:3001');
                 socket.on('sensordata', function(data) {
                     //console.log(data);
                     $("#voltage").text(data.battery.voltage.volts);
@@ -45,8 +37,9 @@
 
                 $("#forward").click(function(e) {
                     console.log('forward');
-                    socket.emit('drive', {left: 15, right: 15});
+                    socket.emit('drive', {left: 25, right: 25});
                 });
+                
 
                 $("#halt").click(function(e) {
                     console.log('halt');
@@ -56,17 +49,6 @@
                 $("#aidan").click(function(e) {
                     socket.emit('sing', aidansong);
                 });
-                
-                if (event.which === 49 ) {
-                    socket.emit('sing', note1);
-                    console.log('note1');
-                };                
-                if (event.which === 50 ) {
-                    socket.emit('sing', note2);
-                };                                
-                if (event.which === 51 ) {
-                    socket.emit('sing', note3);
-                };
 
                 $("#safeMode").click(function(e) {
                     socket.emit('safeMode');
@@ -79,6 +61,13 @@
 
                 $('body').keydown(function(event) {
                     console.log(event.which);
+                    if (event.which === 49) //1 - play song
+                    {
+
+                    socket.emit('sing', aidansong);
+
+                    }
+
                     speed = $("#speed").text();
                     //speed = 100;
                     if (event.which === 87) //w - move forward
@@ -87,6 +76,13 @@
                         speed = speed * 1 + 50;
                         $("#speed").text(speed);
                         socket.emit('drive', {left: speed, right: speed});
+
+                    }
+                    
+                     if (event.which === 37) //w - move forward
+                    {
+                        
+                        socket.emit('drive', {left: 50, right: 75});
 
                     }
 
