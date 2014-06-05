@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Day 78</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <link href="http://saasmath.seattleacademy.org/css/bootstrap.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+
+        <script>
+
+            aidansong =
+                    [[987.8, 266.6],
+                        [830.6, 266.6],
+                        [740, 266.6],
+                        [659.3, 266.6],
+                        [740, 266.6],
+                        [830.6, 266.6],
+                        [987.8, 133.3]
+                    ];
+
+            $(document).ready(function() {
+                var socket = io.connect('http://10.48.102.182:3001');
+
+
+                $("#turnOneSec").click(function(e) {
+                    console.log("turn90");
+                    speed = $("#speed").text();
+                    if (speed < 10) {
+                        speed = 50;
+                        $("#speed").text(50);
+                    }
+                    socket.emit('sing', aidansong);
+                    socket.emit('drive', {left: speed, right: -speed});
+                    setTimeout(function() {
+                        socket.emit('drive', {left: speed, right: speed});
+                    }, 1000)
+                });
+
+                $("#dance").click(function(e) {
+                    console.log("dance");
+                    speed = $("#speed").text();
+                    if (speed < 10) {
+                        speed = 50;
+                        $("#speed").text(50);
+                    }
+                    socket.emit('drive', {left: speed, right: -speed});
+                    setTimeout(function() {
+                        socket.emit('drive', {left: speed, right: speed});
+                    }, 1000)
+                });
+
+                function followline(data) {
+                    speed = $("#speed").text();
+                    if (speed < 10)
+                        return;
+                    front_left = data.cliff_sensors.front_left.signal.raw;
+                    front_right = data.cliff_sensors.front_right.signal.raw;
+                    if (Math.abs(front_left - front_right) < 100) {
+                        socket.emit('drive', {left: speed, right: speed});
+                        return;
+                    }
+                    ;
+
+                    if (Math.abs(front_left < front_right)) {
+                        socket.emit('drive', {left: speed * .5, right: speed});
+                    }
+                    ;
+                    if (Math.abs(front_left > front_right)) {
+                        socket.emit('drive', {left: speed, right: speed * .5});
+                    }
+                    ;
+                }
+
+
+
+                socket.on('sensordata', function(data) {
+                    //console.log(data);
+                    $("#voltage").text(data.battery.voltage.volts);
+                    $("#left").text(data.cliff_sensors.left.signal.raw);
+                    $("#front_left").text(data.cliff_sensors.front_left.signal.raw);
+                    $("#front_right").text(data.cliff_sensors.front_right.signal.raw);
+                    $("#right").text(data.cliff_sensors.right.signal.raw);
+                    //$("#allsensors").text(JSON.stringify(data));
+                    if ($('#followline').is(':checked')) {
+                        followline(data)
+                    }
+                    ;
+                    socket.emit('sensorswritten');
+                });
+
+
+                $("#forward").click(function(e) {
+                    console.log('forward');
+                    socket.emit('drive', {left: 110, right: 110});
+                });
+                $("#backward").click(function(e) {
+                    console.log('backward');
+                    socket.emit('drive', {left: -90, right: -90});
+                });
+                $("#turnright").click(function(e) {
+                    console.log('turnright');
+                    socket.emit('drive', {left: -100, right: 100});
+                });
+                $("#turnleft").click(function(e) {
+                    console.log('turnleft');
+                    socket.emit('drive', {left: 100, right: -100});
+                });
+
+                $("#stop").click(function(e) {
+                    console.log('halt');
+                    socket.emit('drive', {left: 0, right: 0});
+                });
+                $("#go").click(function(e) {
+                    console.log('go');
+                    socket.emit('drive', {left: 130, right: 130});
+                });
+
+
+                $("#aidan").click(function(e) {
+                    socket.emit('sing', aidansong);
+                });
+
+                $("#safeMode").click(function(e) {
+                    socket.emit('safeMode');
+                });
+
+                $("#fullMode").click(function(e) {
+                    socket.emit('fullMode');
+                });
+
+
+                $('body').keydown(function(event) {
+                    console.log(event.which);
+                    speed = $("#speed").text();
+                    //speed = 100;
+                    if (event.which === 87) //w - move forward
+                    {
+                        speed = $("#speed").text();
+                        speed = speed * 1 + 50;
+                        $("#speed").text(speed);
+                        socket.emit('drive', {left: speed, right: speed});
+                    }
+
+                    if (event.which === 83) //s - move backward
+                    {
+                        speed = $("#speed").text();
+                        speed = speed * 1 - 50;
+                        $("#speed").text(speed);
+                        socket.emit('drive', {left: speed, right: speed});
+                    }
+
+                    if (event.which === 65) //d - move right
+                    {
+                        speed = $("#speed").text();
+                        speed = 50;
+                        $("#speed").text(speed);
+                        socket.emit('drive', {left: speed, right: -speed});
+
+                    }
+
+                    if (event.which === 68) //a - move left
+                    {
+                        speed = $("#speed").text();
+                        speed = 50;
+                        $("#speed").text(speed);
+                        socket.emit('drive', {left: -speed, right: speed});
+                    }
+                    if (event.which === 51) { //3 on keyboard, play note
+                        note3 = [[300, 100]];
+                        socket.emit('sing', note3);
+                    }
+                    ;
+
+                    if (event.which === 32) //space - stop
+
+                    {
+                        speed = $("#speed").text();
+                        speed = 0;
+                        $("#speed").text(speed);
+                        socket.emit('drive', {left: speed, right: speed});
+                        event.preventDefault();
+                    }
+                });
+
+            });
+        </script>
+
+    </head>
+    <body>
+        <div class="container">
+            <h3>Robot Control</h3>
+            <div class ="row">
+                <button  class="btn-warning btn col-xs-2" id="safeMode">Safe Mode</button>
+                <button  class="btn-danger btn col-xs-3" id="fullMode">Full Mode</button>
+
+            </div>
+            <div class ="row">
+                <div class="col-xs-3">
+                    <button  class="btn btn-danger" id="stop">Stop
+                        <span class="glyphicon glyphicon-stop"></span></button>
+                    <button  class="btn btn-primary" id="go">Go
+                        <span class="glyphicon glyphicon-play"></span></button>
+                    <button id ="aidan"  class="btn-success btn-lg btn-block">Play Music
+                        <span class="glyphicon glyphicon-music"></span></button>
+                    <button id ="turnOneSec" class="btn-primary btn-lg btn-block">Turn For One Second
+                        <span class="glyphicon glyphicon-refresh"></span></button>
+                    <button id ="dance" class="btn-primary btn-lg btn-block">Dance
+                        <span class="glyphicon glyphicon-fire"></span></button>
+                    <div>Follow Line <input type="checkbox" id="followline"> </div>
+
+
+                </div>
+            </div>
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-5">
+                    <button  class="btn-primary btn-lg btn-block" id="forward">Forward<span class="glyphicon glyphicon-arrow-up"></span></button> 
+                </div> 
+            </div>  
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-3">
+                    <button  class="btn-primary btn-lg btn-block" id="turnleft">Left<span class="glyphicon glyphicon-arrow-left"></span></button> 
+                </div>  
+                <div class="col-md-2 col-md-offset-2">
+                    <button  class="btn-primary btn-lg btn-block" id="turnright">Right<span class="glyphicon glyphicon-arrow-right"></span></button> 
+                </div> 
+            </div>  
+            <div class="row">  
+                <div class="col-md-2 col-md-offset-5">
+                    <button  class="btn-primary btn-lg btn-block" id="backward">Backward<span class="glyphicon glyphicon-arrow-down"></span></button> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="alert alert-info wordwrap" id="left">Sensors ...</div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-offset-6">
+                                <div class="alert alert-info wordwrap" id="right">Sensors ...</div>
+                                <div>        
+                                    Voltage  <span id="voltage">...</span>
+
+                                </div>
+                                <div>speed:<span id="speed">100</span></div>
+                                <div>
+                                    front_left  <span id="front_left">...</span>
+                                    front_right <span id="front_right">...</span>
+                                </div>
+                                <div>Follow Line <input type="checkbox" id="followline"> </div>
+                                <div id="allsensors">...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>

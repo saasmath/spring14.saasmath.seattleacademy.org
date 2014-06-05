@@ -29,27 +29,31 @@
                 }
                 return true;
             }
-            function sumstoprime(n) {
-                var counter = 0;
+            function sumofprimes(n) {
+                counter = 0;
+                sumofprime = 0;
                 for (var i = 0; i < n; i++) {
-                    var digits = i.toString().split('');
-                    digitsum = 0;
-                    for (var x = 0; x < digits.length; x++) {
-                        digitsum += digits[x] * 1;
-
-                    }
                     if (isPrime(i)) {
-                        if (isPrime(digitsum)) {
-                            counter = counter + 1;
-                            //console.log(i,digitsum);
-                        }
+                        //if (isPrime(sumofprimes)) {
+                        sumofprime += i;
+                        counter++;
+                        averageofprimes = sumofprime / counter;////sumofallprimes += sumofprime
+                        //console.log(i, sumofprime);
+
+
+
                     }
                 }
-                return counter;
+                console.log(counter);
+                console.log(averageofprimes);
+                return sumofprime;
 
             }
+            //return counter;
+
+
             $(document).ready(function() {
-                $('#answer').text(sumstoprime(1000000));
+                $('#answer').text(sumofprimes(1000000));
             });
         </script>
     </head>
@@ -57,8 +61,7 @@
         <div class="container">
             <h1>Programming Challenge!</h1>
             <div class="row">
-                Find how many numbers from 1 to a million are both prime and
-                that the sum of their digits is prime.
+                Find sum of primes from 1 to a million.
             </div> 
             <div class="row">
                 Answers:  <span id="answer">Calculating</span>
